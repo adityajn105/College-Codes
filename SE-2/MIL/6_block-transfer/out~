@@ -1,0 +1,29 @@
+aditya@DellPC 11:48 PM:~$ nasm -f elf64 block.asm
+aditya@DellPC 11:48 PM:~$ ld -o block block.o
+aditya@DellPC 11:49 PM:~$ ./block
+Given block is: OOOOOOOOOOADITYAOOOOOOOOOOO
+Enter your choice
+1.Positive offset
+2.Negative offset
+3.Exit
+1
+Give Offset: 4
+Result is: OOOOOOOOOOADITADITYAOOOOOOO
+______________________
+Given block is: OOOOOOOOOOADITADITYAOOOOOOO
+Enter your choice
+1.Positive offset
+2.Negative offset
+3.Exit
+2
+Give Offset: 5
+Result is: OOOOOADITADDITADITYAOOOOOOO
+______________________
+Given block is: OOOOOADITADDITADITYAOOOOOOO
+Enter your choice
+1.Positive offset
+2.Negative offset
+3.Exit
+3
+aditya@DellPC 11:49 PM:~$ 
+

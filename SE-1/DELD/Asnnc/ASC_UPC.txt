@@ -1,0 +1,49 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    11:40:58 09/22/2015 
+-- Design Name: 
+-- Module Name:    ASC_UPC - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity ASC_UPC is
+    Port ( CLK : in  STD_LOGIC;
+           CLR : in  STD_LOGIC;
+           Q : out  STD_LOGIC_VECTOR (2 downto 0));
+end ASC_UPC;
+
+architecture Behavioral of ASC_UPC is
+SIGNAL QX: STD_LOGIC_VECTOR (2 downto 0);
+begin
+	PROCESS (CLK,CLR)
+		BEGIN 
+			IF(CLR='1') THEN
+				QX<="000";
+			ELSIF(CLK'EVENT AND CLK='1') THEN
+				QX<=QX+1;
+			END IF;
+		END PROCESS;
+		Q <= QX;
+
+end Behavioral;

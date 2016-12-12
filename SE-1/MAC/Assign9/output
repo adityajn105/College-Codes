@@ -1,0 +1,50 @@
+student@B04L05100:~$ nasm -f elf64 calc.asm
+student@B04L05100:~$ ld -o calc calc.o
+student@B04L05100:~$ ./calc
+Calculator
+1.ADDITION
+2.Subtraction
+3.MULTIPLICATION
+4.Division
+5.EXIT
+Enter your choice: 1
+The sum is: 00000075
+Do you want to continue:(1 for yes) 1
+Calculator
+1.ADDITION
+2.Subtraction
+3.MULTIPLICATION
+4.Division
+5.EXIT
+Enter your choice: 2
+The difference is: 0000002B
+Do you want to continue:(1 for yes) 1
+Calculator
+1.ADDITION
+2.Subtraction
+3.MULTIPLICATION
+4.Division
+5.EXIT
+Enter your choice: 3
+The product is: 0000000000000B90
+Do you want to continue:(1 for yes) 1
+Calculator
+1.ADDITION
+2.Subtraction
+3.MULTIPLICATION
+4.Division
+5.EXIT
+Enter your choice: 4
+The quotient is: 00000002
+The remainder is:  00000006
+Do you want to continue:(1 for yes) 1
+Calculator
+1.ADDITION
+2.Subtraction
+3.MULTIPLICATION
+4.Division
+5.EXIT
+Enter your choice: 5
+
+student@B04L05100:~$ 
+

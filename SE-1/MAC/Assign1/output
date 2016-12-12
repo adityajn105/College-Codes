@@ -1,0 +1,5 @@
+aditya@ADITYAsPC:~$ cd /home/aditya/MAC
+aditya@ADITYAsPC:~/MAC$ nasm -f elf64 Assign1.asm
+aditya@ADITYAsPC:~/MAC$ ld -o Assign1 Assign1.o
+aditya@ADITYAsPC:~/MAC$ ./Assign1
+Hello World!

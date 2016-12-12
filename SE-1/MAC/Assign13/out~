@@ -1,0 +1,7 @@
+student@B04L03100:~$ nasm -f elf64 cmdline.asm
+student@B04L03100:~$ ld -o cmdline cmdline.o
+student@B04L03100:~$ ./cmdline cmdline.asm
+2
+./cmdline
+cmdline.asm
+

@@ -1,0 +1,507 @@
+Enter color to fill polygon: 15
+y1  y2  x1  x2
+90 20 10 10
+90 60 10 50
+90 60 90 50
+90 20 90 90
+20 20 90 10
+ymax 90
+ymin 20
+
+Active Edge 	 X Intersect
+0	10
+1	11.3333
+2	88.6667
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	12.6667
+2	87.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	14
+2	86
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	15.3333
+2	84.6667
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	16.6667
+2	83.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	18
+2	82
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	19.3333
+2	80.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	20.6667
+2	79.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	22
+2	78
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	23.3333
+2	76.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	24.6667
+2	75.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	26
+2	74
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	27.3333
+2	72.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	28.6667
+2	71.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	30
+2	70
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	31.3333
+2	68.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	32.6667
+2	67.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	34
+2	66
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	35.3333
+2	64.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	36.6667
+2	63.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	38
+2	62
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	39.3333
+2	60.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	40.6667
+2	59.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	42
+2	58
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	43.3333
+2	56.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	44.6667
+2	55.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	46
+2	54
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	47.3333
+2	52.6666
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+1	48.6667
+2	51.3333
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+2	50
+1	50
+3	90
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	10
+3	90
+0	0
+0	0
+0	0
+
+Active Edge 	 X Intersect
+0	0
+0	0
+0	0
+0	0
+0	0
+

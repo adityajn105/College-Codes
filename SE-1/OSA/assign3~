@@ -1,0 +1,39 @@
+while [ true ]
+
+do
+
+echo "1. Display Operating system name"
+echo "2. Display operating system info"
+echo "3. Display lodin name"
+echo "4. Display Hostname"
+echo "5. Exit"
+echo "Enter your choice"
+read ch
+
+case $ch in
+1)
+        echo "operating system is"
+        uname
+        ;;
+2)
+        echo "Operating system version"
+        cat /proc/version
+        ;;
+3)
+        echo "Login name"
+	who
+        ;;
+4)
+	echo "Hostname"
+	hostname
+	;;
+5)
+	echo "Exiting from Program"
+	exit
+	;;
+*)
+	echo "Wrong choice entered"
+	;; 
+esac
+    
+done

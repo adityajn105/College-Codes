@@ -1,0 +1,48 @@
+student@B4L0106:~$ sh assign3
+1. Display Operating system name
+2. Display operating system info
+3. Display login name
+4. Display Hostname
+5. Exit
+Enter your choice
+1
+operating system is
+Linux
+1. Display Operating system name
+2. Display operating system info
+3. Display login name
+4. Display Hostname
+5. Exit
+Enter your choice
+2
+Operating system version
+Linux version 3.5.0-23-generic (buildd@komainu) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #35~precise1-Ubuntu SMP Fri Jan 25 17:13:26 UTC 2013
+1. Display Operating system name
+2. Display operating system info
+3. Display login name
+4. Display Hostname
+5. Exit
+Enter your choice
+3
+Login name
+student  tty7         2015-08-12 11:40
+student  pts/0        2015-08-12 11:57 (:0)
+1. Display Operating system name
+2. Display operating system info
+3. Display login name
+4. Display Hostname
+5. Exit
+Enter your choice
+4
+Hostname
+B4L0106
+1. Display Operating system name
+2. Display operating system info
+3. Display login name
+4. Display Hostname
+5. Exit
+Enter your choice
+5
+Exiting from Program
+student@B4L0106:~$ 
+

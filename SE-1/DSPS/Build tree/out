@@ -1,0 +1,53 @@
+1.Display postorder by giving preorder and inorder
+2.Display preorder by giving inorder and postorder
+Enter you choice:  1
+enter no of nodes	:8
+Enter data for preorder
+Enter value for node 0	:a
+Enter value for node 1	:b
+Enter value for node 2	:d
+Enter value for node 3	:f
+Enter value for node 4	:e
+Enter value for node 5	:c
+Enter value for node 6	:g
+Enter value for node 7	:h
+enter data for inorder
+Enter value for node 0	:f
+Enter value for node 1	:d
+Enter value for node 2	:b
+Enter value for node 3	:e
+Enter value for node 4	:a
+Enter value for node 5	:g
+Enter value for node 6	:c
+Enter value for node 7	:h
+Postorder display is:   f  d  e  b  g  h  c  a  
+The internal nodes ared  b  c  a  
+Leaf nodes are   :  f  e  g  h  
+Do you want to continue(y or n)y
+1.Display postorder by giving preorder and inorder
+2.Display preorder by giving inorder and postorder
+Enter you choice:  2
+enter no of nodes	:8
+Enter data for postorder
+Enter value for node 0	:f
+Enter value for node 1	:d
+Enter value for node 2	:e
+Enter value for node 3	:b
+Enter value for node 4	:g
+Enter value for node 5	:h
+Enter value for node 6	:c
+Enter value for node 7	:a
+enter data for inorder
+Enter value for node 0	:f
+Enter value for node 1	:d
+Enter value for node 2	:b
+Enter value for node 3	:e
+Enter value for node 4	:a
+Enter value for node 5	:g
+Enter value for node 6	:c
+Enter value for node 7	:h
+Preorder display is:    a  b  d  f  e  c  g  h  
+The internal nodes are  a  b  d  c  
+Leaf nodes are   :  f  e  g  h  
+Do you want to continue(y or n)n
+

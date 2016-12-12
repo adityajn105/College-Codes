@@ -1,0 +1,5 @@
+aditya@ADITYAsPC:~/Documents$ gcc parch.c
+aditya@ADITYAsPC:~/Documents$ ./a.out
+this is parent id 5565
+this si  a child process id 5566
+aditya@ADITYAsPC:~/Documents$ 

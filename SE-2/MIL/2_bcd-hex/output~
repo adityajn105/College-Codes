@@ -1,0 +1,36 @@
+deepankar@deepankar-Inspiron-5558:~$ nasm -f elf64 bcdadi.asm
+deepankar@deepankar-Inspiron-5558:~$ ld -o bcd bcdadi.o
+deepankar@deepankar-Inspiron-5558:~$ ./bcd
+Enter yor choice
+1.BCD to hex
+2.Hex to BCD
+3.Exit
+1
+Please enter a bcd number: 123
+Equivalent hex is: 0000007B
+Enter yor choice
+1.BCD to hex
+2.Hex to BCD
+3.Exit
+1
+Please enter a bcd number: 3456712389
+Equivalent hex is: CE093EC5
+Enter yor choice
+1.BCD to hex
+2.Hex to BCD
+3.Exit
+2
+Please enter a hex number: 7B 
+Equivalent BCD is: 123
+Enter yor choice
+1.BCD to hex
+2.Hex to BCD
+3.Exit
+2
+Please enter a hex number: FFFFFFFF
+Equivalent BCD is: 4294967295
+Enter yor choice
+1.BCD to hex
+2.Hex to BCD
+3.Exit
+3

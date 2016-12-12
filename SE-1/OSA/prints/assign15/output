@@ -1,0 +1,21 @@
+aditya@ADITYAsPC:~/Documents$ javac ProcessPriority.java
+aditya@ADITYAsPC:~/Documents$ java ProcessPriority
+ F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+ 0 S aditya   13816 13382  0  80   0 -  6729 wait   00:18 pts/9    00:00:00 bash
+ 0 S aditya   13984 13816  0  80   0 - 565335 futex_ 00:24 pts/9   00:00:00 java ProcessPriority
+ 0 R aditya   13998 13984  0  80   0 -  5660 -      00:24 pts/9    00:00:00 ps -lf
+exit :0
+Changing the priority of the processes with Renice with default value 
+
+Press any key to continue ...
+f
+
+
+ Dispalying the renewed Priority now 
+
+ F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+ 0 S aditya   13816 13382  0  80   0 -  6729 wait   00:18 pts/9    00:00:00 bash
+ 0 S aditya   13984 13816  1  80   0 - 581777 futex_ 00:24 pts/9   00:00:00 java ProcessPriority
+ 0 R aditya   14002 13984  0  80   0 -  5660 -      00:24 pts/9    00:00:00 ps -lf
+exit :0
+

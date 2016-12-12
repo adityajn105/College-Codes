@@ -1,0 +1,9 @@
+import sys,hashlib
+check=open(sys.argv[1]).read()
+org=open(sys.argv[2]).read()
+print("Original Hash :"+org)
+print("Obtained Hash :"+check)
+if(hashlib.md5(check).hexdigest()==hashlib.md5(org).hexdigest()):
+	print sys.argv[1]+" is original"
+else:
+	print sys.argv[1]+" is tempered"

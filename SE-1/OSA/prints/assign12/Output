@@ -1,0 +1,11 @@
+aditya@ADITYAsPC:~/Documents$ javac LoginUser.java
+aditya@ADITYAsPC:~/Documents$ java LoginUser
+aditya   :0           2015-09-28 11:46 (:0)
+aditya   pts/9        2015-09-29 00:18 (:0)
+no of users are2
+  PID TTY          TIME CMD
+13816 pts/9    00:00:00 bash
+14141 pts/9    00:00:00 java
+14157 pts/9    00:00:00 ps
+aditya@ADITYAsPC:~/Documents$ 
+

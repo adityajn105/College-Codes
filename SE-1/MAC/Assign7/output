@@ -1,0 +1,8 @@
+student@B04L05100:~$ nasm -f elf64 assign7.asm
+student@B04L05100:~$ ld -o assign7 assign7.o
+student@B04L05100:~$ ./assign7
+The sum is : 00000004FFFFFFFB
+The remainder is : 00000000
+The quotient is FFFFFFFF
+student@B04L05100:~$ 
+

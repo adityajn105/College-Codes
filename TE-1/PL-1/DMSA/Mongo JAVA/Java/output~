@@ -1,0 +1,73 @@
+Connection established
+Database Found: BlogData
+Using Collection : post
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+4
+Sep 10, 2016 11:12:38 PM com.mongodb.diagnostics.logging.JULLogger log
+{ "_id" : { "$oid" : "57c5004bbb203ba08b8371c1"} , "title" : "New MongoDb Overview" , "description" : "MongoDb is a noSql Database" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "mongo" , "nosql" , "aditya"] , "likes" : 100.0 , "comments" : [ { "user" : "user1" , "message" : "good content" , "dateCreated" : { "$date" : "2016-02-19T20:45:00.000Z"} , "like" : 0.0}]}
+{ "_id" : { "$oid" : "57c500c3bb203ba08b8371c2"} , "title" : "Sql Overview" , "description" : "Sql is sql Database" , "by" : "Learning Point" , "url" : "http://www.jhon.com" , "tags" : [ "mysql" , "sql" , "John"] , "likes" : 50.0 , "comments" : [ { "user" : "user1" , "message" : "good content too" , "dateCreated" : { "$date" : "2014-02-20T21:45:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c50183bb203ba08b8371c3"} , "title" : "JDBC Overview" , "description" : "Jdbc is java database connectivity" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "sql" , "jdbc" , "Tyrion"] , "likes" : 20.0 , "comments" : [ { "user" : "user3" , "message" : "okay content" , "dateCreated" : { "$date" : "2014-02-24T21:45:00.000Z"} , "like" : 12.0} , { "user" : "user5" , "message" : "not good content" , "dateCreated" : { "$date" : "2015-04-20T21:45:00.000Z"} , "like" : 4.0}]}
+{ "_id" : { "$oid" : "57c50227bb203ba08b8371c4"} , "title" : "Hadoop Overview" , "description" : "Hadoop is for big Data" , "by" : "Tutorials World" , "url" : "http://www.cercie.com" , "tags" : [ "bigdata" , "hadoop" , "Cercie"] , "likes" : 30.0 , "comments" : [ { "user" : "sam" , "message" : "i dont like it" , "dateCreated" : { "$date" : "2016-02-24T21:45:00.000Z"} , "like" : 17.0} , { "user" : "user7" , "message" : "yuk content" , "dateCreated" : { "$date" : "2015-09-20T21:45:00.000Z"} , "like" : 8.0}]}
+{ "_id" : { "$oid" : "57c502a3bb203ba08b8371c5"} , "title" : "Servelets Overview" , "description" : "Servelets are used for server side programming" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "server" , "Servelets" , "Sansa"] , "likes" : 54.0 , "comments" : [ { "user" : "user4" , "message" : "previous version was better" , "dateCreated" : { "$date" : "2016-09-24T21:47:00.000Z"} , "like" : 12.0}]}
+{ "_id" : { "$oid" : "57c50327bb203ba08b8371c6"} , "title" : "Jsp Overview" , "description" : "jsp are also used for server side programming" , "by" : "Learning Point" , "url" : "http://www.arya.com" , "tags" : [ "server" , "Jsp" , "arya"] , "likes" : 21.0 , "comments" : [ { "user" : "user6" , "message" : "previous version was lame" , "dateCreated" : { "$date" : "2016-02-24T21:47:00.000Z"} , "like" : 18.0}]}
+{ "_id" : { "$oid" : "57c50394bb203ba08b8371c7"} , "title" : "PHP Overview" , "description" : "php stands for PHP hypertext Processor" , "by" : "Learning Point" , "url" : "http://www.danarys.com" , "tags" : [ "server" , "php" , "danarys"] , "likes" : 1045.0 , "comments" : [ { "user" : "sam" , "message" : "almost like previous version" , "dateCreated" : { "$date" : "2015-02-24T21:47:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c5047dbb203ba08b8371c8"} , "title" : "C# overview" , "description" : "c# is C++++" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "ios" , "c#" , "jamie"] , "likes" : 23.0 , "comments" : [ { "user" : "user2" , "message" : "youwrite lame posts" , "dateCreated" : { "$date" : "2015-07-24T21:47:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c50510bb203ba08b8371c9"} , "title" : "android overview" , "description" : "android studio for android" , "by" : "Tutorials World" , "url" : "http://www.joffery.com" , "tags" : [ "studio" , "android" , "joffery"] , "likes" : 2143.0 , "comments" : [ { "user" : "user7" , "message" : "youwrite good posts" , "dateCreated" : { "$date" : "2013-07-20T21:47:00.000Z"} , "like" : 6.0}]}
+{ "_id" : { "$oid" : "57c50569bb203ba08b8371ca"} , "title" : "important overview" , "description" : "writing important thing" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "jake" , "adi" , "important"] , "likes" : 23.0 , "comments" : [ { "user" : "user3" , "message" : "you also good posts" , "dateCreated" : { "$date" : "2015-07-20T21:47:00.000Z"} , "like" : 7.0}]}
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+1
+Enter TitlePython Overview
+Enter descriptionPython is good language
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+2
+Enter Tilleimportant overview
+Removed
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+3
+Enter title of documentServelets Overview
+Enter new Description
+Server Side programming
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+4
+{ "_id" : { "$oid" : "57c5004bbb203ba08b8371c1"} , "title" : "New MongoDb Overview" , "description" : "MongoDb is a noSql Database" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "mongo" , "nosql" , "aditya"] , "likes" : 100.0 , "comments" : [ { "user" : "user1" , "message" : "good content" , "dateCreated" : { "$date" : "2016-02-19T20:45:00.000Z"} , "like" : 0.0}]}
+{ "_id" : { "$oid" : "57c500c3bb203ba08b8371c2"} , "title" : "Sql Overview" , "description" : "Sql is sql Database" , "by" : "Learning Point" , "url" : "http://www.jhon.com" , "tags" : [ "mysql" , "sql" , "John"] , "likes" : 50.0 , "comments" : [ { "user" : "user1" , "message" : "good content too" , "dateCreated" : { "$date" : "2014-02-20T21:45:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c50183bb203ba08b8371c3"} , "title" : "JDBC Overview" , "description" : "Jdbc is java database connectivity" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "sql" , "jdbc" , "Tyrion"] , "likes" : 20.0 , "comments" : [ { "user" : "user3" , "message" : "okay content" , "dateCreated" : { "$date" : "2014-02-24T21:45:00.000Z"} , "like" : 12.0} , { "user" : "user5" , "message" : "not good content" , "dateCreated" : { "$date" : "2015-04-20T21:45:00.000Z"} , "like" : 4.0}]}
+{ "_id" : { "$oid" : "57c50227bb203ba08b8371c4"} , "title" : "Hadoop Overview" , "description" : "Hadoop is for big Data" , "by" : "Tutorials World" , "url" : "http://www.cercie.com" , "tags" : [ "bigdata" , "hadoop" , "Cercie"] , "likes" : 30.0 , "comments" : [ { "user" : "sam" , "message" : "i dont like it" , "dateCreated" : { "$date" : "2016-02-24T21:45:00.000Z"} , "like" : 17.0} , { "user" : "user7" , "message" : "yuk content" , "dateCreated" : { "$date" : "2015-09-20T21:45:00.000Z"} , "like" : 8.0}]}
+{ "_id" : { "$oid" : "57c502a3bb203ba08b8371c5"} , "title" : "Servelets Overview" , "description" : "Server Side programming" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "server" , "Servelets" , "Sansa"] , "likes" : 54.0 , "comments" : [ { "user" : "user4" , "message" : "previous version was better" , "dateCreated" : { "$date" : "2016-09-24T21:47:00.000Z"} , "like" : 12.0}]}
+{ "_id" : { "$oid" : "57c50327bb203ba08b8371c6"} , "title" : "Jsp Overview" , "description" : "jsp are also used for server side programming" , "by" : "Learning Point" , "url" : "http://www.arya.com" , "tags" : [ "server" , "Jsp" , "arya"] , "likes" : 21.0 , "comments" : [ { "user" : "user6" , "message" : "previous version was lame" , "dateCreated" : { "$date" : "2016-02-24T21:47:00.000Z"} , "like" : 18.0}]}
+{ "_id" : { "$oid" : "57c50394bb203ba08b8371c7"} , "title" : "PHP Overview" , "description" : "php stands for PHP hypertext Processor" , "by" : "Learning Point" , "url" : "http://www.danarys.com" , "tags" : [ "server" , "php" , "danarys"] , "likes" : 1045.0 , "comments" : [ { "user" : "sam" , "message" : "almost like previous version" , "dateCreated" : { "$date" : "2015-02-24T21:47:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c5047dbb203ba08b8371c8"} , "title" : "C# overview" , "description" : "c# is C++++" , "by" : "Tutorials Point" , "url" : "http: //www.tutorialspoint.com" , "tags" : [ "ios" , "c#" , "jamie"] , "likes" : 23.0 , "comments" : [ { "user" : "user2" , "message" : "youwrite lame posts" , "dateCreated" : { "$date" : "2015-07-24T21:47:00.000Z"} , "like" : 1.0}]}
+{ "_id" : { "$oid" : "57c50510bb203ba08b8371c9"} , "title" : "android overview" , "description" : "android studio for android" , "by" : "Tutorials World" , "url" : "http://www.joffery.com" , "tags" : [ "studio" , "android" , "joffery"] , "likes" : 2143.0 , "comments" : [ { "user" : "user7" , "message" : "youwrite good posts" , "dateCreated" : { "$date" : "2013-07-20T21:47:00.000Z"} , "like" : 6.0}]}
+{ "_id" : { "$oid" : "57d4462ab520380c99d71cfb"} , "title" : "Python Overview" , "description" : "Python is good language" , "by" : "Aditya" , "url" : "aditya" , "tags" : [ "tag1" , "tag2"] , "likes" : "100"}
+***MENU***
+1.Insert.
+2.Delete.
+3.Update.
+4.Display all.
+5.Exit
+5

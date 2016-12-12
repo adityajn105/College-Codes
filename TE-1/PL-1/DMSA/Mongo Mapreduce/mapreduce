@@ -1,0 +1,36 @@
+//Map Reduce
+
+1. Get the count of Males and Females
+>var mapper = function () { emit(this.gender, 1);};
+>var reducer = function(gender, count){return Array.sum(count);};
+>db.sourceData.mapReduce(mapper,reducer,{out : "example1_results"});
+>db.example1_results.find()
+{ "_id" : "male", "count" : 5 } 
+{ "_id" : "female", "count" : 6 } 
+
+
+2. Count the number of users in each hobby
+
+> var mapper1=function(){ for(i=0;i<this.hobbies.length;i++){ emit(this.hobbies[i],1); } }; 
+> var reducer1=function(gender,value){ return Array.sum(value) } 
+> db.user.mapReduce(mapper1,reducer1,{out:"result1"}) 
+{ 
+	"result" : "result1", 
+	"timeMillis" : 5, 
+	"counts" : { 
+		"input" : 8, 
+		"emit" : 26, 
+		"reduce" : 7, 
+		"output" : 7 
+	}, 
+	"ok" : 1, 
+} 
+> db.result1.find() 
+{ "_id" : "aerobics", "value" : 4 } 
+{ "_id" : "cooking", "value" : 3 } 
+{ "_id" : "dancing", "value" : 3 } 
+{ "_id" : "music", "value" : 3 } 
+{ "_id" : "reading", "value" : 4 } 
+{ "_id" : "singing", "value" : 4 } 
+{ "_id" : "writing", "value" : 5 } 
+> 

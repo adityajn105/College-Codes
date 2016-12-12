@@ -1,0 +1,18 @@
+student@B04L05100:~$ nasm -f elf64 assign4.asm
+student@B04L05100:~$ ld -o assign4 assign4.o
+student@B04L05100:~$ ./assign4
+Enter 5 32 bits number
+34567
+3434
+12345
+77544
+34567
+
+The numbers are
+34567
+3434
+12345
+77544
+34567
+student@B04L05100:~$ 
+

@@ -1,0 +1,67 @@
+student@PUN:~$ python mongocon.py 
+Connection Established
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+1
+Enter title  :pymongo
+Enter Description  :pythonmongo                             
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+4
+title	description
+sql	structured query language
+nosql	not only sql
+pymongo	pythonmongo
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+2
+Enter title to be deleted  :pymongo
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+4
+title	description
+sql	structured query language
+nosql	not only sql
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+3
+Enter title to be updated :nosql
+Enter new Description  :not only structured query language
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+4
+title	description
+sql	structured query language
+nosql	not only structured query language
+***Menu***
+1.Insert
+2.Delete
+3.Update
+4.Show ALl
+5.Exit
+5
+student@PUN:~$ 

@@ -1,0 +1,430 @@
+/*
+ * Vegemall.cpp
+ *
+ *  Created on: 13-Jul-2015
+ *  Author: vishal bhandari
+ */
+
+INPUT===========================================================================
+
+#include <iostream>
+#include<stdlib.h>
+using namespace std;
+
+class fruit
+{
+
+	string fname;
+	int fqnty;
+	float fprice;
+public:
+	void getdata();
+	void putdata();
+	void ftableout();
+	void sort(fruit &f);
+	void fshow();
+
+};
+
+void fruit::getdata()
+{
+	cout<<"Enter a fruit name \t";
+	cin>>fname;
+
+	cout<<"enter quantity of "<<fname<<"\t";
+	cin>>fqnty;
+
+	cout<<"enter price of "<<fname<<"\t";
+	cin>>fprice;
+}
+
+void fruit::fshow()
+{
+	cout<<"Fruit name- "<<fname<<"\t";
+    cout<<"Quantity- "<<fqnty<<"\t";
+	cout<<"Cost of vegetables"<<fqnty*fprice<<endl;
+}
+
+void fruit::putdata()
+{
+	cout<<fname<<"\t\t";
+	cout<<fqnty<<"\t\t";
+	cout<<fqnty*fprice<<endl;
+}
+
+void fruit::ftableout()
+{
+	cout<<fname<<"\t\t\t\t"<<fqnty<<"\t\t\t\t"<<fqnty*fprice<<endl;
+}
+
+void fruit::sort(fruit &f)
+{
+	fruit temp;
+	if(f.fqnty > fqnty)
+	{
+	temp.fqnty= fqnty;
+	fqnty=f.fqnty;
+	f.fqnty=temp.fqnty;
+
+	temp.fprice= fprice;
+	fprice=f.fprice;
+	f.fprice=temp.fprice;
+
+	temp.fname= fname;
+	fname=f.fname;
+	f.fname=temp.fname;
+	}
+}
+
+class veg
+{
+
+	string vname;
+	int vqnty;
+	float vprice;
+public:
+	void getdata();
+	void putdata();
+	void vtableout();
+	void sort(veg &v);
+	void vshow();
+};
+
+void veg::getdata()
+{
+	cout<<"Enter a vegetable name \t";
+			cin>>vname;
+	cout<<"enter quantity of "<<vname<<"\t";
+	cin>>vqnty;
+	cout<<"enter price of "<<vname<<"\t";
+	cin>>vprice;
+}
+
+void veg::vshow()
+{
+	cout<<"Vegetable name- "<<vname<<"\t";
+	cout<<"Quantity- "<<vqnty<<"\t";
+	cout<<"Cost of vegetables"<<vqnty*vprice<<endl;
+}
+
+void veg::putdata()
+{
+	cout<<vname<<"\t\t";
+	cout<<vqnty<<"\t\t";
+	cout<<vqnty*vprice<<"\t\t";
+
+}
+
+void veg::vtableout()
+{
+	cout<<vname<<"\t\t\t\t"<<vqnty<<"\t\t\t\t"<<vqnty*vprice<<endl;
+}
+
+void veg::sort(veg &v)
+{
+	veg temp;
+	if(v.vqnty > vqnty)
+	{
+	temp.vqnty= vqnty;
+	vqnty=v.vqnty;
+	v.vqnty=temp.vqnty;
+
+	temp.vprice= vprice;
+	vprice=v.vprice;
+	v.vprice=temp.vprice;
+
+	temp.vname= vname;
+	vname=v.vname;
+	v.vname=temp.vname;
+	}
+}
+
+
+int main()
+{
+	int i,n1,n2,j=0,ch;
+	char a;
+    fruit f[10];
+	veg v[10];
+
+	do{
+	cout<<"-----------------------------------------"<<endl;
+    cout<<"MENU"<<endl<<"1. Enter data for vegetable"<<endl<<"2. Enter data for fruits"<<endl<<"3. Show Vegetable Data"<<endl;
+	cout<<"4. Show Fruits Data"<<endl<<"5. Show sorted data for fruits"<<endl<<"6. Show sorted data for vegetables"<<endl;
+	cout<<"7. Show combined sorted table for both vegetable and fruits"<<endl<<"-----------------------------------------"<<endl;
+	cout<<"Enter your Choice: ";
+
+	cin>>ch;
+	switch(ch)
+	{
+	case 1:
+	cout<<"enter no of vegetable \t";
+    cin>>n2;
+	for(i=0;i<n2;i++)
+		{
+			v[i].getdata();
+		}
+	break;
+
+	case 2:
+	cout<<"enter no of fruits \t";
+	cin>>n1;
+	for(i=0;i<n1;i++)
+		{
+			f[i].getdata();
+		}
+	break;
+
+
+	case 4:
+	for(i=0;i<n1;i++)
+	{
+		f[i].fshow();
+	}break;
+
+	case 3:
+    for(i=0;i<n2;i++)
+		{
+			v[i].vshow();
+		}break;
+
+case 6:
+cout<<"Sorting of vegetable according to quantity"<<endl;
+
+for(j=0;j<n2-1;j++)
+{
+	 for(i=0;i<n2-1;i++)
+	 {
+		 v[i].sort(v[i+1]);
+	 }
+}
+cout<<"Vegetable"<<"\t\t\t\t"<<"quantity"<<"\t\t\t\t"<<"cost"<<endl;
+for(i=0;i<n2;i++)
+{
+	 v[i].vtableout();
+}cout<<endl<<endl;
+break;
+
+case 5:
+cout<<"Sorting of Fruits according to quantity"<<endl;
+
+for(j=0;j<n1-1;j++)
+{
+ 	 for(i=0;i<n1-1;i++)
+ 	 {
+ 		 f[i].sort(f[i+1]);
+ 	 }
+}
+
+cout<<"Fruits"<<"\t\t\t\t"<<"quantity"<<"\t\t\t\t"<<"cost"<<endl;
+for(i=0;i<n1;i++)
+{
+ 	 f[i].ftableout();
+}
+break;
+
+case 7:
+for(j=0;j<n1-1;j++)
+{
+	 for(i=0;i<n1-1;i++)
+	 {
+	 		 f[i].sort(f[i+1]);
+	 }
+}
+for(j=0;j<n2-1;j++)
+{
+	 for(i=0;i<n2-1;i++)
+	 {
+		 v[i].sort(v[i+1]);
+	 }
+}
+
+cout<<"vegetable\t"<<"quantity"<<"\t"<<"cost"<<"\t\t"<<"fruits"<<"\t\t"<<"quantity\t"<<"cost"<<endl;
+if(n1>n2) //fruits>vegetable
+{
+	 for(i=0;i<n2;i++)
+	 {
+		 v[i].putdata();
+		 f[i].putdata();
+	 }
+	 for(i=n2;i<n1;i++)
+	 {
+		 cout<<"\t\t\t\t\t\t";
+		 f[i].putdata();
+	 }
+}
+else if(n2>n1) //vegetable>fruits
+ {
+ 	 for(i=0;i<n1;i++)
+ 	 {
+ 		v[i].putdata();
+ 		f[i].putdata();
+ 	 }
+ 	 for(i=n1;i<n2;i++)
+ 	 {
+ 		v[i].putdata();
+ 		cout<<endl;
+ 	 }
+ }
+else if(n2==n1) //vegetable=fruits
+ {
+ 	 for(i=0;i<n1;i++)
+ 	 {
+ 		v[i].putdata();
+ 		f[i].putdata();
+ 	 }
+ }
+break;
+
+default: cout<<"wrong choice entered";
+break;
+}
+cout<<"Do you want to continue (y or n):";
+cin>>a;
+}
+while(a=='y');
+return 0;
+}
+
+
+
+
+OUTPUT=============================================================
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 1
+enter no of vegetable 	4
+Enter a vegetable name 	v1
+enter quantity of v1	6
+enter price of v1	3.2
+Enter a vegetable name 	v2
+enter quantity of v2	8
+enter price of v2	2.5
+Enter a vegetable name 	v3
+enter quantity of v3	3
+enter price of v3	6.2
+Enter a vegetable name 	v4
+enter quantity of v4	10
+enter price of v4	4
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 2
+enter no of fruits 	3
+Enter a fruit name 	f1
+enter quantity of f1	7
+enter price of f1	2.3
+Enter a fruit name 	f2
+enter quantity of f2	5
+enter price of f2	4
+Enter a fruit name 	f3
+enter quantity of f3	9
+enter price of f3	6.5
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 3
+Vegetable name- v1	Quantity- 6	Cost of vegetables19.2
+Vegetable name- v2	Quantity- 8	Cost of vegetables20
+Vegetable name- v3	Quantity- 3	Cost of vegetables18.6
+Vegetable name- v4	Quantity- 10	Cost of vegetables40
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 4
+Fruit name- f1	Quantity- 7	Cost of vegetables16.1
+Fruit name- f2	Quantity- 5	Cost of vegetables20
+Fruit name- f3	Quantity- 9	Cost of vegetables58.5
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 5
+Sorting of Fruits according to quantity
+Fruits				quantity				cost
+f3				9				58.5
+f1				7				16.1
+f2				5				20
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 6
+Sorting of vegetable according to quantity
+Vegetable				quantity				cost
+v4				10				40
+v2				8				20
+v1				6				19.2
+v3				3				18.6
+
+
+Do you want to continue (y or n):y
+-----------------------------------------
+MENU
+1. Enter data for vegetable
+2. Enter data for fruits
+3. Show Vegetable Data
+4. Show Fruits Data
+5. Show sorted data for fruits
+6. Show sorted data for vegetables
+7. Show combined sorted table for both vegetable and fruits
+-----------------------------------------
+Enter your Choice: 7
+vegetable	quantity	cost		fruits		quantity	cost
+v4		10		40		f3		9		58.5
+v2		8		20		f1		7		16.1
+v1		6		19.2		f2		5		20
+v3		3		18.6		
+Do you want to continue (y or n):
+
+
+
+
+
+

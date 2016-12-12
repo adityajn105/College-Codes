@@ -1,0 +1,760 @@
+//MongoDb Basic Queries
+
+1. Create database BlogSite.
+	> use BlogSite
+	switched to db BlogSite
+
+	> show dbs
+	BlogSite      0.000GB
+	Mycollection  0.000GB
+	blog          0.000GB
+	blog_piyush   0.000GB
+	blog_site     0.000GB
+	database      0.000GB
+	local         0.000GB
+	mongo         0.000GB
+	mydb          0.000GB
+	pari          0.000GB
+	people        0.000GB
+	pm            0.000GB
+	subhash       0.000GB
+	teacher       0.000GB
+	test          0.000GB
+
+	> db
+	BlogSite
+
+
+2. Create collection post.
+	> db.createCollection("post")
+	{ "ok" : 1 }
+
+3. Insert 10 documents with above mentioned structure.
+
+	> db.post.insert({ "title":"MongoDb Overview" ,"description":"MongoDb is a noSql Database", "by":"aditya","url":"http://www.adityajain.com" ,"tags":['mongo','nosql','aditya'], "likes":100, "comments":[{ "user":"user1", "message":"good content", "dateCreated":new Date(2016,1,20,2,15), "like":0}]})
+
+	> db.post.insert({ "title":"PHP Overview" ,"description":"php stands for PHP hypertext Processor", 
+	"by":"danarys", "url":"http://www.danarys.com" ,"tags":['server','php','danarys'], "likes":20, "comments":
+	[{ "user":"user2", "message":"almost like previous version", "dateCreated":new Date(2015,1,25,3,17), "like":1}
+	]})
+	WriteResult({ "nInserted" : 1 })
+
+	> db.post.insert({ "title":"C# overview" ,"description":"c# is C++++", "by":"jamie", "url":"http://
+	www.jamie.com" ,"tags":['ios','c#','jamie'], "likes":23, "comments":[{ "user":"user2", "message":"youwrite 
+	lame posts", "dateCreated":new Date(2015,6,25,3,17), "like":1}]})
+	WriteResult({ "nInserted" : 1 })
+
+	> db.post.find().count()
+	10
+
+
+4. Display all posts information.
+		
+	> db.post.find().pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"description" : "MongoDb is a noSql Database",
+		"by" : "aditya",
+		"url" : "http://www.adityajain.com",
+		"tags" : [
+			"mongo",
+			"nosql",
+			"aditya"
+		],
+		"likes" : 100,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content",
+				"dateCreated" : ISODate("2016-02-19T20:45:00Z"),
+				"like" : 0
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c500c3bb203ba08b8371c2"),
+		"title" : "Sql Overview",
+		"description" : "Sql is sql Database",
+		"by" : "jhon",
+		"url" : "http://www.jhon.com",
+		"tags" : [
+			"mysql",
+			"sql",
+			"John"
+		],
+		"likes" : 50,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content too",
+				"dateCreated" : ISODate("2014-02-20T21:45:00Z"),
+				"like" : 1
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50183bb203ba08b8371c3"),
+		"title" : "JDBC Overview",
+		"description" : "Jdbc is java database connectivity",
+		"by" : "tyrion",
+		"url" : "http://www.tyrion.com",
+		"tags" : [
+			"sql",
+			"jdbc",
+			"Tyrion"
+		],
+		"likes" : 20,
+		"comments" : [
+			{
+				"user" : "user3",
+				"message" : "okay content",
+				"dateCreated" : ISODate("2014-02-24T21:45:00Z"),
+				"like" : 12
+			},
+			{
+				"user" : "user5",
+				"message" : "not good content",
+				"dateCreated" : ISODate("2015-04-20T21:45:00Z"),
+				"like" : 4
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50227bb203ba08b8371c4"),
+		"title" : "Hadoop Overview",
+		"description" : "Hadoop is for big Data",
+		"by" : "cercie",
+		"url" : "http://www.cercie.com",
+		"tags" : [
+			"bigdata",
+			"hadoop",
+			"Cercie"
+		],
+		"likes" : 30,
+		"comments" : [
+			{
+				"user" : "user7",
+				"message" : "i dont like it",
+				"dateCreated" : ISODate("2016-02-24T21:45:00Z"),
+				"like" : 17
+			},
+			{
+				"user" : "user7",
+				"message" : "yuk content",
+				"dateCreated" : ISODate("2015-09-20T21:45:00Z"),
+				"like" : 8
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"description" : "Servelets are used for server side programming",
+		"by" : "sansa",
+		"url" : "http://www.sansa.com",
+		"tags" : [
+			"server",
+			"Servelets",
+			"Sansa"
+		],
+		"likes" : 54,
+		"comments" : [
+			{
+				"user" : "user4",
+				"message" : "previous version was better",
+				"dateCreated" : ISODate("2016-09-24T21:47:00Z"),
+				"like" : 12
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"description" : "jsp are also used for server side programming",
+		"by" : "arya",
+		"url" : "http://www.arya.com",
+		"tags" : [
+			"server",
+			"Jsp",
+			"arya"
+		],
+		"likes" : 20,
+		"comments" : [
+			{
+				"user" : "user6",
+				"message" : "previous version was lame",
+				"dateCreated" : ISODate("2016-02-24T21:47:00Z"),
+				"like" : 18
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50394bb203ba08b8371c7"),
+		"title" : "PHP Overview",
+		"description" : "php stands for PHP hypertext Processor",
+		"by" : "danarys",
+		"url" : "http://www.danarys.com",
+		"tags" : [
+			"server",
+			"php",
+			"danarys"
+		],
+		"likes" : 20,
+		"comments" : [
+			{
+				"user" : "user2",
+				"message" : "almost like previous version",
+				"dateCreated" : ISODate("2015-02-24T21:47:00Z"),
+				"like" : 1
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c5047dbb203ba08b8371c8"),
+		"title" : "C# overview",
+		"description" : "c# is C++++",
+		"by" : "jamie",
+		"url" : "http://www.jamie.com",
+		"tags" : [
+			"ios",
+			"c#",
+			"jamie"
+		],
+		"likes" : 23,
+		"comments" : [
+			{
+				"user" : "user2",
+				"message" : "youwrite lame posts",
+				"dateCreated" : ISODate("2015-07-24T21:47:00Z"),
+				"like" : 1
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50510bb203ba08b8371c9"),
+		"title" : "android overview",
+		"description" : "android studio for android",
+		"by" : "joffery",
+		"url" : "http://www.joffery.com",
+		"tags" : [
+			"studio",
+			"android",
+			"joffery"
+		],
+		"likes" : 21,
+		"comments" : [
+			{
+				"user" : "user7",
+				"message" : "youwrite good posts",
+				"dateCreated" : ISODate("2013-07-20T21:47:00Z"),
+				"like" : 6
+			}
+		]
+	}
+	{
+		"_id" : ObjectId("57c50569bb203ba08b8371ca"),
+		"title" : "just some overview",
+		"description" : "writing anything",
+		"by" : "jake",
+		"url" : "http://www.jake.com",
+		"tags" : [
+			"sql",
+			"plsql",
+			"jake"
+		],
+		"likes" : 20,
+		"comments" : [
+			{
+				"user" : "user9",
+				"message" : "you also write good posts",
+				"dateCreated" : ISODate("2012-07-20T21:47:00Z"),
+				"like" : 9
+			}
+		]
+	}
+ 
+		
+		
+
+5. Update different records by satisfying following condition:
+5.1. Increment value of likes in one record($inc)
+	> db.post.update({"by":"arya"},{$inc:{"likes":1}})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+	
+	> db.post.find({"by":"arya"}).pretty()
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"description" : "jsp are also used for server side programming",
+		"by" : "arya",
+		"url" : "http://www.arya.com",
+		"tags" : [
+			"server",
+			"Jsp",
+			"arya"
+		],
+		"likes" : 21,
+		"comments" : [
+			{
+				"user" : "user6",
+				"message" : "previous version was lame",
+				"dateCreated" : ISODate("2016-02-24T21:47:00Z"),
+				"like" : 18
+			}
+		]
+	}
+
+5.2. Push some more tags ($push)
+
+	> db.post.update({"by":"arya"},{$push:{"tags":"dynamic webpages"}})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+	> db.post.find({"by":"arya"}).pretty()
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"description" : "jsp are also used for server side programming",
+		"by" : "arya",
+		"url" : "http://www.arya.com",
+		"tags" : [
+			"server",
+			"Jsp",
+			"arya",
+			"dynamic webpages"
+		],
+		"likes" : 21,
+		"comments" : [
+			{
+				"user" : "user6",
+				"message" : "previous version was lame",
+				"dateCreated" : ISODate("2016-02-24T21:47:00Z"),
+				"like" : 18
+			}
+		]
+	}
+	
+5.3. Pop some comments($pop)
+	> db.post.update({"by":"cercie"},{$pop:{"comments":1}})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+	> db.post.find({"by":"cercie"}).pretty()
+	{
+		"_id" : ObjectId("57c50227bb203ba08b8371c4"),
+		"title" : "Hadoop Overview",
+		"description" : "Hadoop is for big Data",
+		"by" : "cercie",
+		"url" : "http://www.cercie.com",
+		"tags" : [
+			"bigdata",
+			"hadoop",
+			"Cercie"
+		],
+		"likes" : 30,
+		"comments" : [
+			{
+				"user" : "user7",
+				"message" : "i dont like it",
+				"dateCreated" : ISODate("2016-02-24T21:45:00Z"),
+				"like" : 17
+			}
+		]
+	}
+	
+5.4. Replace existing record with new record(update)
+	> db.post.update({"by":"jake"},
+	{ "title":"important overview" ,"description":"writing important thing", "by":"adi", 
+	"url":"http://www.adi.com" ,"tags":['jake','adi','important'], "likes":23, 
+	"comments":[{ "user":"user3", "message":"you also good posts", 
+	"dateCreated":new Date(2015,6,21,3,17), "like":7}]})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+	> db.post.find({"by":"adi"}).pretty()
+	{
+	"_id" : ObjectId("57c50569bb203ba08b8371ca"),
+	"title" : "important overview",
+	"description" : "writing important thing",
+	"by" : "adi",
+	"url" : "http://www.adi.com",
+	"tags" : [
+		"jake",
+		"adi",
+		"important"
+	],
+	"likes" : 23,
+	"comments" : [
+		{
+			"user" : "user3",
+			"message" : "you also good posts",
+			"dateCreated" : ISODate("2015-07-20T21:47:00Z"),
+			"like" : 7
+		}
+	]
+	}		
+
+5.5. set the new title 'New Mong oDB T utorial' of the documents whose title is 'Mong oDB Overview'.($set)
+
+	> db.post.update({"title":"MongoDb Overview"},
+	{$set:{"title":"New MongoDb Overview"}})
+	WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+	> db.post.find({"title":"New MongoDb Overview"}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "New MongoDb Overview",
+		"description" : "MongoDb is a noSql Database",
+		"by" : "aditya",
+		"url" : "http://www.adityajain.com",
+		"tags" : [
+			"mongo",
+			"nosql",
+			"aditya"
+		],
+		"likes" : 100,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content",
+				"dateCreated" : ISODate("2016-02-19T20:45:00Z"),
+				"like" : 0
+			}
+		],
+	}
+
+			
+
+5.6. Add one record if doesn’t exist else update($upsert)
+	> db.post.update({"title":"Python Overview"},
+	{ "title":"Python Overview" ,"description":"Python is a good language", "by":"Tutorial World",	
+	"url":"http://www.tutworld.com" ,"tags":['tutworld','python','aditya'], "likes":120, 
+	"comments":[{ "user":"user5", "message":"good content", 
+	"dateCreated":new Date(2015,1,20,2,15), "like":1}]},{upsert:true})
+	WriteResult({
+		"nMatched" : 0,
+		"nUpserted" : 1,
+		"nModified" : 0,
+		"_id" : ObjectId("57d3f58da3da321360be932f")
+	})
+
+
+	> db.post.find({"_id" : ObjectId("57d3f58da3da321360be932f")}).pretty()
+	{
+		"_id" : ObjectId("57d3f58da3da321360be932f"),
+		"title" : "Python Overview",
+		"description" : "Python is a good language",
+		"by" : "Tutorial World",
+		"url" : "http://www.tutworld.com",
+		"tags" : [
+			"tutworld",
+			"python",
+			"aditya"
+		],
+		"likes" : 120,
+		"comments" : [
+			{
+				"user" : "user5",
+				"message" : "good content",
+				"dateCreated" : ISODate("2015-02-19T20:45:00Z"),
+				"like" : 1
+			}
+		]
+	}
+
+				
+			
+
+1. Remove all the documents whose title is 'Mong oDB Overview'
+	> db.post.remove({"title":"MongoDb Overview"})
+	WriteResult({ "nRemoved" : 0 })
+
+
+2. Use $gte,$gt,$lt operators and fire queries.
+	> db.post.find({"likes":{$gte:50}},{"multi":true,"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "New MongoDb Overview",
+		"by" : "aditya"
+	}
+	{
+		"_id" : ObjectId("57c500c3bb203ba08b8371c2"),
+		"title" : "Sql Overview",
+		"by" : "jhon"
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"by" : "sansa"
+	}
+	
+	
+	
+	
+	> db.post.find({"likes":{$gt:50}},{"multi":true,"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "New MongoDb Overview",
+		"by" : "aditya"
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"by" : "sansa"
+	}
+	
+	
+	
+	
+	> db.post.find({"likes":{$lt:21}},{"multi":true,"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c50183bb203ba08b8371c3"),
+		"title" : "JDBC Overview",
+		"by" : "tyrion"
+	}
+	{
+		"_id" : ObjectId("57c50394bb203ba08b8371c7"),
+		"title" : "PHP Overview",
+		"by" : "danarys"
+	}		
+
+3. Find records having tags ‘mongodb’.
+	> db.post.find({$or:[{"tags":"php"},{"tags":"arya"}]},{"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"by" : "arya"
+	}
+	{
+		"_id" : ObjectId("57c50394bb203ba08b8371c7"),
+		"title" : "PHP Overview",
+		"by" : "danarys"
+	}
+	
+	
+	> db.post.find({"tags":"php"},{"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c50394bb203ba08b8371c7"),
+		"title" : "PHP Overview",
+		"by" : "danarys"
+	}
+
+
+4. Find records having more than 3 likes.
+	> db.post.find({likes:{$gt:3}},{title:1,by:1,likes:1}).pretty()
+	{
+		"_id" : ObjectId("57c50227bb203ba08b8371c4"),
+		"title" : "Hadoop Overview",
+		"by" : "cercie",
+		"likes" : 30
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"by" : "sansa",
+		"likes" : 54
+	}
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"by" : "arya",
+		"likes" : 21
+	}
+	{
+		"_id" : ObjectId("57c50394bb203ba08b8371c7"),
+		"title" : "PHP Overview",
+		"by" : "danarys",
+		"likes" : 20
+	}
+	{
+		"_id" : ObjectId("57c5047dbb203ba08b8371c8"),
+		"title" : "C# overview",
+		"by" : "jamie",
+		"likes" : 23
+	}
+	{
+		"_id" : ObjectId("57c50510bb203ba08b8371c9"),
+		"title" : "android overview",
+		"by" : "joffery",
+		"likes" : 21
+	}
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "New MongoDb Overview",
+		"by" : "aditya",
+		"likes" : 100
+	}
+	{
+		"_id" : ObjectId("57c500c3bb203ba08b8371c2"),
+		"title" : "Sql Overview",
+		"by" : "jhon",
+		"likes" : 50
+	}
+	{
+		"_id" : ObjectId("57c50183bb203ba08b8371c3"),
+		"title" : "JDBC Overview",
+		"by" : "tyrion",
+		"likes" : 20
+	}
+	{
+		"_id" : ObjectId("57c50569bb203ba08b8371ca"),
+		"title" : "important overview",
+		"by" : "adi",
+		"likes" : 23
+	}
+		
+5. Drop collection.
+	> db.posts.drop()
+	true
+
+		  
+6. Find all records starting with title ‘M’.
+	> db.post.find({title:{$regex:/^M/}}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"description" : "MongoDb is a noSql Database",
+		"by" : "aditya",
+		"url" : "http://www.adityajain.com",
+		"tags" : [
+			"mongo",
+			"nosql",
+			"aditya"
+		],
+		"likes" : 100,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content",
+				"dateCreated" : ISODate("2016-02-19T20:45:00Z"),
+				"like" : 0
+			}
+		]
+	}
+
+		
+7. Find all records having Mongo in their title.
+	> db.post.find({title:{$regex:/Mongo/}}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"description" : "MongoDb is a noSql Database",
+		"by" : "aditya",
+		"url" : "http://www.adityajain.com",
+		"tags" : [
+			"mongo",
+			"nosql",
+			"aditya"
+		],
+		"likes" : 100,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content",
+				"dateCreated" : ISODate("2016-02-19T20:45:00Z"),
+				"like" : 0
+			}
+		]
+	}
+
+8. Find total count of records in your collection.
+	> db.post.find().count()
+	10
+		
+
+9. All the documents where the number of tags is four.($size)
+	> db.post.find({"tags":{$size:4}},{"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"by" : "arya"
+	}
+
+10. Display the title of the document while querying the document.
+	> db.post.find({},{"title":1,_id:0}).pretty()
+	{ "title" : "Hadoop Overview" }
+	{ "title" : "Servelets Overview" }
+	{ "title" : "Jsp Overview" }
+	{ "title" : "PHP Overview" }
+	{ "title" : "C# overview" }
+	{ "title" : "android overview" }
+	{ "title" : "MongoDb Overview" }
+	{ "title" : "Sql Overview" }
+	{ "title" : "JDBC Overview" }
+	{ "title" : "important overview" }
+
+	
+11. Display the documents sorted by title in descending order.
+	> db.post.find({},{"title":1,_id:0}).sort({"title":-1})
+	{ "title" : "important overview" }
+	{ "title" : "android overview" }
+	{ "title" : "Sql Overview" }
+	{ "title" : "Servelets Overview" }
+	{ "title" : "PHP Overview" }
+	{ "title" : "MongoDb Overview" }
+	{ "title" : "Jsp Overview" }
+	{ "title" : "JDBC Overview" }
+	{ "title" : "Hadoop Overview" }
+	{ "title" : "C# overview" }
+
+
+12. Show all the tutorials written by 'tutorials point' and whose title is 'Mong oDB Overview'.
+	> db.post.find({"title":"MongoDb Overview","by":"aditya"},{"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"by" : "aditya"
+	}
+
+	
+13. show all the tutorials written by 'tutorials point' or whose title is 'Mong oDB Overview'
+	> db.post.find({$or:[{"title":"MongoDb Overview"},{"by":"arya"}]},{"title":1,"by":1}).pretty()
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"by" : "arya"
+	}
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"by" : "aditya"
+	}
+
+
+14. Display only 2 documents while querying the document.
+	> db.post.find({likes:{$gt:10}},{"title":1,"by":1}).limit(2).pretty()
+	{
+		"_id" : ObjectId("57c50227bb203ba08b8371c4"),
+		"title" : "Hadoop Overview",
+		"by" : "cercie"
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"by" : "sansa"
+	}
+
+
+15. Locate all the documents that contain the tags “mongodb”,”nosql”.($all)
+	> db.post.find({tags:{$all:["mongo","nosql"]}}).pretty()
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "MongoDb Overview",
+		"description" : "MongoDb is a noSql Database",
+		"by" : "aditya",
+		"url" : "http://www.adityajain.com",
+		"tags" : [
+			"mongo",
+			"nosql",
+			"aditya"
+		],
+		"likes" : 100,
+		"comments" : [
+			{
+				"user" : "user1",
+				"message" : "good content",
+				"dateCreated" : ISODate("2016-02-19T20:45:00Z"),
+				"like" : 0
+			}
+		]
+	}
+
+

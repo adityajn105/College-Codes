@@ -1,0 +1,20 @@
+Triangular Wave----
+
+Dyna-86>A 1500
+0000:1500  MOV AL,80
+0000:1502  OUT 67,AL                                                            
+0000:1504  MOV AL,01                                                            
+0000:1506  OUT 63,AL                                                            
+0000:1508  MOV AL,00                                                            
+0000:150A  OUT 61,AL                                                            
+0000:150C  INC AL                                                               
+0000:150E  CMP AL,FF                                                            
+0000:1510  JNE 150A                                                             
+0000:1512  OUT 61,AL                                                            
+0000:1514  DEC AL                                                               
+0000:1516  CMP AL,00                                                            
+0000:1518  JNE 1512                                                             
+0000:151A  JMP 150A                                                             
+0000:151C  INT 3                                                                
+0000:151D                                                                       
+Dyna-86>G 1500 

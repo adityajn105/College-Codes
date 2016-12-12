@@ -1,0 +1,278 @@
+#INPUT=========================================================================
+
+#Sorting.py
+#Created on: 15-Aug-2015
+#Author: Aditya
+
+class arr():
+	array=[]
+	def selectionsort(self):
+		for i in range(0,len(self.array)-1):
+				k=0
+				for x in range(i,len(self.array)-1):
+					if self.array[x]>self.array[x+1]:
+						k=self.array[x+1]
+						t=x+1
+					else:
+						k=self.array[x]
+						self.array[x]=self.array[x+1]
+						self.array[x+1]=k
+						t=x+1
+				tmp=self.array[i]
+				self.array[i]=k
+				self.array[t]=tmp
+				
+	def shellsort(self):
+		d=len(self.array)
+		while d>0:
+			d=d/2
+			flag=1
+			while flag==1:
+				flag=0
+				for i in range(0,len(self.array)-d):
+					if self.array[i]>self.array[i+d]:
+						tmp=self.array[i]
+						self.array[i]=self.array[i+d]
+						self.array[i+d]=tmp
+						flag=1
+
+	def bucketsort(self):
+		large=self.array[0] #large=max(self.array)
+		n=len(self.array)
+		for i in range(1,n):
+			if self.array[i]>large:
+				large=self.array[i]
+		passe=0		
+		while large>0:
+			passe+=1
+			large=large//10
+		bkt_no=0
+		count=[None]*10
+		bucket=[[None]*10,[None]*10,[None]*10,[None]*10,[None]*10,[None]*10,[None]*10,[None]*10,[None]*10,[None]*10]
+		for i in range(1,passe+1):
+
+			for j in range(0,10):
+				count[j]=0
+			for j in range(0,n):
+				bkt_no=((self.array[j])%10**i)//10**(i-1)
+				bucket[bkt_no][count[bkt_no]]=self.array[j]
+				count[bkt_no]=count[bkt_no]+1				
+			j=0
+			for bkt_no in range(0,10):
+				for k in range(0,count[bkt_no]):
+					self.array[j]=bucket[bkt_no][k]		
+					j=j+1
+
+
+	def quicksort(self,low,high):
+		if low<high:
+			partn=self.partition(low,high)
+			self.quicksort(low,partn-1)
+			self.quicksort(partn+1,high)
+	def partition(self,low,high):
+		pvt=self.array[high]
+		i=low-1
+		for j in range(low,high):
+			if self.array[j]<=pvt:
+				i=i+1
+				tmp=self.array[j]
+				self.array[j]=self.array[i]
+				self.array[i]=tmp
+		tmp1=self.array[high]
+		self.array[high]=self.array[i+1]
+		self.array[i+1]=tmp1
+		return i+1
+				
+				
+
+							
+		
+							
+	def mergesort(self,low,high):
+		if low<high:		
+			mid=(high+low)/2
+			self.mergesort(low,mid)
+			self.mergesort(mid+1,high)
+			self.merge(low,mid,high)
+	def merge(self,low,mid,high):
+		fhalf=low
+		shalf=mid+1
+		bidx=0
+		b=[None]*10
+		while fhalf<=mid and shalf<=high:
+			if self.array[fhalf]<self.array[shalf]:
+				b[bidx]=self.array[fhalf]
+				fhalf=fhalf+1
+				bidx=bidx+1
+			else:
+				b[bidx]=self.array[shalf]
+				shalf=shalf+1
+				bidx=bidx+1
+		if fhalf<=mid:
+			while fhalf<=mid:
+				b[bidx]=self.array[fhalf]
+				fhalf=fhalf+1
+				bidx=bidx+1
+		else:				
+			while shalf<=high:
+				b[bidx]=self.array[shalf]
+				shalf=shalf+1
+				bidx=bidx+1
+		j=low
+		for i in range(0,bidx):
+			self.array[j]=b[i]
+			j=j+1
+					
+					
+	def getdata(self):	
+		i=0
+		n=int(raw_input("Enter length of array: "))
+		while i<n:
+			self.array.append(int(raw_input("Enter element:  ")))
+			i=i+1
+
+	def length(self):
+		return len(self.array)
+	def showdata(self):
+		print self.array	
+	
+a1=arr()
+
+a1.getdata()
+print "The array entered is"
+a1.showdata()
+print"1.Selection sort(w)\n2.Shell Sort(w)\n3.Merge Sort(w)\n4.Bucket Sort\n5.Quick Sort(w)"
+ch=int(raw_input("Enter type of sort to be performed:  "))
+if ch==1:
+	a1.selectionsort()
+if ch==2:
+	a1.shellsort()
+if ch==3:
+	a1.mergesort(0,a1.length()-1)
+if ch==4:
+	a1.bucketsort()
+if ch==5:
+	a1.quicksort(0,a1.length()-1)
+if ch>5:
+	print"Wrong choice"
+print"Sorted Array is:   "
+a1.showdata()
+
+
+				
+
+#Output=========================================================================================
+student@B04L03100:~$ python sorting.py
+Enter length of array: 10 
+Enter element:  2443
+Enter element:  5442
+Enter element:  5642
+Enter element:  623
+Enter element:  7514
+Enter element:  763
+Enter element:  56452
+Enter element:  6343
+Enter element:  3544
+Enter element:  3432	
+The array entered is
+[2443, 5442, 5642, 623, 7514, 763, 56452, 6343, 3544, 3432]
+1.Selection sort(w)
+2.Shell Sort(w)
+3.Merge Sort(w)
+4.Bucket Sort
+5.Quick Sort(w)
+6.Exit
+Enter type of sort to be performed:  1
+Sorted Array is:   
+[623, 763, 2443, 3432, 3544, 5442, 5642, 6343, 7514, 56452]
+Enter length of array: 10  
+Enter element:  43453
+Enter element:  6533
+Enter element:  5423
+Enter element:  56432
+Enter element:  6124
+Enter element:  7233
+Enter element:  454
+Enter element:  2245
+Enter element:  235
+Enter element:  45644
+The array entered is
+[43453, 6533, 5423, 56432, 6124, 7233, 454, 2245, 235, 45644]
+1.Selection sort(w)
+2.Shell Sort(w)
+3.Merge Sort(w)
+4.Bucket Sort
+5.Quick Sort(w)
+6.Exit
+Enter type of sort to be performed:  2
+Sorted Array is:   
+[235, 454, 2245, 5423, 6124, 6533, 7233, 43453, 45644, 56432]
+Enter length of array: 10
+Enter element:  2333
+Enter element:  545343
+Enter element:  56123
+Enter element:  544
+Enter element:  2342
+Enter element:  556434
+Enter element:  221245
+Enter element:  575
+Enter element:  34232
+Enter element:  45534
+The array entered is
+[2333, 545343, 56123, 544, 2342, 556434, 221245, 575, 34232, 45534]
+1.Selection sort(w)
+2.Shell Sort(w)
+3.Merge Sort(w)
+4.Bucket Sort
+5.Quick Sort(w)
+6.Exit
+Enter type of sort to be performed:  3
+Sorted Array is:   
+[544, 575, 2333, 2342, 34232, 45534, 56123, 221245, 545343, 556434]
+Enter length of array: 10
+Enter element:  353454
+Enter element:  2232
+Enter element:  654
+Enter element:  2123
+Enter element:  653
+Enter element:  2123
+Enter element:  543
+Enter element:  23445
+Enter element:  223
+Enter element:  543
+The array entered is
+[353454, 2232, 654, 2123, 653, 2123, 543, 23445, 223, 543]
+1.Selection sort(w)
+2.Shell Sort(w)
+3.Merge Sort(w)
+4.Bucket Sort
+5.Quick Sort(w)
+6.Exit
+Enter type of sort to be performed:  4
+Sorted Array is:   
+[223, 543, 543, 653, 654, 2123, 2123, 2232, 23445, 353454]
+
+Enter length of array: 10      
+Enter element:  123
+Enter element:  544
+Enter element:  5623
+Enter element:  5454
+Enter element:  623
+Enter element:  2
+Enter element:  545
+Enter element:  754
+Enter element:  1243
+Enter element:  65323
+The array entered is
+[123, 544, 5623, 5454, 623, 2, 545, 754, 1243, 65323]
+1.Selection sort(w)
+2.Shell Sort(w)
+3.Merge Sort(w)
+4.Bucket Sort
+5.Quick Sort(w)
+6.Exit
+Enter type of sort to be performed:  5
+Sorted Array is:   
+[2, 123, 544, 545, 623, 754, 1243, 5454, 5623, 65323]
+Enter length of array: 
+

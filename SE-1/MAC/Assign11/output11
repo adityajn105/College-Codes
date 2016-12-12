@@ -1,0 +1,4 @@
+student@B04L05100:~$ nasm -f elf64 assign11.asm
+student@B04L05100:~$ ld -o assign11 assign11.o
+student@B04L05100:~$ ./assign11
+6120622063206420650A66206768690A3132333435363738390A4142430A

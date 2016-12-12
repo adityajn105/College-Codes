@@ -1,0 +1,84 @@
+aditya@ADITYAsPC:~/Documents$ gcc nozomb.c
+aditya@ADITYAsPC:~/Documents$ ./a.out
+ my parent id is 5276 
+ PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
+    0     1     1     1 ?           -1 Ss       0   0:01 /sbin/init
+    0     2     0     0 ?           -1 S        0   0:00 [kthreadd]
+    2     3     0     0 ?           -1 S        0   0:00 [ksoftirqd/0]
+    2     5     0     0 ?           -1 S<       0   0:00 [kworker/0:0H]
+    2     7     0     0 ?           -1 S        0   0:02 [rcu_sched]
+    2     8     0     0 ?           -1 S        0   0:00 [rcuos/0]
+    2     9     0     0 ?           -1 S        0   0:00 [rcuos/1]
+    2    10     0     0 ?           -1 S        0   0:00 [rcuos/2]
+    2    11     0     0 ?           -1 S        0   0:01 [rcuos/3]
+    2    12     0     0 ?           -1 S        0   0:00 [rcu_bh]
+    2    13     0     0 ?           -1 S        0   0:00 [rcuob/0]
+    2    14     0     0 ?           -1 S        0   0:00 [rcuob/1]
+    2    15     0     0 ?           -1 S        0   0:00 [rcuob/2]
+    2    16     0     0 ?           -1 S        0   0:00 [rcuob/3]
+    2    17     0     0 ?           -1 S        0   0:00 [migration/0]
+    2    18     0     0 ?           -1 S        0   0:00 [watchdog/0]
+    2    19     0     0 ?           -1 S        0   0:00 [watchdog/1]
+    2    20     0     0 ?           -1 S        0   0:00 [migration/1]
+    2    21     0     0 ?           -1 S        0   0:00 [ksoftirqd/1]
+    2    23     0     0 ?           -1 S<       0   0:00 [kworker/1:0H]
+    2    24     0     0 ?           -1 S        0   0:00 [watchdog/2]
+    2    25     0     0 ?           -1 S        0   0:00 [migration/2]
+    2    26     0     0 ?           -1 S        0   0:00 [ksoftirqd/2]
+    2    28     0     0 ?           -1 S<       0   0:00 [kworker/2:0H]
+    2    29     0     0 ?           -1 S        0   0:00 [watchdog/3]
+    2    30     0     0 ?           -1 S        0   0:00 [migration/3]
+    2    31     0     0 ?           -1 S        0   0:00 [ksoftirqd/3]
+    2    33     0     0 ?           -1 S<       0   0:00 [kworker/3:0H]
+    2    34     0     0 ?           -1 S<       0   0:00 [khelper]
+    2    35     0     0 ?           -1 S        0   0:00 [kdevtmpfs]
+    2    36     0     0 ?           -1 S<       0   0:00 [netns]
+    2    37     0     0 ?           -1 S<       0   0:00 [writeback]
+    2    38     0     0 ?           -1 S<       0   0:00 [kintegrityd]
+    2    39     0     0 ?           -1 S<       0   0:00 [bioset]
+    2    40     0     0 ?           -1 S<       0   0:00 [kworker/u9:0]
+    2    41     0     0 ?           -1 S<       0   0:00 [kblockd]
+    2    42     0     0 ?           -1 S<       0   0:00 [ata_sff]
+    2    43     0     0 ?           -1 S        0   0:00 [khubd]
+    2    44     0     0 ?           -1 S<       0   0:00 [md]
+    2    45     0     0 ?           -1 S<       0   0:00 [devfreq_wq]
+    2    48     0     0 ?           -1 S        0   0:00 [khungtaskd]
+    2    49     0     0 ?           -1 S        0   0:00 [kswapd0]
+    2    50     0     0 ?           -1 SN       0   0:00 [ksmd]
+    2    51     0     0 ?           -1 SN       0   0:00 [khugepaged]
+    2    52     0     0 ?           -1 S        0   0:00 [fsnotify_mark]
+    2    53     0     0 ?           -1 S        0   0:00 [ecryptfs-kthrea]
+ 1695  2805  1760  1760 ?           -1 Sl    1000   0:00 /usr/lib/libunity-webap
+ps/unity-webapps-service
+    1  3651  3651  3651 ?           -1 Ss       0   0:00 /usr/sbin/cupsd -f
+ 3651  3654  3654  3651 ?           -1 S        7   0:00 /usr/lib/cups/notifier/
+dbus dbus:// 
+ 3651  3655  3655  3651 ?           -1 S        7   0:00 /usr/lib/cups/notifier/
+dbus dbus:// 
+    1  3856  3856  3856 ?           -1 Ss       0   0:00 /sbin/mount.ntfs /dev/s
+db1 /media/aditya/Aditya1 -o rw,nosuid,nodev,uhelper=udisks2,uid=1000,gid=1000,d
+mask=0077,fmask=0177
+    2  4356     0     0 ?           -1 S        0   0:00 [kworker/1:0]
+    2  4383     0     0 ?           -1 S        0   0:02 [kworker/u8:4]
+    2  4554     0     0 ?           -1 S        0   0:00 [kworker/3:0]
+    2  4664     0     0 ?           -1 S        0   0:00 [kworker/0:1]
+    2  4679     0     0 ?           -1 S        0   0:01 [kworker/u8:1]
+    2  4685     0     0 ?           -1 S        0   0:00 [kworker/1:2]
+    2  4761     0     0 ?           -1 S        0   0:00 [kworker/2:0]
+    2  4772     0     0 ?           -1 S        0   0:00 [kworker/0:0]
+ 1695  5060  1819  1819 ?           -1 Sl    1000   0:02 gnome-terminal
+ 5060  5069  1819  1819 ?           -1 S     1000   0:00 gnome-pty-helper
+ 5060  5070  5070  5070 pts/0     5276 Ss    1000   0:00 bash
+    2  5101     0     0 ?           -1 S        0   0:00 [kworker/2:2]
+    2  5165     0     0 ?           -1 S        0   0:00 [kworker/3:1]
+    2  5221     0     0 ?           -1 S        0   0:00 [kworker/u8:0]
+ 1695  5223  1819  1819 ?           -1 Sl    1000   0:06 gedit /home/aditya/Docu
+ments/nozomb.c
+    2  5244     0     0 ?           -1 S        0   0:00 [kworker/1:1]
+    2  5267     0     0 ?           -1 S        0   0:00 [kworker/2:1]
+ 5070  5276  5276  5070 pts/0     5276 S+    1000   0:00 ./a.out
+ 5276  5279  5276  5070 pts/0     5276 S+    1000   0:00 sh -c ps -axj|more
+ 5279  5280  5276  5070 pts/0     5276 R+    1000   0:00 ps -axj
+ 5279  5281  5276  5070 pts/0     5276 S+    1000   0:00 more
+
+

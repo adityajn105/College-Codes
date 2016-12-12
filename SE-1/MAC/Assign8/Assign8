@@ -1,0 +1,71 @@
+%macro print 2
+push rax
+push rbx
+push rcx
+push rdx
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+pop rdx
+pop rcx
+pop rbx
+pop rax
+%endmacro
+section .data
+arr dd -66h,123h,57h,-123h,-34h,56h,-12h,-3h,-43h,34h
+str1 db "The positive numbers are:    "
+str1len equ $-str1
+str2 db "The negative numbers are:    "
+str2len equ $-str2
+str3 db "",10
+str3len equ $-str3
+
+section .bss
+posi resb 1
+nega resb 1
+
+section .text
+global _start
+_start:
+mov esi,arr
+mov edi,10
+mov bl,0	;counter for negative no	
+mov dl,0	;counter for positive no
+
+up:	mov eax,[esi]	;initialize pointer to array
+	rol eax,1	;rotate eax left by 1 bit
+	jnc pos		;jump to pos if no carry	
+	inc bl		;increament of bl
+	jmp next	;jump to next
+pos:	inc dl		;increament of dl
+next:	add esi,4	;increament of pointer to array
+	dec edi		;decreament of counter
+	jnz up		;jump if not zero to up
+
+mov al,dl	;move contents of dl to al	
+call convert	;call procedure to convert no to ASCII
+mov [posi],al	;move contents of al in buffer posi
+print str1,str1len	;prints "the positive numbers are"
+print posi,1	;prints no of positive nos	
+print str3,str3len	;prints new line
+print str2,str2len 	;prints "the negative numbers are"
+mov al,bl	;mov contents of bl to al
+call convert	;call procedure to convert no to ASCII
+mov [nega],al	;move contents of al in buffer nega
+print nega,1	;print no of negative nos
+print str3,str3len	;print new line
+
+mov eax,1	;exit to OS
+mov ebx,0
+int 80h
+
+
+convert:
+	cmp al,09h	;cmp al with 09h
+	jbe skip	;jump to skip if al below or equal to 09h
+	add al,07	;add 07h to al
+	skip: add al,30H	;add 30h to al
+	ret
+	

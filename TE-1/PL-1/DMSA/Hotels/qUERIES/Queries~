@@ -1,0 +1,72 @@
+3. List the names and addresses of all guests in London ordered by names
+     SELECT name,address from GUESTS WHERE guest_no IN (SELECT guest_no from BOOKINGS WHERE hotel_no IN (SELECT hotel_no FROM HOTEL WHERE city="London"));
+
+
+
+Subqueries and Joins:
+1.List the price and type of all rooms at the Grosvenor Hotel.
+        SELECT price,type FROM ROOMS INNER JOIN HOTEL WHERE HOTEL.hotel_no=ROOMS.hotel_no AND HOTEL.name= "Hayat"; 
++-------+-------------+
+| price | type        |
++-------+-------------+
+|    32 | Double Room |
+|    32 | Double Room |
+|    32 | Double Room |
+|    63 | Deluxe AC   |
+|    42 | AC          |
+|    53 | Single Room |
++-------+-------------+
+
+2.List all guests currently staying at the Grosvenor Hotel.
+	
+  	SELECT GUESTS.* FROM GUESTS WHERE guest_no IN (SELECT guest_no from BOOKINGS WHERE BOOKINGS.hotel_no=(SELECT hotel_no FROM HOTEL WHERE name='Hayat') AND CURDATE() BETWEEN DATE(BOOKINGS.date_from) AND DATE(BOOKINGS.date_to));
++----------+--------+---------------+
+| guest_no | name   | address       |
++----------+--------+---------------+
+|        1 | Tyrion | Kings Landing |
++----------+--------+---------------+
+
+List details of all rooms at the Grosvenor Hotel. Including the name of the guest staying in the room, if the room is occupied.
+	SELECT ROOMS.*,GUESTS.name FROM ROOMS INNER JOIN GUESTS,BOOKINGS WHERE  ROOMS.hotel_no=BOOKINGS.hotel_no AND BOOKINGS.hotel_no=(SELECT hotel_no FROM HOTEL WHERE name='Hayat') AND CURDATE() BETWEEN DATE(BOOKINGS.date_from) AND DATE(BOOKINGS.date_to) and GUESTS.guest_no=BOOKINGS.guest_no AND ROOMS.room_no=BOOKINGS.room_no;
++---------+----------+-------------+-------+--------+
+| room_no | hotel_no | type        | price | name   |
++---------+----------+-------------+-------+--------+
+|    1105 |     1243 | Double Room |    32 | Tyrion |
++---------+----------+-------------+-------+--------+
+
+
+What is the total income from bookings for the Grosvenor Hotel today? 
+	SELECT SUM(price) FROM ROOMS WHERE ROOMS.room_no IN (SELECT room_no FROM BOOKINGS WHERE CURDATE() BETWEEN DATE(date_from) AND DATE(date_to));
++------------+
+| SUM(price) |
++------------+
+|         32 |
++------------+
+
+
+List the rooms that are currently unoccupied at the Grosvenor Hotel.
+	SELECT * FROM ROOMS WHERE ROOMS.room_no IN (SELECT room_no FROM BOOKINGS WHERE CURDATE() NOT BETWEEN DATE(date_from) AND DATE(date_to));
+
++---------+----------+-------------+-------+
+| room_no | hotel_no | type        | price |
++---------+----------+-------------+-------+
+|    1102 |     1243 | Double Room |    32 |
+|    1102 |     1246 | Double Room |    32 |
+|    1102 |     1248 | Double Room |    63 |
+|    1110 |     1243 | Deluxe AC   |    63 |
+|    1110 |     1246 | Deluxe AC   |    63 |
+|    1136 |     1244 | Deluxe Room |    53 |
+|    1136 |     1246 | Deluxe Room |    53 |
++---------+----------+-------------+-------+
+
+
+What is the lost income from unoccupied rooms at the Grosvenor Hotel?
+
+	SELECT SUM(price) FROM ROOMS WHERE ROOMS.room_no IN (SELECT room_no FROM BOOKINGS WHERE CURDATE() NOT BETWEEN DATE(date_from) AND DATE(date_to));
++------------+
+| SUM(price) |
++------------+
+|        359 |
++------------+
+
+	

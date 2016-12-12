@@ -1,0 +1,501 @@
+Creating and populating tables with data:
+1. Create all tables.
+	mysql> CREATE TABLE HOTEL(
+	    -> hotel_no int(11),
+	    -> name varchar(40) NOT NULL,
+	    -> city varchar(20) NOT NULL,
+	    -> PRIMARY KEY(hotel_no)
+	    -> );
+	Query OK, 0 rows affected (0.39 sec)
+	
+	mysql> desc HOTEL;
+	+----------+-------------+------+-----+---------+-------+
+	| Field    | Type        | Null | Key | Default | Extra |
+	+----------+-------------+------+-----+---------+-------+
+	| hotel_no | int(11)     | NO   | PRI | NULL    |       |
+	| name     | varchar(40) | NO   |     | NULL    |       |
+	| city     | varchar(20) | NO   |     | NULL    |       |
+	+----------+-------------+------+-----+---------+-------+
+
+	mysql> CREATE TABLE HOTEL(
+	    -> hotel_no int(11),
+	    -> name varchar(40) NOT NULL,
+	    -> city varchar(20) NOT NULL,
+	    -> PRIMARY KEY(hotel_no)
+	    -> );
+	Query OK, 0 rows affected (0.39 sec)
+	
+	mysql> desc ROOMS;                                                                                  	     
+	+----------+-------------+------+-----+---------+-------+
+	| Field    | Type        | Null | Key | Default | Extra |
+	+----------+-------------+------+-----+---------+-------+
+	| room_no  | int(11)     | NO   | PRI | NULL    |       |
+	| hotel_no | int(11)     | NO   | PRI | NULL    |       |
+	| type     | varchar(30) | YES  |     | NULL    |       |
+	| price    | int(11)     | YES  |     | NULL    |       |
+	+----------+-------------+------+-----+---------+-------+
+	4 rows in set (0.00 sec)
+
+	mysql> CREATE TABLE GUESTS( 
+	    -> guest_no int(11) AUTO_INCREMENT,
+	    -> name VARCHAR(40) NOT NULL,
+	    -> address TEXT,
+	    -> PRIMARY KEY(guest_no) 
+	    -> );
+	Query OK, 0 rows affected (0.27 sec)
+
+	mysql> desc GUESTS;
+	+----------+-------------+------+-----+---------+----------------+
+	| Field    | Type        | Null | Key | Default | Extra          |
+	+----------+-------------+------+-----+---------+----------------+
+	| guest_no | int(11)     | NO   | PRI | NULL    | auto_increment |
+	| name     | varchar(40) | NO   |     | NULL    |                |
+	| address  | text        | YES  |     | NULL    |                |
+	+----------+-------------+------+-----+---------+----------------+
+	3 rows in set (0.00 sec)
+	
+	
+	mysql> CREATE TABLE BOOKINGS(
+	    -> hotel_no int(11),
+	    -> room_no int(11),
+	    -> guest_no int(11),
+	    -> date_from DATE,
+	    -> date_to DATE,
+	    -> PRIMARY KEY(hotel_no,guest_no,date_from),
+	    -> FOREIGN KEY(hotel_no) REFERENCES HOTEL(hotel_no),
+	    -> FOREIGN KEY(guest_no) REFERENCES GUESTS(guest_no)
+	    -> );
+	Query OK, 0 rows affected (0.37 sec)
+	
+	mysql> desc BOOKINGS;
+	+-----------+---------+------+-----+---------+-------+
+	| Field     | Type    | Null | Key | Default | Extra |
+	+-----------+---------+------+-----+---------+-------+
+	| hotel_no  | int(11) | NO   | PRI | NULL    |       |
+	| room_no   | int(11) | YES  |     | NULL    |       |
+	| guest_no  | int(11) | NO   | PRI | NULL    |       |
+	| date_from | date    | NO   | PRI | NULL    |       |
+	| date_to   | date    | YES  |     | NULL    |       |
+	+-----------+---------+------+-----+---------+-------+
+	5 rows in set (0.00 sec)
+
+2. Insert records into all tables.
+	mysql> INSERT INTO HOTEL VALUES(1243,'Grosvenor','London');
+	Query OK, 1 row affected (0.04 sec)
+	
+	mysql> SELECT * FROM HOTEL;
+	+----------+--------------+--------+
+	| hotel_no | name         | city   |
+	+----------+--------------+--------+
+	|     1243 | Grosvenor    | London |
+	|     1244 | Palms        | Goa    |
+	|     1246 | Burj Al Arab | London |
+	|     1248 | Lotus        | Delhi  |
+	+----------+--------------+--------+
+	4 rows in set (0.00 sec)
+	
+	mysql> INSERT INTO ROOMS VALUES(1102,1243,'Double Room',30);
+	
+	mysql> SELECT * FROM ROOMS;
+	+---------+----------+-------------+-------+
+	| room_no | hotel_no | type        | price |
+	+---------+----------+-------------+-------+
+	|    1102 |     1243 | Double Room |    30 |
+	|    1102 |     1246 | Double Room |    30 |
+	|    1102 |     1248 | Double Room |    60 |
+	|    1104 |     1243 | Double Room |    30 |
+	|    1105 |     1243 | Double Room |    30 |
+	|    1110 |     1243 | Deluxe AC   |    60 |
+	|    1110 |     1246 | Deluxe AC   |    60 |
+	|    1120 |     1244 | Deluxe AC   |    30 |
+	|    1121 |     1244 | Double Room |    30 |
+	|    1136 |     1244 | Deluxe Room |    50 |
+	|    1136 |     1246 | Deluxe Room |    50 |
+	|    1140 |     1244 | Deluxe Room |    50 |
+	|    1156 |     1243 | AC          |    40 |
+	|    1159 |     1243 | Single Room |    50 |
+	+---------+----------+-------------+-------+
+	14 rows in set (0.00 sec)
+
+	
+	mysql> INSERT INTO GUESTS VALUES(1,'Tyrion','Kings Landing');
+	Query OK, 1 row affected (0.04 sec)
+	
+	mysql> SELECT * FROM GUESTS;
+	+----------+-----------+---------------+
+	| guest_no | name      | address       |
+	+----------+-----------+---------------+
+	|        1 | Tyrion    | Kings Landing |
+	|        2 | Cersie    | Kings Landing |
+	|        3 | Jamie     | Kings Landing |
+	|        4 | Daenaerys | Mareen        |
+	|        5 | Jon Snow  | Winterfell    |
+	|        6 | Sansa     | Winterfell    |
+	|        7 | Arya      | Bravoos       |
+	+----------+-----------+---------------+
+	7 rows in set (0.00 sec)
+	
+	mysql> INSERT INTO BOOKINGS VALUES(1243,1105,1,'2016-05-12','2016-08-12');
+	Query OK, 1 row affected (0.04 sec)
+	
+	mysql> SELECT * FROM BOOKINGS;
+	+----------+---------+----------+------------+------------+
+	| hotel_no | room_no | guest_no | date_from  | date_to    |
+	+----------+---------+----------+------------+------------+
+	|     1243 |    1105 |        1 | 2016-05-12 | 2016-08-12 |
+	|     1243 |    1102 |        4 | 2005-05-10 | 2005-05-20 |
+	|     1244 |    1102 |        6 | 2007-09-20 | 2007-12-31 |
+	|     1244 |    1136 |        7 | 2008-10-21 | 2009-01-30 |
+	|     1246 |    1136 |        2 | 2008-01-06 | 2008-02-01 |
+	|     1246 |    1110 |        3 | 2009-05-31 | 2009-06-22 |
+	|     1248 |    1102 |        5 | 2009-09-20 | 2009-12-31 |
+	+----------+---------+----------+------------+------------+
+	7 rows in set (0.00 sec)
+	
+3. Update the price of all rooms by 5%.
+	
+	mysql> UPDATE ROOMS SET price=price*1.05;
+	Query OK, 14 rows affected (0.04 sec)
+	Rows matched: 14  Changed: 14  Warnings: 0
+
+	mysql> SELECT * FROM ROOMS;
+	+---------+----------+-------------+-------+
+	| room_no | hotel_no | type        | price |
+	+---------+----------+-------------+-------+
+	|    1102 |     1243 | Double Room |    32 |
+	|    1102 |     1246 | Double Room |    32 |
+	|    1102 |     1248 | Double Room |    63 |
+	|    1104 |     1243 | Double Room |    32 |
+	|    1105 |     1243 | Double Room |    32 |
+	|    1110 |     1243 | Deluxe AC   |    63 |
+	|    1110 |     1246 | Deluxe AC   |    63 |
+	|    1120 |     1244 | Deluxe AC   |    32 |
+	|    1121 |     1244 | Double Room |    32 |
+	|    1136 |     1244 | Deluxe Room |    53 |
+	|    1136 |     1246 | Deluxe Room |    53 |
+	|    1140 |     1244 | Deluxe Room |    53 |
+	|    1156 |     1243 | AC          |    42 |
+	|    1159 |     1243 | Single Room |    53 |
+	+---------+----------+-------------+-------+
+	14 rows in set (0.00 sec)
+	
+4. Create a separate table with same structure as the booking table to hold archive of records.
+	mysql> CREATE TABLE ARCHIVES AS SELECT * FROM BOOKINGS WHERE 1=2;
+	Query OK, 0 rows affected (0.42 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+
+	mysql> DESC ARCHIVES;
+	+-----------+---------+------+-----+---------+-------+
+	| Field     | Type    | Null | Key | Default | Extra |
+	+-----------+---------+------+-----+---------+-------+
+	| hotel_no  | int(11) | NO   |     | 0       |       |
+	| room_no   | int(11) | NO   |     | NULL    |       |
+	| guest_no  | int(11) | NO   |     | 0       |       |
+	| date_from | date    | NO   |     | NULL    |       |
+	| date_to   | date    | NO   |     | NULL    |       |
+	+-----------+---------+------+-----+---------+-------+
+	5 rows in set (0.00 sec)
+
+5. Using the INSERT statement copy the records from the booking table to the archive table relating to bookings before 1st January 2008.
+	
+	mysql> INSERT INTO ARCHIVES SELECT * FROM BOOKINGS WHERE YEAR(date_from) < 2008;
+	Query OK, 2 rows affected (0.06 sec)
+	Records: 2  Duplicates: 0  Warnings: 0
+	
+	mysql> SELECT * FROM ARCHIVES;
+	+----------+---------+----------+------------+------------+
+	| hotel_no | room_no | guest_no | date_from  | date_to    |
+	+----------+---------+----------+------------+------------+
+	|     1243 |    1102 |        4 | 2005-05-10 | 2005-05-20 |
+	|     1244 |    1102 |        6 | 2007-09-20 | 2007-12-31 |
+	+----------+---------+----------+------------+------------+
+	2 rows in set (0.00 sec)
+
+6. Delete all bookings before 1st January 2008 from booking table.
+
+	mysql> DELETE FROM BOOKINGS WHERE YEAR(date_from) < 2008;
+	Query OK, 2 rows affected (0.04 sec)
+
+	mysql> SELECT * FROM BOOKINGS;
+	+----------+---------+----------+------------+------------+
+	| hotel_no | room_no | guest_no | date_from  | date_to    |
+	+----------+---------+----------+------------+------------+
+	|     1243 |    1105 |        1 | 2016-05-12 | 2016-08-12 |
+	|     1244 |    1136 |        7 | 2008-10-21 | 2009-01-30 |
+	|     1246 |    1136 |        2 | 2008-01-06 | 2008-02-01 |
+	|     1246 |    1110 |        3 | 2009-05-31 | 2009-06-22 |
+	|     1248 |    1102 |        5 | 2009-09-20 | 2009-12-31 |
+	+----------+---------+----------+------------+------------+
+	5 rows in set (0.00 sec)
+	
+
+
+SQL Queries:
+1. List full details of all hotels.
+	mysql> SELECT * FROM HOTEL;
+	+----------+--------------+--------+
+	| hotel_no | name         | city   |
+	+----------+--------------+--------+
+	|     1243 | Grosvenor    | London |
+	|     1244 | Palms        | Goa    |
+	|     1246 | Burj Al Arab | London |
+	|     1248 | Lotus        | Delhi  |
+	+----------+--------------+--------+
+	4 rows in set (0.00 sec)	
+	
+2. List full details of all hotels in London.
+	mysql> SELECT * FROM HOTEL WHERE city='London';
+	+----------+--------------+--------+
+	| hotel_no | name         | city   |
+	+----------+--------------+--------+
+	|     1243 | Grosvenor    | London |
+	|     1246 | Burj Al Arab | London |
+	+----------+--------------+--------+
+	2 rows in set (0.00 sec)
+
+3. List the names and addresses of all guests in London ordered by names.
+	
+	mysql> SELECT name,address from GUESTS WHERE guest_no IN 
+	->(SELECT guest_no from BOOKINGS WHERE hotel_no IN 
+	->(SELECT hotel_no FROM HOTEL WHERE city="London")) 
+	->ORDER BY name ASC;
+	+--------+---------------+
+	| name   | address       |
+	+--------+---------------+
+	| Cersie | Kings Landing |
+	| Jamie  | Kings Landing |
+	| Tyrion | Kings Landing |
+	+--------+---------------+
+	3 rows in set (0.03 sec)
+
+
+4. List all double or family rooms with a price below $ 40.00 per night in ascending order of price.
+	
+	mysql> SELECT * FROM ROOMS WHERE 
+	->(price<40 AND type='Double Room' OR 'Family Room') 
+    	-> ORDER BY price ASC;
+	+---------+----------+-------------+-------+
+	| room_no | hotel_no | type        | price |
+	+---------+----------+-------------+-------+
+	|    1102 |     1243 | Double Room |    32 |
+	|    1102 |     1246 | Double Room |    32 |
+	|    1104 |     1243 | Double Room |    32 |
+	|    1105 |     1243 | Double Room |    32 |
+	|    1121 |     1244 | Double Room |    32 |
+	+---------+----------+-------------+-------+
+	5 rows in set, 1 warning (0.02 sec)
+
+
+5. List the bookings for which no DateTo has been specified.
+	mysql> SELECT * FROM BOOKINGS WHERE date_to IS NULL;
+	+----------+---------+----------+------------+---------+
+	| hotel_no | room_no | guest_no | date_from  | date_to |
+	+----------+---------+----------+------------+---------+
+	|     1243 |    1105 |        1 | 2009-06-24 | NULL    |
+	+----------+---------+----------+------------+---------+
+	1 row in set (0.00 sec)
+	
+
+
+Aggregate Functions:
+1. How many hotels are there?
+	mysql> SELECT COUNT(hotel_no) FROM HOTEL;
+	+-----------------+
+	| COUNT(hotel_no) |
+	+-----------------+
+	|               4 |
+	+-----------------+
+	1 row in set (0.00 sec)
+
+	
+2. What is the average price of room?
+
+	mysql> SELECT AVG(price) FROM ROOMS;
+	+------------+
+	| AVG(price) |
+	+------------+
+	|    45.3571 |
+	+------------+
+	1 row in set (0.00 sec)
+
+3. What is the total revenue per night from all double rooms?
+
+	mysql> SELECT SUM(price) FROM ROOMS WHERE type='Double Room';
+	+------------+
+	| SUM(price) |
+	+------------+
+	|        223 |
+	+------------+
+	1 row in set (0.00 sec)
+
+4. How many different guests have made bookings for August?
+	
+	mysql> SELECT COUNT(*) FROM BOOKINGS WHERE 
+	-> 8 BETWEEN MONTH(date_from) AND MONTH(date_to);
+	+----------+
+	| COUNT(*) |
+	+----------+
+	|        1 |
+	+----------+
+	1 row in set (0.00 sec)
+	
+	
+Subqueries and Joins:
+
+1. List the price and type of all rooms at the Grosvenor Hotel.
+	mysql> SELECT price,type FROM ROOMS INNER JOIN HOTEL WHERE 
+	-> HOTEL.hotel_no=ROOMS.hotel_no AND HOTEL.name= "Grosvenor";
+	+-------+-------------+
+	| price | type        |
+	+-------+-------------+
+	|    32 | Double Room |
+	|    32 | Double Room |
+	|    32 | Double Room |
+	|    63 | Deluxe AC   |
+	|    42 | AC          |
+	|    53 | Single Room |
+	+-------+-------------+
+	6 rows in set (0.00 sec)
+
+	
+2. List all guests currently staying at the Grosvenor Hotel.
+	
+	mysql> SELECT GUESTS.* FROM GUESTS WHERE guest_no IN 
+	-> (SELECT guest_no from BOOKINGS WHERE BOOKINGS.hotel_no=
+	-> (SELECT hotel_no FROM HOTEL WHERE name='Grosvenor') AND 
+	-> CURDATE() BETWEEN DATE(BOOKINGS.date_from) AND DATE(BOOKINGS.date_to));
+	+----------+--------+---------------+
+	| guest_no | name   | address       |
+	+----------+--------+---------------+
+	|        1 | Tyrion | Kings Landing |
+	+----------+--------+---------------+
+	1 row in set (0.00 sec)
+
+3. List details of all rooms at the Grosvenor Hotel. Including the name of the guest staying in the room, if the room is occupied.
+	
+	mysql> SELECT ROOMS.*,GUESTS.name FROM ROOMS INNER JOIN GUESTS,BOOKINGS 
+	-> WHERE  ROOMS.hotel_no=BOOKINGS.hotel_no AND BOOKINGS.hotel_no=
+	-> (SELECT hotel_no FROM HOTEL WHERE name='Grosvenor') AND 
+	-> CURDATE() BETWEEN DATE(BOOKINGS.date_from) AND DATE(BOOKINGS.date_to) 
+	-> AND GUESTS.guest_no=BOOKINGS.guest_no AND ROOMS.room_no=BOOKINGS.room_no;
+	+---------+----------+-------------+-------+--------+
+	| room_no | hotel_no | type        | price | name   |
+	+---------+----------+-------------+-------+--------+
+	|    1105 |     1243 | Double Room |    32 | Tyrion |
+	+---------+----------+-------------+-------+--------+
+	1 row in set (0.00 sec)
+	
+4. What is the total income from bookings for the Grosvenor Hotel today?
+	
+	mysql> SELECT SUM(price) FROM ROOMS WHERE 
+	-> ROOMS.room_no IN (SELECT room_no FROM BOOKINGS WHERE 
+	-> hotel_no=(SELECT hotel_no FROM HOTEL WHERE name='Grosvenor') AND 
+	-> CURDATE() BETWEEN DATE(date_from) AND DATE(date_to));
+	+------------+
+	| SUM(price) |
+	+------------+
+	|         32 |
+	+------------+
+	1 row in set (0.00 sec)
+ 
+5. List the rooms that are currently unoccupied at the Grosvenor Hotel.
+	mysql> SELECT * FROM ROOMS WHERE ROOMS.room_no NOT IN 
+	-> (SELECT room_no FROM BOOKINGS WHERE 
+	-> CURDATE() BETWEEN DATE(date_from) AND DATE(date_to)) AND 
+	-> ROOMS.hotel_no=(SELECT hotel_no FROM HOTEL WHERE name='Grosvenor');
+	+---------+----------+-------------+-------+
+	| room_no | hotel_no | type        | price |
+	+---------+----------+-------------+-------+
+	|    1102 |     1243 | Double Room |    32 |
+	|    1104 |     1243 | Double Room |    32 |
+	|    1110 |     1243 | Deluxe AC   |    63 |
+	|    1156 |     1243 | AC          |    42 |
+	|    1159 |     1243 | Single Room |    53 |
+	+---------+----------+-------------+-------+
+	5 rows in set (0.00 sec)
+
+	
+6. What is the lost income from unoccupied rooms at the Grosvenor Hotel?
+	
+	mysql> SELECT SUM(price) FROM ROOMS WHERE ROOMS.room_no NOT IN 
+	-> (SELECT room_no FROM BOOKINGS WHERE 
+	-> CURDATE() BETWEEN DATE(date_from) AND DATE(date_to)) AND 
+	-> ROOMS.hotel_no=(SELECT hotel_no FROM HOTEL WHERE name='Grosvenor'); 
+	+------------+ 
+	| SUM(price) | 
+	+------------+ 
+	|        222 | 
+	+------------+ 
+	1 row in set (0.00 sec)
+
+
+Groupings:
+1. List the no. of rooms in each hotel.
+	mysql> SELECT ROOMS.hotel_no,COUNT(ROOMS.room_no) 
+	-> FROM ROOMS GROUP BY hotel_no;
+	+----------+----------------------+
+	| hotel_no | COUNT(ROOMS.room_no) |
+	+----------+----------------------+
+	|     1243 |                    6 |
+	|     1244 |                    4 |
+	|     1246 |                    3 |
+	|     1248 |                    1 |
+	+----------+----------------------+
+	4 rows in set (0.00 sec)
+	
+
+2. List the no. of rooms in each hotel in London.
+	mysql> SELECT hotel_no,COUNT(room_no) FROM ROOMS WHERE 
+	-> hotel_no in (SELECT hotel_no FROM HOTEL WHERE city='London') 
+	-> GROUP BY hotel_no;
+	+----------+----------------+
+	| hotel_no | COUNT(room_no) |
+	+----------+----------------+
+	|     1243 |              6 |
+	|     1246 |              3 |
+	+----------+----------------+
+	2 rows in set (0.01 sec)
+
+
+3. What is the avg no. of bookings for each hotel in April?
+	mysql> SELECT hotel_no,COUNT(*) FROM BOOKINGS WHERE 
+	-> 8 BETWEEN MONTH(date_from) AND MONTH(date_to) 
+	-> GROUP BY hotel_no; 
+	+----------+----------+
+	| hotel_no | COUNT(*) |
+	+----------+----------+
+	|     1243 |        1 |
+	+----------+----------+
+	1 row in set (0.00 sec)
+	
+	
+4. What is the most commonly booked room type for each hotel in London?
+	mysql> SELECT hotel_no,MAX(type) FROM ROOMS WHERE 
+	-> room_no IN (SELECT room_no FROM BOOKINGS WHERE 
+	-> hotel_no IN(SELECT hotel_no FROM HOTEL WHERE city='London')) AND 
+	-> hotel_no IN (SELECT hotel_no FROM HOTEL WHERE city='London') 
+	-> GROUP BY hotel_no; 
+	+----------+-------------+
+	| hotel_no | MAX(type)   |
+	+----------+-------------+
+	|     1243 | Double Room |
+	|     1246 | Deluxe Room |
+	+----------+-------------+
+	2 rows in set (0.01 sec)
+	
+	
+5. What is the lost income from unoccupied rooms at each hotel today?
+
+	mysql> SELECT hotel_no,SUM(price) FROM ROOMS WHERE ROOMS.room_no IN 
+	-> (SELECT room_no FROM BOOKINGS WHERE CURDATE() NOT 
+	-> BETWEEN DATE(date_from) AND DATE(date_to)) GROUP BY hotel_no;
+	+----------+------------+
+	| hotel_no | SUM(price) |
+	+----------+------------+
+	|     1243 |         95 |
+	|     1244 |         53 |
+	|     1246 |        148 |
+	|     1248 |         63 |
+	+----------+------------+
+	4 rows in set (0.01 sec)
+

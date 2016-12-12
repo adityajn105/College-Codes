@@ -1,0 +1,152 @@
+#include <iostream>
+#include <stdlib.h>
+#include <string.h>
+using namespace std;
+
+class node
+{
+	char vertex;
+	friend class span;
+};
+#define inf 99;
+class span
+{
+	int n;
+	node a[20];
+	int cost[20][20];
+	int mincost[20][20];
+public:
+	void getg();
+	void print(int);
+	int prim(span &s);
+	void printg();
+	void printmg();
+};
+
+void span::getg()
+{
+	cout << endl << "Enter the no vertexes";
+	cin >> n;
+	for (int i = 0; i<n; i++)
+	{
+		cout << endl << "Enter vertex name :";
+		cin >> a[i].vertex;
+	}
+	for (int i = 0; i<n; i++)
+	{
+		for (int j = 0; j<n; j++)
+		{
+			cout << endl << "distance b/w " << a[i].vertex << " & " << a[j].vertex << "\t:";
+			cin >> cost[i][j];
+		}
+	}
+}
+
+
+void span::printg()
+{
+	cout << endl << "\t";
+	for (int i = 0; i<n; i++)
+	{
+		cout << a[i].vertex << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i<n; i++)
+	{
+		cout << a[i].vertex << "\t";
+		for (int j = 0; j<n; j++)
+		{
+			cout << cost[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+
+int span::prim(span &s)
+{
+	for (int i = 0; i<n; i++)
+	{
+		for (int j = 0; j<n; j++)
+		{
+			mincost[i][j]=0;
+		}
+	}
+	int k;
+	int mcost=0;
+	int near[20];
+	int stv = 1;
+	near[stv] = -1;
+	for (int i = 0; i<n; i++)
+	{
+		if (i != stv)
+		{
+			near[i] = stv;
+		}
+	}
+	for (int i = 1; i<n; i++)
+	{
+		int min = inf;
+		for (int j = 0; j < n; j++)
+		{
+			if (near[j] != -1 && cost[j][near[j]] < min)
+			{
+				min = cost[j][near[j]];
+				k = j;
+				mincost[j][near[j]] = mincost[near[j]][j] =min;
+			}
+		}
+		near[k] = -1;
+		mcost = mcost + min;
+		for (int j = 0; j < n; j++)
+		{
+			if (near[j] != -1 && cost[j][near[j]]>cost[k][j])
+			{
+				near[j] = k;
+			}
+		}
+	}
+	return mcost;
+}
+
+void span::printmg()
+{
+	cout << endl << "\t";
+	for (int i = 0; i<n; i++)
+	{
+		cout << a[i].vertex << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i<n; i++)
+	{
+		cout << a[i].vertex << "\t";
+		for (int j = 0; j<n; j++)
+		{
+			cout << mincost[i][j] << "\t";
+		}
+			cout << endl;
+	}
+}
+
+int main()
+{
+	span s;
+	int ch;
+	cout << endl << "Enter the data for graph";
+	s.getg();
+	while (1)
+	{
+		cout << endl << "Enter your choice\n1. Print cost adjancy matrice \n2. Show minimum cost\n3. Print minimum cost adjancy matrice\n4. Exit\n";
+		cin >> ch;
+		switch (ch)
+		{
+		case 1:{s.printg(); continue; }
+		case 2:{cout << endl << "Minimum Cost is :" << s.prim(s) << endl; continue; }
+		case 3:{s.printmg(); continue; }
+		case 4:{cout << "Exiting...."; break; }
+		default:{cout << endl << "Wrong choice"; continue; }
+		}
+		break;
+	}
+}
+
+

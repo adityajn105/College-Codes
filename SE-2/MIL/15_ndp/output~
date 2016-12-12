@@ -1,0 +1,35 @@
+		╭─aditya@DellPC [03:03:36]  ~  
+		╰─$ nasm -f elf64 ndpadi.asm 
+		╭─aditya@DellPC [03:03:48]  ~  
+		╰─$ ld -o ndp ndpadi.o
+		╭─aditya@DellPC [03:04:00]  ~  
+		╰─$ ./ndp
+		1.Enter your choice-
+		1.Mean
+		2.Variance
+		3.Standard Deviation
+		4.Exit
+		1
+		0244.0767
+		1.Enter your choice-
+		1.Mean
+		2.Variance
+		3.Standard Deviation
+		4.Exit
+		2
+		022645.8492
+		1.Enter your choice-
+		1.Mean
+		2.Variance
+		3.Standard Deviation
+		4.Exit
+		3
+		0260.6483
+		1.Enter your choice-
+		1.Mean
+		2.Variance
+		3.Standard Deviation
+		4.Exit
+		4
+		╭─aditya@DellPC [03:04:09]  ~  
+		╰─$ 

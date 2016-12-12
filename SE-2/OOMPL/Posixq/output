@@ -1,0 +1,10 @@
+╭─aditya@DellPC [10:14:36]  ~  
+╰─$ g++ main.cpp -lrt -lpthread
+╭─aditya@DellPC [10:14:37]  ~  
+╰─$ a.out                      
+Message sent to queue
+Message received is Hello
+Message sent to queue
+Message Received is Again Hello
+╭─aditya@DellPC [10:14:39]  ~  
+╰─$ 

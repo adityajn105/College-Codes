@@ -1,0 +1,20 @@
+Analog to Digital convertor:
+
+
+Dyna-86>U 1000                                                                  
+0000:1000  MOV AL, 99                                                           
+0000:1002  OUT 67, AL                                                           
+0000:1004  MOV AL, 04                                                           
+0000:1006  OUT 63, AL                                                           
+0000:1008  MOV AL, 05                                                           
+0000:100A  OUT 63, AL                                                           
+0000:100C  MOV AL, 04                                                           
+0000:100E  OUT 63, AL                                                           
+0000:1010  IN AL, 65                                                            
+0000:1012  AND AL, 01                                                           
+0000:1014  CMP AL, 01                                                           
+0000:1016  JNZ 1010                                                             
+0000:1018  MOV AL, 02                                                           
+0000:101A  OUT 63, AL                                                           
+0000:101C  IN AL, 61                                                            
+0000:101E  INT 3                  

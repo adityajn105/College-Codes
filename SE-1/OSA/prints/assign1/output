@@ -1,0 +1,76 @@
+student@B4L0106:~/osa$ sh assign1
+1. Create file :
+2. Rename file :
+3. Delete file :
+4. Exit :
+Enter Your Choice
+1
+Enter name of file to be created
+abc
+File Created
+abc
+assign3
+ctime.c
+orphan.c
+nozomb.c
+zombie.c
+parch.c
+assign6
+assign6~
+assign2
+assign4
+assign5
+assign3~
+assign1
+newad~
+1. Create file :
+2. Rename file :
+3. Delete file :
+4. Exit :
+Enter Your Choice
+2
+enter the file to be renamed
+abc
+enter the name to given to file
+xyz
+xyz
+assign3
+ctime.c
+orphan.c
+nozomb.c
+zombie.c
+parch.c
+assign6
+assign6~
+assign2
+1. Create file :
+2. Rename file :
+3. Delete file :
+4. Exit :
+Enter Your Choice
+3
+enter the file to be deleted
+xyz
+file removed
+assign3
+ctime.c
+orphan.c
+nozomb.c
+zombie.c
+parch.c
+assign6
+assign6~
+assign2
+assign4
+assign5
+assign3~
+assign1
+newad~
+sum
+1. Create file :
+2. Rename file :
+3. Delete file :
+4. Exit :
+Enter Your Choice
+4
+student@B4L0106:~/osa$

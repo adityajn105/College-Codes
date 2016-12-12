@@ -1,0 +1,66 @@
+aditya@ADITYAsPC:~/Documents$ javac PhysicalDevices.java
+aditya@ADITYAsPC:~/Documents$ java PhysicalDevices
+
+I-No of instances
+
+II-User name
+
+III-Terminal name
+
+IV-major no
+
+V-minor no.
+
+I II  III     IV    V    device name
+
+1 root root     10, 23 autofs
+2 root root         76 block
+2 root root         10 bsg
+1 root root     10, 23 btrfs-control
+3 root root          6 bus
+1 root root            cdrom -> sr0
+2 root root        404 char
+1 root root      5,    console
+1 root root          1 core -> /proc/kcore
+2 root root          6 cpu
+1 root root     10,  6 cpu_dma_latency
+1 root root     10, 20 cuse
+8 root root         16 disk
+2 root root         10 dri
+1 root root     10,  6 ecryptfs
+1 root video    29,    fb0
+1 root root          1 fd -> /proc/self/fd
+1 root root      1,    full
+1 root root     10, 22 fuse
+1 root root    251,    hidraw0
+1 root root    251,    hidraw1
+1 root root     10, 22 hpet
+4 root root         48 input
+1 root root      1,  1 kmsg
+1 root root     10, 23 kvm
+1 root root            log
+1 root disk      7,    loop0
+1 root disk      7,    loop1
+1 root disk      7,    loop2
+1 root disk      7,    loop3
+1 root disk      7,    loop4
+1 root disk      7,    loop5
+1 root disk      7,    loop6
+1 root disk      7,    loop7
+1 root root     10, 23 loop-control
+2 root root          6 mapper
+1 root root     10, 22 mcelog
+1 root root     10,  5 mei
+1 root kmem      1,    mem
+2 root root          6 net
+1 root root     10,  5 network_latency
+1 root root     10,  5 network_throughput
+1 root root      1,    null
+1 root root    195,    nvidia0
+1 root root    195, 25 nvidiactl
+1 root kmem      1,    port
+1 root root    108,    ppp
+1 root root     10,    psaux
+1 root tty       5,    ptmx
+exit :0
+

@@ -1,0 +1,68 @@
+echo "program to translate or delete character"
+while [ true ]
+do
+echo "1.Convert lower case to Upper Case"
+echo "2.Delete characters"
+echo "3.Squeeze"
+echo "4.convert digits to alphabets"
+echo "5.Exit"
+
+read ch
+case $ch in
+1)	echo "Enter file name from where data will be taken"
+	read filename
+	if [ -f $filename ]
+	then 
+		tr [:lower:] [:upper:] < $filename		#tr '[a-z]' '[A-Z]'
+		#gedit $filename
+	else
+		echo "file do not exist"
+	fi
+	;;
+2)
+	echo "Enter file name from where data will be taken"
+	read filename
+	if [ -f $filename ]
+	then	
+		echo "Which char to be deleted"
+		read dchar
+		tr -d $dchar <$filename
+	else
+		echo "file do not exist"
+	fi
+	;;
+3)
+	echo "Enter file name from where data will be taken"
+	read filename
+	if [ -f $filename ]
+	then	
+		echo "Which char to be squeezed"
+		read schar
+		tr -s $schar <$filename
+	else
+		echo "file do not exist"
+	fi
+	;;
+4)
+	echo "Enter file name from where data will be taken"
+	read filename
+	if [ -f $filename ]
+	then	
+		tr '[0-9]' '[a-z]' <$filename
+	else
+		echo "file do not exist"
+	fi
+	;;
+5)
+	exit
+	;;
+*)
+	echo "wrong choice entered"
+	;;
+esac
+done
+
+	 	
+	
+
+

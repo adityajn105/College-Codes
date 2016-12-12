@@ -1,0 +1,57 @@
+#BY: Aditya Jain
+#Roll no-202021
+
+while [ true ]
+
+do
+
+echo "1. Display all current processess of shell"
+echo "2. Display information about all process"
+echo "3. Change priority of a process"
+echo "4. Delete process by their pid"
+echo "5. Delete process by their name"
+echo "6.Exit"
+echo "Enter your choice"
+read ch
+
+case $ch in
+1)
+        echo "Processess to the shell"
+        ps	#show snapshot of current process
+        ;;
+2)
+        echo "info of all the processess "
+        ps -elf|tail -15
+        ;;
+3)
+        echo "change priority of the processess"
+	echo "enter process id"
+	read proid
+	echo "Enter priority of a process"
+	read prl
+	renice $prl $proid		#change priority of process by factor prl
+	ps -elf|tail -15		#show long listing of all process
+        ;;
+4)
+	echo "Kill process by their id"
+	echo "Enter process pid"
+	read proid
+	kill $proid	#command to terminate a process by id
+	;;
+5)
+	echo "Kill process by their name"
+	echo "Enter process name"
+	read pname	
+	killall $pname	#command to terminate a process by name
+	;;
+6)
+	echo "You are exiting"
+	exit
+	;;
+
+*)
+	echo "Wrong choice entered"
+	;; 
+esac
+    
+done

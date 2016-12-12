@@ -1,0 +1,37 @@
+Temple----
+
+Dyna-86>A 1500                                                                  
+0000:1500  MOV AL,80                                                            
+0000:1502  OUT 67,AL                                                            
+0000:1504  MOV AL,01                                                            
+0000:1506  OUT 63,AL                                                            
+0000:1508  MOV AL,00                                                            
+0000:150A  OUT 61,AL                                                            
+0000:150C  MOV CX,FF                                                            
+0000:150F  DEC CX                                                               
+0000:1510  JNZ 150F                                                             
+0000:1512  MOV AL,6F                                                            
+0000:1514  OUT 61,AL                                                            
+0000:1516  MOV CX,FF                                                            
+0000:1519  DEC CX                                                               
+0000:151A  JNZ 1519                                                             
+0000:151C  INC AL                                                               
+0000:151E  OUT 61,AL                                                            
+0000:1520  CMP AL,BF                                                            
+0000:1522  JNE 151C                                                             
+0000:1524  DEC AL                                                               
+0000:1526  OUT 61,AL                                                            
+0000:1528  CMP AL,6F                                                            
+0000:152A  JNE 1524                                                             
+0000:152C  MOV CX,FF                                                            
+0000:152F  DEC CX                                                               
+0000:1530  JNZ 152F                                                             
+0000:1532  MOV AL,00                                                            
+0000:1534  OUT 61,AL                                                            
+0000:1536  MOV CX,FF                                                            
+0000:1539  DEC CX                                                               
+0000:153A  JNZ 1539                                                             
+0000:153C  JMP 1508                                                             
+0000:153E  INT 3                                                                
+0000:153F                                                                       
+Dyna-86>G 1500

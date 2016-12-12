@@ -1,0 +1,19 @@
+╭─aditya@DellPC [12:55:48]  ~/3.Image temper  
+╰─$ python temper.py dogtrue.jpeg dogorg.jpeg
+Original Hash :dc1958edd27a98cdffd49cfc50f1af0f
+Obtained Hash :dc1958edd27a98cdffd49cfc50f1af0f
+dogtrue.jpeg is not tempered.
+╭─aditya@DellPC [12:55:49]  ~/3.Image temper  
+╰─$ python temper.py dogtrue.jpeg dog.jpeg   
+Original Hash :3c77316c41ae31c1a59548e0aa39af80
+Obtained Hash :dc1958edd27a98cdffd49cfc50f1af0f
+dogtrue.jpeg is tempered.
+╭─aditya@DellPC [12:56:01]  ~/3.Image temper  
+╰─$ python temper.py music.mp3 musicorg.mp3 
+Original Hash :c0b05711a162a979345b53752284d9da
+Obtained Hash :c0b05711a162a979345b53752284d9da
+music.mp3 is not tempered.
+╭─aditya@DellPC [12:56:37]  ~/3.Image temper  
+╰─$ 
+
+

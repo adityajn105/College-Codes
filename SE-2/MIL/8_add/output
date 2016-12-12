@@ -1,0 +1,29 @@
+╭─aditya@DellPC [12:57:25]  ~  
+╰─$ nasm -f elf64 add.asm
+╭─aditya@DellPC [01:20:08]  ~  
+╰─$ ld -o add add.o
+╭─aditya@DellPC [01:20:17]  ~  
+╰─$ ./add
+1.Successive Addition
+2.Shift and Add
+3.Exit
+1
+Enter first no: FFFF
+
+Enter second no: FFFF
+
+Product is: FFFE0001
+1.Successive Addition
+2.Shift and Add
+3.Exit
+2
+Enter first no: FFFF
+
+Enter second no: FFFF
+
+Product is: FFFE0001
+1.Successive Addition
+2.Shift and Add
+3.Exit
+3
+

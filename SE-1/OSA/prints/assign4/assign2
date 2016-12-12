@@ -1,0 +1,65 @@
+#BY Aditya Jain
+#Roll no: 202021
+
+while [ true ]	#infinite loop
+do
+echo "1.Create directory :"
+echo "2.Delete directory :"
+echo "3.Change the directory :"
+echo "4.pwd"
+echo "5.Exit"
+
+echo "Enter your choice :"
+
+read ch
+case $ch in
+
+1)
+	echo " Please enter Directoryname : "
+	read dir
+	if [ -f $dir ]		#check if directory exists
+	then
+      		echo "Directory already existing"
+	else
+     		 mkdir $dir	#command to make directory
+     		 echo "Directory created "
+      		 ls -t | head -n 5	#command to list files and print top 5 lines
+	fi
+	;;
+
+2)
+	echo "Enter the Directory name to be deleted : "
+	read dir
+	if [-f $dir]
+	then
+		rmdir $dir	#command to delete a directory
+		echo "Directory Deleted successfully : "
+		ls -t | head -n 5
+	else
+		echo "Directory not found!"
+	fi
+	;;
+
+3)
+	pwd
+	echo "Changing current working directory to : enter the path "
+	read path
+	cd $path	#command to change present working directory
+	pwd
+	ls -i
+	;;
+
+4)
+	echo "Current Working Directory : "
+	pwd	#command to show present working directory
+	;;
+
+5)
+	exit
+	;;
+
+*)
+	echo "Wrong choice entered"
+	;;
+esac 
+done

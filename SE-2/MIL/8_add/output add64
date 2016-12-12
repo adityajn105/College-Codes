@@ -1,0 +1,31 @@
+	╭─aditya@DellPC [01:56:00]  ~  
+	╰─$ nasm -f elf64 add64.asm 
+	╭─aditya@DellPC [01:56:21]  ~  
+	╰─$ ld -o add add64.o  
+	╭─aditya@DellPC [01:56:32]  ~  
+	╰─$ ./add
+	1.Successive Addition
+	2.Shift and Add
+	3.Exit
+	1
+	Enter first no (32 bits): D45EF467 
+
+	Enter second no (32 bits): ABCDE123
+
+	Product is: 8E86380F0144F115
+	1.Successive Addition
+	2.Shift and Add
+	3.Exit
+	2
+	Enter first no (32 bits): D45EF467
+
+	Enter second no (32 bits): ABCDE123
+
+	Product is: 8E86380F0144F115
+	1.Successive Addition
+	2.Shift and Add
+	3.Exit
+	3
+	╭─aditya@DellPC [01:57:50]  ~  
+	╰─$ 
+

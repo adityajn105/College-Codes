@@ -1,0 +1,23 @@
+Delivered-To: adityajn105@gmail.com
+Received: by 10.31.13.77 with SMTP id 74csp256218vkn;
+        Wed, 10 Dec 2014 07:22:19 -0800 (PST)
+X-Received: by 10.70.52.161 with SMTP id u1mr8158222pdo.106.1418224939206;
+        Wed, 10 Dec 2014 07:22:19 -0800 (PST)
+Return-Path: <customer-support@makemytrip.com>
+Received: from nsmail4.makemytrip.com (nsmail4.makemytrip.com. [115.114.52.90])
+        by mx.google.com with ESMTP id d5si7173858pdd.145.2014.12.10.07.22.18
+        for <adityajn105@gmail.com>;
+        Wed, 10 Dec 2014 07:22:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of customer-support@makemytrip.com designates 115.114.52.90 as permitted sender) client-ip=115.114.52.90;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of customer-support@makemytrip.com designates 115.114.52.90 as permitted sender) smtp.mail=customer-support@makemytrip.com
+Received: from chn-17-11 (chn-17-11.mmt.mmt [10.86.17.11])
+	by nsmail4.makemytrip.com (Postfix) with ESMTP id CF467CEBCB
+	for <adityajn105@gmail.com>; Wed, 10 Dec 2014 20:52:17 +0530 (IST)
+Date: Wed, 10 Dec 2014 20:52:17 +0530 (IST)
+From: customer-support@makemytrip.com
+To: adityajn105@gmail.com
+Message-ID: <1902359771.105.1418224937828.JavaMail.mmytu@chn-17-11>
+Subject: User Account Created
+MIME-Version: 1.0
+Content-Type: text/html; charset=us-ascii

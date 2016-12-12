@@ -1,0 +1,42 @@
+#BY Aditya Jain
+#Roll no: 202021
+
+while [ true ]
+
+do
+
+echo "1. Display Operating system name"
+echo "2. Display operating system info"
+echo "3. Display login name"
+echo "4. Display Hostname"
+echo "5. Exit"
+echo "Enter your choice"
+read ch
+
+case $ch in
+1)
+        echo "operating system is"
+        uname	#command to print operating system name
+        ;;
+2)
+        echo "Operating system version"
+        cat /proc/version	#command to print os info
+        ;;
+3)
+        echo "Login name"
+	who	#command to print users of system
+        ;;
+4)
+	echo "Hostname"
+	hostname	#command to print hostname
+	;;
+5)
+	echo "Exiting from Program"
+	exit	#to exit program
+	;;
+*)
+	echo "Wrong choice entered"
+	;; 
+esac
+    
+done

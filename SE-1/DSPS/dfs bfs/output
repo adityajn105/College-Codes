@@ -1,0 +1,261 @@
+aditya@ADITYAsPC:~$ python Tree.py
+Techniques to create tree
+1.Non-Recurrsive Create(w)
+2.Recurrsive Create(w)
+Enter technique number: 1
+Enter Data for root node   :a
+enter another node(y or n)y
+Enter left(1) or right(2) node for node or no node(3) to a  1
+Enter data for this node   :b
+Enter left(1) or right(2) node for node or no node(3) to a  2
+Enter data for this node    :c
+Enter left(1) or right(2) node for node or no node(3) to a  1
+Enter left(1) or right(2) node for node or no node(3) to b  1
+Enter data for this node   :d
+Enter left(1) or right(2) node for node or no node(3) to b  2
+Enter data for this node    :f
+Enter left(1) or right(2) node for node or no node(3) to b  2
+Enter left(1) or right(2) node for node or no node(3) to f  2
+Enter data for this node    :e
+Enter left(1) or right(2) node for node or no node(3) to f  3
+enter another node(y or n)y
+Enter left(1) or right(2) node for node or no node(3) to a  2
+Enter left(1) or right(2) node for node or no node(3) to c  1
+Enter data for this node   :g
+Enter left(1) or right(2) node for node or no node(3) to c  2
+Enter data for this node    :h
+Enter left(1) or right(2) node for node or no node(3) to c  3
+enter another node(y or n)n
+
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?1
+a b d f e c g h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?2
+d b f e a g c h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?3
+d e f b g h c a 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?4
+a b d f e c g h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?5
+d b f e a g c h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?6
+d e f b g h c a 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?7
+a 
+
+b c 
+
+d f g h 
+
+e 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?8
+
+
+---------------------------------------------------------------------------
+
+aditya@ADITYAsPC:~$ python Tree.py
+Techniques to create tree
+1.Non-Recurrsive Create(w)
+2.Recurrsive Create(w)
+Enter technique number: 2
+Enter data for root nodea
+Do you want to add left node to  a(y or n) :y
+Enter data for this node:   b
+Do you want to add left node to  b(y or n) :y
+Enter data for this node:   d
+Do you want to add left node to  d(y or n) :n
+Do you want to add right node(y or n)  d          n
+Do you want to add more nodes(y or n)y
+Do you want to add left node to  a(y or n) :y
+Do you want to add left node to  b(y or n) :n
+Do you want to add right node(y or n)  b          y
+Enter data for this node:    f
+Do you want to add left node to  f(y or n) :n
+Do you want to add right node(y or n)  f          y
+Enter data for this node:    e
+Do you want to add left node to  e(y or n) :n
+Do you want to add right node(y or n)  e          n
+Do you want to add more nodes(y or n)y
+Do you want to add left node to  a(y or n) :n
+Do you want to add right node(y or n)  a          y
+Enter data for this node:    c
+Do you want to add left node to  c(y or n) :y
+Enter data for this node:   g
+Do you want to add left node to  g(y or n) :n
+Do you want to add right node(y or n)  g          n
+Do you want to add more nodes(y or n)y
+Do you want to add left node to  a(y or n) :2
+Do you want to add right node(y or n)  a          y
+Do you want to add left node to  c(y or n) :n
+Do you want to add right node(y or n)  c          y
+Enter data for this node:    h
+Do you want to add left node to  h(y or n) :n
+Do you want to add right node(y or n)  h          n
+Do you want to add more nodes(y or n)n
+===========Tree is created============
+
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?1
+a b d f e c g h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?2
+d b f e a g c h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?3
+d e f b g h c a 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?4
+a b d f e c g h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?5
+d b f e a g c h 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?6
+d e f b g h c a 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?7
+a 
+
+b c 
+
+d f g h 
+
+e 
+Techniques to display tree
+1.Recurssive Preorder(w)
+2.Recurssive Inorder(w)
+3.Recurssive Postorder(w)
+4.Non-Recurrsive Preorder(w)
+5.Non-Recurrsive Inorder(w)
+6.Non-Recurrsive Postorder(w)
+7.Breadth First Search(w)
+8.Exit(w)
+Display tree via technique?8
+aditya@ADITYAsPC:~$ 

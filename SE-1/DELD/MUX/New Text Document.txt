@@ -1,0 +1,50 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date:    11:54:56 09/22/2015 
+-- Design Name: 
+-- Module Name:    mux - Behavioral 
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: 
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+---- Uncomment the following library declaration if instantiating
+---- any Xilinx primitives in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity mux is
+    Port ( A : in  STD_LOGIC;
+           B : in  STD_LOGIC;
+           C : in  STD_LOGIC;
+           D : in  STD_LOGIC;
+           SET : in  STD_LOGIC_VECTOR (1 downto 0);
+           O : out  STD_LOGIC);
+end mux;
+
+architecture Behavioral of mux is
+
+begin
+	process(A,B,C,D,SET)
+	begin
+		if(set="00")then O<=A;
+		elsif(set="01")then O<=B;
+		elsif(set="10")then O<=C;
+		else O<=D;
+		end if;
+	end process;
+end Behavioral;

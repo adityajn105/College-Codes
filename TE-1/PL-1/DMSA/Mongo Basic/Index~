@@ -1,0 +1,850 @@
+1.    Display all states having population above 1600.
+    	> db.zips.find({pop:{$gt:1600}},{"state":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"pop" : {
+						"$gt" : 1600
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"pop" : {
+								"$gt" : 1600
+							}
+						},
+						"direction" : "forward"
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 18440,
+				"executionTimeMillis" : 24,
+				"totalKeysExamined" : 0,
+				"totalDocsExamined" : 29353,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 18440,
+					"executionTimeMillisEstimate" : 30,
+					"works" : 29355,
+					"advanced" : 18440,
+					"needTime" : 10914,
+					"needYield" : 0,
+					"saveState" : 229,
+					"restoreState" : 229,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"pop" : {
+								"$gt" : 1600
+							}
+						},
+						"nReturned" : 18440,
+						"executionTimeMillisEstimate" : 0,
+						"works" : 29355,
+						"advanced" : 18440,
+						"needTime" : 10914,
+						"needYield" : 0,
+						"saveState" : 229,
+						"restoreState" : 229,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"direction" : "forward",
+						"docsExamined" : 29353
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+
+
+
+    
+    
+
+2.    Display all cities having population above 1600.
+    	> db.zips.find({pop:{$gt:1600}},{"city":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"pop" : {
+						"$gt" : 1600
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"pop" : {
+								"$gt" : 1600
+							}
+						},
+						"direction" : "forward"
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 18440,
+				"executionTimeMillis" : 27,
+				"totalKeysExamined" : 0,
+				"totalDocsExamined" : 29353,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 18440,
+					"executionTimeMillisEstimate" : 30,
+					"works" : 29355,
+					"advanced" : 18440,
+					"needTime" : 10914,
+					"needYield" : 0,
+					"saveState" : 229,
+					"restoreState" : 229,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"pop" : {
+								"$gt" : 1600
+							}
+						},
+						"nReturned" : 18440,
+						"executionTimeMillisEstimate" : 20,
+						"works" : 29355,
+						"advanced" : 18440,
+						"needTime" : 10914,
+						"needYield" : 0,
+						"saveState" : 229,
+						"restoreState" : 229,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"direction" : "forward",
+						"docsExamined" : 29353
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+
+    
+    
+
+3.    Display all cities in state “KS”.
+    	> db.zips.find({"state":"KS"},{"city":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"state" : {
+						"$eq" : "KS"
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"state" : {
+								"$eq" : "KS"
+							}
+						},
+						"direction" : "forward"
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 715,
+				"executionTimeMillis" : 15,
+				"totalKeysExamined" : 0,
+				"totalDocsExamined" : 29353,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 715,
+					"executionTimeMillisEstimate" : 0,
+					"works" : 29355,
+					"advanced" : 715,
+					"needTime" : 28639,
+					"needYield" : 0,
+					"saveState" : 229,
+					"restoreState" : 229,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"state" : {
+								"$eq" : "KS"
+							}
+						},
+						"nReturned" : 715,
+						"executionTimeMillisEstimate" : 0,
+						"works" : 29355,
+						"advanced" : 715,
+						"needTime" : 28639,
+						"needYield" : 0,
+						"saveState" : 229,
+						"restoreState" : 229,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"direction" : "forward",
+						"docsExamined" : 29353
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+
+
+4.    Display location of city "TIMKEN"
+    	> db.zips.find({"city":"TIMKEN"},{"state":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"city" : {
+						"$eq" : "TIMKEN"
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"city" : {
+								"$eq" : "TIMKEN"
+							}
+						},
+						"direction" : "forward"
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 1,
+				"executionTimeMillis" : 18,
+				"totalKeysExamined" : 0,
+				"totalDocsExamined" : 29353,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 1,
+					"executionTimeMillisEstimate" : 10,
+					"works" : 29355,
+					"advanced" : 1,
+					"needTime" : 29353,
+					"needYield" : 0,
+					"saveState" : 229,
+					"restoreState" : 229,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "COLLSCAN",
+						"filter" : {
+							"city" : {
+								"$eq" : "TIMKEN"
+							}
+						},
+						"nReturned" : 1,
+						"executionTimeMillisEstimate" : 10,
+						"works" : 29355,
+						"advanced" : 1,
+						"needTime" : 29353,
+						"needYield" : 0,
+						"saveState" : 229,
+						"restoreState" : 229,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"direction" : "forward",
+						"docsExamined" : 29353
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	> db.zips.ensureIndex({pop:1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.zips.ensureIndex({"city":1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 2,
+	"numIndexesAfter" : 3,
+	"ok" : 1
+}
+> db.zips.ensureIndex({"state":1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 3,
+	"numIndexesAfter" : 4,
+	"ok" : 1
+}
+
+
+
+1.    Display all states having population above 1600.
+    	> db.zips.find({pop:{$gt:1600}},{"state":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"pop" : {
+						"$gt" : 1600
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "FETCH",
+						"inputStage" : {
+							"stage" : "IXSCAN",
+							"keyPattern" : {
+								"pop" : 1
+							},
+							"indexName" : "pop_1",
+							"isMultiKey" : false,
+							"isUnique" : false,
+							"isSparse" : false,
+							"isPartial" : false,
+							"indexVersion" : 1,
+							"direction" : "forward",
+							"indexBounds" : {
+								"pop" : [
+									"(1600.0, inf.0]"
+								]
+							}
+						}
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 18440,
+				"executionTimeMillis" : 33,
+				"totalKeysExamined" : 18440,
+				"totalDocsExamined" : 18440,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 18440,
+					"executionTimeMillisEstimate" : 30,
+					"works" : 18441,
+					"advanced" : 18440,
+					"needTime" : 0,
+					"needYield" : 0,
+					"saveState" : 144,
+					"restoreState" : 144,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"state" : 1
+					},
+					"inputStage" : {
+						"stage" : "FETCH",
+						"nReturned" : 18440,
+						"executionTimeMillisEstimate" : 30,
+						"works" : 18441,
+						"advanced" : 18440,
+						"needTime" : 0,
+						"needYield" : 0,
+						"saveState" : 144,
+						"restoreState" : 144,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"docsExamined" : 18440,
+						"alreadyHasObj" : 0,
+						"inputStage" : {
+							"stage" : "IXSCAN",
+							"nReturned" : 18440,
+							"executionTimeMillisEstimate" : 0,
+							"works" : 18441,
+							"advanced" : 18440,
+							"needTime" : 0,
+							"needYield" : 0,
+							"saveState" : 144,
+							"restoreState" : 144,
+							"isEOF" : 1,
+							"invalidates" : 0,
+							"keyPattern" : {
+								"pop" : 1
+							},
+							"indexName" : "pop_1",
+							"isMultiKey" : false,
+							"isUnique" : false,
+							"isSparse" : false,
+							"isPartial" : false,
+							"indexVersion" : 1,
+							"direction" : "forward",
+							"indexBounds" : {
+								"pop" : [
+									"(1600.0, inf.0]"
+								]
+							},
+							"keysExamined" : 18440,
+							"dupsTested" : 0,
+							"dupsDropped" : 0,
+							"seenInvalidated" : 0
+						}
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+	
+    
+
+2.    Display all cities having population above 1600.
+    > db.zips.find({pop:{$gt:1600}},{"city":1}).explain("executionStats")
+	{
+		"queryPlanner" : {
+			"plannerVersion" : 1,
+			"namespace" : "Zips.zips",
+			"indexFilterSet" : false,
+			"parsedQuery" : {
+				"pop" : {
+					"$gt" : 1600
+				}
+			},
+			"winningPlan" : {
+				"stage" : "PROJECTION",
+				"transformBy" : {
+					"city" : 1
+				},
+				"inputStage" : {
+					"stage" : "FETCH",
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"keyPattern" : {
+							"pop" : 1
+						},
+						"indexName" : "pop_1",
+						"isMultiKey" : false,
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 1,
+						"direction" : "forward",
+						"indexBounds" : {
+							"pop" : [
+								"(1600.0, inf.0]"
+							]
+						}
+					}
+				}
+			},
+			"rejectedPlans" : [ ]
+		},
+		"executionStats" : {
+			"executionSuccess" : true,
+			"nReturned" : 18440,
+			"executionTimeMillis" : 33,
+			"totalKeysExamined" : 18440,
+			"totalDocsExamined" : 18440,
+			"executionStages" : {
+				"stage" : "PROJECTION",
+				"nReturned" : 18440,
+				"executionTimeMillisEstimate" : 40,
+				"works" : 18441,
+				"advanced" : 18440,
+				"needTime" : 0,
+				"needYield" : 0,
+				"saveState" : 144,
+				"restoreState" : 144,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"transformBy" : {
+					"city" : 1
+				},
+				"inputStage" : {
+					"stage" : "FETCH",
+					"nReturned" : 18440,
+					"executionTimeMillisEstimate" : 30,
+					"works" : 18441,
+					"advanced" : 18440,
+					"needTime" : 0,
+					"needYield" : 0,
+					"saveState" : 144,
+					"restoreState" : 144,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"docsExamined" : 18440,
+					"alreadyHasObj" : 0,
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"nReturned" : 18440,
+						"executionTimeMillisEstimate" : 20,
+						"works" : 18441,
+						"advanced" : 18440,
+						"needTime" : 0,
+						"needYield" : 0,
+						"saveState" : 144,
+						"restoreState" : 144,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"keyPattern" : {
+							"pop" : 1
+						},
+						"indexName" : "pop_1",
+						"isMultiKey" : false,
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 1,
+						"direction" : "forward",
+						"indexBounds" : {
+							"pop" : [
+								"(1600.0, inf.0]"
+							]
+						},
+						"keysExamined" : 18440,
+						"dupsTested" : 0,
+						"dupsDropped" : 0,
+						"seenInvalidated" : 0
+					}
+				}
+			}
+		},
+		"serverInfo" : {
+			"host" : "PUN",
+			"port" : 27017,
+			"version" : "3.2.7",
+			"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+		},
+		"ok" : 1
+	}
+
+
+3.    Display all cities in state “KS”.
+    	> db.zips.find({"state":"KS"},{"city":1}).explain("executionStats")
+		{
+			"queryPlanner" : {
+				"plannerVersion" : 1,
+				"namespace" : "Zips.zips",
+				"indexFilterSet" : false,
+				"parsedQuery" : {
+					"state" : {
+						"$eq" : "KS"
+					}
+				},
+				"winningPlan" : {
+					"stage" : "PROJECTION",
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "FETCH",
+						"inputStage" : {
+							"stage" : "IXSCAN",
+							"keyPattern" : {
+								"state" : 1
+							},
+							"indexName" : "state_1",
+							"isMultiKey" : false,
+							"isUnique" : false,
+							"isSparse" : false,
+							"isPartial" : false,
+							"indexVersion" : 1,
+							"direction" : "forward",
+							"indexBounds" : {
+								"state" : [
+									"[\"KS\", \"KS\"]"
+								]
+							}
+						}
+					}
+				},
+				"rejectedPlans" : [ ]
+			},
+			"executionStats" : {
+				"executionSuccess" : true,
+				"nReturned" : 715,
+				"executionTimeMillis" : 2,
+				"totalKeysExamined" : 715,
+				"totalDocsExamined" : 715,
+				"executionStages" : {
+					"stage" : "PROJECTION",
+					"nReturned" : 715,
+					"executionTimeMillisEstimate" : 0,
+					"works" : 716,
+					"advanced" : 715,
+					"needTime" : 0,
+					"needYield" : 0,
+					"saveState" : 5,
+					"restoreState" : 5,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"transformBy" : {
+						"city" : 1
+					},
+					"inputStage" : {
+						"stage" : "FETCH",
+						"nReturned" : 715,
+						"executionTimeMillisEstimate" : 0,
+						"works" : 716,
+						"advanced" : 715,
+						"needTime" : 0,
+						"needYield" : 0,
+						"saveState" : 5,
+						"restoreState" : 5,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"docsExamined" : 715,
+						"alreadyHasObj" : 0,
+						"inputStage" : {
+							"stage" : "IXSCAN",
+							"nReturned" : 715,
+							"executionTimeMillisEstimate" : 0,
+							"works" : 716,
+							"advanced" : 715,
+							"needTime" : 0,
+							"needYield" : 0,
+							"saveState" : 5,
+							"restoreState" : 5,
+							"isEOF" : 1,
+							"invalidates" : 0,
+							"keyPattern" : {
+								"state" : 1
+							},
+							"indexName" : "state_1",
+							"isMultiKey" : false,
+							"isUnique" : false,
+							"isSparse" : false,
+							"isPartial" : false,
+							"indexVersion" : 1,
+							"direction" : "forward",
+							"indexBounds" : {
+								"state" : [
+									"[\"KS\", \"KS\"]"
+								]
+							},
+							"keysExamined" : 715,
+							"dupsTested" : 0,
+							"dupsDropped" : 0,
+							"seenInvalidated" : 0
+						}
+					}
+				}
+			},
+			"serverInfo" : {
+				"host" : "PUN",
+				"port" : 27017,
+				"version" : "3.2.7",
+				"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+			},
+			"ok" : 1
+		}
+    
+    
+4.    Display location of city "TIMKEN"
+    > db.zips.find({"city":"TIMKEN"},{"state":1}).explain("executionStats")
+	{
+		"queryPlanner" : {
+			"plannerVersion" : 1,
+			"namespace" : "Zips.zips",
+			"indexFilterSet" : false,
+			"parsedQuery" : {
+				"city" : {
+					"$eq" : "TIMKEN"
+				}
+			},
+			"winningPlan" : {
+				"stage" : "PROJECTION",
+				"transformBy" : {
+					"state" : 1
+				},
+				"inputStage" : {
+					"stage" : "FETCH",
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"keyPattern" : {
+							"city" : 1
+						},
+						"indexName" : "city_1",
+						"isMultiKey" : false,
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 1,
+						"direction" : "forward",
+						"indexBounds" : {
+							"city" : [
+								"[\"TIMKEN\", \"TIMKEN\"]"
+							]
+						}
+					}
+				}
+			},
+			"rejectedPlans" : [ ]
+		},
+		"executionStats" : {
+			"executionSuccess" : true,
+			"nReturned" : 1,
+			"executionTimeMillis" : 0,
+			"totalKeysExamined" : 1,
+			"totalDocsExamined" : 1,
+			"executionStages" : {
+				"stage" : "PROJECTION",
+				"nReturned" : 1,
+				"executionTimeMillisEstimate" : 0,
+				"works" : 2,
+				"advanced" : 1,
+				"needTime" : 0,
+				"needYield" : 0,
+				"saveState" : 0,
+				"restoreState" : 0,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"transformBy" : {
+					"state" : 1
+				},
+				"inputStage" : {
+					"stage" : "FETCH",
+					"nReturned" : 1,
+					"executionTimeMillisEstimate" : 0,
+					"works" : 2,
+					"advanced" : 1,
+					"needTime" : 0,
+					"needYield" : 0,
+					"saveState" : 0,
+					"restoreState" : 0,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"docsExamined" : 1,
+					"alreadyHasObj" : 0,
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"nReturned" : 1,
+						"executionTimeMillisEstimate" : 0,
+						"works" : 2,
+						"advanced" : 1,
+						"needTime" : 0,
+						"needYield" : 0,
+						"saveState" : 0,
+						"restoreState" : 0,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"keyPattern" : {
+							"city" : 1
+						},
+						"indexName" : "city_1",
+						"isMultiKey" : false,
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 1,
+						"direction" : "forward",
+						"indexBounds" : {
+							"city" : [
+								"[\"TIMKEN\", \"TIMKEN\"]"
+							]
+						},
+						"keysExamined" : 1,
+						"dupsTested" : 0,
+						"dupsDropped" : 0,
+						"seenInvalidated" : 0
+					}
+				}
+			}
+		},
+		"serverInfo" : {
+			"host" : "PUN",
+			"port" : 27017,
+			"version" : "3.2.7",
+			"gitVersion" : "4249c1d2b5999ebbf1fdf3bc0e0e3b3ff5c0aaf2"
+		},
+		"ok" : 1
+	}
+
+    

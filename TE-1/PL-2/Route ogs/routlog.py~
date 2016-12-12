@@ -1,0 +1,9 @@
+import sys
+fd=open(sys.argv[1],"r")
+ip=raw_input("Search IP Address  :")
+print({"Source IP    	Destination IP	Service/Port No")
+for line in fd:
+	if line[0:14].strip()==ip:
+		print line
+
+		

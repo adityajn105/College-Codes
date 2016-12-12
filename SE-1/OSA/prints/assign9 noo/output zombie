@@ -1,0 +1,46 @@
+aditya@ADITYAsPC:~/Documents$ gcc zombie.c
+aditya@ADITYAsPC:~/Documents$ ./a.out
+ child id is 5667
+ PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
+    0     1     1     1 ?           -1 Ss       0   0:01 /sbin/init
+    0     2     0     0 ?           -1 S        0   0:00 [kthreadd]
+    2     3     0     0 ?           -1 S        0   0:01 [ksoftirqd/0]
+    2     5     0     0 ?           -1 S<       0   0:00 [kworker/0:0H]
+    2     7     0     0 ?           -1 S        0   0:02 [rcu_sched]
+    2     8     0     0 ?           -1 S        0   0:00 [rcuos/0]
+    2     9     0     0 ?           -1 S        0   0:00 [rcuos/1]
+    2    10     0     0 ?           -1 S        0   0:00 [rcuos/2]
+    2    11     0     0 ?           -1 S        0   0:01 [rcuos/3]
+    2    12     0     0 ?           -1 S        0   0:00 [rcu_bh]
+    2    13     0     0 ?           -1 S        0   0:00 [rcuob/0]
+    2    14     0     0 ?           -1 S        0   0:00 [rcuob/1]
+    2    15     0     0 ?           -1 S        0   0:00 [rcuob/2]
+    2    16     0     0 ?           -1 S        0   0:00 [rcuob/3]
+    2    17     0     0 ?           -1 S        0   0:00 [migration/0]
+ 1695  5060  1819  1819 ?           -1 Sl    1000   0:12 gnome-terminal
+ 5060  5069  1819  1819 ?           -1 S     1000   0:00 gnome-pty-helper
+ 5060  5070  5070  5070 pts/0     5070 Ss+   1000   0:00 bash
+    2  5165     0     0 ?           -1 S        0   0:00 [kworker/3:1]
+    2  5221     0     0 ?           -1 S        0   0:02 [kworker/u8:0]
+ 5060  5284  5284  5284 pts/9     5666 Ss    1000   0:00 bash
+    2  5345     0     0 ?           -1 S        0   0:00 [kworker/0:2]
+    2  5408     0     0 ?           -1 S        0   0:01 [kworker/2:0]
+    2  5409     0     0 ?           -1 S        0   0:01 [kworker/u8:2]
+    2  5411     0     0 ?           -1 S        0   0:01 [kworker/2:2]
+    1  5462  5462  5462 ?           -1 Ss       0   0:00 /sbin/mount.ntfs /dev/sda5 /media/aditya/WIndows 8.1 -o rw,nosuid,nodev,uhelper=udisks2
+,uid=1000,gid=1000,dmask=0077,fmask=0177
+    2  5477     0     0 ?           -1 S        0   0:00 [kworker/0:0]
+    1  5545  5544  5544 ?           -1 S      111   0:00 avahi-daemon: running [ADITYAsPC.local]
+ 5545  5546  5544  5544 ?           -1 S      111   0:00 avahi-daemon: chroot helper
+ 3651  5552  5552  3651 ?           -1 S        7   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+ 3651  5553  5553  3651 ?           -1 S        7   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+    2  5554     0     0 ?           -1 S        0   0:00 [kworker/1:0]
+    2  5591     0     0 ?           -1 S        0   0:00 [kworker/2:1]
+ 1695  5613  1819  1819 ?           -1 Sl    1000   0:01 gedit /home/aditya/Documents/zombie.c
+    2  5659     0     0 ?           -1 S        0   0:00 [kworker/u8:1]
+ 5284  5666  5666  5284 pts/9     5666 S+    1000   0:00 ./a.out
+ 5666  5667  5666  5284 pts/9     5666 Z+    1000   0:00 [a.out] <defunct>
+ 5666  5668  5666  5284 pts/9     5666 S+    1000   0:00 sh -c ps -ajx|more
+ 5668  5669  5666  5284 pts/9     5666 R+    1000   0:00 ps -ajx
+ 5668  5670  5666  5284 pts/9     5666 S+    1000   0:00 more
+

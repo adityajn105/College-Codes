@@ -1,0 +1,151 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class dijik
+{
+	int n,d;
+	int cost[20][20];
+public:
+	void getg();
+	void showg();
+	void shpath();
+
+};
+
+void dijik::getg()
+{
+	cout << endl << "Enter the no vertexes";
+	cin >> n;
+	for (int i = 0; i<n; i++)
+	{
+		for (int j = 0; j<n; j++)
+		{
+			if (i != j)
+			{
+				cost[i][j] = 999;
+			}
+			else
+			{
+				cost[i][j] = 0;
+			}
+		}
+	}
+	cout << endl << "Enter no of edges";
+	cin >> d;
+	for (int i = 0; i<d; i++)
+	{
+		int x, y,c;
+		cout << endl << "Enter vertices between which there is an edge :";
+		cin >> x >> y;
+		cout << endl << "Enter cost between these edges  :";
+		cin >> c;
+		cost[x][y] = cost[y][x] = c;
+	}
+}
+
+void dijik::showg()
+{
+	cout << endl << "\t";
+	for (int i = 0; i<n; i++)
+	{
+		cout <<i<< "\t";
+	}
+	cout << endl;
+	for (int i = 0; i<n; i++)
+	{
+		cout << i << "\t";
+		for (int j = 0; j<n; j++)
+		{
+			cout << cost[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+
+void dijik::shpath()
+{
+	int x,y,k=0;
+	int a[20];
+	int pred[20],path[20];
+	int visited[20];
+	cout << "\nSelect source vertex to find min distance";
+	cin >> x;
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = cost[x][i]; 
+		pred[i] = x;
+		visited[i] = 0;
+	}
+	visited[x] = 1;
+	int count = 1;
+	while (count < n)
+	{
+		int min = 999;
+		for (int i = 0; i < n; i++)
+		{
+			if (a[i] < min && visited[i] == 0)
+			{
+				min = a[i];
+				k = i;
+			}
+		}
+		visited[k] = 1;
+		for (int i = 0; i < n; i++)
+		{
+			if (visited[i] == 0)
+			{
+				if (min + cost[k][i] < a[i])
+				{
+					a[i] = min + cost[k][i];
+					pred[i] = k;
+				}
+			}
+		}
+		count++;
+	}
+	for (y = 0; y < n; y++)
+	{
+		if (y != x)
+		{
+			int z = 0;
+			int i = y;
+			cout << "\n\n\nShortest path for "<<y<<" is";
+			while (i != x)
+			{
+				path[z] = pred[i];
+				i = pred[i];
+				z++;
+			}
+			cout << y << "->";
+			for (int i = 0; i < z - 1; i++)
+			{
+				cout << path[i] << "->";
+			}
+			cout << x << "\n";
+
+			cout << "Minimum cost for "<<y<<" is :";
+			cout << a[y];
+		}
+	}
+}
+
+int main()
+{
+	dijik d;
+	int ch,k=0;
+	do
+	{
+		cout << "\nEnter your choice\n1. Input cost adjancy matricx\n2. Show Cost adjnancy matrix\n3. Find minimum distance b/w two vertices and Path\n4. Exit";
+		cin >> ch;
+		switch (ch)
+		{
+		case 1: {d.getg(); continue; }
+		case 2: {d.showg(); continue; }
+		case 3: {d.shpath(); continue; }
+		case 4: {k = 1; break; }
+		default:{cout << "\nWrong choice"; continue; }
+		}
+	}while (k == 0);
+	return 0;
+}

@@ -1,0 +1,169 @@
+Employee Database
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 1
+Enter name: Name 1
+Enter address: abc
+Enter date of birth: 12-06
+Enter employee id: 1234
+Enter designation: abc
+Enter experience: abc
+Enter area of experience: lmn
+Enter qualification: abc
+Enter grade: abc
+Enter university: abc
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 2
+Record 1
+Name : Name 1
+Address: abc
+DOB: 12-06
+Employee ID: 1234
+Designation: abc
+Experience: abc
+Area of Experience: lmn
+Qualification: abc
+Grade: abc
+University: abc
+--------------------
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 1
+Enter name: Name 2
+Enter address: hji
+Enter date of birth: 25-04
+Enter employee id: 5478
+Enter designation: abc
+Enter experience: ghj
+Enter area of experience: lkj
+Enter qualification: mnv
+Enter grade: qwe
+Enter university: tui
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 2
+Record 1
+Name : Name 1
+Address: abc
+DOB: 12-06
+Employee ID: 1234
+Designation: abc
+Experience: abc
+Area of Experience: lmn
+Qualification: abc
+Grade: abc
+University: abc
+--------------------
+Record 2
+Name : Name 2
+Address: hji
+DOB: 25-04
+Employee ID: 5478
+Designation: abc
+Experience: ghj
+Area of Experience: lkj
+Qualification: mnv
+Grade: qwe
+University: tui
+--------------------
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 2
+Record 1
+Name : Name 1
+Address: abc
+DOB: 12-06
+Employee ID: 1234
+Designation: abc
+Experience: abc
+Area of Experience: lmn
+Qualification: abc
+Grade: abc
+University: abc
+--------------------
+Record 2
+Name : Name 2
+Address: hji
+DOB: 25-04
+Employee ID: 5478
+Designation: abc
+Experience: ghj
+Area of Experience: lkj
+Qualification: mnv
+Grade: qwe
+University: tui
+--------------------
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 3
+Enter employee id to search: 5478
+Record Found: 
+Name : Name 2
+Address: hji
+DOB: 25-04
+Employee ID: 5478
+Designation: abc
+Experience: ghj
+Area of Experience: lkj
+Qualification: mnv
+Grade: qwe
+University: tui
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 4
+Enter employee id to delete: 1234
+Record deleted
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 2
+Record 1
+Name : Name 2
+Address: hji
+DOB: 25-04
+Employee ID: 5478
+Designation: abc
+Experience: ghj
+Area of Experience: lkj
+Qualification: mnv
+Grade: qwe
+University: tui
+--------------------
+
+1. Enter a record
+2. List records
+3. Search for a record
+4. Delete a record
+5. Exit
+Enter your choice: 5

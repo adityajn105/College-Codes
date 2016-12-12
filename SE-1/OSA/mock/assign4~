@@ -1,0 +1,35 @@
+while [ true ]
+do
+echo "1. Display all terminal devices"
+echo "2. Display memory map"
+echo "3. Display processor info"
+echo "4. Exit"
+echo "Enter your choice"
+read ch
+
+case $ch in
+1)
+	echo "All terminal Devices"
+	lspci
+	;;
+2)
+	echo "Memory Map"
+	free -m #also can use less /prac/meminfo
+	;;
+3)
+	echo "processor info"
+	cat /proc/cpuinfo
+	;;
+4)
+	Exit
+	;;
+*)
+	echo "Wrong choice entered"
+	;;
+esac
+done
+
+
+
+
+

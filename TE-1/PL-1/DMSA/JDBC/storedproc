@@ -1,0 +1,15 @@
+//stored Procedure
+
+mysql> CREATE PROCEDURE guest_counter() begin SELECT COUNT(*) FROM GUESTS; end  $
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CALL guest_counter()$
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+

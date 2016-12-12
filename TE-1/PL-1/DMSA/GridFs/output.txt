@@ -1,0 +1,15 @@
+1.Save Image
+2.Get Image
+3.Exit
+1
+Enter file name
+dog.jpeg
+1.Save Image
+2.Get Image
+3.Exit
+2
+Enter file name to show
+dog.jpeg
+1.Save Image
+2.Get Image
+3.Exit

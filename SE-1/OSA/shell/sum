@@ -1,0 +1,27 @@
+echo enter a number
+read a
+echo enter another number
+read b
+echo enter what you want to do
+echo 1 for sum
+echo 2 for subtraction
+echo 3 for product
+echo 4 for division
+read d
+
+case $d in
+1) c=`echo $a + $b| bc`
+echo sum is "$c"
+;;
+3) c=`echo $a \* $b| bc`
+echo product is "$c"
+;;
+4) c=`echo $a / $b| bc`
+echo division is "$c"
+;;
+2) c=`echo $a - $b| bc`
+echo subtraction is $c
+;;
+*) echo wrong choice entered
+exit
+esac

@@ -1,0 +1,22 @@
+	;Mode 1
+	Dyna-86>U 2000                                                                  
+	0000:2000  MOV AL, 53                                                           
+	0000:2002  OUT 33, AL                                                           
+	0000:2004  MOV AL, 05                                                           
+	0000:2006  OUT 31, AL                                                           
+	0000:2008  INT 3                                                                
+	0000:2009  RET FAR                                                              
+	0000:200A  POP AX                                                               
+	0000:200B  RET FAR                                                              
+	0000:200C  POP AX                                                               
+	0000:200D  RET FAR                                                              
+	0000:200E  POP AX                                                               
+	0000:200F  RET FAR                                                              
+	0000:2010  POP AX                                                               
+	0000:2011  RET FAR                                                              
+	0000:2012  POP AX                                                               
+	Dyna-86>G 2000                                                                  
+		                                                                        
+	Break at FFFF:2009                                                              
+	Dyna-86>
+

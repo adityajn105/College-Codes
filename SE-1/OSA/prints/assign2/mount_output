@@ -1,0 +1,65 @@
+root@B4L0106:/home/student/OSA# sh mount.sh
+1. List partition table for connected devices 
+2. Mount a device 
+3. Unmount a device 
+4. Exit 
+Please enter your choice : 
+1
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 465.8G  0 disk 
+├─sda1   8:1    0  97.7G  0 part 
+├─sda2   8:2    0 146.5G  0 part 
+├─sda3   8:3    0  48.8G  0 part 
+├─sda4   8:4    0     1K  0 part 
+├─sda5   8:5    0  97.7G  0 part 
+├─sda6   8:6    0  67.2G  0 part /
+└─sda7   8:7    0   7.9G  0 part [SWAP]
+sdb      8:16   1   7.3G  0 disk 
+└─sdb1   8:17   1   7.3G  0 part /media/usb
+sr0     11:0    1  1024M  0 rom  
+zram0  251:0    0   1.9G  0 disk [SWAP]
+1. List partition table for connected devices 
+2. Mount a device 
+3. Unmount a device 
+4. Exit 
+Please enter your choice : 
+3
+Enter device location : 
+/dev/sdb1
+Unmounted successfully
+1. List partition table for connected devices 
+2. Mount a device 
+3. Unmount a device 
+4. Exit 
+Please enter your choice : 
+2
+Enter device location  : 
+/dev/sdb1 
+Enter mount point : 
+/media/usb
+1. List partition table for connected devices 
+2. Mount a device 
+3. Unmount a device 
+4. Exit 
+Please enter your choice : 
+1
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 465.8G  0 disk 
+├─sda1   8:1    0  97.7G  0 part 
+├─sda2   8:2    0 146.5G  0 part 
+├─sda3   8:3    0  48.8G  0 part 
+├─sda4   8:4    0     1K  0 part 
+├─sda5   8:5    0  97.7G  0 part 
+├─sda6   8:6    0  67.2G  0 part /
+└─sda7   8:7    0   7.9G  0 part [SWAP]
+sdb      8:16   1   7.3G  0 disk 
+└─sdb1   8:17   1   7.3G  0 part /media/usb
+sr0     11:0    1  1024M  0 rom  
+zram0  251:0    0   1.9G  0 disk [SWAP]
+1. List partition table for connected devices 
+2. Mount a device 
+3. Unmount a device 
+4. Exit 
+Please enter your choice : 
+4
+root@B4L0106:/home/student/OSA# 

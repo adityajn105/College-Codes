@@ -1,0 +1,75 @@
+╭─aditya@DellPC [02:36:50]  /media/aditya/OjhaPD/Aditya's Data/PL-2/Route ogs  
+╰─$ python routlog.py log.txt
+Menu--->
+1.Search by Source
+2.Search by Destination
+3.Search by Service
+1
+Enter Source IP Address  :192.168.1.102
+Source IP    	Destination IP	Service/Port No
+192.168.1.102	216.58.199.174	HTTPS
+
+192.168.1.102	216.58.199.162	HTTPS
+
+192.168.1.102	216.58.199.162	HTTPS
+
+192.168.1.102	216.58.199.142	HTTPS
+
+192.168.1.102	216.58.199.174	HTTPS
+
+192.168.1.102	173.194.154.80	HTTPS
+
+╭─aditya@DellPC [02:37:28]  /media/aditya/OjhaPD/Aditya's Data/PL-2/Route ogs  
+╰─$ python routlog.py log.txt
+Menu--->
+1.Search by Source
+2.Search by Destination
+3.Search by Service
+2
+Enter Destination IP Address  :216.58.199.174
+Source IP    	Destination IP	Service/Port No
+192.168.1.101	216.58.199.174	HTTPS
+
+192.168.1.102	216.58.199.174	HTTPS
+
+192.168.1.101	216.58.199.174	www
+
+192.168.1.101	216.58.199.174	www
+
+192.168.1.102	216.58.199.174	HTTPS
+
+╭─aditya@DellPC [02:37:59]  /media/aditya/OjhaPD/Aditya's Data/PL-2/Route ogs  
+╰─$ python routlog.py log.txt                                                                   1 ↵
+Menu--->
+1.Search by Source
+2.Search by Destination
+3.Search by Service
+3
+Enter Service  :HTTPS
+Source IP    	Destination IP	Service/Port No
+192.168.1.101	216.58.199.142	HTTPS
+
+192.168.1.101	216.58.199.174	HTTPS
+
+192.168.1.101	216.58.199.129	HTTPS
+
+192.168.1.101	216.58.199.129	HTTPS
+
+192.168.1.101	216.58.199.129	HTTPS
+
+192.168.1.101	216.58.199.163	HTTPS
+
+192.168.1.102	216.58.199.174	HTTPS
+
+192.168.1.102	216.58.199.162	HTTPS
+
+192.168.1.102	216.58.199.162	HTTPS
+
+192.168.1.102	216.58.199.142	HTTPS
+
+192.168.1.102	216.58.199.174	HTTPS
+
+192.168.1.102	173.194.154.80	HTTPS
+
+╭─aditya@DellPC [02:38:08]  /media/aditya/OjhaPD/Aditya's Data/PL-2/Route ogs  
+╰─$ 

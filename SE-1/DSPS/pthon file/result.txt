@@ -1,0 +1,5 @@
+No of vowels : 21
+No of characters : 77
+No of lines : 3
+No of blanks : 14
+No of words : 17

@@ -1,0 +1,99 @@
+root@B4L0106:/home/student# sh assign6
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+1
+enter group name to be created:
+comp
+vvv:x:1013:
+qwerty:x:1014:
+qwe:x:1015:
+7:x:1016:
+comp:x:1017:
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+2
+enter name of user to be created
+aditya
+Enter group to be assigned to user
+comp
+vvv:x:1007:1013::/home/vvv:/bin/sh
+qwerty:x:1008:1014::/home/qwerty:/bin/sh
+qwe:x:1009:1015::/home/qwe:/bin/sh
+7:x:1010:1016::/home/7:/bin/sh
+aditya:x:1011:1017::/home/aditya:/bin/sh
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+3
+enter user to be deleted
+aditya
+lmn:x:1006:1010::/home/lmn:/bin/sh
+vvv:x:1007:1013::/home/vvv:/bin/sh
+qwerty:x:1008:1014::/home/qwerty:/bin/sh
+qwe:x:1009:1015::/home/qwe:/bin/sh
+7:x:1010:1016::/home/7:/bin/sh
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+4
+enter group to be deleted
+comp
+group1:x:1011:
+vvv:x:1013:
+qwerty:x:1014:
+qwe:x:1015:
+7:x:1016:
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+5
+the list of user is as follows:
+lmn:x:1006:1010::/home/lmn:/bin/sh
+vvv:x:1007:1013::/home/vvv:/bin/sh
+qwerty:x:1008:1014::/home/qwerty:/bin/sh
+qwe:x:1009:1015::/home/qwe:/bin/sh
+7:x:1010:1016::/home/7:/bin/sh
+list of grup is as follows:
+group1:x:1011:
+vvv:x:1013:
+qwerty:x:1014:
+qwe:x:1015:
+7:x:1016:
+menu:
+1.create new group
+2.create new user
+3.delete user
+4.delete group
+5.display user and group
+6.exit
+ enter your choice :
+6
+root@B4L0106:/home/student# 
+

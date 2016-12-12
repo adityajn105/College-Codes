@@ -1,0 +1,12 @@
+student@B04L05100:~/Documents/assgt 13 & 14$ nasm -f elf64 pass.asm
+student@B04L05100:~/Documents/assgt 13 & 14$ gcc -o pass pass.o
+student@B04L05100:~/Documents/assgt 13 & 14$ ./pass
+Enter a password : 
+test12
+Password is incorrect 
+student@B04L05100:~/Documents/assgt 13 & 14$ ./pass
+Enter a password : 
+test123
+Password is correct 
+student@B04L05100:~/Documents/assgt 13 & 14$ 
+

@@ -1,0 +1,131 @@
+student@B4L0106:~$ sh assign5
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+1
+Processess to the shell
+  PID TTY          TIME CMD
+ 3067 pts/0    00:00:00 bash
+ 4031 pts/0    00:00:00 sh
+ 4032 pts/0    00:00:00 ps
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+2
+info of all the processess 
+1 S root      3361     2  0  80   0 -     0 worker 12:11 ?        00:00:00 [kworker/3:2]
+1 S root      3384     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/1:2]
+1 S root      3385     2  0  80   0 -     0 scsi_e 12:15 ?        00:00:00 [scsi_eh_7]
+1 S root      3386     2  0  80   0 -     0 usb_st 12:15 ?        00:00:00 [usb-storage]
+1 S root      3389     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/u:0]
+5 S root      3390   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+5 S root      3391   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+1 S root      3402     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/2:2]
+5 S root      3408     1  0  80   0 -  3966 reques 12:15 ?        00:00:00 /sbin/mount.ntfs /dev/sdb1 /media/ADITYA -o rw,nosuid,nodev,uhelper=udisks,uid=1000,gid=1000,dmask=0077,fmask=0177
+1 S root      3425     2  0  80   0 -     0 bdi_wr 12:15 ?        00:00:00 [flush-8:16]
+1 S root      3780     2  0  80   0 -     0 worker 12:35 ?        00:00:00 [kworker/0:1]
+0 S student   3979     1  1  80   0 - 162343 poll_s 12:43 ?       00:00:02 /usr/lib/firefox/firefox
+0 S student   4031  3067  0  80   0 -  1100 wait   12:45 pts/0    00:00:00 sh assign5
+0 R student   4033  4031  0  80   0 -  5591 -      12:45 pts/0    00:00:00 ps -elf
+0 S student   4034  4031  0  80   0 -  2850 pipe_w 12:45 pts/0    00:00:00 tail -15
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+3
+change priority of the processess
+enter process id
+3979
+Enter priority of a process
+10
+3979 (process ID) old priority 0, new priority 10
+1 S root      3349     2  0  80   0 -     0 worker 12:10 ?        00:00:00 [kworker/0:2]
+1 S root      3361     2  0  80   0 -     0 worker 12:11 ?        00:00:00 [kworker/3:2]
+1 S root      3384     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/1:2]
+1 S root      3385     2  0  80   0 -     0 scsi_e 12:15 ?        00:00:00 [scsi_eh_7]
+1 S root      3386     2  0  80   0 -     0 usb_st 12:15 ?        00:00:00 [usb-storage]
+1 S root      3389     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/u:0]
+5 S root      3390   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+5 S root      3391   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+1 S root      3402     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/2:2]
+5 S root      3408     1  0  80   0 -  3966 reques 12:15 ?        00:00:00 /sbin/mount.ntfs /dev/sdb1 /media/ADITYA -o rw,nosuid,nodev,uhelper=udisks,uid=1000,gid=1000,dmask=0077,fmask=0177
+1 S root      3780     2  0  80   0 -     0 worker 12:35 ?        00:00:00 [kworker/0:1]
+0 S student   3979     1  1  90  10 - 162343 poll_s 12:43 ?       00:00:02 /usr/lib/firefox/firefox
+0 S student   4031  3067  0  80   0 -  1100 wait   12:45 pts/0    00:00:00 sh assign5
+0 R student   4036  4031  0  80   0 -  5591 -      12:45 pts/0    00:00:00 ps -elf
+0 S student   4037  4031  0  80   0 -  2850 pipe_w 12:45 pts/0    00:00:00 tail -15
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+4
+Kill process by their id
+Enter process pid
+3979
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+2
+info of all the processess 
+0 S student   3169     1  0  90  10 - 168138 poll_s 11:57 ?       00:00:04 /usr/bin/python /usr/bin/update-manager --no-focus-on-map
+1 S root      3349     2  0  80   0 -     0 worker 12:10 ?        00:00:00 [kworker/0:2]
+1 S root      3361     2  0  80   0 -     0 worker 12:11 ?        00:00:00 [kworker/3:2]
+1 S root      3384     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/1:2]
+1 S root      3385     2  0  80   0 -     0 scsi_e 12:15 ?        00:00:00 [scsi_eh_7]
+1 S root      3386     2  0  80   0 -     0 usb_st 12:15 ?        00:00:00 [usb-storage]
+1 S root      3389     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/u:0]
+5 S root      3390   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+5 S root      3391   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+1 S root      3402     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/2:2]
+5 S root      3408     1  0  80   0 -  3966 reques 12:15 ?        00:00:00 /sbin/mount.ntfs /dev/sdb1 /media/ADITYA -o rw,nosuid,nodev,uhelper=udisks,uid=1000,gid=1000,dmask=0077,fmask=0177
+1 S root      3780     2  0  80   0 -     0 worker 12:35 ?        00:00:00 [kworker/0:1]
+0 S student   4031  3067  0  80   0 -  1100 wait   12:45 pts/0    00:00:00 sh assign5
+0 R student   4039  4031  0  80   0 -  5591 -      12:46 pts/0    00:00:00 ps -elf
+0 S student   4040  4031  0  80   0 -  2850 pipe_w 12:46 pts/0    00:00:00 tail -15
+1. Display all current processess of shell
+2. Display information about all process
+3. Change priority of a process
+4. Delete process by their pid
+5. Delete process by their name
+6.Exit
+Enter your choice
+5
+Kill process by their name
+Enter process name
+sh assign5
+Terminated
+1 S root      3349     2  0  80   0 -     0 worker 12:10 ?        00:00:00 [kworker/0:2]
+1 S root      3361     2  0  80   0 -     0 worker 12:11 ?        00:00:00 [kworker/3:2]
+1 S root      3384     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/1:2]
+1 S root      3385     2  0  80   0 -     0 scsi_e 12:15 ?        00:00:00 [scsi_eh_7]
+1 S root      3386     2  0  80   0 -     0 usb_st 12:15 ?        00:00:00 [usb-storage]
+1 S root      3389     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/u:0]
+5 S root      3390   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+5 S root      3391   515  0  80   0 -  5536 ep_pol 12:15 ?        00:00:00 /sbin/udevd --daemon
+1 S root      3402     2  0  80   0 -     0 worker 12:15 ?        00:00:00 [kworker/2:2]
+5 S root      3408     1  0  80   0 -  3966 reques 12:15 ?        00:00:00 /sbin/mount.ntfs /dev/sdb1 /media/ADITYA -o rw,nosuid,nodev,uhelper=udisks,uid=1000,gid=1000,dmask=0077,fmask=0177
+1 S root      3780     2  0  80   0 -     0 worker 12:35 ?        00:00:00 [kworker/0:1]
+1 S root      4061     2  0  80   0 -     0 bdi_wr 12:47 ?        00:00:00 [flush-8:16]
+0 S student   4063     1  0  80   0 - 145887 poll_s 12:47 ?       00:00:01 gedit /media/ADITYA/Sestuff/osa/prints/assign5/output
+0 R student   4083  3067  0  80   0 -  5591 -      12:50 pts/0    00:00:00 ps -elf
+0 S student   4084  3067  0  80   0 -  2850 pipe_w 12:50 pts/0    00:00:00 tail -15
+student@B4L0106:~$ 
+

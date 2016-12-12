@@ -1,0 +1,7 @@
+aditya@ADITYAsPC:~/MAC$ nasm -f elf64 Assign2.asm
+aditya@ADITYAsPC:~/MAC$ ld -o Assign2 Assign2.o
+aditya@ADITYAsPC:~/MAC$ ./Assign2
+enter your name
+ADITYA
+HelloADITYA
+

@@ -1,0 +1,51 @@
+#BY Aditya Jain
+#Roll no: 202021
+
+while [ true ]	#infinite loop
+ 
+do
+
+echo "menu:"
+echo "1.create new group"
+echo "2.create new user"
+echo "3.delete user"
+echo "4.delete group"
+echo "5.display user and group"
+echo "6.exit"
+
+echo " enter your choice :"
+read ch
+case $ch in
+2)
+echo "enter name of user to be created"
+read un	
+echo "Enter group to be assigned to user"
+read gn
+useradd $un -g $gn	#command to create new user and assign it to group id (gn)
+;;
+1)
+echo "enter group name to be created:"
+read gn
+groupadd $gn	#Command to add new group
+;;
+3)
+echo "enter user to be deleted"
+read unm
+userdel $unm	#Command to delete user
+;;
+4)
+echo "enter group to be deleted"
+read gnm
+groupdel $gnm	#Command to delete group
+;;
+5)
+echo "the list of user is as follows:"
+cat /etc/passwd	#Commands to to display list of users
+echo "list of grup is as follows:"
+cat /etc/group	#Commands to to display list of groups
+;;
+6)
+exit
+;;
+esac
+done

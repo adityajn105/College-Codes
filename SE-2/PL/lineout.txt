@@ -1,0 +1,175 @@
+	student@student-Inspiron-545s:~$ g++ line.cpp -lgraph
+	student@student-Inspiron-545s:~$ ./a.out 2>/dev/null
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  1
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 1
+
+	Enter coordinate Xo : 10
+
+	Enter coordinate Yo : 10
+
+	Enter coordinate X1 : 100
+
+	Enter coordinate Y1 : 100
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  1
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 2
+
+	Enter coordinate Xo : 10
+
+	Enter coordinate Yo : 40
+
+	Enter coordinate X1 : 100
+
+	Enter coordinate Y1 : 140
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  1
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 3
+
+	Enter coordinate Xo : 10
+
+	Enter coordinate Yo : 80
+
+	Enter coordinate X1 : 100
+
+	Enter coordinate Y1 : 180
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  1
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 4
+
+	Enter coordinate Xo : 10
+
+	Enter coordinate Yo : 120
+
+	Enter coordinate X1 : 100
+
+	Enter coordinate Y1 : 220
+
+	Enter thickness (0:Default) : 0
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  1
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 4
+
+	Enter coordinate Xo : 10
+
+	Enter coordinate Yo : 160
+
+	Enter coordinate X1 : 100
+
+	Enter coordinate Y1 : 260
+
+	Enter thickness (0:Default) : 5
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :    2
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 1
+	Enter the co-ordinate x1 : 10
+	Enter the co-ordinate y1 : 10
+	Enter the co-ordinate x2 : 100
+	Enter the co-ordinate y2 : 100
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  2
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 2
+	Enter the co-ordinate x1 : 10
+	Enter the co-ordinate y1 : 40
+	Enter the co-ordinate x2 : 100
+	Enter the co-ordinate y2 : 140
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  2
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 3
+	Enter the co-ordinate x1 : 10
+	Enter the co-ordinate y1 : 80
+	Enter the co-ordinate x2 : 100
+	Enter the co-ordinate y2 : 180
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  2
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 4
+	Enter the co-ordinate x1 : 10
+	Enter the co-ordinate y1 : 120
+	Enter the co-ordinate x2 : 100
+	Enter the co-ordinate y2 : 220
+
+	Enter thickness (0:Default) : 0
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  2
+
+	1.Continuous Line
+	2.Dotted Line
+	3.Dashed Line
+	4.Thick Line
+	Enter option : 4
+	Enter the co-ordinate x1 : 10
+	Enter the co-ordinate y1 : 160
+	Enter the co-ordinate x2 : 100
+	Enter the co-ordinate y2 : 260
+
+	Enter thickness (0:Default) : 5
+
+	1->Use Bresenham algorithm
+	2->Use DDA algorithm
+	3->Exit  :  3
+	student@student-Inspiron-545s:~$

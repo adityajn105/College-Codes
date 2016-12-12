@@ -1,0 +1,195 @@
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :1
+Enter no of keys  :8
+
+Enter 1th keyword  :mit
+
+Enter its Meaning  :colege
+
+Enter 2th keyword  :car
+
+Enter its Meaning  :vehicle
+
+Enter 3th keyword  :ravi
+
+Enter its Meaning  :student
+
+Enter 4th keyword  :techmacx
+
+Enter its Meaning  :book
+
+Enter 5th keyword  :truck
+
+Enter its Meaning  :vehicle
+
+Enter 6th keyword  :banana
+
+Enter its Meaning  :fruit
+
+Enter 7th keyword  :apple
+
+Enter its Meaning  :fruit
+
+Enter 8th keyword  :aditya
+
+Enter its Meaning  :student
+
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :2
+
+Ascending order display-
+
+Key    			Meaning
+aditya			student
+apple			fruit
+banana			fruit
+car			vehicle
+mit			colege
+ravi			student
+techmacx			book
+truck			vehicle
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :3
+
+Descending order display-
+
+Key    			Meaning
+truck			vehicle
+techmacx			book
+ravi			student
+mit			colege
+car			vehicle
+banana			fruit
+apple			fruit
+aditya			student
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :4
+
+Enter key  :dell
+
+Enter its Meaning  :laptop
+
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :2
+
+Ascending order display-
+
+Key    			Meaning
+aditya			student
+apple			fruit
+banana			fruit
+car			vehicle
+dell			laptop
+mit			colege
+ravi			student
+techmacx			book
+truck			vehicle
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :5
+
+Enter key which you want to edit  :dell
+
+Enter its new meaning  :mylaptop
+
+Key Found!!!
+New meaning (mylaptop) Assigned to key value dell
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :2
+
+Ascending order display-
+
+Key    			Meaning
+aditya			student
+apple			fruit
+banana			fruit
+car			vehicle
+dell			mylaptop
+mit			colege
+ravi			student
+techmacx			book
+truck			vehicle
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :6
+
+Enter Key value to be searched  :dell
+
+Key Found!!!
+key:dell	Meaning:mylaptop
+Do you want to continue(y or n) :y
+MENU:
+1.Create BST
+2.Display keys and meaning in ascending order
+3.Display keys and meaning in decending order
+4.Insert a key
+5.Modify a key
+6.Show meaning of a key
+7.Delete a key
+Enter your choice   :7
+
+Enter key value to be deleted  :truck
+
+Key Found!!!........Deleted.
+Do you want to continue(y or n) :n

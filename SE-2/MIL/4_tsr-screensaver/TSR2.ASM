@@ -1,0 +1,102 @@
+;By Aditya Jain
+;Roll no-202021
+;SE comp 1
+PUSHALL MACRO
+PUSH AX
+PUSH BX
+PUSH CX
+PUSH DX
+PUSH SI
+PUSH DI
+PUSH SP
+PUSH BP
+ENDM
+
+POPALL MACRO
+POP BP
+POP SP
+POP DI
+POP SI
+POP DX
+POP CX
+POP BX
+POP AX
+ENDM
+
+.MODEL TINY
+.CODE
+ORG 100H
+
+BEGIN:
+        	JMP INIT
+                KEYB DD ?
+                TIMR DD ?
+		COUNT DB 1
+		SAVE DW 1
+		MSG DB "ADITYA JAIN"
+		MSGLEN EQU $-MSG
+STARTT:
+                PUSHALL         ;push all registers
+                MOV AH,05H      ;request page active
+                MOV AL,0        ;page no 0
+                INT 10H         ;call Interupt service
+                MOV CS:COUNT,0  ;reset counter to 0
+                POPALL          ;pop all registers
+		JMP CS:KEYB
+TIMRT:
+                PUSHALL          ;push all registers
+                INC CS:COUNT     ;increament counter
+                CMP CS:COUNT,91H ;if time elapsed is 5sec
+                JA NEXT          ;then jump to NEXT
+                POPALL           ;pop all registers
+		JMP CS:TIMR
+NEXT:	
+                MOV AH,05H        ;request page active
+                MOV AL,1          ;page no 1
+		INT 10H
+	
+                MOV AH,13H      ;request display string
+                MOV AL,01       
+                MOV BH,1        ;page no 1
+                MOV BL,07H      ;screen attribute no 7
+                MOV CS:SAVE,CS  ;move content of CS to mem CS
+                MOV ES,CS:SAVE  ;move content of CS to ES
+                LEA BP,MSG      ;load effective address of msg in BP
+                MOV CX,MSGLEN   ;length of string
+                MOV DH,12       ;select row
+                MOV DL,35       ;select column
+                INT 10H
+                POPALL
+		JMP CS:TIMR
+INIT:
+                CLI              ;clear direction flag
+                MOV AH,35H       ;get interrupt address
+                MOV AL,9H        ;interrupt no 9
+        	INT 21H
+        
+	   	MOV WORD PTR KEYB,BX
+	   	MOV WORD PTR KEYB+2,ES
+
+                MOV AH,35H       
+                MOV AL,8H       
+		INT 21H
+		
+		MOV WORD PTR TIMR,BX
+		MOV WORD PTR TIMR+2,ES
+		
+                MOV AH,25H   			    ;modify IVT
+                MOV AL,9H       		 ;INT type 9
+                MOV DX,OFFSET STARTT  ;starting address of user tsr
+		INT 21H
+		
+		MOV AH,25H
+		MOV AL,8H
+		MOV DX,OFFSET TIMRT
+		INT 21H
+		
+		MOV AH,31H			;make program resident in memory
+		MOV DX,OFFSET INIT		;SIZE OF RESIDENT PROGRAM
+		INT 21H
+
+		STI 				;SET INTERUPT FLAG
+		END BEGIN 

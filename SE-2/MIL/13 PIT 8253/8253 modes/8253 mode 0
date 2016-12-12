@@ -1,0 +1,22 @@
+	;mode 0
+	Dyna-86>U 1500                                                                  
+	0000:1500  MOV AL, 11                                                           
+	0000:1502  OUT 33, AL                                                           
+	0000:1504  MOV AL, 05                                                           
+	0000:1506  OUT 30, AL                                                           
+	0000:1508  INT 3                                                                
+	0000:1509  RET FAR                                                              
+	0000:150A  POP AX                                                               
+	0000:150B  RET FAR                                                              
+	0000:150C  POP AX                                                               
+	0000:150D  RET FAR                                                              
+	0000:150E  POP AX                                                               
+	0000:150F  RET FAR                                                              
+	0000:1510  POP AX                                                               
+	0000:1511  RET FAR                                                              
+	0000:1512  POP AX                                                               
+	Dyna-86>G 1500                                                                  
+		                                                                        
+	Break at FFFF:1509                                                              
+	Dyna-86>
+

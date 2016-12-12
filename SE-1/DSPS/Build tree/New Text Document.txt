@@ -1,0 +1,338 @@
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+class node
+{
+	char val;
+	node *lchild;
+	node *rchild;
+	friend class tree;
+	friend class tree2;
+};
+class tree
+{
+	node* array[20];
+	char preorder[20];
+	char inorder[20];
+	int n;
+	node *root;
+	node* buildtree(int, int);
+	int search(int, int, char);
+	void postorder(node*);
+	void leafnds(node*);
+	void nodes(node*);
+public:
+	void getdata();
+	void buildtree();
+	void post();
+	void displeaf();
+	void dispnodes();
+};
+
+void tree::getdata()
+{
+	cout << "enter no of nodes\t:";
+	cin >> n;
+	cout << "Enter data for preorder\n";
+	for (int i = 0; i<n; i++)
+	{
+		cout << "Enter value for node " << i << "\t:";
+		cin >> preorder[i];
+	}
+	cout << "enter data for inorder\n";
+	for (int i = 0; i<n; i++)
+	{
+		cout << "Enter value for node " << i << "\t:";
+		cin >> inorder[i];
+	}
+}
+
+void tree::buildtree()
+{
+	int start = 0;
+	int end = n - 1;
+	root = buildtree(start, end);
+}
+
+node* tree::buildtree(int start, int end)
+{
+	static int preindex = 0;
+	if (start>end)
+	{
+		return NULL;
+	}
+	else if (start == end)
+	{
+		node *newnd = new node;
+		newnd->val = preorder[preindex];
+		newnd->rchild = NULL;
+		newnd->lchild = NULL;
+		preindex++;
+		return newnd;
+	}
+	else
+	{
+		int searchindex;
+		node *newnd = new node;
+		newnd->val = preorder[preindex];
+		newnd->rchild = NULL;
+		newnd->lchild = NULL;
+		preindex++;
+		searchindex = search(start, end, newnd->val);
+		newnd->lchild = buildtree(start, searchindex - 1);
+		newnd->rchild = buildtree(searchindex + 1, end);
+		return newnd;
+	}
+}
+
+int tree::search(int start, int end, char val)
+{
+	int i = 0;
+	for (i = start; i <= end; i++)
+	{
+		if (inorder[i] == val)
+		{
+			break;
+		}
+	}
+	return i;
+}
+
+
+
+void tree::post()
+{
+	cout << "Postorder display is:   ";
+	postorder(root);
+}
+void tree::postorder(node* temp)
+{
+	if (temp != NULL)
+	{
+		postorder(temp->lchild);
+		postorder(temp->rchild);
+		cout << temp->val<<"  ";
+	}
+}
+
+void tree::displeaf()
+{
+	cout <<endl<< "Leaf nodes are   :  ";
+	leafnds(root);
+}
+void tree::leafnds(node* curr)
+{
+	if (curr->lchild == NULL && curr->rchild == NULL)
+	{
+		cout << curr->val<<"  ";
+	}
+	if (curr->lchild != NULL)
+	{
+		leafnds(curr->lchild);
+	}
+	if (curr->rchild != NULL)
+	{
+		leafnds(curr->rchild);
+	}
+}
+void tree::dispnodes()
+{
+	cout<<endl<<"The internal nodes are";
+	nodes(root);
+}
+void tree::nodes(node* temp)
+{
+	if (temp != NULL)
+		{
+			nodes(temp->lchild);
+			nodes(temp->rchild);
+			if (temp->lchild!=NULL || temp->rchild!=NULL)
+			{
+			cout << temp->val<<"  ";
+			}
+		}
+}
+
+
+
+class tree2
+{
+	int n;
+	char postorder[20];
+	char inorder[20];
+	node *array[20];
+	node *root;
+	node *buildtree(int, int);
+	int search(int, int, char);
+	void preorder(node*);
+	void leafnds(node*);
+	void nodes(node*);
+public:
+	void getdata();
+	void buildtree();
+	void displeaf();
+	void pre();
+	void dispnodes();
+};
+
+void tree2::getdata()
+{
+	cout << "enter no of nodes\t:";
+	cin >> n;
+	cout << "Enter data for postorder\n";
+	for (int i = 0; i<n; i++)
+	{
+		cout << "Enter value for node " << i << "\t:";
+		cin >> postorder[i];
+	}
+	cout << "enter data for inorder\n";
+	for (int i = 0; i<n; i++)
+	{
+		cout << "Enter value for node " << i << "\t:";
+		cin >> inorder[i];
+	}
+}
+
+void tree2::buildtree()
+{
+	int start = 0;
+	int end = n - 1;
+	root = buildtree(start, end);
+}
+node* tree2::buildtree(int start, int end)
+{
+	static int preindex = end;
+	if (start>end)
+	{
+		return NULL;
+	}
+	else if (start == end)
+	{
+		node *newnd = new node;
+		newnd->val = postorder[preindex];
+		newnd->rchild = NULL;
+		newnd->lchild = NULL;
+		preindex--;
+		return newnd;
+	}
+	else
+	{
+		int searchindex;
+		node *newnd = new node;
+		newnd->val = postorder[preindex];
+		newnd->rchild = NULL;
+		newnd->lchild = NULL;
+		preindex--;
+		searchindex = search(start, end, newnd->val);
+		newnd->rchild = buildtree(searchindex + 1, end);
+		newnd->lchild = buildtree(start, searchindex - 1);
+		return newnd;
+	}
+}
+int tree2::search(int start, int end, char val)
+{
+	int i = 0;
+	for (i = start; i <= end; i++)
+	{
+		if (inorder[i] == val)
+		{
+			break;
+		}
+	}
+	return i;
+}
+void tree2::displeaf()
+{
+	cout << endl << "Leaf nodes are   :  ";
+	leafnds(root);
+}
+void tree2::leafnds(node* curr)
+{
+	if (curr->lchild == NULL && curr->rchild == NULL)
+	{
+		cout << curr->val<<"  ";
+	}
+	if (curr->lchild != NULL)
+	{
+		leafnds(curr->lchild);
+	}
+	if (curr->rchild != NULL)
+	{
+		leafnds(curr->rchild);
+	}
+}
+void tree2::pre()
+{
+	cout << "Preorder display is:    ";
+	preorder(root);
+}
+void tree2::preorder(node* temp)
+{
+	if (temp != NULL)
+	{
+		cout << temp->val<<"  ";
+		preorder(temp->lchild);
+		preorder(temp->rchild);
+	}
+}
+void tree2::dispnodes()
+{
+	cout<<endl<<"The internal nodes are"<<"  ";
+	nodes(root);
+}
+void tree2::nodes(node* temp)
+{
+	if (temp != NULL)
+		{
+			if (temp->lchild!=NULL || temp->rchild!=NULL)
+				{
+				cout << temp->val<<"  ";
+				}
+			nodes(temp->lchild);
+			nodes(temp->rchild);
+		}
+}
+
+int main()
+{
+	int ch;
+	char l = 'y';
+	while (l == 'y')
+	{
+	cout << "1.Display postorder by giving preorder and inorder" << endl;
+	cout << "2.Display preorder by giving inorder and postorder" << endl<<"Enter you choice:  ";
+	cin >> ch;
+	switch (ch)
+	{
+		case 1:
+		{
+			tree B1;
+			B1.getdata();
+			B1.buildtree();
+			B1.post();
+			B1.dispnodes();
+			B1.displeaf();
+			break;
+		}
+		case 2:
+		{
+			tree2 B2;
+			B2.getdata();
+			B2.buildtree();
+			B2.pre();
+			B2.dispnodes();
+			B2.displeaf();
+			break;
+		}
+		default:
+		{
+			cout <<endl<<"Wrong choice entered";
+			continue;
+		}
+	}
+	cout <<endl<<"Do you want to continue(y or n)";
+	cin >> l;
+	}
+	return 0;
+}
+

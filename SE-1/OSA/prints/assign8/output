@@ -1,0 +1,35 @@
+aditya@ADITYAsPC:~/Documents$ gcc listdev.c
+aditya@ADITYAsPC:~/Documents$ ./a.out
+
+ Display the list of devices and their physical names and number of instances 
+ Column I - No. of instances 
+ Column II - User 
+ Column III - Terminal type 
+ Column IV - Major number 
+ Column V - Minor number 
+ I II    III     IV  V   Devic name 
+
+ 1 root root     10, 236 autofs
+ 2 root root         763 block
+ 2 root root         103 bsg
+ 1 root root     10, 236 btrfs-contr
+ 3 root root          65 bus
+ 1 root root           6 cdrom -> sr
+ 2 root root        4003 char
+ 1 root root      5,   6 console
+ 1 root root          15 core -> /pr
+ 2 root root          65 cpu
+ 1 root root     10,  66 cpu_dma_lat
+ 1 root root     10, 206 cuse
+ 8 root root         165 disk
+ 2 root root         106 dri
+ 1 root root     10,  66 ecryptfs
+ 1 root video    29,   6 fb0
+ 1 root root          15 fd -> /proc
+ 1 root root      1,   6 full
+ 1 root root     10, 226 fuse
+ 1 root root    251,   6 hidraw0
+ 1 root root    251,   5 hidraw1
+ 1 root root     10, 226 hpet
+--More--
+

@@ -1,0 +1,3 @@
+i  am in se comp b
+thi sprogram is understand 
+concept of python file handeling

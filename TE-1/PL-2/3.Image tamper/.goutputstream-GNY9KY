@@ -1,0 +1,16 @@
+import sys,hashlib
+check=open(sys.argv[1]).read()
+org=open(sys.argv[2]).read()
+
+print "This is 1.Audio or 2.Image File"
+
+original=hashlib.md5(org).hexdigest()
+checked=hashlib.md5(check).hexdigest()
+print("Original Hash :"+original)
+print("Obtained Hash :"+checked)
+if(original==checked):
+	print sys.argv[1]+" is not tempered."
+else:
+	print sys.argv[1]+" is tempered."
+		
+

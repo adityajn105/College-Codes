@@ -1,0 +1,7 @@
+student@B04L05100:~$ nasm -f elf64 assign8.asm
+student@B04L05100:~$ ld -o assign8 assign8.o
+student@B04L05100:~$ ./assign8
+The positive numbers are:    4
+The negative numbers are:    6
+student@B04L05100:~$ 
+

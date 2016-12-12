@@ -1,0 +1,17 @@
+╭─aditya@DellPC [03:11:03]  ~  
+╰─$ g++ SINES.CPP -lgraph
+╭─aditya@DellPC [03:11:05]  ~  
+╰─$ ./a.out              
+Enter Amplitude  :50
+Enter Fundamental frequency  :25
+Enter Sampling frequency   :51
+Enter the number of levels :8
+Normalized PAM Values 
+-0  42.357  45.0144  5.48152  -39.189  -47.1292  -10.897  35.5486  48.6758  16.181  -31.4796  -49.6356  -21.27  27.0311  49.997  26.1026  -22.2567  -49.7557  -30.6206  17.2141  
+Normalized Qunatized Values 
+6.25  43.75  56.25  6.25  -31.25  -43.75  -6.25  43.75  56.25  18.75  -31.25  -43.75  -18.75  31.25  56.25  31.25  -18.75  -43.75  -18.75  18.75  
+Quantization Code:  4  7  7  4  1  0  3  7  7  5  1  0  2  6  7  6  2  0  2  5  
+Encoded Words:  100111111100001000011111111101001000010110111110010000010101%                                                          ╭─aditya@DellPC [03:11:58]  ~  
+╰─$ 
+
+

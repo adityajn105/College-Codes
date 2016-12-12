@@ -1,0 +1,150 @@
+%macro print 2
+	push rax
+	push rbx
+	push rcx
+	push rdx
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+	pop rdx
+	pop rcx
+	pop rbx
+	pop rax
+%endmacro
+section .data
+name1 dd 25h
+name2 dd 50h
+str1 db "Calculator",10,"1.ADDITION",10, "2.Subtraction",10,"3.MULTIPLICATION",10,"4.Division",10,"5.EXIT",10,"Enter your choice:",20h
+str1len equ $-str1
+str2 db "The sum is:",20h
+str2len equ $-str2
+str3 db "The difference is:",20h
+str3len equ $-str3
+str4 db "The product is:",20h
+str4len equ $-str4
+str5 db "The quotient is:",20h
+str5len equ $-str5
+str6 db "The remainder is: ",20h
+str6len equ $-str6
+newl db 10
+newllen equ $-newl
+cont db "Do you want to continue:(1 for yes)",20h
+contlen equ $-cont
+
+section .bss
+result resb 8
+choice resb 2
+choice2 resb 2
+temp resb 8
+
+section .text
+global _start
+_start:
+
+initialize:
+print str1,str1len
+mov eax,3
+mov ebx,0
+mov ecx,choice
+mov edx,2
+int 80h
+mov cl,[choice]		;move choice to cl
+	mov ebx,[name1]	;mov 1st no to ebx
+	mov eax,[name2]	;mov 2nd no to eax
+	mov edx,0h
+	cmp cl,31h	;compare choice with 31h(ASCII for 1)
+	jne sub		
+	call sum	;call procedure for sum 
+	print str2,str2len
+	call display
+	jmp contin
+sub:	cmp cl,32h	;compare choice with 32h(ASCII for 2)
+	jne pro    
+	call subt
+	print str3,str3len
+	call display	;call procedure to display number
+	jmp contin
+pro:	cmp cl,33h	;compare choice with 33h(ASCII for 3)
+	jne div
+	call prod	;call procedure for product
+	
+	jmp contin
+div: 	cmp cl,34h	;compare choice with 34h(ASCII for 4)
+	jne exit	
+	call division	;call procedure for division
+
+contin:	print newl,newllen
+	print cont,contlen
+	mov eax,3
+	mov ebx,0
+	mov ecx,choice2
+	mov edx,2
+	int 80h
+	mov cl,[choice2]
+	cmp cl,31h
+	je initialize
+exit:
+print newl,newllen
+mov eax,1
+mov ebx,0
+int 80h
+
+display:		;procedure to display hex no
+	push rax
+	push rbx
+	push rcx
+	push rdx
+	mov edi,result
+	mov cl,8    
+again:	rol ebx,4
+	mov [temp],ebx
+	and ebx,0FH
+	cmp bl,09
+	jbe skip
+	add bl,07
+skip:	add bl,30H
+	mov [edi],bl
+	inc edi
+	mov ebx,[temp]
+	dec cl
+	jnz again
+	print result,8
+	pop rdx
+	pop rcx
+	pop rbx
+	pop rax
+	ret
+	
+
+sum:
+add ebx,eax	;instruction for sum
+ret
+
+subt:
+sub eax,ebx	;instruction for subtraction
+mov ebx,eax
+ret
+
+prod:
+mul ebx		;instruction for multiplication
+mov ebx,edx
+print str4,str4len
+call display
+mov ebx,eax
+call display
+ret
+
+division:
+mov edx,0h
+div ebx		;instruction for division
+mov ebx,eax
+print str5,str5len
+call display
+print newl,newllen
+mov ebx,edx
+print str6,str6len
+call display
+ret
+

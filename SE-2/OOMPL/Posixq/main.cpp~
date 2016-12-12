@@ -1,0 +1,44 @@
+#include<stdlib.h>
+#include <iostream>
+#include <string.h>
+#include <sys/stat.h>
+#include <mqueue.h>
+#include <pthread.h>
+#include "queue.h"
+using namespace std;
+
+void *function1(void *arg){
+	posixq q1;
+	string msg;
+	q1.open();
+	q1.send("Hello");
+	cout<<"Message sent to queue";
+	q1.receive(msg);
+	cout <<"\nMessage received is "<<msg.c_str();
+	cout<<"\n";
+	q1.close();
+	q1.remove();
+}
+
+void *function2(void *arg){
+	posixq q1;
+	string msg;
+	q1.open();
+	q1.send("Again Hello");
+	cout<<"Message sent to queue";
+	q1.receive(msg);
+	cout<<"\nMessage Received is "<<msg.c_str();
+	cout<<"\n";
+	q1.close();
+	q1.remove();
+}
+
+int main(){
+	pthread_t thread1,thread2;
+	pthread_create(&thread1,NULL,&function1,NULL);
+	pthread_join(thread1,NULL);
+	pthread_create(&thread2,NULL,&function2,NULL);
+	pthread_join(thread2,NULL);
+	
+	return 0;
+}

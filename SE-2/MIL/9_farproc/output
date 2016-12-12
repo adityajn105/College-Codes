@@ -1,0 +1,48 @@
+╭─aditya@DellPC [12:14:34]  ~  
+╰─$ nasm -f elf64 stringfar.asm
+╭─aditya@DellPC [12:14:44]  ~  
+╰─$ nasm -f elf64 farpro.asm
+╭─aditya@DellPC [12:14:54]  ~  
+╰─$ ld -o str stringfar.o farpro.o
+╭─aditya@DellPC [12:15:16]  ~  
+╰─$ ./str
+
+----Enter ur choice-----
+1.Concate
+2.Search Substring
+3.Exit
+1
+Enter string 1: aditya  
+Enter string 2: jain
+length of string 1 is: 6
+length of string 2 is: 4
+Concated Sttring is: adityajain
+----Enter ur choice-----
+1.Concate
+2.Search Substring
+3.Exit
+2
+Enter a string: adityajn
+
+length of string 1 is: 8
+Enter Substring to be searched:
+jain
+Substring not there
+----Enter ur choice-----
+1.Concate
+2.Search Substring
+3.Exit
+2
+Enter a string: lolololol
+
+length of string 1 is: 9
+Enter Substring to be searched:
+lol
+Substring occurs: 4
+----Enter ur choice-----
+1.Concate
+2.Search Substring
+3.Exit
+3
+╭─aditya@DellPC [12:17:02]  ~  
+╰─$ 

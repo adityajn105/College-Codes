@@ -1,0 +1,168 @@
+		╭─aditya@DellPC [11:32:36]  ~  
+		╰─$ python personal.py                                                                          1 ↵
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 1
+		------------------------------------------------
+		Enter employee's Name:Aditya
+		Enter employee's Date of Birth:10/may/1996
+		Enter employee's Address:Pune
+		Enter employee's ID:21 
+		Enter field:computer
+		Enter Company:Intel
+		Enter Experience:2 
+		Enter Designations:CTO
+		Enter Qualification:B.E. 
+		Enter Grade:A
+		Enter University:SPPU
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 1
+		------------------------------------------------
+		Enter employee's Name:Mamidwar
+		Enter employee's Date of Birth:12/nov/1996
+		Enter employee's Address:Pune
+		Enter employee's ID:42
+		Enter field:computer
+		Enter Company:Infosys
+		Enter Experience:1
+		Enter Designations:Clerk
+		Enter Qualification:B.E.
+		Enter Grade:A
+		Enter University:SPPU
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 1
+		------------------------------------------------
+		Enter employee's Name:Tanmay
+		Enter employee's Date of Birth:24/02/1996 
+		Enter employee's Address:Pune
+		Enter employee's ID:23
+		Enter field:computer
+		Enter Company:Microsoft
+		Enter Experience:3
+		Enter Designations:CEO
+		Enter Qualification:MTech
+		Enter Grade:A+
+		Enter University:MIT
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 2
+		------------------------------------------------
+		****Record Number 1****
+		Employee Name : Aditya
+		Employee's DOB: 10/may/1996
+		Employee's address:Pune
+		Employee's ID21
+		Field : computer
+		Company : Intel
+		Experience : 2
+		Designation : CTO
+		Qualification : B.E.
+		Grade : A
+		University : SPPU
+		****Record Number 2****
+		Employee Name : Mamidwar
+		Employee's DOB: 12/nov/1996
+		Employee's address:Pune
+		Employee's ID42
+		Field : computer
+		Company : Infosys
+		Experience : 1
+		Designation : Clerk
+		Qualification : B.E.
+		Grade : A
+		University : SPPU
+		****Record Number 3****
+		Employee Name : Tanmay
+		Employee's DOB: 24/02/1996
+		Employee's address:Pune
+		Employee's ID23
+		Field : computer
+		Company : Microsoft
+		Experience : 3
+		Designation : CEO
+		Qualification : MTech
+		Grade : A+
+		University : MIT
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 3
+		------------------------------------------------
+		Enter employee id:21
+		Record Found
+		Employee Name : Aditya
+		Employee's DOB: 10/may/1996
+		Employee's address:Pune
+		Employee's ID21
+		Field : computer
+		Company : Intel
+		Experience : 2
+		Designation : CTO
+		Qualification : B.E.
+		Grade : A
+		University : SPPU
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 4
+		------------------------------------------------
+		Enter Employee id:42
+		Record Found and Deleted
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 2
+		------------------------------------------------
+		****Record Number 1****
+		Employee Name : Aditya
+		Employee's DOB: 10/may/1996
+		Employee's address:Pune
+		Employee's ID21
+		Field : computer
+		Company : Intel
+		Experience : 2
+		Designation : CTO
+		Qualification : B.E.
+		Grade : A
+		University : SPPU
+		****Record Number 2****
+		Employee Name : Tanmay
+		Employee's DOB: 24/02/1996
+		Employee's address:Pune
+		Employee's ID23
+		Field : computer
+		Company : Microsoft
+		Experience : 3
+		Designation : CEO
+		Qualification : MTech
+		Grade : A+
+		University : MIT
+		1. Add Record
+		2. List Record
+		3. Search for a Record
+		4. Delete a Record
+		5. Exit
+		Enter your Choice : 5
+		╭─aditya@DellPC [11:41:01]  ~  
+		╰─$ 
+

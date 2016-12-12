@@ -1,0 +1,369 @@
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+using namespace std;
+class node
+{
+	char key[10];
+	char mean[20];
+	node* lchild;
+	node* rchild;
+	friend class bst;
+};
+
+class bst
+{
+	node *root;
+public:
+	bst()
+	{
+		root = NULL;
+	}
+	void create(char*, char*);
+	void delnode(char*);
+	void dispasc(node*);
+	void display(int);
+	void dispdec(node*);
+	void dispnode(char*);
+	void modify(char*, char*);
+};
+
+void bst::create(char key[], char mean[])
+{
+
+
+	if (root == NULL)
+	{
+		root = new node;
+		strcpy_s(root->key, key);
+		strcpy_s(root->mean, mean);
+		root->lchild = NULL;
+		root->rchild = NULL;
+	}
+	else
+	{
+		node *temp = root;
+		while (1)
+		{
+			if (strcmp(temp->key, key)>0)
+			{
+				if (temp->lchild == NULL)
+				{
+					temp->lchild = new node;
+					strcpy_s(temp->lchild->key, key);
+					strcpy_s(temp->lchild->mean, mean);
+					temp->lchild->lchild = NULL;
+					temp->lchild->rchild = NULL;
+					break;
+				}
+				else
+				{
+					temp = temp->lchild;
+				}
+			}
+			else if (strcmp(temp->key, key)<0)
+			{
+				if (temp->rchild == NULL)
+				{
+					temp->rchild = new node;
+					strcpy_s(temp->rchild->key, key);
+					strcpy_s(temp->rchild->mean, mean);
+					temp->rchild->lchild = NULL;
+					temp->rchild->rchild = NULL;
+					break;
+				}
+				else
+				{
+					temp = temp->rchild;
+				}
+			}
+			else
+			{
+				cout << endl << "Key value already assigned";
+				strcpy_s(temp->mean, mean);
+				cout << endl << "Just giving new meaning (" << mean << ") to key (" << key << ")";
+				break;
+			}
+		}
+	}
+}
+void bst::display(int ch)
+{
+	if (ch == 1)
+	{
+		cout << "\nAscending order display-" << endl;
+		dispasc(root);
+	}
+	else if (ch == 2)
+	{
+		cout << "\nDescending order display-\n";
+		dispdec(root);
+	}
+	cout << endl << "Key    \t\t\tMeaning";
+}
+
+void bst::dispasc(node* temp)
+{
+	if (temp != NULL)
+	{
+		dispasc(temp->lchild);
+		cout << "\n" << temp->key << "\t\t\t" << temp->mean;
+		dispasc(temp->rchild);
+	}
+}
+void bst::dispdec(node* temp)
+{
+	if (temp != NULL)
+	{
+		dispdec(temp->rchild);
+		cout << "\n" << temp->key << "\t\t\t" << temp->mean;
+		dispdec(temp->lchild);
+	}
+}
+void bst::modify(char key[10], char mean[10])
+{
+	node* temp = root;
+	while (1)
+	{
+		if (strcmp(temp->key, key) > 0)
+		{
+			temp = temp->lchild;
+		}
+		else if (strcmp(temp->key, key) < 0)
+		{
+			temp = temp->rchild;
+		}
+		else if (strcmp(temp->key, key) == 0)
+		{
+			cout << endl << "Key Found!!!";
+			strcpy_s(temp->mean, mean);
+			cout << endl << "New meaning (" << mean << ") Assigned to key value " << temp->key;
+			break;
+		}
+		else if (temp == NULL)
+		{
+			cout << endl << "Key NOT Found!!!";
+		}
+	}
+}
+
+void bst::dispnode(char key[10])
+{
+	node* temp = root;
+	while (1)
+	{
+		if (strcmp(temp->key, key) > 0)
+		{
+			temp = temp->lchild;
+		}
+		else if (strcmp(temp->key, key) < 0)
+		{
+			temp = temp->rchild;
+		}
+		else if (strcmp(temp->key, key) == 0)
+		{
+			cout << endl << "Key Found!!!";
+			cout << endl << "key:" << temp->key << "\tMeaning:" << temp->mean;
+			break;
+		}
+		else if (temp == NULL)
+		{
+			cout << endl << "Key not Found!!!";
+			break;
+		}
+	}
+}
+
+void bst::delnode(char key[10])
+{
+	node* temp = root;
+	node* parent = NULL;
+	while (1)
+	{
+		if (strcmp(temp->key, key) > 0)
+		{
+			parent = temp;
+			temp = temp->lchild;
+		}
+		else if (strcmp(temp->key, key) < 0)
+		{
+			parent = temp;
+			temp = temp->rchild;
+		}
+		else if (strcmp(temp->key, key) == 0)
+		{
+			cout << endl << "Key Found!!!........Deleted.";
+			if (temp == root)		//temp is root node
+			{
+				if (root->rchild != NULL)
+				{
+					cout << endl << "Key value was assigned to root node and now " << root->rchild->key << " will be root";
+					temp = temp->rchild;
+					while (temp->lchild != NULL)
+					{
+						temp = temp->lchild;
+					}
+					temp->lchild = root->lchild;
+					temp = root->rchild;
+					delete root;
+					root = temp;
+				}
+				else
+				{
+					cout << endl << "Key value was assigned to root node and now " << root->lchild->key << " will be root";
+					temp = root->lchild;
+					delete root;
+					root = temp;
+				}
+				break;
+			}
+			else if (temp->lchild == NULL && temp->rchild == NULL)	//Temp is leaf node
+			{
+				if (parent->lchild == temp)
+				{
+					parent->lchild = NULL;
+					delete temp;
+				}
+				else
+				{
+					parent->rchild = NULL;
+					delete temp;
+				}
+				break;
+			}
+			else if (temp->lchild == NULL && temp->rchild != NULL)	//temp has only right child
+			{
+				if (parent->lchild == temp)
+				{
+					parent->lchild = temp->rchild;
+					delete temp;
+				}
+				else
+				{
+					parent->rchild = temp->rchild;
+					delete temp;
+				}
+				break;
+			}
+			else if (temp->lchild != NULL && temp->rchild == NULL)	//temp has only left child
+			{
+				if (parent->lchild == temp)
+				{
+					parent->lchild = temp->lchild;
+					delete temp;
+				}
+				else
+				{
+					parent->rchild = temp->lchild;
+					delete temp;
+				}
+				break;
+			}
+			else								 //temp has both left and right child
+			{
+				if (parent->lchild == temp)
+				{
+					parent->lchild = temp->rchild;
+					parent->lchild->lchild = temp->lchild;
+					delete temp;
+				}
+				else
+				{
+					parent->rchild = temp->rchild;
+					parent->rchild->lchild = temp->lchild;
+					delete temp;
+				}
+				break;
+			}
+
+		}
+		else if (temp == NULL)
+		{
+			cout << endl << "Key not Found!!!";
+			break;
+		}
+	}
+}
+
+int main()
+{
+	int n, ch;
+	char dec = 'y';
+	bst b;
+	char key[10];
+	char mean[20];
+	while (dec == 'y')
+	{
+		cout << "MENU:\n" << "1.Create BST\n2.Display keys and meaning in ascending order\n3.Display keys and meaning in decending order\n";
+		cout << "4.Insert a key\n5.Modify a key\n6.Show meaning of a key\n7.Delete a key\n";
+		cout << "Enter your choice   :"; cin >> ch;
+		switch (ch)
+		{
+		case 1:
+		{
+			cout << "Enter no of keys  :";
+			cin >> n;
+			for (int i = 0; i < n; i++)
+			{
+				cout << endl << "Enter " << i + 1 << "th keyword  :";
+				cin >> key;
+				cout << endl << "Enter its Meaning  :";
+				cin >> mean;
+				b.create(key, mean);
+			}
+			break;
+		}
+		case 2:
+		{
+
+			b.display(1);
+			break;
+		}
+		case 3:
+		{
+			b.display(2);
+			break;
+		}
+		case 4:
+		{
+			cout << endl << "Enter key  :";
+			cin >> key;
+			cout << endl << "Enter its Meaning  :";
+			cin >> mean;
+			b.create(key, mean);
+			break;
+		}
+		case 5:
+		{
+			cout << endl << "Enter key which you want to edit  :";
+			cin >> key;
+			cout << endl << "Enter its new meaning  :";
+			cin >> mean;
+			b.modify(key, mean);
+			break;
+		}
+		case 6:
+		{
+			cout << endl << "Enter Key value to be searched  :";
+			cin >> key;
+			b.dispnode(key);
+			break;
+		}
+		case 7:
+		{
+			cout << endl << "Enter key value to be deleted  :";
+			cin >> key;
+			b.delnode(key);
+			break;
+		}
+		default:
+		{
+			cout << endl << "Wrong choice Entered!!!";
+			break;
+		}
+		}
+		cout << endl << "Do you want to continue(y or n) :";
+		cin >> dec;
+	}
+}
+

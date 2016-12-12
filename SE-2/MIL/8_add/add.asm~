@@ -1,0 +1,144 @@
+%macro inout 4
+push rax
+push rbx
+push rcx
+push rdx
+mov eax,%1
+mov ebx,%2
+mov ecx,%3
+mov edx,%4
+int 80h
+pop rdx
+pop rcx
+pop rbx
+pop rax
+%endmacro
+
+section .data
+menu db "1.Successive Addition",10,"2.Shift and Add",10
+menulen equ $-menu
+
+msg1 db "Enter first no:",20h
+msg1len equ $-msg1
+
+msg2 db "Enter second no:",20h
+msg2len equ $-msg2
+
+msg3 db "Product is:",20h
+msg3len equ $-msg3
+
+nwln db 10
+
+section .bss
+no resb 5
+temp resb 2
+no1 resw 2
+no2 resw 2
+len resb 1
+result resb 4
+temp2 resw 1
+cho resb 2
+
+
+section .text
+global _start
+_start:
+
+	inout 4,1,menu,menulen
+
+	inout 3,0,cho,2
+	
+	inout 4,1,msg1,msg1len
+	inout 3,0,no,5
+	call convert
+	mov word[no1],dx 
+	inout 4,1,nwln,1
+	inout 4,1,msg2,msg2len
+	inout 3,0,no,5
+	call convert
+	mov word[no2],dx
+	inout 4,1,nwln,1
+
+	cmp byte[cho],32h
+	je shadd
+	ja exit	
+
+	mov edx,0
+	mov dx,word[no2]
+	mov cx,word[no1]
+	mov eax,0
+	mov ebx,0
+
+again:
+	add ax,dx	;eax for sum
+	jnc nc		;jump if no carry
+	inc bx		;ebx for carry
+nc:	dec cx		;decrement counter
+	jnz again
+	
+	inout 4,1,msg3,msg3len
+	call display
+	mov ebx,0
+	mov bx,ax
+	call display
+	inout 4,1,nwln,1
+	jmp _start
+
+shadd:
+	mov edx,0
+	mov dx,word[no1]	;no1 multiplier
+	mov eax,0
+	mov ebx,0
+	
+	mov cl,10h
+rool:	shl ebx,1
+	rol dx,1
+	jnc nothing
+	add ebx,dword[no2]
+nothing:dec cl
+	jnz rool
+	
+	call display
+	inout 4,1,nwln,1
+	jmp _start
+
+exit:	mov eax,1
+	mov ebx,0
+	int 80h
+
+convert:
+	mov esi,no
+	mov cl,4h
+	mov edx,0h
+conve:	cmp byte[esi],0Ah
+	je ok
+	cmp byte[esi],39h
+	jbe sub30
+	sub byte[esi],07h
+sub30:	sub byte[esi],30h
+	
+	rol dx,4
+	add dl,byte[esi]
+	inc esi
+	dec cl
+	jnz conve
+ok:	ret
+
+
+display:
+	mov esi,result
+	mov cl,4
+conve2:	rol bx,4
+	mov [temp2],bx
+	and bx,0fh
+	cmp bl,09h
+	jbe add30
+	add bl,07h
+add30:	add bl,30h
+	mov byte[esi],bl
+	inc esi
+	mov bx,[temp2]
+	dec cl
+	jnz conve2
+	inout 4,1,result,4
+	ret

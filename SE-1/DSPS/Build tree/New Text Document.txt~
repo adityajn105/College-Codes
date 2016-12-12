@@ -1,0 +1,243 @@
+/*
+ * tree.cpp
+ *
+ *  Created on: 13-Aug-2015
+ *      Author: Aditya Jain
+ */
+#include<iostream>
+using namespace std;
+class tnode
+{
+		int data;
+		tnode *leftc,*rightc;
+		friend class tree;
+};
+class tree
+{
+	tnode* root;
+	tnode* Build_tree1(int preorder[],int inorder[],int,int);
+	tnode* Build_tree2(int postorder[],int inorder[],int,int);
+	int search(int inorder[],int,int,int);
+	void pre_display(tnode*);
+	void in_display(tnode*);
+	void post_display(tnode*);
+	void display_leaf(tnode*);
+	void display_node(tnode*);
+
+public:
+	void Build_tree1(int preorder[],int inorder[],int);
+	void Build_tree2(int postorder[],int inorder[],int);
+	void display();
+
+};
+void tree::display_node(tnode* temp)
+{
+	if(temp!=NULL)
+	{
+		if(temp->leftc!=NULL || temp->rightc!=NULL)
+		{
+			cout<<temp->data<<"\t";
+		}
+		display_node(temp->leftc);
+		display_node(temp->rightc);
+	}
+}
+void tree::display_leaf(tnode* temp)
+{
+	if(temp!=NULL)
+	{
+		if(temp->leftc==NULL && temp->rightc==NULL)
+		{
+			cout<<temp->data<<"\t";
+		}
+		display_leaf(temp->leftc);
+		display_leaf(temp->rightc);
+	}
+}
+tnode* tree::Build_tree2(int postorder[],int inorder[],int start,int end)
+{
+	static int postindex=end;
+	int sindex;
+	if(start>end)
+	{
+		return NULL;
+	}
+	if(start==end)
+	{
+		tnode* newnode = new tnode;
+		newnode->data = postorder[postindex];
+		postindex--;
+		newnode->leftc = NULL;
+		newnode->rightc=NULL;
+		return newnode;
+	}
+	else
+	{
+		tnode *newnode = new tnode;
+		newnode->data = postorder[postindex];
+		postindex--;
+		newnode->leftc = NULL;
+		newnode->rightc = NULL;
+		sindex = search(inorder,start,end,newnode->data);
+		if(sindex>0)
+		{
+			newnode->rightc = Build_tree2(postorder,inorder,sindex+1,end);
+			newnode->leftc = Build_tree2(postorder,inorder,start,sindex-1);
+		}
+		return newnode;
+	}
+}
+void tree::Build_tree2(int postorder[],int inorder[],int end)
+{
+	root = Build_tree2(postorder,inorder,0,end);
+}
+void tree::pre_display(tnode *temp)
+{
+	if(temp!=NULL)
+	{
+		cout<<temp->data<<"\t";
+		pre_display(temp->leftc);
+		pre_display(temp->rightc);
+	}
+}
+void tree::in_display(tnode *temp)
+{
+	if(temp!=NULL)
+	{
+		in_display(temp->leftc);
+		cout<<temp->data<<"\t";
+		in_display(temp->rightc);
+	}
+}
+void tree::post_display(tnode *temp)
+{
+	if(temp!=NULL)
+	{
+		post_display(temp->leftc);
+		post_display(temp->rightc);
+		cout<<temp->data<<"\t";
+	}
+}
+void tree::display()
+{
+	int choice=0;
+	while(choice!=6){
+	cout<<"\nDisplay Binary tree : \n";
+	cout<<"1. Preorder\n2. Inorder\n3. Postorder\n4. Only leaf nodes\n5. Only nodes\n6. Exit\nPlease select your choice :\t";
+	cin>>choice;
+	switch(choice)
+	{
+	case 1 :
+		pre_display(root);
+		break;
+	case 2:
+		in_display(root);
+		break;
+	case 3:
+		post_display(root);
+		break;
+	case 4:
+		display_leaf(root);
+		break;
+	case 5:
+		display_node(root);
+		break;
+	case 6:
+		choice=6;
+		break;
+	default :
+		cout<<"Please enter correct choice : \n";
+		break;
+	}}
+}
+int tree::search(int inorder[],int start,int end,int data)
+{
+	for(int i=0;i<end;i++)
+	{
+		if(inorder[i]==data)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+void tree::Build_tree1(int preorder[],int inorder[],int end)
+{
+	root = Build_tree1(preorder,inorder,0,end);
+
+}
+tnode* tree::Build_tree1(int preorder[],int inorder[],int start,int end)
+{
+	static int preindex=0;
+	int sindex;
+	if(start>end)
+	{
+		return NULL;
+	}
+	if(start==end)
+	{
+		tnode *newnode = new tnode;
+		newnode->leftc = NULL;
+		newnode->rightc = NULL;
+		newnode->data = preorder[preindex];
+		preindex++;
+		return newnode;
+	}
+	else
+	{
+		tnode *newnode = new tnode;
+		newnode->leftc = NULL;
+		newnode->rightc = NULL;
+		newnode->data = preorder[preindex];
+		preindex++;
+		sindex = search(inorder,start,end,newnode->data);
+		if(sindex>0)
+		{
+			newnode->leftc = Build_tree1(preorder,inorder,start,sindex-1);
+			newnode->rightc = Build_tree1(preorder,inorder,sindex+1,end);
+		}
+		return newnode;
+	}
+}
+
+int main()
+{
+	int* preorder=NULL;
+	int* inorder=NULL;
+	int* postorder=NULL;
+	int n,choice;
+	cout<<"Enter the number of nodes";
+	cin>>n;
+	preorder = new int[n];
+	inorder = new int[n];
+	postorder = new int[n];
+	tree t1;
+	cout<<"1. Preorder & Inorder\n2. Inorder and Postorder\n";
+	cin>>choice;
+	cout<<"Enter the elements in inorder : \n";
+	for(int i=0;i<n;i++)
+	{
+		cin>>inorder[i];
+	}
+	if(choice==1)
+	{
+		cout<<"Enter elements in preorder :\n";
+		for(int i=0;i<n;i++)
+		{
+			cin>>preorder[i];
+		}
+		t1.Build_tree1(preorder,inorder,n-1);
+	}
+	else if(choice==2)
+	{
+		cout<<"Enter the elements in postorder :\n";
+		for(int i=0;i<n;i++)
+		{
+			cin>>postorder[i];
+		}
+		t1.Build_tree2(postorder,inorder,n-1);
+	}
+	t1.display();
+}
+
+

@@ -1,0 +1,72 @@
+## 1. Create keyspace:
+cqlsh:system> CREATE KEYSPACE Emp
+ WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+cqlsh:system> use Emp;
+
+## 2. Create table:
+cqlsh:emp> CREATE TABLE Employee (
+       ... id int PRIMARY KEY,
+       ... name text,
+       ... city text,
+       ... salary int);
+
+## 3. Insert data:
+
+ INSERT INTO Employee (id, name, city, salary) VALUES (1, 'Name 1', 'Pune', 25000);
+
+## 4. Query data:
+cqlsh:emp> select id, name, city, salary FROM Employee;
+
+ id | name    | city      | salary
+----+---------+-----------+--------
+  5 |  Name 5 |      Pune |  34000
+ 10 | Name 10 |        LA |  45000
+  1 |  Name 1 |      Pune |  25000
+  8 |  Name 8 |    London |  37000
+  2 |  Name 2 | Bangalore |  29000
+  4 |  Name 4 |        LA |  39000
+  7 |  Name 7 | Bangalore |  41000
+  6 |  Name 6 |        LA |  39000
+  9 |  Name 9 |    London |  36000
+  3 |  Name 3 |    London |  35000
+
+## 5. Update data:
+cqlsh:emp> UPDATE employee SET name = 'Some name' WHERE id = 10;
+
+## 6. Delete data:
+cqlsh:emp> DELETE FROM employee WHERE id = 11;
+
+## Aggregation:
+
+# cqlsh:emp> select count(*) AS Emp_Count from Employee;
+
+ emp_count
+-----------
+        10
+
+(1 rows)
+
+# cqlsh:emp> select max(salary) FROM employee;
+
+ system.max(salary)
+--------------------
+              45000
+
+# cqlsh:emp> SELECT sum(salary) FROM employee WHERE city = 'Pune' ALLOW FILTERING ;
+
+ system.sum(salary)
+--------------------
+              59000
+
+# cqlsh:emp> SELECT avg(salary) FROM employee WHERE city = 'London' ALLOW FILTERING;
+
+ system.avg(salary)
+--------------------
+              36000
+## Indexes:
+
+# 1. Create:
+cqlsh:emp> CREATE INDEX nameIndex ON Employee(name);
+
+# 2. Drop:
+cqlsh:emp> DROP INDEX nameIndex;

@@ -1,0 +1,47 @@
+╭─aditya@DellPC [05:38:16]  ~  
+╰─$ nasm -f elf64 block.asm
+╭─aditya@DellPC [05:38:17]  ~  
+╰─$ ld -o block block.o
+╭─aditya@DellPC [05:38:32]  ~  
+╰─$ ./block
+Given block is: OOOOOOOOOOADITYAOOOOOOOOOOO
+Enter your choice
+1.Non-overlapping
+Overlapping
+2.Positive offset
+3.Negative offset
+4.Exit
+1
+Result is: OOOOOOOOOOADITYAADITYAOOOOO
+______________________
+Given block is: OOOOOOOOOOADITYAADITYAOOOOO
+Enter your choice
+1.Non-overlapping
+Overlapping
+2.Positive offset
+3.Negative offset
+4.Exit
+2
+Give Offset: 3
+Result is: OOOOOOOOOOADIADITYATYAOOOOO
+______________________
+Given block is: OOOOOOOOOOADIADITYATYAOOOOO
+Enter your choice
+1.Non-overlapping
+Overlapping
+2.Positive offset
+3.Negative offset
+4.Exit
+3
+Give Offset: 3
+Result is: OOOOOOOADIADIADITYATYAOOOOO
+______________________
+Given block is: OOOOOOOADIADIADITYATYAOOOOO
+Enter your choice
+1.Non-overlapping
+Overlapping
+2.Positive offset
+3.Negative offset
+4.Exit
+4
+

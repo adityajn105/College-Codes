@@ -1,0 +1,704 @@
+INPUT=========================================================================
+/*
+* DCLL.cpp
+*
+*  Created on: 24-Jul-2015
+*      Author: Aditya
+*/
+
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class node
+{
+	int data;
+	node *next, *prev;
+	friend class DSLL;
+};
+
+class DSLL
+{
+	node *head;
+public:
+	DSLL()
+	{
+		head = new node;
+		head->data = '/0';
+		head->next = head;
+		head->prev = head;
+	}
+	void create();
+	void displayf();
+	void displayb();
+	void insert();
+	void delet();
+	void sort();
+	int lenght();
+	void reverse();
+	void concate(DSLL &l);
+	void sortp();
+	void merge(DSLL &l);
+};
+
+void DSLL::create()
+{
+	char a;
+	node *newnd;
+	node *curr;
+	curr = head;
+	do
+	{
+		newnd = new node;
+		curr->next = newnd;
+		newnd->next = head;
+		head->prev = newnd;
+		newnd->prev = curr;
+		cout << "Enter the data:\t";
+		cin >> newnd->data;
+		curr = curr->next;
+		cout << "Do you want to enter another node(y or n): \t";
+		cin >> a;
+	} while (a == 'y');
+}
+
+void DSLL::displayf()
+{
+	if (head->next == head)
+	{
+		cout << "Empty List";
+	}
+	else
+	{
+		node *curr;
+		curr = head->next;
+		cout << "\t\t\tFORWARD DISPLAY" << endl;
+		cout << "Currrent Address\tData\t\tprevious node\t\tnext node" << endl;
+		while (curr != head)
+		{
+			cout << curr << "\t\t" << curr->data << "\t\t" << curr->prev << "\t\t" << curr->next << endl;
+			curr = curr->next;
+		}
+	}
+}
+
+void DSLL::displayb()
+{
+	if (head->next == head)
+	{
+		cout << "Empty List";
+	}
+	else
+	{
+		node *curr;
+		curr = head->prev;
+		cout << "\t\t\tBACKWARD DISPLAY" << endl;
+		cout << "Currrent Address\tData\t\tprevious node\t\tnext node" << endl;
+		while (curr != head)
+		{
+			cout << curr << "\t\t" << curr->data << "\t\t" << curr->prev << "\t\t" << curr->next << endl;
+			curr = curr->prev;
+		}
+	}
+}
+
+void DSLL::insert()
+{
+	node *curr, *newnd;
+	int pos, a = 1;
+	curr = head;
+	cout << "Enter the position of node:\t";
+	cin >> pos;
+	if (pos>lenght())
+		cout << "Wrong position entered" << endl;
+	else
+	{
+		while (a<pos)
+		{
+			a++;
+			curr = curr->next;
+		}
+		newnd = new node;
+		newnd->prev = curr;
+		newnd->next = curr->next;
+		(curr->next)->prev = newnd;
+		curr->next = newnd;
+		cout << "Enter data for node:\t";
+		cin >> newnd->data;
+	}
+	cout << "list now becomes" << endl;
+	displayf();
+}
+
+int DSLL::lenght()
+{
+	int count;
+	if (head->next == head)
+	{
+		cout << "Empty List" << endl;
+		count = 0;
+	}
+	else
+	{
+		node *curr;
+		curr = head->next;
+		count = 0;
+		while (curr != head)
+		{
+			count++;
+			curr = curr->next;
+		}
+	}
+	return count;
+}
+
+void DSLL::delet()
+{
+	int val, a = 0;
+	node *curr, *temp;
+	cout << "Enter data value to be deleted: \t";
+	cin >> val;
+	if (head->next == head)
+	{
+		cout << "linked list is empty";
+	}
+	else
+	{
+		temp = head;
+		curr = head->next;
+		while (curr != head)
+		{
+			if (val == curr->data)
+			{
+				(curr->prev)->next = curr->next;
+				(curr->next)->prev = temp;
+				curr = temp->next;
+				a++;
+			}
+			else
+			{
+				temp = curr;
+				curr = curr->next;
+			}
+		}
+		if (a == 0)
+		{
+			cout << "Data value not found" << endl;
+		}
+	}
+	cout << "List now becomes" << endl;
+	displayf();
+}
+
+void DSLL::sort()
+{
+	int temp;
+	node *curr, *curr2;
+	curr2 = head->next;
+	while (curr2->next != head)
+	{
+		curr = head->next;
+		while (curr->next != head)
+		{
+			if (curr->data<curr->next->data)
+			{
+				temp = curr->data;
+				curr->data = curr->next->data;
+				curr->next->data = temp;
+				curr = curr->next;
+			}
+			else
+			{
+				curr = curr->next;
+			}
+		}
+		curr2 = curr2->next;
+	}
+}
+
+void DSLL::sortp()
+{
+	int cnt = lenght();
+	node *curr = head;
+	for (int i = 0; i<cnt-1; i++)
+	{
+		curr = head->next;
+		node *temp = curr->next;
+		for (int j = 0; j<cnt-1; j++)
+		{
+
+			if (curr->data<temp->data)
+			{
+				temp->next->prev = curr;
+				curr->next = temp->next;
+				curr->prev->next = temp;
+				temp->prev = curr->prev;
+				curr->prev = temp;
+				temp->next = curr;
+				temp=curr->next;
+			}
+			else
+			{
+			curr=temp;
+			temp=curr->next;
+			}
+		}
+	}
+}
+
+void DSLL::reverse()
+{
+	if (head->next == head)
+	{
+		cout << "List is empty";
+	}
+	else
+	{
+		node *curr, *temp;
+		curr = head->next;
+		temp = head;
+		while (curr != head)
+		{
+			curr->prev = curr->next;
+			curr->next = temp;
+			temp = curr;
+			curr = curr->prev;
+		}
+		head->prev = head->next;
+		head->next = temp;
+	}
+	cout << "Reversed list is" << endl;
+	displayf();
+}
+
+void DSLL::concate(DSLL &l)
+{
+	(head->prev)->next = (l.head)->next;
+	((l.head)->next)->prev = head->prev;
+	((l.head)->prev)->next = head;
+	head->prev = (l.head)->prev;
+	cout << "List now becomes" << endl;
+	displayf();
+}
+
+void DSLL::merge(DSLL &l)
+{
+	node *temp, *curr1, *curr2;
+	curr1 = head->next;
+	curr2 = (l.head)->next;
+	temp = head;
+	while (curr2 != l.head && curr1 != head)
+	{
+		if (curr1->data<curr2->data)
+		{
+			temp->next = curr2;
+			curr2->prev = temp;
+			temp = curr2;
+			curr2 = curr2->next;
+		}
+		else
+		{
+			curr1->prev = temp;
+			temp->next = curr1;
+			temp = curr1;
+			curr1 = curr1->next;
+		}
+	}
+
+	if (curr2 == l.head)
+	{
+		temp->next = curr1;
+		curr1->prev = temp;
+	}
+	else
+	{
+		temp->next = curr2;
+		curr2->prev = temp;
+		(l.head->prev)->next = head;
+		head->prev = l.head->prev;
+		l.head->prev = NULL;
+		l.head->next = NULL;
+	}
+	delete l.head;
+	displayf();
+}
+
+int main()
+{
+	int ch;
+	DSLL S1, S2;
+	char a;
+	do
+	{
+		cout << "--------------------------------------"<<endl;
+		cout << "menu" << endl << "1.Create DSLL \n2.Display Forward\n3.Display Backward\n4.Insert node \n5.Show lenght of DSLL\n6.Delete a node";
+		cout << endl << "7.Sort by value" << endl << "8.Reverse DCLL\n" << "9.Sort by pointer \n" << "10.Concate\n" << "11.Merge DCLLs \n" << "12.EXIT" << endl;
+		cout << "--------------------------------------" << endl << "Enter choice: \t";
+		cin >> ch;
+		switch (ch)
+		{
+		case 1:{	S1.create(); break; }
+		case 2:{	S1.displayf(); break; }
+		case 3:{	S1.displayb(); break; }
+		case 4:{	S1.insert(); break; }
+		case 5:{	cout << "Length is: \t" << S1.lenght() << endl; break; }
+		case 6:{	S1.delet(); break; }
+		case 7:{
+				S1.sort();
+				cout << "The sorted list is : \n";
+				S1.displayf(); break; }
+		case 8:{	S1.reverse(); break; }
+		case 9:{
+				S1.sortp();
+				cout << "The sorted list is : \n";
+				S1.displayf(); break; }
+		case 10:{
+				cout << "Enter datas for list to be concate" << endl;
+				S2.create();
+				S1.concate(S2); break; }
+		case 11:{
+				cout << "Enter datas for list to be merged" << endl;
+				S2.create();
+				S1.sort(); S2.sort();
+				S1.merge(S2); break;}
+		case 12:{	break; }
+		default:{	cout << "wrong choice entered" << endl; break; }
+		}
+		cout << "Do u want to continue(y or n):\t";
+		cin >> a;
+	} while (a == 'y');
+	return 0;
+}
+
+OUTPUT=========================================================================
+
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	1
+Enter the data:	2
+Do you want to enter another node(y or n): 	y
+Enter the data:	10
+Do you want to enter another node(y or n): 	y
+Enter the data:	5
+Do you want to enter another node(y or n): 	y
+Enter the data:	7
+Do you want to enter another node(y or n): 	y
+Enter the data:	4
+Do you want to enter another node(y or n): 	n
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	2
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		2		0x11f6010		0x11f6070
+0x11f6070		10		0x11f6050		0x11f6090
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f60b0		7		0x11f6090		0x11f60d0
+0x11f60d0		4		0x11f60b0		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	3
+			BACKWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f60d0		4		0x11f60b0		0x11f6010
+0x11f60b0		7		0x11f6090		0x11f60d0
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f6070		10		0x11f6050		0x11f6090
+0x11f6050		2		0x11f6010		0x11f6070
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	4
+Enter the position of node:	3
+Enter data for node:	1
+list now becomes
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		2		0x11f6010		0x11f6070
+0x11f6070		10		0x11f6050		0x11f60f0
+0x11f60f0		1		0x11f6070		0x11f6090
+0x11f6090		5		0x11f60f0		0x11f60b0
+0x11f60b0		7		0x11f6090		0x11f60d0
+0x11f60d0		4		0x11f60b0		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	5
+Length is: 	6
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	6
+Enter data value to be deleted: 	1
+List now becomes
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		2		0x11f6010		0x11f6070
+0x11f6070		10		0x11f6050		0x11f6090
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f60b0		7		0x11f6090		0x11f60d0
+0x11f60d0		4		0x11f60b0		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	7
+The sorted list is : 
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		10		0x11f6010		0x11f6070
+0x11f6070		7		0x11f6050		0x11f6090
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f60b0		4		0x11f6090		0x11f60d0
+0x11f60d0		2		0x11f60b0		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	8
+Reversed list is
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f60d0		2		0x11f6010		0x11f60b0
+0x11f60b0		4		0x11f60d0		0x11f6090
+0x11f6090		5		0x11f60b0		0x11f6070
+0x11f6070		7		0x11f6090		0x11f6050
+0x11f6050		10		0x11f6070		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	9
+The sorted list is : 
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		10		0x11f6010		0x11f6070
+0x11f6070		7		0x11f6050		0x11f6090
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f60b0		4		0x11f6090		0x11f60d0
+0x11f60d0		2		0x11f60b0		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	10
+Enter datas for list to be concate
+Enter the data:	1
+Do you want to enter another node(y or n): 	y
+Enter the data:	6
+Do you want to enter another node(y or n): 	y
+Enter the data:	9
+Do you want to enter another node(y or n): 	n
+List now becomes
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6050		10		0x11f6010		0x11f6070
+0x11f6070		7		0x11f6050		0x11f6090
+0x11f6090		5		0x11f6070		0x11f60b0
+0x11f60b0		4		0x11f6090		0x11f60d0
+0x11f60d0		2		0x11f60b0		0x11f6110
+0x11f6110		1		0x11f60d0		0x11f6130
+0x11f6130		6		0x11f6110		0x11f6150
+0x11f6150		9		0x11f6130		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	11
+Enter datas for list to be merged
+Enter the data:	8
+Do you want to enter another node(y or n): 	y
+Enter the data:	12
+Do you want to enter another node(y or n): 	y
+Enter the data:	14
+Do you want to enter another node(y or n): 	n
+			FORWARD DISPLAY
+Currrent Address	Data		previous node		next node
+0x11f6170		14		0x11f6010		0x11f6190
+0x11f6190		12		0x11f6170		0x11f6050
+0x11f6050		10		0x11f6190		0x11f6070
+0x11f6070		9		0x11f6050		0x11f61b0
+0x11f61b0		8		0x11f6070		0x11f6090
+0x11f6090		7		0x11f61b0		0x11f60b0
+0x11f60b0		6		0x11f6090		0x11f60d0
+0x11f60d0		5		0x11f60b0		0x11f6110
+0x11f6110		4		0x11f60d0		0x11f6130
+0x11f6130		2		0x11f6110		0x11f6150
+0x11f6150		1		0x11f6130		0x11f6010
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	13
+wrong choice entered
+Do u want to continue(y or n):	y
+--------------------------------------
+menu
+1.Create DSLL 
+2.Display Forward
+3.Display Backward
+4.Insert node 
+5.Show lenght of DSLL
+6.Delete a node
+7.Sort by value
+8.Reverse DCLL
+9.Sort by pointer 
+10.Concate
+11.Merge DCLLs 
+12.EXIT
+--------------------------------------
+Enter choice: 	12
+Do u want to continue(y or n):	n
+

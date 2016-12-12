@@ -1,0 +1,70 @@
+Press CTRL-A Z for help on special keys              
+                                                     
+                                                     
+                   *****************************************
+                   *                                       *
+                   *        Dynalog (India) Ltd.           *
+                   *                                    
+                   *****************************************
+                   *                                       *
+                   *        Dynalog (India) Ltd.           *
+                   *                                       *
+                   *             MF DYNA-86                *
+                   *                                       *
+                   *****************************************
+###reverse 
+
+Dyna-86>A 1000
+0000:1000  MOV AL,4E    ;MODE WORD value for transmitter                                                        
+0000:1002  OUT 39,AL    ;output on 39h                                                       
+0000:1004  MOV AL,23    ;command word value for transmitter                                                         
+0000:1006  OUT 39,AL    ;output on 39h                                                       
+0000:1008  MOV AL,4E                                                            
+0000:100A  OUT 31,AL                                                            
+0000:100C  MOV AL,26                                                            
+0000:100E  OUT 31,AL                                                            
+0000:1010  MOV SI,2000   ;move 2000 to SI                                                     
+0000:1013  MOV DI,3000   ;move 3000 to DI                                                       
+0000:1016  MOV CX,5       ;set CX to 5                                                     
+0000:1019  MOV AL,[SI]                                                          
+                                                                                          
+0000:101B  OUT 38,AL                                                            
+0000:101D  IN AL,31      ;input from 31h                                                           
+0000:101F  AND AL,02     ;to check status of receive ready pin                                                        
+0000:1021  CMP AL,02                                                            
+0000:1023  JNE 101D                                                             
+0000:1025  IN AL,30      ;input from 30h                                                       
+0000:1027  MOV [DI],AL                                                          
+0000:1029  INC SI                                                               
+0000:102A  INC DI                                                               
+0000:102B  DEC CX                                                               
+0000:102C  JNZ 1019                                                             
+Dyna-86>G 1000          ;to run program                                                     
+                                                                                
+Break at FFFF:102F                                                              
+Dyna-86>D 2000                                                                  
+0000:2000  01 02 03 04 05 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2010  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2020  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2030  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2040  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2050  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2060  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2070  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2080  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:2090  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+                                                                                
+Dyna-86>D 3000                                                                  
+0000:3000  01 02 03 04 05 00 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3010  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3020  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3030  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3040  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3050  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3060  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3070  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3080  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+0000:3090  00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB 00 CB                      
+                                                                                
+Dyna-86>
+

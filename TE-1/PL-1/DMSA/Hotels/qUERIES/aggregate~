@@ -1,0 +1,12 @@
+How many hotels are there?
+	SELECT COUNT(hotel_no) FROM HOTEL;
++-----------------+
+| COUNT(hotel_no) |
++-----------------+
+|               4 |
++-----------------+
+
+What is the average price of room?
+	
+What is the total revenue per night from all double rooms?
+How many different guests have made bookings for August?

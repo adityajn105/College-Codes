@@ -1,0 +1,4 @@
+aditya@ADITYAsPC:~/Documents$ gcc meminfo.c
+aditya@ADITYAsPC:~/Documents$ ./a.out
+Avau=ilable free memory is 1389932 KBaditya@ADITYAsPC:~/Documents$ 
+

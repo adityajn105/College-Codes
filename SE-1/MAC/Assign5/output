@@ -1,0 +1,5 @@
+student@B04L05100:~$ nasm -f elf64 assign5.asm
+student@B04L05100:~$ ld -o assign5 assign5.o
+student@B04L05100:~$ ./assign5
+The sum is
+00000004FFFFFFFBstudent@B04L05100:~$ 

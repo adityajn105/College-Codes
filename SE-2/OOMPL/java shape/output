@@ -1,0 +1,19 @@
+student@B4L0106:~$ javac test.java
+student@B4L0106:~$ java test
+1.Rectangle
+2.Triangle
+3.Exit
+Enter choice:1
+Enter Length and Breadth :13.2 15.3
+Area of Rectangle: 201.96
+1.Rectangle
+2.Triangle
+3.Exit
+Enter choice:2
+Enter Base and Height :12.5 23.1
+Area of triangle: 144.375
+1.Rectangle
+2.Triangle
+3.Exit
+Enter choice:3
+student@B4L0106:~$

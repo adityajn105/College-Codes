@@ -1,0 +1,54 @@
+List the no. of rooms in each hotel.
+	SELECT ROOMS.hotel_no,COUNT(ROOMS.room_no) FROM ROOMS GROUP BY hotel_no;
++----------+----------------------+
+| hotel_no | COUNT(ROOMS.room_no) |
++----------+----------------------+
+|     1243 |                    6 |
+|     1244 |                    4 |
+|     1246 |                    3 |
+|     1248 |                    1 |
++----------+----------------------+
+
+
+List the no. of rooms in each hotel in London.
+	SELECT hotel_no,COUNT(room_no) FROM ROOMS WHERE hotel_no in (SELECT hotel_no FROM HOTEL WHERE city='London') GROUP BY hotel_no;
++----------+----------------+
+| hotel_no | COUNT(room_no) |
++----------+----------------+
+|     1243 |              6 |
+|     1246 |              3 |
++----------+----------------+
+
+What is the avg no. of bookings for each hotel in April?
+	SELECT hotel_no,COUNT(*) FROM BOOKINGS WHERE 8 BETWEEN MONTH(date_from) AND MONTH(date_to) GROUP BY hotel_no;
++----------+----------+
+| hotel_no | COUNT(*) |
++----------+----------+
+|     1243 |        1 |
++----------+----------+
+
+	
+What is the most commonly booked room type for each hotel in London?
+	 SELECT hotel_no,MAX(type) FROM ROOMS WHERE room_no IN (SELECT room_no FROM BOOKINGS WHERE hotel_no in(SELECT hotel_no FROM HOTEL WHERE city='London')) AND hotel_no IN (SELECT hotel_no FROM HOTEL WHERE city='London') GROUP BY hotel_no; 
++----------+-------------+
+| hotel_no | MAX(type)   |
++----------+-------------+
+|     1243 | Double Room |
+|     1246 | Double Room |
++----------+-------------+
+
+
+What is the lost income from unoccupied rooms at each hotel today?
+	 SELECT hotel_no,SUM(price) FROM ROOMS WHERE ROOMS.room_no IN (SELECT room_no FROM BOOKINGS WHERE CURDATE() NOT BETWEEN DATE(date_from) AND DATE(date_to)) GROUP BY hotel_no;
++----------+------------+
+| hotel_no | SUM(price) |
++----------+------------+
+|     1243 |         95 |
+|     1244 |         53 |
+|     1246 |        148 |
+|     1248 |         63 |
++----------+------------+
+
+	
+
+

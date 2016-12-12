@@ -1,0 +1,99 @@
+#include <iostream>
+#include <graphics.h>
+#include <stdlib.h>
+
+using namespace std;
+
+class Fill {
+    
+    int xy[20], n;
+    int seedX, seedY;
+    
+public:
+    
+    void getDataFromUser();
+    void boundaryFill(int x, int y, int fillColor, int boundaryColor);
+    void floodFill(int x, int y, int fillColor, int oldColor);
+    
+    void showPrompt();
+};
+
+void Fill::getDataFromUser() {
+    
+    cout << "\nEnter number of points in polygon: ";
+    cin >> n;
+    cout << "\nEnter co-ordinates of points: ";
+    for(int i = 0, j = 0; i < n; i++, j += 2) {
+        cout << "\nX: ";
+        cin >> xy[j];
+        cout << "\nY: ";
+        cin >> xy[j + 1];
+    }
+}
+
+void showPrompt() {
+    
+    cout << "\n1. Boundary Fill";
+    cout << "\n2. Flood Fill";
+    cout << "\nEnter your choice: ";
+    int ch;
+    cin >> ch;
+    
+    cout << "\nEnter seed point: ";
+    cin >> seedX >> seedY;
+    int fillColor;
+    cout << "\nEnter fill color: ";
+    cin >> fillColor;
+    
+    drawpoly(n, xy);
+    
+    if(ch == 1) {
+        boundaryFill(seedX, seedY, fillColor, 15); 
+    } else {
+        floodFill(seedX, seedY, fillColor, 0);
+    }
+}
+
+void Fill::boundaryFill(int x, int y, int fillColor, int boundaryColor) {
+        
+    int color = getpixel(x, y);
+    if (color != boundaryColor && color != fillColor) {
+    
+        putpixel(x, y, fillColor);
+        
+        boundaryFill(x + 1, y, fillColor, boundaryColor);
+        boundaryFill(x - 1, y, fillColor, boundaryColor);
+        boundaryFill(x, y + 1, fillColor, boundaryColor);
+        boundaryFill(x, y - 1, fillColor, boundaryColor);
+    }
+}
+
+void Fill::floodFill(int x, int y, int fillColor, int oldColor) {
+
+    int color = getpixel(x, y);
+    if (color == oldColor) {
+        putpixel(x, y, fillColor);
+        
+        floodFill(x + 1, y, fillColor, oldColor);
+        floodFill(x - 1, y, fillColor, oldColor);
+        floodFill(x, y + 1, fillColor, oldColor);
+        floodFill(x, y - 1, fillColor, oldColor);
+    }
+
+}
+
+int main() {
+    
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, NULL);
+    
+    Fill f;
+    f.getDataFromUser();
+    f.showPrompt();
+    
+    
+    getch();
+    closegraph();   
+    
+    return 0;   
+}

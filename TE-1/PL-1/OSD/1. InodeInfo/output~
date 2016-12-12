@@ -1,0 +1,188 @@
+student@PUN:~/InodeInfo$ g++ inodeinfo.cpp
+student@PUN:~/InodeInfo$ ./a.out regular /dev/tty1 /dev/sda directory symb fifofile
+1. File Name: regular
+             ID of Device containing file :2056
+             Inode No: 2496336
+             File Type: Regular File
+             No of Links: 1
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jun 28 09:38:37 2016
+             Last Modification Time:Tue Jun 28 09:38:30 2016
+             Last Change Time:Tue Jun 28 09:38:36 2016
+___________________________________________________________________
+2. File Name: /dev/tty1
+             ID of Device containing file :5
+             Inode No: 1044
+             File Type: Character File
+             No of Links: 1
+             Owner's User ID: 0
+             Owner's Group ID:5
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:36:37 2016
+             Last Modification Time:Tue Jul 19 08:36:43 2016
+             Last Change Time:Tue Jul 19 08:36:43 2016
+___________________________________________________________________
+3. File Name: /dev/sda
+             ID of Device containing file :5
+             Inode No: 7094
+             File Type: Block File
+             No of Links: 1
+             Owner's User ID: 0
+             Owner's Group ID:6
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:36:38 2016
+             Last Modification Time:Tue Jul 19 08:36:38 2016
+             Last Change Time:Tue Jul 19 08:36:38 2016
+___________________________________________________________________
+4. File Name: directory
+             ID of Device containing file :2056
+             Inode No: 2496335
+             File Type: Directory
+             No of Links: 2
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 8
+             Last Access Time: Tue Jun 28 10:23:53 2016
+             Last Modification Time:Tue Jun 28 09:38:19 2016
+             Last Change Time:Tue Jun 28 09:38:28 2016
+___________________________________________________________________
+5. File Name: symb
+             ID of Device containing file :2056
+             Inode No: 2496335
+             File Type: Directory
+             No of Links: 2
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 8
+             Last Access Time: Tue Jun 28 10:23:53 2016
+             Last Modification Time:Tue Jun 28 09:38:19 2016
+             Last Change Time:Tue Jun 28 09:38:28 2016
+___________________________________________________________________
+6. File Name: fifofile
+             ID of Device containing file :2056
+             Inode No: 2496625
+             No of Links: 1
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:41:31 2016
+             Last Modification Time:Tue Jul 19 08:41:31 2016
+             Last Change Time:Tue Jul 19 08:41:31 2016
+___________________________________________________________________
+student@PUN:~/InodeInfo$ cd ..
+student@PUN:~$ cd InodeInfo(p
+Display all 201 possibilities? (y or n)
+pacat                    pico                     prezip-bin
+pack200                  piconv                   print
+pacmd                    pidof                    printafm
+pactl                    pilconvert.py            printenv
+padsp                    pildriver.py             printerbanner
+pager                    pilfile.py               printer-profile
+palimpsest               pilfont.py               printf
+pam-auth-update          pilprint.py              protoc
+pam_getenv               ping                     prove
+pamon                    ping6                    prtstat
+pam_tally                pinky                    ps
+pam_tally2               pivot_root               ps2ascii
+paperconf                pkaction                 ps2epsi
+paperconfig              pkcheck                  ps2pdf
+paplay                   pkexec                   ps2pdf12
+parec                    pkg-config               ps2pdf13
+parecord                 pkill                    ps2pdf14
+parsechangelog           pl2pm                    ps2pdfwr
+parted                   pldd                     ps2ps
+parted_devices           plipconfig               ps2ps2
+parted_server            plog                     ps2txt
+partman                  plymouth                 psed
+partman-command          plymouthd                psfaddtable
+student@PUN:~$ cd InodeInfo
+student@PUN:~/InodeInfo$ g++ inodeinfo.cpp
+student@PUN:~/InodeInfo$ ./a.out regular /dev/tty1 /dev/sda directory symb fifofile
+1. File Name: regular
+             ID of Device containing file :2056
+             Inode No: 2496336
+             File Type: Regular File
+             No of Links: 1
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:53:38 2016
+             Last Modification Time:Tue Jun 28 09:38:30 2016
+             Last Change Time:Tue Jun 28 09:38:36 2016
+___________________________________________________________________
+2. File Name: /dev/tty1
+             ID of Device containing file :5
+             Inode No: 1044
+             File Type: Character File
+             No of Links: 1
+             Owner's User ID: 0
+             Owner's Group ID:5
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:36:37 2016
+             Last Modification Time:Tue Jul 19 08:36:43 2016
+             Last Change Time:Tue Jul 19 08:36:43 2016
+___________________________________________________________________
+3. File Name: /dev/sda
+             ID of Device containing file :5
+             Inode No: 7094
+             File Type: Block File
+             No of Links: 1
+             Owner's User ID: 0
+             Owner's Group ID:6
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:36:38 2016
+             Last Modification Time:Tue Jul 19 08:36:38 2016
+             Last Change Time:Tue Jul 19 08:36:38 2016
+___________________________________________________________________
+4. File Name: directory
+             ID of Device containing file :2056
+             Inode No: 2496335
+             File Type: Directory
+             No of Links: 2
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 8
+             Last Access Time: Tue Jul 19 08:53:38 2016
+             Last Modification Time:Tue Jun 28 09:38:19 2016
+             Last Change Time:Tue Jun 28 09:38:28 2016
+___________________________________________________________________
+5. File Name: symb
+             ID of Device containing file :2056
+             Inode No: 2496335
+             File Type: Directory
+             No of Links: 2
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 8
+             Last Access Time: Tue Jul 19 08:53:38 2016
+             Last Modification Time:Tue Jun 28 09:38:19 2016
+             Last Change Time:Tue Jun 28 09:38:28 2016
+___________________________________________________________________
+6. File Name: fifofile
+             ID of Device containing file :2056
+             Inode No: 2496625
+             File Type: FIFO File
+             No of Links: 1
+             Owner's User ID: 1000
+             Owner's Group ID:1000
+             Size of File :4096
+             Blocks count: 0
+             Last Access Time: Tue Jul 19 08:41:31 2016
+             Last Modification Time:Tue Jul 19 08:41:31 2016
+             Last Change Time:Tue Jul 19 08:41:31 2016
+___________________________________________________________________
+student@PUN:~/InodeInfo$ 
+

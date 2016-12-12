@@ -1,0 +1,10 @@
+student@B4L0106:~/Posix_Spawn$ ./a.out 
+Process ls created with pid: 3725
+a.out  Main.cpp  Main.cpp~
+Process ps created with pid: 3726
+  PID TTY          TIME CMD
+ 3585 pts/1    00:00:00 bash
+ 3724 pts/1    00:00:00 a.out
+ 3726 pts/1    00:00:00 ps
+
+

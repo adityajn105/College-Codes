@@ -1,0 +1,16 @@
+student@B04L0728:~$ python bubblesort.py
+Enter length of array: 8
+Enter element:  565
+Enter element:  23234
+Enter element:  12343
+Enter element:  6565
+Enter element:  123
+Enter element:  4565
+Enter element:  12323
+Enter element:  6553
+The array entered is
+[565, 23234, 12343, 6565, 123, 4565, 12323, 6553]
+Sorted Array is:   
+[123, 565, 4565, 6553, 6565, 12323, 12343, 23234]
+student@B04L0728:~$ 
+

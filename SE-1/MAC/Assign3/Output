@@ -1,0 +1,8 @@
+aditya@ADITYAsPC:~/MAC$ nasm -f elf64 Assign3.asm
+aditya@ADITYAsPC:~/MAC$ ld -o Assign3 Assign3.o
+aditya@ADITYAsPC:~/MAC$ ./Assign3
+Enter the string :
+Aditya      
+Entered string is:  Aditya
+Length of string is:  7
+

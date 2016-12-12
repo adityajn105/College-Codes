@@ -1,0 +1,63 @@
+╭─Khemraj@DellPC [01:19:30]  ~  
+╰─$ sudo g++ ramdisk.cpp  
+╭─Khemraj@DellPC [01:19:41]  ~  
+╰─$ sudo ./a.out  
+
+Virtual RAM created
+
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.9G     0  1.9G   0% /dev
+tmpfs           386M   12M  375M   3% /run
+/dev/sda9        99G   52G   42G  56% /
+tmpfs           1.9G  936K  1.9G   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda1       496M   50M  447M  11% /boot/efi
+cgmfs           100K     0  100K   0% /run/cgmanager/fs
+tmpfs           386M   12K  386M   1% /run/user/126
+tmpfs           386M   56K  386M   1% /run/user/1000
+/dev/sda7        16G   96M   16G   1% /media/Khemraj/MYLINUXLIVE
+/dev/sda6        80G   43G   38G  54% /media/Khemraj/Programming and college stuffs
+/dev/sdb1       7.6G  483M  7.1G   7% /media/Khemraj/OjhaPD
+/tmpfs/mnt      500M   28K  500M   1% /mnt/MyRam
+Disk usage....Selecting tmpfs and mounting the RAM...
+Drive Mounted and ready for use !
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.9G     0  1.9G   0% /dev
+tmpfs           386M   12M  375M   3% /run
+/dev/sda9        99G   52G   42G  56% /
+tmpfs           1.9G  936K  1.9G   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda1       496M   50M  447M  11% /boot/efi
+cgmfs           100K     0  100K   0% /run/cgmanager/fs
+tmpfs           386M   12K  386M   1% /run/user/126
+tmpfs           386M   56K  386M   1% /run/user/1000
+/dev/sda7        16G   96M   16G   1% /media/Khemraj/MYLINUXLIVE
+/dev/sda6        80G   43G   38G  54% /media/Khemraj/Programming and college stuffs
+/dev/sdb1       7.6G  483M  7.1G   7% /media/Khemraj/OjhaPD
+/tmpfs/mnt      500M     0  500M   0% /mnt/MyRam
+Executing application in VRAM...
+sudo: chmode: command not found
+1.Addition
+2.Subtraction
+3.Multiplication
+4.Division
+Enter Choice	:3
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.9G     0  1.9G   0% /dev
+tmpfs           386M   12M  375M   3% /run
+/dev/sda9        99G   52G   42G  56% /
+tmpfs           1.9G  936K  1.9G   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda1       496M   50M  447M  11% /boot/efi
+cgmfs           100K     0  100K   0% /run/cgmanager/fs
+tmpfs           386M   12K  386M   1% /run/user/126
+tmpfs           386M   56K  386M   1% /run/user/1000
+/dev/sda7        16G   96M   16G   1% /media/Khemraj/MYLINUXLIVE
+/dev/sda6        80G   43G   38G  54% /media/Khemraj/Programming and college stuffs
+/dev/sdb1       7.6G  483M  7.1G   7% /media/Khemraj/OjhaPD
+/tmpfs/mnt      500M   28K  500M   1% /mnt/MyRam
+╭─Khemraj@DellPC [01:19:42]  ~  
+╰─$

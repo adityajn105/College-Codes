@@ -1,0 +1,126 @@
+//Aggregation
+
+1. Display a list that how many tutorials are written by each user
+	> db.post.aggregate([
+	{$group:{_id:"$by",tutorial_count:{$sum:1}}}
+	])
+	{ "_id" : "Tutorials World", "tutorial_count" : 2 }
+	{ "_id" : "Learning Point", "tutorial_count" : 3 }
+	{ "_id" : "Tutorials Point", "tutorial_count" : 5 }
+
+
+2. Compute the top five urls .($sum,$sort)
+         > db.post.aggregate([{$group:{_id:"$url",like_count:{$sum:"$likes"}}},
+         {$sort:{like_count:-1}},
+         {$limit:5}
+         ])
+	{ "_id" : "http://www.joffery.com", "like_count" : 2143 }
+	{ "_id" : "http://www.danarys.com", "like_count" : 1045 }
+	{ "_id" : "http://www.adityajain.com", "like_count" : 100 }
+	{ "_id" : "http://www.sansa.com", "like_count" : 54 }
+	{ "_id" : "http://www.jhon.com", "like_count" : 50 }
+
+
+3. Return url having likes above 1000.($match,$sum)
+	> db.post.aggregate([
+	{$group:{_id:"$url",like_count:{$sum:"$likes"}}},
+	{$match:{like_count:{$gt:1000}}}
+	])
+	{ "_id" : "http://www.danarys.com", "like_count" : 1045 }
+	{ "_id" : "http://www.joffery.com", "like_count" : 2143 }
+
+4. Return all 'comments' from user 'sam' .($unwind)
+	>db.post.aggregate([
+	{$unwind:"$comments"},
+	{$match:{"comments.user":"sam"}},
+	{$project:{title:1,_id:0,"comments.message":1}}
+	])
+	
+	{ "title" : "Hadoop Overview", "comments" : { "message" : "i dont like it" } }
+	{ "title" : "PHP Overview", "comments" : { "message" : "almost like previous version" } }
+
+5. Find total likes for “'http: //www.tutorialspoint.com'” only.
+	> db.post.aggregate(
+	{$match:{url:"http: //www.tutorialspoint.com"}},
+	{$group:{_id:"$url",like_count:{$sum:"$likes"}}}
+	)
+
+	{ "_id" : "http: //www.tutorialspoint.com", "like_count" : 220 }
+	
+6. Get all comments created after '2012-11-22'.
+
+	> db.post.aggregate([
+	{$unwind:"$comments"},
+	{$match:{"comments.dateCreated":{$gt:new Date(2015,11,12,3,34)}}},
+	{$project:{title:1,"comments.message":1,"comments.dateCreated":1,"comments.user":1}}
+	]).pretty()
+	
+	{
+		"_id" : ObjectId("57c5004bbb203ba08b8371c1"),
+		"title" : "New MongoDb Overview",
+		"comments" : {
+			"user" : "user1",
+			"message" : "good content",
+			"dateCreated" : ISODate("2016-02-19T20:45:00Z")
+		}
+	}
+	{
+		"_id" : ObjectId("57c50227bb203ba08b8371c4"),
+		"title" : "Hadoop Overview",
+		"comments" : {
+			"user" : "sam",
+			"message" : "i dont like it",
+			"dateCreated" : ISODate("2016-02-24T21:45:00Z")
+		}
+	}
+	{
+		"_id" : ObjectId("57c502a3bb203ba08b8371c5"),
+		"title" : "Servelets Overview",
+		"comments" : {
+			"user" : "user4",
+			"message" : "previous version was better",
+			"dateCreated" : ISODate("2016-09-24T21:47:00Z")
+		}
+	}
+	{
+		"_id" : ObjectId("57c50327bb203ba08b8371c6"),
+		"title" : "Jsp Overview",
+		"comments" : {
+			"user" : "user6",
+			"message" : "previous version was lame",
+			"dateCreated" : ISODate("2016-02-24T21:47:00Z")
+		}
+	}
+
+
+	7. Return the Five Most Common “tags”.
+	> db.post.aggregate([
+	{$unwind:"$tags"},
+	{$group:{_id:"$tags",count:{$sum:1}}},
+	{$sort:{count:-1}},
+	{$limit:5}
+	])
+
+	{ "_id" : "server", "count" : 3 }
+	{ "_id" : "sql", "count" : 2 }
+	{ "_id" : "joffery", "count" : 1 }
+	{ "_id" : "ios", "count" : 1 }
+	{ "_id" : "adi", "count" : 1 }
+	
+
+
+8. Get the total count of the number of comments among all users.
+	> db.post.aggregate([
+	{$unwind:"$comments"},
+	{$group:{_id:"$comments.user",count:{$sum:1}}},
+	{$sort:{count:-1}}
+	])
+
+	{ "_id" : "user7", "count" : 2 }
+	{ "_id" : "sam", "count" : 2 }
+	{ "_id" : "user3", "count" : 2 }
+	{ "_id" : "user1", "count" : 2 }
+	{ "_id" : "user2", "count" : 1 }
+	{ "_id" : "user4", "count" : 1 }
+	{ "_id" : "user6", "count" : 1 }
+	{ "_id" : "user5", "count" : 1 }

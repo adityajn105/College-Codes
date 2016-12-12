@@ -1,0 +1,65 @@
+aditya@ADITYAsPC:~/Documents$ javac AvailableMem.java
+aditya@ADITYAsPC:~/Documents$ java AvailableMem
+
+ 
+ Total memory of the system:60817408
+
+ 
+ Total Available memory of the system:60167048
+
+ 
+ Linux System Memory Information 
+
+ MemTotal:        3950768 kB
+ MemFree:         1782796 kB
+ Buffers:          101344 kB
+ Cached:           756324 kB
+ SwapCached:            0 kB
+ Active:          1656268 kB
+ Inactive:         263048 kB
+ Active(anon):    1062912 kB
+ Inactive(anon):    37984 kB
+ Active(file):     593356 kB
+ Inactive(file):   225064 kB
+ Unevictable:          32 kB
+ Mlocked:              32 kB
+ SwapTotal:             0 kB
+ SwapFree:              0 kB
+ Dirty:                48 kB
+ Writeback:             4 kB
+ AnonPages:       1061812 kB
+ Mapped:           344276 kB
+ Shmem:             39192 kB
+ Slab:              91572 kB
+ SReclaimable:      51812 kB
+ SUnreclaim:        39760 kB
+ KernelStack:        3920 kB
+ PageTables:        31568 kB
+ NFS_Unstable:          0 kB
+ Bounce:                0 kB
+ WritebackTmp:          0 kB
+ CommitLimit:     1975384 kB
+ Committed_AS:    4590564 kB
+ VmallocTotal:   34359738367 kB
+ VmallocUsed:      383656 kB
+ VmallocChunk:   34359333372 kB
+ HardwareCorrupted:     0 kB
+ AnonHugePages:    389120 kB
+ HugePages_Total:       0
+ HugePages_Free:        0
+ HugePages_Rsvd:        0
+ HugePages_Surp:        0
+ Hugepagesize:       2048 kB
+ DirectMap4k:      222200 kB
+ DirectMap2M:     3874816 kB
+ DirectMap1G:           0 kB
+
+ 
+ Available memory->:MemFree:         1782796 kB
+
+ 
+ exit->:0
+
+ 
+ Exiting....
+

@@ -1,0 +1,371 @@
+#include<iostream>
+#include<fstream>
+#include<stdio.h>
+#include<string.h>
+using namespace std;
+class dict{
+	char key[10],mean[20];
+	friend class node;
+	friend class avl;
+};
+class node{
+	char key[10];
+	char mean[20];
+	node* lchild;
+	node* rchild;
+	friend class avl;
+};
+class avl{
+	node *root;
+	int bf(node*);
+	int height(node*);
+	node* parent(node*);
+	void ll(node*);
+	void rr(node*);
+	void lr(node*);
+	void rl(node*);
+public:
+	avl(){
+		root = NULL;
+	}
+	void create(char*, char*);
+	void dispasc(node*);
+	void display(int);
+	void dispdec(node*);
+	void dispnode(char*);
+	void getdata();
+	void buildfromdata();
+};
+
+void avl::getdata(){
+	ofstream datfile;
+	datfile.open("dat.txt", ios::out | ios::binary);
+	int n;
+	char key[10],mean[20];
+	dict datobj;
+	cout<<"\nEnter no of nodes: ";
+	cin>>n;
+	for(int i=0;i<n;i++){
+		cout<<"\nEnter keyword :";
+		cin>>key;
+		cout<<"Enter Meaning :";
+		cin>>mean;
+		strcpy(datobj.key,key);
+		strcpy(datobj.mean,mean);
+		datfile.write((char*)&datobj,sizeof(datobj));
+	}
+	datfile.close();
+}
+void avl::buildfromdata()
+{	ifstream datfile;
+	datfile.open("dat.txt", ios::out | ios::binary);
+	dict datobj;
+	datfile.read((char *)&datobj, sizeof(datobj));
+	while(!datfile.eof()){
+	char key[10],mean[20];
+	strcpy(key,datobj.key);
+	strcpy(mean,datobj.mean);
+	create(key,mean);
+	datfile.read((char *)&datobj, sizeof(datobj));
+	}
+	datfile.close();
+}
+
+node* avl::parent(node* curr)
+{
+	node* temp = root;
+	node *p = root;
+	if (strcmp(curr->key,temp->key)==0){
+		return NULL;
+	}
+	else{
+		while (1){
+			if (strcmp(temp->key, curr->key) > 0){
+				p = temp;
+				temp = temp->lchild;
+			}
+			else if (strcmp(temp->key,curr->key)<0){
+				p = temp;
+				temp = temp->rchild;
+			}
+			else{
+				break;
+			}
+		}
+		return p;
+	}
+}
+void avl::display(int ch){
+	if (ch == 1){
+		cout << "\nAscending order display-";
+		cout << endl << "Key    \t\t\tMeaning";
+		dispasc(root);
+	}
+	else if (ch == 2){
+		cout << "\nDescending order display-";
+		cout << endl << "Key    \t\t\tMeaning";
+		dispdec(root);
+	}
+}
+
+void avl::dispasc(node* temp){
+	if (temp != NULL){
+		dispasc(temp->lchild);
+		cout << "\n" << temp->key << "\t\t\t" << temp->mean;
+		dispasc(temp->rchild);
+	}
+}
+void avl::dispdec(node* temp){
+	if (temp != NULL){
+		dispdec(temp->rchild);
+		cout << "\n" << temp->key << "\t\t\t" << temp->mean;
+		dispdec(temp->lchild);
+	}
+}
+void avl::dispnode(char key[]){
+	node* temp=root;
+	while(1){
+		if(strcmp(temp->key,key)>0){
+			temp=temp->lchild;
+		}
+		else if(strcmp(temp->key,key)<0){
+			temp=temp->rchild;
+		}
+		else if(strcmp(temp->key,key)==0){
+			cout<<endl<<"Key Found!!!";
+			cout<<endl<<"Key   :"<<temp->key<<"\tMeaning  :"<<temp->mean;
+			break;
+		}
+		else{
+			cout<<endl<<"Key not found";
+			break;
+		}
+	}
+}
+
+int avl::height(node* temp){
+	int tl = -1, tr = -1, h;
+	if (temp != NULL){
+		tl = height(temp->lchild);
+		tr = height(temp->rchild);
+	}
+	if (tl > tr){h = tl;}
+	else{ h = tr; }
+	return  h + 1;
+}
+int avl::bf(node* temp){
+	int k = height(temp->lchild) - height(temp->rchild);
+	return k;
+}
+void avl::create(char key[], char mean[]){
+	cout<<endl<<"Adding key: "<< key<<"\t Mean: "<<mean<<"\n";
+	if (root == NULL){
+		root = new node;
+		strcpy(root->key, key);
+		strcpy(root->mean, mean);
+		root->lchild = NULL;
+		root->rchild = NULL;
+	}
+	else{
+		node* temp = root;
+		while (1){
+			if (strcmp(temp->key, key)>0){
+				if (temp->lchild == NULL){
+					temp->lchild = new node;
+					strcpy(temp->lchild->key, key);
+					strcpy(temp->lchild->mean, mean);
+					temp->lchild->lchild = NULL;
+					temp->lchild->rchild = NULL;
+					break;
+				}
+				else{
+					temp = temp->lchild;
+				}
+			}
+			else if (strcmp(temp->key, key) < 0){
+				if (temp->rchild == NULL){
+					temp->rchild = new node;
+					strcpy(temp->rchild->key, key);
+					strcpy(temp->rchild->mean, mean);
+					temp->rchild->lchild = NULL;
+					temp->rchild->rchild = NULL;
+					break;
+				}
+				else{
+					temp = temp->rchild;
+				}
+			}
+			else{
+				cout <<endl<<"Key already there!!!";
+				break;
+			}
+		}
+		while (parent(temp) != NULL){
+			int k = bf(parent(temp));
+			if (k == -2||k==2){
+				int l=bf(temp);
+				cout << endl << "bf of " << parent(temp)->key << " becomes "<<k;
+				if (k == 2 && l == 1){
+					cout <<endl<< "Doing LL SHift";
+					ll(parent(temp));
+				}
+				else if (k == 2 && l == -1){
+					cout <<endl<< "Doing LR Shift";
+					lr(parent(temp));
+				}
+				else if (k == -2 && l == 1){
+					cout << endl<<"Doing RL shift";
+					rl(parent(temp));
+				}
+				else{
+					cout <<endl<< "Doing RR shift";
+					rr(parent(temp));
+				}
+				break;
+			}
+			else{
+				temp = parent(temp);
+			}
+		}
+	}
+	display(1);
+	cout<<endl<<endl;
+}
+
+void avl::ll(node *temp){
+	if (temp == root){
+		root = temp->lchild;
+		temp->lchild = root -> rchild;
+		root->rchild = temp;
+	}
+	else{
+		node* p = parent(temp);
+		if (p->lchild == temp){
+			p->lchild = temp->lchild;
+			p = p->lchild;
+		}
+		else{
+			p->rchild = temp->lchild;
+			p = p->rchild;
+		}
+		temp->lchild = p->rchild;
+		p->rchild = temp;
+	}
+}
+
+void avl::lr(node *temp){
+	if (temp == root){
+		root = temp->lchild->rchild;
+		temp->lchild->rchild = root->lchild;
+		root->lchild = temp->lchild;
+		temp->lchild = root->rchild;
+		root->rchild = temp;
+	}
+	else{
+		node* p = parent(temp);
+		if (p->lchild == temp){
+			p->lchild = temp->lchild->rchild;
+			p = p->lchild;
+		}
+		else{
+			p->rchild = temp->lchild->rchild;
+			p = p->rchild;
+		}
+		temp->lchild->rchild = p->lchild;
+		p->lchild = temp->lchild;
+		temp->lchild = p->rchild;
+		p->rchild = temp;
+	}
+}
+void avl::rl(node *temp)
+{
+	if (temp==root){
+		root=temp->rchild->lchild;
+		temp->rchild->lchild=root->rchild;
+		root->rchild=temp->rchild;
+		temp->rchild=root->lchild;
+		root->lchild=temp;
+	}
+	else{
+		node *p=parent(temp);
+		if(p->lchild==temp){
+			p->lchild=temp->rchild->lchild;
+			p=p->lchild;
+		}
+		else{
+			p->rchild=temp->rchild->lchild;
+			p=p->rchild;
+		}
+		temp->rchild->lchild=p->rchild;
+		p->rchild=temp->rchild;
+		temp->rchild=p->lchild;
+		p->lchild=temp;
+	}
+}
+
+void avl::rr(node* temp){
+	if(root==temp){
+		root=temp->rchild;
+		temp->rchild=root->lchild;
+		root->lchild=temp;
+	}
+	else{
+		node *p=parent(temp);{
+			if(p->lchild==temp){
+				p->lchild=temp->rchild;
+				p=p->lchild;
+			}
+			else{
+				p->rchild=temp->rchild;
+				p=p->rchild;
+			}
+			temp->rchild=p->lchild;
+			p->lchild=temp;
+		}
+	}
+}
+
+
+int main(){
+	int ch;
+	char dec = 'y';
+	char key[10];
+	avl b;
+	while (dec == 'y'){
+		cout << "MENU:\n" << "1.Insert Datas\n2.Build AVL tree from datas\n";
+		cout<<"3.Display keys and meaning in ascending order\n4.Display keys and meaning in decending order\n";
+		cout <<"5.Show meaning of a key\n";
+		cout << "Enter your choice   :"; cin >> ch;
+		switch (ch){
+		case 1:{
+			b.getdata();
+			break;
+		}
+		case 2:{
+			b.buildfromdata();
+			break;
+		}
+		case 3:{
+			b.display(1);
+			break;
+		}
+		case 4:{
+			b.display(2);
+			break;
+		}
+		case 5:{
+			cout << endl << "Enter Key value to be searched  :";
+			cin >> key;
+			b.dispnode(key);
+			break;
+		}
+		default:{
+			cout << endl << "Wrong choice Entered!!!";
+			break;
+		}
+		}
+		cout << endl << "Do you want to continue(y or n) :";
+		cin >> dec;
+	}
+}
+

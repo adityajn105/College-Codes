@@ -1,0 +1,38 @@
+import sys,os,stat,time
+
+ass=list()
+for i in range(len(sys.argv)):
+	ass.append(sys.argv[i])
+for i in range(len(sys.argv)):
+	fs=os.stat(ass[i])
+	print("File-"+ass[i])
+	print("             Inode no: "+str(fs.st_ino))
+	print("             ID of Device containing file: "+str(fs.st_dev))
+	if stat.S_ISREG(fs.st_mode):
+		print("             File Type: Regular File")
+	
+	elif stat.S_ISDIR(fs.st_mode):
+		print("             File Type: Directory")
+	
+	elif stat.S_ISLNK(fs.st_mode):
+		print("             File Type: Symbolic Link");		
+	
+	elif stat.S_ISCHR(fs.st_mode):
+		print("             File Type: Character File")
+	
+	elif stat.S_ISBLK(fs.st_mode):
+		print("             File Type: Block File")
+	elif stat.S_ISFIFO(fs.st_mode):
+		print("		    File Type: FIFO File")
+	
+
+	print("             No of Links: "+str(fs.st_nlink))
+	print("             Owner's User Id: "+str(fs.st_uid))
+	print("             Owner's Griup Id: "+str(fs.st_gid))
+	print("             Size of File: "+str(fs.st_blksize))
+	print("             Block Count: "+str(fs.st_blocks))
+	print("             Last Access Time: "+time.ctime(fs.st_atime))
+	print("             Last Modified Time: "+time.ctime(fs.st_mtime))
+	print("             Last Change TIme: "+time.ctime(fs.st_ctime));
+	print("___________________________________________________________________")
+

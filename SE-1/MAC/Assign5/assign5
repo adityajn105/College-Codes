@@ -1,0 +1,72 @@
+section .data
+arr  dd 0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH
+str1 db "The sum is",10
+str1len equ $-str1
+
+%macro print 2
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+%endmacro
+
+section .bss
+result resb 8	;for carry
+result2 resb 8	;for sum
+temp resb 8
+
+section .text
+global _start
+_start:
+mov esi,arr	;initialize pointer
+mov edi,5	;initialize counter
+mov eax,0	;lower 32bits i.e. Sum
+mov ebx,0	;upper 32 bits i.e. carry
+
+	
+up:	add eax,[esi] 	;add first no to eax
+	jnc next	;if no carry then jump to next
+	inc ebx		;increase ebx
+next:	add esi,4	;take pointer to next no
+	dec edi		;decrease counter
+	jnz up		;jump to up if counter is 0 
+
+	mov edi,result	;initialize pointer to buffer result
+	mov cl,8    ;initialize counter
+again:	rol ebx,4	;rotate ebx by 4bits
+	mov [temp],ebx	;mov content of ebx to buffer temp
+	and ebx,0FH	;mask upper 28bits of ebx 
+	cmp bl,09	;compare bl with 09h
+	jbe skip	;jump to skip if below or equal
+	add bl,07	;all 07h to bl
+skip:	add bl,30H	;add 30h to bl
+	mov [edi],bl	;mov contents of bl to address stored in edi
+	inc edi		;increment of edi
+	mov ebx,[temp]	;recover contents of ebx
+	dec cl		;decrement of cl
+	jnz again	;jump if not zero to again
+
+	mov edi,result2	
+	mov cl,8  
+		
+again2:	rol eax,4
+	mov [temp],eax
+	and eax,0FH
+	cmp al,09
+	jbe skip2
+	add al,07
+skip2:	add al,30H
+	mov [edi],al
+	inc edi
+	mov eax,[temp]
+	dec cl
+	jnz again2
+	
+print str1,str1len
+print result,8
+print result2,8
+
+mov eax,1
+mov ebx,0
+int 80h

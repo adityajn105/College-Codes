@@ -1,0 +1,103 @@
+mysql> CREATE VIEW ROOMS_BREIF AS SELECT room_no,hotel_no FROM ROOMS;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> SELECT * FROM ROOMS_BREIF;
++---------+----------+
+| room_no | hotel_no |
++---------+----------+
+|    1102 |     1243 |
+|    1104 |     1243 |
+|    1105 |     1243 |
+|    1110 |     1243 |
+|    1156 |     1243 |
+|    1159 |     1243 |
+|    1120 |     1244 |
+|    1121 |     1244 |
+|    1136 |     1244 |
+|    1140 |     1244 |
+|    1102 |     1246 |
+|    1110 |     1246 |
+|    1136 |     1246 |
+|    1102 |     1248 |
++---------+----------+
+14 rows in set (0.02 sec)
+
+mysql> INSERT INTO ROOMS_BREIF VALUES(1026,1246);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM ROOMS;
++---------+----------+-------------+-------+
+| room_no | hotel_no | type        | price |
++---------+----------+-------------+-------+
+|    1026 |     1246 | NULL        |  NULL |
+|    1102 |     1243 | Double Room |    32 |
+|    1102 |     1246 | Double Room |    32 |
+|    1102 |     1248 | Double Room |    63 |
+|    1104 |     1243 | Double Room |    32 |
+|    1105 |     1243 | Double Room |    32 |
+|    1110 |     1243 | Deluxe AC   |    63 |
+|    1110 |     1246 | Deluxe AC   |    63 |
+|    1120 |     1244 | Deluxe AC   |    32 |
+|    1121 |     1244 | Double Room |    32 |
+|    1136 |     1244 | Deluxe Room |    53 |
+|    1136 |     1246 | Deluxe Room |    53 |
+|    1140 |     1244 | Deluxe Room |    53 |
+|    1156 |     1243 | AC          |    42 |
+|    1159 |     1243 | Single Room |    53 |
++---------+----------+-------------+-------+
+15 rows in set (0.00 sec)
+
+mysql> UPDATE ROOMS_BREIF SET room_no=1150 WHERE room_no=1156 AND hotel_no=1243;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ROOMS;
++---------+----------+-------------+-------+
+| room_no | hotel_no | type        | price |
++---------+----------+-------------+-------+
+|    1026 |     1246 | NULL        |  NULL |
+|    1102 |     1243 | Double Room |    32 |
+|    1102 |     1246 | Double Room |    32 |
+|    1102 |     1248 | Double Room |    63 |
+|    1104 |     1243 | Double Room |    32 |
+|    1105 |     1243 | Double Room |    32 |
+|    1110 |     1243 | Deluxe AC   |    63 |
+|    1110 |     1246 | Deluxe AC   |    63 |
+|    1120 |     1244 | Deluxe AC   |    32 |
+|    1121 |     1244 | Double Room |    32 |
+|    1136 |     1244 | Deluxe Room |    53 |
+|    1136 |     1246 | Deluxe Room |    53 |
+|    1140 |     1244 | Deluxe Room |    53 |
+|    1150 |     1243 | AC          |    42 |
+|    1159 |     1243 | Single Room |    53 |
++---------+----------+-------------+-------+
+15 rows in set (0.01 sec)
+
+mysql> DELETE FROM ROOMS_BREIF WHERE room_no=1150 AND hotel_no=1243;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> SELECT * FROM ROOMS;
++---------+----------+-------------+-------+
+| room_no | hotel_no | type        | price |
++---------+----------+-------------+-------+
+|    1026 |     1246 | NULL        |  NULL |
+|    1102 |     1243 | Double Room |    32 |
+|    1102 |     1246 | Double Room |    32 |
+|    1102 |     1248 | Double Room |    63 |
+|    1104 |     1243 | Double Room |    32 |
+|    1105 |     1243 | Double Room |    32 |
+|    1110 |     1243 | Deluxe AC   |    63 |
+|    1110 |     1246 | Deluxe AC   |    63 |
+|    1120 |     1244 | Deluxe AC   |    32 |
+|    1121 |     1244 | Double Room |    32 |
+|    1136 |     1244 | Deluxe Room |    53 |
+|    1136 |     1246 | Deluxe Room |    53 |
+|    1140 |     1244 | Deluxe Room |    53 |
+|    1159 |     1243 | Single Room |    53 |
++---------+----------+-------------+-------+
+14 rows in set (0.00 sec)
+
+
+
+
+

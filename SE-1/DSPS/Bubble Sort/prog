@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+class sorting():
+	array=[]
+	def bubblesort(self):
+		for x in range(0,len(self.array)-1):
+			y=0
+			for y in range(0,len(self.array)-1):
+				if self.array[y]>self.array[y+1]:
+					tmp=self.array[y]
+					self.array[y]=self.array[y+1]
+					self.array[y+1]=tmp
+	def getdata(self):	
+		i=0
+		n=int(raw_input("Enter length of array: "))
+		while i<n:
+			self.array.append(int(raw_input("Enter element:  ")))
+			i=i+1
+
+	def length(self):
+		return len(self.array)
+	def showdata(self):
+		print self.array	
+
+a1=sorting()
+a1.getdata()
+print "The array entered is"
+a1.showdata()
+a1.bubblesort()
+print"Sorted Array is:   "
+a1.showdata()
+

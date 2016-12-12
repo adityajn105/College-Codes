@@ -1,0 +1,17 @@
+aditya@ADITYAsPC:~$ gedit gtdr.asm
+aditya@ADITYAsPC:~$ nasm -f elf64 gtdr.asm
+aditya@ADITYAsPC:~$ ld -o gtdr gtdr.o
+aditya@ADITYAsPC:~$ ./gtdr
+Contents of GDTR are   : 
+Base address is: 88012FB09000007F
+Limit is: FFFF
+Contents of IDTR are   : 
+Base address is: FFFFFF5760000FFF
+Limit is: FFFF
+Contents of LDTR are   : 
+0000
+Contents of TR are     : 
+0040
+Contents of MSW are    : 
+0033
+aditya@ADITYAsPC:~$

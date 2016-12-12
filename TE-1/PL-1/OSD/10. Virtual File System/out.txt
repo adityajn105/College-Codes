@@ -1,0 +1,63 @@
+student@B04L03100:/media/OjhaPD/Aditya's Data/PL-1/OSD/10. Virtual File System$ python vfs.py
+vfs: Welcome again 
+vfs@python:  /
+>ls 
+d  System
+d  Users
+vfs@python:  /
+>cd Users
+vfs@python:  /Users
+>cd aditya
+vfs@python:  /Users/aditya
+>cd Home
+vfs@python:  /Users/aditya/Home
+>ls    
+d  Pictures
+d  Downloads
+-  imp.doc
+d  Desktop
+vfs@python:  /Users/aditya/Home
+>mkdir Documents
+vfs@python:  /Users/aditya/Home
+>cd Documents
+vfs@python:  /Users/aditya/Home/Documents
+>touch hello.txt hello world.. this is program to implement vfs
+vfs@python:  /Users/aditya/Home/Documents
+>cat hello.txt
+hello world.. this is program to implement vfs
+vfs@python:  /Users/aditya/Home/Documents
+>cd ..
+vfs@python:  /Users/aditya/Home
+>rmdir Documents
+vfs@python:  /Users/aditya/Home
+>ls
+d  Pictures
+d  Downloads
+-  imp.doc
+d  Desktop
+vfs@python:  /Users/aditya/Home
+>rename imp.doc veryimp.doc
+vfs@python:  /Users/aditya/Home
+>ls
+d  Pictures
+d  Downloads
+-  veryimp.doc
+d  Desktop
+vfs@python:  /Users/aditya/Home
+>pwd
+/Users/aditya/Home
+vfs@python:  /Users/aditya/Home
+>adduser John
+vfs: User added
+vfs@python:  /Users/aditya/Home
+>cd ..
+vfs@python:  /Users/aditya
+>cd ..
+vfs@python:  /Users
+>ls
+d  John
+d  aditya
+d  jain
+vfs@python:  /Users
+>exit
+

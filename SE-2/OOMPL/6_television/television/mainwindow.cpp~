@@ -1,0 +1,127 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include"tele.h"
+#include"qmessagebox.h"
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    ui->model->setValidator(new QIntValidator);
+    ui->price->setValidator(new QIntValidator);
+    ui->size->setValidator(new QIntValidator);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+tele::tele()
+{
+    model=price=size=0;
+}
+
+void MainWindow::operator>>(tele &t)
+{
+    try
+    {
+    int a=ui->model->text().toInt();
+    int c=ui->price->text().toInt();
+    int b=ui->size->text().toInt();
+    if(a>9999 && (b<12 || b>70) && (c<0 || c>5000)){throw 0;}
+    else if(a>9999 && (b<12 || b>70)){throw 1;}
+    else if(a>9999 && (c<0 || c>5000)){ throw 2;}
+    else if( (b<12 || b>70) && (c<0 || c>5000) ){throw 3;}
+    else if(a>9999){throw 4;}
+    else if(b<12 || b>70){throw 5;}
+    else if(c<0 || c>5000){throw 6;}
+    else
+    {
+        t.model=a;
+        t.price=c;
+        t.size=b;
+        QMessageBox::information(this,"VALID","All values entered correctly");
+        ui->price->clear();
+        ui->size->clear();
+        ui->model->clear();
+    }
+}
+    catch(int x)
+    {
+        if(x==0){
+           QMessageBox::information(this,"INVALID","Model no,Price and size values incorrect");
+           ui->size->setText("0");
+           ui->price->setText("0");
+           ui->model->setText("0");
+           ui->model->setFocus();
+        }
+        else if(x==1){
+           QMessageBox::information(this,"INVALID","Model and Size range is incorrect");
+            ui->size->setText("0");
+            ui->model->setText("0");
+            ui->model->setFocus();
+        }
+        else if(x==2){
+           QMessageBox::information(this,"INVALID","Model and price range incorrect");
+           ui->price->setText("0");
+           ui->model->setText("0");
+           ui->model->setFocus();
+        }
+        else if(x==3){
+            QMessageBox::information(this,"INVALID","Size and price range incorrect");
+            ui->size->setText("0");
+            ui->price->setText("0");
+            ui->size->setFocus();
+        }
+        else if(x==4){
+            QMessageBox::information(this,"INVALID","Model range incorrect (model<9999)");
+            ui->model->setText("0");
+            ui->model->setFocus();
+        }
+        else if(x==5){
+            QMessageBox::information(this,"INVALID","Size range incorrect (12<size<70)");
+            ui->size->setText("0");
+            ui->size->setFocus();
+        }
+        else if(x==6){
+            QMessageBox::information(this,"INVALID","Size range incorrect (price<5000)");
+            ui->price->setText("0");
+            ui->price->setFocus();
+        }
+     }
+}
+
+void MainWindow::operator<<(tele &t)
+{
+    QString a=QString::number(t.model);
+    QString b=QString::number(t.size);
+    QString c=QString::number(t.price);
+    QMessageBox::information(this,"Result","Model no: "+a+"\nSize: "+b+"\nPrice: "+c);
+}
+
+void MainWindow::on_accept_clicked()
+{
+    if( ui->model->text().isEmpty()||ui->model->text().isEmpty()||ui->model->text().isEmpty())
+    {
+       QMessageBox::information(this,"Invalid","Data not properly entered");
+    }
+    else
+    {
+    this->operator>>(t);
+    }
+}
+
+
+
+void MainWindow::on_display_clicked()
+{
+    this->operator<<(t);
+}
+
+
+
+void MainWindow::on_exit_clicked()
+{
+    this->close();
+}

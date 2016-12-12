@@ -1,0 +1,213 @@
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+using namespace std;
+class node
+{
+	char val;
+	node *lchild;
+	node *rchild;
+	int lbit, rbit;
+	friend class tbt;
+};
+
+class tbt
+{
+	node* head;
+public:
+	tbt()
+	{
+		head = new node;
+		head->lbit = 0;	//1->real
+		head->rbit = 1;	//0->threading
+		head->lchild = head;
+		head->rchild = head;
+	}
+	void create();
+	void display();
+	void pre();
+	void post();
+	void in();
+};
+
+void tbt::create()	//1-real...0-thread
+{
+	if (head->lchild == head)
+	{
+		node* root = new node;
+		head->lchild=root;
+		cout << endl << "Enter value for root  :";
+		cin >> root->val;
+		root->lbit = 0;
+		root->rbit = 0;
+		root->lchild = head;
+		root->rchild = head;
+		head->lbit = 1;
+	}
+	char ch2='y',ch;
+	node *par = head->lchild;
+	while (ch2=='y')
+	{
+		node *temp;
+		cout << endl << "Enter Left(l) or Right child(r) or no(n) child for " << par->val << "\t:";
+		cin >> ch;
+		if (ch == 'l')
+		{
+			if (par->lbit == 0)
+			{
+				temp = new node;
+				temp->lbit = 0;
+				temp->rbit = 0;
+				temp->lchild = par->lchild;
+				temp->rchild = par;
+				cout << "\nEnter value for this node  :";
+				cin >> temp->val;
+				par->lbit = 1;
+				par->lchild = temp;
+			}
+			else
+			{		
+				par = par->lchild;
+			}
+		}
+		else if (ch == 'r')
+		{
+			if (par->rbit == 0)
+			{
+				temp = new node;
+				temp->lbit = 0;
+				temp->rbit = 0;
+				temp->lchild = par;
+				temp->rchild = par->rchild;
+				cout << "\nEnter value for this node  :";
+				cin >> temp->val;
+				par->rbit = 1;
+				par->rchild = temp;
+			}
+			else
+			{
+				par = par->rchild;
+			}
+		}
+		else
+		{
+			par = head->lchild;
+			cout << "\nDo you want to add more nodes (y or n)   :";
+			cin >> ch2;
+		}
+	}
+}
+
+void tbt::in()
+{
+	node* temp = head;
+	do
+	{
+		node* s = temp->rchild;
+		if (temp->rbit == 1)
+		{
+			while (s->lbit == 1)
+			{
+				s = s->lchild;
+			}	
+		}
+		if (s != head)
+		{
+			temp = s;
+			cout << temp->val;
+		}
+		else
+		{
+			break;
+		}
+	} while (temp != head);
+}
+
+void tbt::pre()
+{
+	
+	node *temp = head->lchild;
+	node *s = temp;
+	while (temp != head)
+	{
+		cout << s->val;
+		temp = s;
+		if (temp->lbit == 1)
+		{
+			s = temp->lchild;
+		}
+		else
+		{
+			if (temp->rbit == 1)
+			{
+				s = temp->rchild;
+			}
+			else
+			{
+				while (temp->rbit != 1)
+				{
+					temp = temp->rchild;
+				}
+				s = temp->rchild;
+			}
+		}
+	} 
+}
+
+void tbt::post()
+{
+	int i = 0;
+	char a[20];
+	node *temp = head->lchild;
+	do
+	{
+		while (temp->rbit == 1)
+		{
+			a[i] = temp->val;
+			i = i + 1;
+			temp = temp->rchild;
+		}
+		a[i] = temp->val;
+		i = i + 1;
+		while (temp->lbit == 0)
+		{
+			temp = temp->lchild;
+		}
+		if (temp != head)
+		{
+			temp = temp->lchild;
+		}
+	} while (temp!=head);
+	cout << endl;
+	while (i > 0)
+	{
+		i = i - 1;
+		cout<< a[i];
+	}
+
+}
+
+
+int main()
+{
+	char ch='y';
+	int ch2=1,type;
+	tbt t;
+	cout << "\nEnter values of nodes";
+	t.create();
+	while (ch2 == 1)
+	{
+		cout << endl << "Select Method for display\t1.Preorder\t2.Inorder\t3.Postorder\t4.Exit" << endl;
+		cin >> type;
+		switch (type)
+		{
+		case 1:		{t.pre(); break; }
+		case 2:		{t.in(); break; }
+		case 3:		{t.post(); break; }
+		case 4:		{ch2 = 0; break; }
+		default:	{cout << endl << "wrong Choice"; break; }
+		}
+	}
+	return 0;
+}
+

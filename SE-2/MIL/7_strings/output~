@@ -1,0 +1,34 @@
+mit@B04L07:~$ nasm -f elf64 string.asm
+mit@B04L07:~$ ld -o string string.o
+mit@B04L07:~$ ./string
+Enter a string: nishhsin
+-----Enter ur choice------
+1.Length
+2.Reverse
+3.Palindrome
+4.Exit
+1
+length is: 08
+-----Enter ur choice------
+1.Length
+2.Reverse
+3.Palindrome
+4.Exit
+2
+Reversed String is: nishhsin
+-----Enter ur choice------
+1.Length
+2.Reverse
+3.Palindrome
+4.Exit
+3
+String is palindrome
+
+-----Enter ur choice------
+1.Length
+2.Reverse
+3.Palindrome
+4.Exit
+4
+mit@B04L07:~$ 
+

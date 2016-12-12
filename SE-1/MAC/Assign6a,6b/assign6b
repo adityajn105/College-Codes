@@ -1,0 +1,74 @@
+		Assignment6
+section .data
+arr  dd 0FFFFFFF6H,0FFFFFFF6H,0FFFFFFF6H,0FFFFFFF6H,0FFFFFFF6H
+str1 db "The sum is",10
+str1len equ $-str1
+
+%macro print 2
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+%endmacro
+
+section .bss
+result resb 8
+result2 resb 8
+temp resb 8
+
+section .text
+global _start
+_start:
+mov esi,arr	;initialize pointer
+mov edi,0	;initialize counter
+mov eax,0	;lower 32bits i.e. Sum
+mov ebx,0	;upper 32 bits i.e. carry
+mov cl,5	;INITIALIZE COUNTER
+
+	;Based indexed Addressing
+up:	add eax,[esi+4*edi];add number to eax
+	jnc next	;if no carry then jump to next
+	inc ebx		;increase ebx
+next:	inc edi		;take pointer to next no
+	dec cl		;decrement of counter
+	jnz up		;jump to up if counter is 0 
+
+	mov edi,result	;edi points to starting of buffer result
+	mov cl,8    	;again initialize counter
+again:	rol ebx,4	;rotate ebx left by 4 bits
+	mov [temp],ebx	;stores ebx in variable temp
+	and ebx,0FH	;mask upper bits of ebx		
+	cmp bl,09	;compare bl with 09	
+	jbe skip	;jump to skip if below or equal
+	add bl,07	;add 07h to bl
+skip:	add bl,30H	;add 30h to bl
+	mov [edi],bl	;stores bl in memory pointed by edi
+	inc edi		;increase edi
+	mov ebx,[temp]	;recover value of ebx stored in temp
+	dec cl		;decrease counter
+	jnz again	;jump if not zero
+
+	mov edi,result2
+	mov cl,8  
+		
+again2:	rol eax,4
+	mov [temp],eax
+	and eax,0FH
+	cmp al,09
+	jbe skip2
+	add al,07
+skip2:	add al,30H
+	mov [edi],al
+	inc edi
+	mov eax,[temp]
+	dec cl
+	jnz again2
+	
+print str1,str1len	;print "the Sum is"
+print result,8		;print carry	
+print result2,8		;print sum
+
+mov eax,1
+mov ebx,0
+int 80h

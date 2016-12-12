@@ -1,0 +1,257 @@
+MENU:
+1.Insert Datas
+2.Build AVL tree from datas
+3.Display keys and meaning in ascending order
+4.Display keys and meaning in decending order
+5.Show meaning of a key
+Enter your choice   :1
+
+Enter no of nodes: 12
+
+Enter keyword :a
+Enter Meaning :apple
+
+Enter keyword :z
+Enter Meaning :zero
+
+Enter keyword :b
+Enter Meaning :bag
+
+Enter keyword :y
+Enter Meaning :yatch
+
+Enter keyword :c
+Enter Meaning :cat
+
+Enter keyword :x
+Enter Meaning :xylo
+
+Enter keyword :d
+Enter Meaning :danger
+
+Enter keyword :e
+Enter Meaning :elephant
+
+Enter keyword :v
+Enter Meaning :van
+
+Enter keyword :f
+Enter Meaning :fan
+
+Enter keyword :m
+Enter Meaning :mango
+
+Enter keyword :r
+Enter Meaning :
+ratal
+
+Do you want to continue(y or n) :y
+MENU:
+1.Insert Datas
+2.Build AVL tree from datas
+3.Display keys and meaning in ascending order
+4.Display keys and meaning in decending order
+5.Show meaning of a key
+Enter your choice   :2
+
+Adding key: a	 Mean: apple
+
+Ascending order display-
+Key    			Meaning
+a			apple
+
+
+Adding key: z	 Mean: zero
+
+Ascending order display-
+Key    			Meaning
+a			apple
+z			zero
+
+
+Adding key: b	 Mean: bag
+
+bf of a becomes -2
+Doing RL shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+z			zero
+
+
+Adding key: y	 Mean: yatch
+
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+y			yatch
+z			zero
+
+
+Adding key: c	 Mean: cat
+
+bf of z becomes 2
+Doing LL SHift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+y			yatch
+z			zero
+
+
+Adding key: x	 Mean: xylo
+
+bf of b becomes -2
+Doing RL shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: d	 Mean: danger
+
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: e	 Mean: elephant
+
+bf of x becomes 2
+Doing LR Shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+e			elephant
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: v	 Mean: van
+
+bf of y becomes 2
+Doing LR Shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+e			elephant
+v			van
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: f	 Mean: fan
+
+bf of c becomes -2
+Doing RL shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+e			elephant
+f			fan
+v			van
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: m	 Mean: mango
+
+bf of v becomes 2
+Doing LR Shift
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+e			elephant
+f			fan
+m			mango
+v			van
+x			xylo
+y			yatch
+z			zero
+
+
+Adding key: r	 Mean: ratal
+
+Ascending order display-
+Key    			Meaning
+a			apple
+b			bag
+c			cat
+d			danger
+e			elephant
+f			fan
+m			mango
+r			ratal
+v			van
+x			xylo
+y			yatch
+z			zero
+
+
+Do you want to continue(y or n) :y
+MENU:
+1.Insert Datas
+2.Build AVL tree from datas
+3.Display keys and meaning in ascending order
+4.Display keys and meaning in decending order
+5.Show meaning of a key
+Enter your choice   :4
+
+Descending order display-
+Key    			Meaning
+z			zero
+y			yatch
+x			xylo
+v			van
+r			ratal
+m			mango
+f			fan
+e			elephant
+d			danger
+c			cat
+b			bag
+a			apple
+Do you want to continue(y or n) :y
+MENU:
+1.Insert Datas
+2.Build AVL tree from datas
+3.Display keys and meaning in ascending order
+4.Display keys and meaning in decending order
+5.Show meaning of a key
+Enter your choice   :5
+
+Enter Key value to be searched  :x
+
+Key Found!!!
+Key   :x	Meaning  :xylo
+Do you want to continue(y or n) :n

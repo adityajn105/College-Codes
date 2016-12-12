@@ -1,0 +1,13 @@
+root@deepankar-Inspiron-5558:/home/deepankar# nasm -f elf64 sum.asm
+root@deepankar-Inspiron-5558:/home/deepankar# ld -o sum sum.o
+root@deepankar-Inspiron-5558:/home/deepankar# ./sum
+please enter no of nos: 7
+Enter no: 1234
+Enter no: 234FC
+Enter no: 546DC
+Enter no: 23456F
+Enter no: 764FFF
+Enter no: 12345FF
+Enter no: FFFFFFC
+The sum is: 0000000011C46975
+

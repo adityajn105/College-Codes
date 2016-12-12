@@ -1,0 +1,66 @@
+student@B4L0106:~/osa$ sh assign2
+1.Create directory :
+2.Delete directory :
+3.Change the directory :
+4.pwd
+5.Exit
+Enter your choice :
+1
+Please enter Directory name : 
+abc
+Directory created 
+abc
+assign2
+assign2~
+assign3
+ctime.c
+1.Create directory :
+2.Delete directory :
+3.Change the directory :
+4.pwd
+5.Exit
+Enter your choice :
+2
+Enter the Directory name to be deleted : 
+abc
+Directory Deleted successfully : 
+assign2
+assign2~
+assign3
+ctime.c
+orphan.c
+1.Create directory :
+2.Delete directory :
+3.Change the directory :
+4.pwd
+5.Exit
+Enter your choice :
+3
+/home/student/osa
+Changing current working directory to : enter the path 
+/home/student
+/home/student
+ 262753 1.l~	    262150 examples.desktop   262163 Pictures
+ 263243 a.cpp~	    262162 Music	      262160 Public
+ 263102 cs.c~	    263268 ofris.deb	      262159 Templates
+ 262157 Desktop     918433 osa		      262164 Videos
+ 262161 Documents   263550 par_chil.c~	     1050126 WIN-XP-OS
+ 262158 Downloads   263556 parentchild.cpp~   262404 workspace
+1.Create directory :
+2.Delete directory :
+3.Change the directory :
+4.pwd
+5.Exit
+Enter your choice :
+4
+Current Working Directory : 
+/home/student
+1.Create directory :
+2.Delete directory :
+3.Change the directory :
+4.pwd
+5.Exit
+Enter your choice :
+5
+student@B4L0106:~/osa$ 
+

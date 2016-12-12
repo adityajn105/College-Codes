@@ -1,0 +1,71 @@
+		Assignment 3
+section .data
+str1 db "Enter the string :",10
+len1 equ $-str1      
+str2 db "Entered string is: ", 20H
+len2 equ $-str2
+str3 db "Length of string is: ", 20H
+len3 equ $-str3
+
+
+section .bss
+string resb 50     ;reserve 50 bytes for string
+len resb 1         ;reserve 1 byte for len
+
+section .txt
+global _start
+
+_start: 
+mov eax,4             ;system write
+mov ebx,1             ;file discriptor to monitor
+mov ecx,str1
+mov edx,len1
+int 80h
+ 
+mov eax,3              ;system read
+mov ebx,0              ;file discriptor to keyboard
+mov ecx,string	       ;address of buffer (where string will be saved)   	
+mov edx,50	       ;mov lenght of buffer in edx 
+int 80h
+mov esi,eax            ;move contents of eax register(length of entered string) into esi register
+
+cmp al,09             ;COMPARES LOWER FOUR BITS(al) WITH 9
+jbe skip               ;JUMP TO SKIP IF BELOW OR EQUAL
+	add al,07H    ;if number is above 9 then add 7
+skip: 
+	add al,30H     ;Add 30h to number
+	mov [len],al  ;MOVE Length TO len VARIABLE
+
+;DISPLAYS "Entered string is: "
+mov eax,4
+mov ebx,1
+mov ecx,str2
+mov edx,len2
+int 80h
+
+;DISPLAYS ENTERED STRING
+mov eax,4
+mov ebx,1
+mov ecx,string
+mov edx,esi
+int 80h
+
+;DISPLAYS "Lenght of string is: "
+mov eax,4
+mov ebx,1
+mov ecx,str3
+mov edx,len3
+int 80h
+
+;THIS SECTION DISPLAYS LENGHT OF STRING
+mov eax,4
+mov ebx,1
+mov ecx,len	;address of buffer for length[length=true length +1(null character)]
+mov edx,1	;size of buffer 
+int 80h
+
+mov eax,1
+mov ebx,0
+int 80h
+
+

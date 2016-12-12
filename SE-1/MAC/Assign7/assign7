@@ -1,0 +1,97 @@
+%macro print 2
+	push rax
+	push rbx
+	push rcx
+	push rdx
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+	pop rdx
+	pop rcx
+	pop rbx
+	pop rax
+%endmacro
+
+section .data
+arr  dd 0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH
+str1 db "The sum is :",20H
+str1len equ $-str1
+str2 db "",10
+str2len equ $-str2
+str3 db "The remainder is :",20H
+str3len equ $-str3
+str4 db "The quotient is",20H
+str4len equ $-str4
+
+
+section .bss
+result resb 8
+temp resb 8
+
+section .text
+global _start
+_start:
+mov esi,arr	;initialize pointer
+mov edi,5	;initialize counter
+print str1,str1len 
+mov eax,0	;lower 32bits i.e. Sum
+mov ebx,0	;upper 32 bits i.e. carry
+
+	
+up:	add eax,[esi]	;sum stored in eax
+	jnc next	;if no carry then jump to next
+	inc ebx		;increase ebx
+next:	add esi,4	;take pointer to next no
+	dec edi		;decrease counter
+	jnz up		;jump to up if counter is 0 
+
+call display		;displaying carry
+push rbx		;save carry
+mov ebx,eax		;copy eax in ebx
+call display		;displaying sum
+print str2,str2len
+print str3,str3len
+
+pop rbx		;recover carry
+mov edx,ebx	;copy contents of ebx in edx
+mov ebx,5	;initialize counter	
+div ebx		;divide edx by ebx 
+mov ebx,edx	;copy contents of edx in ebx 
+call display	;call procedure to print remainder
+print str2,str2len	;print new line
+print str4,str4len	
+mov ebx,eax	;copy contents of eax in ebx
+call display	;;call procedure to print quotient
+print str2,str2len	;print new line
+
+mov eax,1
+mov ebx,0
+int 80h
+
+;procedure to convert 32bit no to ASCII and print it
+display: push rax
+	push rbx
+	push rcx
+	push rdx
+	mov edi,result
+	mov cl,8    
+again:	rol ebx,4
+	mov [temp],ebx
+	and ebx,0FH
+	cmp bl,09
+	jbe skip
+	add bl,07
+skip:	add bl,30H
+	mov [edi],bl
+	inc edi
+	mov ebx,[temp]
+	dec cl
+	jnz again
+	print result,8
+	pop rdx
+	pop rcx
+	pop rbx
+	pop rax
+	ret

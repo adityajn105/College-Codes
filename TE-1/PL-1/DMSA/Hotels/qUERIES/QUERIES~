@@ -1,0 +1,37 @@
+1. List full details of all hotels.
+	 SELECT * FROM HOTEL;
++----------+--------------+--------+
+| hotel_no | name         | city   |
++----------+--------------+--------+
+|     1243 | Hayat        | London |
+|     1244 | Palms        | Goa    |
+|     1246 | Burj Al Arab | London |
+|     1248 | Lotus        | Delhi  |
++----------+--------------+--------+
+
+2. List full details of all hotels in London.
+	SELECT * FROM HOTEL WHERE city='London';
++----------+--------------+--------+
+| hotel_no | name         | city   |
++----------+--------------+--------+
+|     1243 | Hayat        | London |
+|     1246 | Burj Al Arab | London |
++----------+--------------+--------+
+
+
+3. List the names and addresses of all guests in London ordered by names
+     SELECT name,address from GUESTS WHERE guest_no IN (SELECT guest_no from BOOKINGS WHERE hotel_no IN (SELECT hotel_no FROM HOTEL WHERE city="London")) ORDER BY name ASC;
++-----------+---------------+
+| name      | address       |
++-----------+---------------+
+| Cersie    | Kings Landing |
+| Daenaerys | Mareen        |
+| Jamie     | Kings Landing |
+| Tyrion    | Kings Landing |
++-----------+---------------+
+
+
+4. List all double or family rooms with a price below $ 40.00 per night in ascending order of price.
+		
+
+5. List the bookings for which no DateTo has been specified. 

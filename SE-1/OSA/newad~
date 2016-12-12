@@ -1,0 +1,67 @@
+while [ true ]
+do
+
+echo "1. Create file :"
+echo "2. Rename file :"
+echo "3. Delete file :"
+echo "4. Exit :"
+echo "Enter Your Choice"
+read ch
+case $ch in
+1)
+echo "Enter name of file to be created"
+read filename
+if [-f $filename]
+then
+	echo "file already exist"
+else
+	touch $filename
+	echo "File Created"
+	ls -t|head -n 15
+fi
+;;
+
+2)
+echo "enter the file to be renamed"
+read oldfile
+if [ -f $oldfile ]
+then
+	echo "enter the name to given to file"
+        read newfile
+	if [ -f $newfile ]
+	then
+        	echo "file name you want to give is already associated with another director"
+	else
+		mv $oldfile $newfile
+	fi
+else
+        echo "file do not exist"
+fi
+ls -t |head -n 10
+;;
+
+
+3)
+echo "enter the file to be deleted"
+read filename
+if [ -f $filename ]
+then
+	rm $filename
+	echo "file removed"
+else
+	echo "file do not exist"
+fi
+ls -t|head -n 15
+;;
+
+4)
+exit
+;;
+
+*)
+echo "Wrong choice entered"
+;;
+esac
+
+done
+						

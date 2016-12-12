@@ -1,0 +1,11 @@
+student@B04L05100:~/Documents/assgt 13 & 14$ ls
+affin  affin.asm  affin.o  pass  pass.asm  pass.o
+student@B04L05100:~/Documents/assgt 13 & 14$ nasm -f elf64 affin.asm
+student@B04L05100:~/Documents/assgt 13 & 14$ ld -o affin affin.o
+student@B04L05100:~/Documents/assgt 13 & 14$ ls
+affin  affin.asm  affin.o  pass  pass.asm  pass.o
+student@B04L05100:~/Documents/assgt 13 & 14$ ./affin
+Original affinity F
+Changed affinity 1
+student@B04L05100:~/Documents/assgt 13 & 14$ 
+

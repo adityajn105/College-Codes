@@ -1,0 +1,128 @@
+Enter the data for graph
+Enter the no vertexes6
+
+Enter vertex name :0
+
+Enter vertex name :1
+
+Enter vertex name :2
+
+Enter vertex name :3
+
+Enter vertex name :4
+
+Enter vertex name :5
+
+Enter no of edges9
+
+Enter vertices between which there is an edge :0
+1
+
+Enter cost between these edges  :3
+
+Enter vertices between which there is an edge :0
+2
+
+Enter cost between these edges  :1
+
+Enter vertices between which there is an edge :0
+3
+
+Enter cost between these edges  :6
+
+Enter vertices between which there is an edge :1
+4
+
+Enter cost between these edges  :3
+
+Enter vertices between which there is an edge :1
+2
+
+Enter cost between these edges  :5
+
+Enter vertices between which there is an edge :2
+5
+
+Enter cost between these edges  :4
+
+Enter vertices between which there is an edge :2
+3
+
+Enter cost between these edges  :5
+
+Enter vertices between which there is an edge :3
+5
+
+Enter cost between these edges  :2
+
+Enter vertices between which there is an edge :4
+5
+
+Enter cost between these edges  :6
+
+Enter your choice
+1. Print cost adjancy matrice 
+2. Show minimum cost
+3. Print minimum cost adjancy matrice
+4. Exit
+1
+
+	0	1	2	3	4	5	
+0	999	3	1	6	999	999	
+1	3	999	5	999	3	999	
+2	1	5	999	5	999	4	
+3	6	999	5	999	999	2	
+4	999	3	999	999	999	6	
+5	999	999	4	2	6	999	
+
+Enter your choice
+1. Print cost adjancy matrice 
+2. Show minimum cost
+3. Print minimum cost adjancy matrice
+4. Exit
+2
+
+Minimum Cost is :13
+
+Enter your choice
+1. Print cost adjancy matrice 
+2. Show minimum cost
+3. Print minimum cost adjancy matrice
+4. Exit
+3
+
+	0	1	2	3	4	5	
+0	0	3	1	0	0	0	
+1	3	0	0	0	3	0	
+2	1	0	0	5	0	4	
+3	0	0	5	0	0	2	
+4	0	3	0	0	0	0	
+5	0	0	4	2	0	0	
+
+
+tree	v1	v2	cost
+0	0	1	3
+
+1	0	2	1
+
+2	0	3	6
+
+3	1	2	5
+
+4	1	4	3
+
+5	2	3	5
+
+6	2	5	4
+
+7	3	5	2
+
+8	4	5	6
+
+Enter your choice
+1. Print cost adjancy matrice 
+2. Show minimum cost
+3. Print minimum cost adjancy matrice
+4. Exit
+4
+Exiting....
