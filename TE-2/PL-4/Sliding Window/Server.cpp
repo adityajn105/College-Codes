@@ -3,14 +3,11 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <arpa/inet.h>
-
 using namespace std;
-
-
 int main() {
     int serverSocket, clientSocket,WINDOW=4;                 //two socket for server and client
     char buffer[12];   //data will be sent in buffer
-    char ack[1],data[1];
+    char ack[1],data[2];
     struct sockaddr_in serverAddr,clientAddr;      //structure representing server
     socklen_t addr_size;                            //address size of client
 
@@ -35,26 +32,74 @@ int main() {
     char *ip = inet_ntoa(clientAddr.sin_addr);
     cout<<"Connected to client@"<<ip<<endl;
     strcpy(buffer,"baca059d0bc");
-    int len =strlen(buffer);
-    int curr=0;int acurr=0;
-    while(acurr<=len-1 || curr<=len-1) {
-        if (acurr < len) {
-            data[0] = buffer[acurr];
-            send(clientSocket, data, 1, 0);
-            cout << "Packet Sent : Seq - " << acurr+1 << " |  Data - " << data[0] << endl;
-            acurr++;
-        }
-        if(acurr-curr==WINDOW || acurr>=len-4){
-            recv(clientSocket,ack,1,0);
-            cout<<"Ack- "<<ack[0]<<endl;
-            int ak=ack[0]-'0';
-            if(curr==ak){
-                acurr=curr;
+    int choice,trans=0;
+    cout<<"1. Go Back N\t2.Selective Repeat\tYour Choice   :";cin>>choice;
+    if(choice==1) {
+        int len = strlen(buffer);
+        int curr = 0, acurr = 0;
+        while (acurr <= len - 1 || curr <= len - 1) {
+            if (acurr < len) {
+                data[0] = buffer[acurr];
+                send(clientSocket, data, 1, 0);
+                cout << "Packet Sent : Seq - " << acurr + 1 << " |  Data - " << data[0] << endl;
+                acurr++;
+                trans++;
             }
-            if(curr!=ak){
-                curr=ak;
+            if (acurr - curr == WINDOW || acurr >= len - 4) {
+                recv(clientSocket, ack, 1, 0);
+                cout << "Ack- " << ack[0] << endl;
+                int ak = ack[0] - '0';
+                if (curr == ak) {
+                    acurr = curr;
+                }
+                if (curr != ak) {
+                    curr = ak;
+                }
             }
         }
+        cout << "No of Packets Transmitted :" << trans << endl;
+    }
+    else{
+        int len=strlen(buffer);
+        int error=-1;
+        int curr = 0, acurr = 0, trans = 0;
+        while (acurr <= len - 1 || curr <= len - 1) {
+            if(error!=-1 && acurr<len){
+                data[1] = buffer[error];
+                data[0] = 'E';
+                send(clientSocket, data, 1, 0);
+                cout << "Packet Sent : Seq - " << error + 1 << " |  Data - " << 0 << endl;
+                trans++;
+                error=-1;
+            }
+            else if (acurr < len) {
+                data[0] = buffer[acurr];
+                send(clientSocket, data, 1, 0);
+                cout << "Packet Sent : Seq - " << acurr + 1 << " |  Data - " << data[0] << endl;
+                acurr++;
+                trans++;
+            }
+            if (acurr - curr == WINDOW || acurr >= len - 4) {
+                recv(clientSocket, ack, 1, 0);
+                int ak;
+                if(ack[0]=='E'){
+                    error=-1;
+                    cout << "Ack- " << ack[1] << endl;
+                    continue;
+                }
+                else {
+                    cout << "Ack- " << ack[0] << endl;
+                    ak = ack[0] - '0';
+                }
+                if (curr == ak) {
+                    error = ak;
+                }
+                else {
+                    curr = ak;
+                }
+            }
+        }
+        cout << "No of Packets Transmitted :" << trans << endl;
     }
     return 0;
 }
