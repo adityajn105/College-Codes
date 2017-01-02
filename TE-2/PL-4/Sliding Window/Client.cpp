@@ -6,7 +6,7 @@
 using namespace std;
 int main() {
     int clientSocket;
-    char data[2],ack[2],ldata;
+    char data[2],ack[1],ldata;
     char buffer[1024];
     
     struct sockaddr_in serverAddr;
@@ -56,28 +56,28 @@ int main() {
     else{
         int curr = 0;
         int lindex=-1;
-        while (curr <= 10) {
+        while (curr <= 8) {
             recv(clientSocket, data, 1, 0);
             if (data[0] == '0') {
                 ack[0] = '0' + curr;
                 send(clientSocket, ack, 1, 0);
-                cout << "Packet Lost" << endl;
+                cout <<ack<< "  Packet Lost" << endl;
                 lindex=curr;
                 curr++;
             }
             else if (data[0] == 'E' && lindex!=-1) {
                 ack[0] = 'E';
-                ack[1] = '0' + (lindex + 1);
-                buffer[curr] = data[1];
-                cout<<"0 "<<data;
-                cout << "Packet Recieved : Seq  " << lindex + 1 << " | Data : "<<data[1]<< endl;
+                buffer[curr] = 0;
+                cout <<ack<< "  Packet Recieved : Seq  " << lindex + 1 << " | Data : "<<0<< endl;
+                send(clientSocket, ack, 1, 0);
+                ack[0] = '0' + (lindex+1);
                 send(clientSocket, ack, 1, 0);
                 lindex = -1;
             }
             else {
                 ack[0] = '0' + (curr + 1);
                 buffer[curr] = data[0];
-                cout << "Packet Recieved : Seq  " << curr + 1 << " | Data : " << data[0] << endl;
+                cout <<ack<< "  Packet Recieved : Seq  " << curr + 1 << " | Data : " << data[0] << endl;
                 send(clientSocket, ack, 1, 0);
                 curr++;
             }

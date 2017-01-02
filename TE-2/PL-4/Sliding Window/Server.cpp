@@ -31,10 +31,11 @@ int main() {
                                                                                     // and bind its address to clientAddr
     char *ip = inet_ntoa(clientAddr.sin_addr);
     cout<<"Connected to client@"<<ip<<endl;
-    strcpy(buffer,"baca059d0bc");
     int choice,trans=0;
     cout<<"1. Go Back N\t2.Selective Repeat\tYour Choice   :";cin>>choice;
     if(choice==1) {
+        strcpy(buffer,"baca059d0bc");
+        cout<<"Message to send  :"<<buffer<<endl;
         int len = strlen(buffer);
         int curr = 0, acurr = 0;
         while (acurr <= len - 1 || curr <= len - 1) {
@@ -60,6 +61,8 @@ int main() {
         cout << "No of Packets Transmitted :" << trans << endl;
     }
     else{
+        strcpy(buffer,"ba059d0b");
+        cout<<"Message to send  :"<<buffer<<endl;
         int len=strlen(buffer);
         int error=-1;
         int curr = 0, acurr = 0, trans = 0;
@@ -68,7 +71,7 @@ int main() {
                 data[1] = buffer[error];
                 data[0] = 'E';
                 send(clientSocket, data, 1, 0);
-                cout << "Packet Sent : Seq - " << error + 1 << " |  Data - " << 0 << endl;
+                cout << "Packet Sent : Seq - " << error + 1 << " |  Data - " << data[1] << endl;
                 trans++;
                 error=-1;
             }
@@ -84,11 +87,12 @@ int main() {
                 int ak;
                 if(ack[0]=='E'){
                     error=-1;
-                    cout << "Ack- " << ack[1] << endl;
+                    recv(clientSocket, ack, 1, 0);
+                    cout <<ack<< "  Ack- " << ack[0] << endl;
                     continue;
                 }
                 else {
-                    cout << "Ack- " << ack[0] << endl;
+                    cout <<ack<< "  Ack- " << ack[0] << endl;
                     ak = ack[0] - '0';
                 }
                 if (curr == ak) {
