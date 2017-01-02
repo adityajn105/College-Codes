@@ -61,7 +61,7 @@ int main() {
         cout << "No of Packets Transmitted :" << trans << endl;
     }
     else{
-        strcpy(buffer,"ba059d0b");
+        strcpy(buffer,"ba059dab");
         cout<<"Message to send  :"<<buffer<<endl;
         int len=strlen(buffer);
         int error=-1;
@@ -88,11 +88,11 @@ int main() {
                 if(ack[0]=='E'){
                     error=-1;
                     recv(clientSocket, ack, 1, 0);
-                    cout <<ack<< "  Ack- " << ack[0] << endl;
+                    cout <<"Ack- " << ack[0] << endl;
                     continue;
                 }
                 else {
-                    cout <<ack<< "  Ack- " << ack[0] << endl;
+                    cout <<"Ack- " << ack[0] << endl;
                     ak = ack[0] - '0';
                 }
                 if (curr == ak) {
