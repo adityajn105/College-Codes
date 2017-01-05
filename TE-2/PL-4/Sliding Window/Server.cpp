@@ -6,7 +6,7 @@
 using namespace std;
 int main() {
     int serverSocket, clientSocket,WINDOW=4;                 //two socket for server and client
-    char buffer[12];   //data will be sent in buffer
+    char buffer[21];   //data will be sent in buffer
     char ack[1],data[2];
     struct sockaddr_in serverAddr,clientAddr;      //structure representing server
     socklen_t addr_size;                            //address size of client
@@ -34,10 +34,10 @@ int main() {
     int choice,trans=0;
     cout<<"1. Go Back N\t2.Selective Repeat\tYour Choice   :";cin>>choice;
     if(choice==1) {
-        strcpy(buffer,"baca059d0bc");
+        strcpy(buffer,"baca059d0bc9acd0sa35dc");
         cout<<"Message to send  :"<<buffer<<endl;
         int len = strlen(buffer);
-        int curr = 0, acurr = 0;
+        int curr = 0, acurr = 0,retrans=0;
         while (acurr <= len - 1 || curr <= len - 1) {
             if (acurr < len) {
                 data[0] = buffer[acurr];
@@ -48,9 +48,13 @@ int main() {
             }
             if (acurr - curr == WINDOW || acurr >= len - 4) {
                 recv(clientSocket, ack, 1, 0);
-                cout << "Ack- " << ack[0] << endl;
-                int ak = ack[0] - '0';
+                int d0=ack[0]-'0';
+                recv(clientSocket, ack, 1, 0);
+                int d1=ack[0]-'0';
+                cout<<"ACK - "<<d1<<d0<< endl;
+                int ak = d1*10 + d0;
                 if (curr == ak) {
+                	retrans+=acurr-curr;
                     acurr = curr;
                 }
                 if (curr != ak) {
@@ -59,6 +63,7 @@ int main() {
             }
         }
         cout << "No of Packets Transmitted :" << trans << endl;
+        cout<<"No of packets retransmitted due to errors :"<<retrans<<endl;
     }
     else{
         strcpy(buffer,"ba059dab");

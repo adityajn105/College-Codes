@@ -25,33 +25,40 @@ int main() {
         int curr = 0;
         ldata = '\0';
         int lindex = -1;
-        while (curr <= 10) {
+        while (curr <= 20) {
             recv(clientSocket, data, 1, 0);
             if (data[0] == '0' && ldata != '0' && lindex == -1) {
-                ack[0] = '0' + curr;
-                ldata = '0';
-                send(clientSocket, ack, 1, 0);
+            	ack[0] = '0'+curr%10;
+            	send(clientSocket, ack, 1, 0);
+            	ack[0] = '0'+curr/10;
+            	send(clientSocket, ack, 1, 0);
                 cout << "Packet Lost" << endl;
+                ldata = '0';
                 lindex = curr;
             }
             else if (ldata == '0' && data[0] == '0' && lindex != -1) {
                 curr = lindex;
-                ack[0] = '0' + (curr + 1);
-                ldata = '\0';
+                ack[0] = '0'+(curr+1)%10;
+            	send(clientSocket, ack, 1, 0);
+            	ack[0] = '0'+(curr+1)/10;
+            	send(clientSocket, ack, 1, 0);
                 buffer[curr] = '0';
                 cout << "Packet Recieved : Seq  " << curr + 1 << " | Data : 0" << endl;
-                send(clientSocket, ack, 1, 0);
                 lindex = -1;
+                ldata = '\0';
                 curr++;
             }
             else if (lindex == -1) {
-                ack[0] = '0' + (curr + 1);
+                ack[0] = '0'+(curr+1)%10;
+            	send(clientSocket, ack, 1, 0);
+            	ack[0] = '0'+(curr+1)/10;
+            	send(clientSocket, ack, 1, 0);
                 buffer[curr] = data[0];
                 cout << "Packet Recieved : Seq  " << curr + 1 << " | Data : " << data[0] << endl;
-                send(clientSocket, ack, 1, 0);
                 curr++;
             }
         }
+        cout<<"Data Recieved is : "<<buffer;
     }
     else{
         int curr = 0;
