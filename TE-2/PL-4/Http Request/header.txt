@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Server: nginx/1.10.2
+Date: Fri, 06 Jan 2017 22:30:50 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding

@@ -1,79 +1,80 @@
-#include<iostream>
+#include <iostream>
+#include <curl/curl.h>
 #include <string.h>
+#include <sys/resource.h>
+#include <unistd.h>
 #include <sstream>
-#include<sys/resource.h>
-#include<unistd.h>
+#include <fstream>
 using namespace std;
 
-string exec(const char*);
-int main()
+static size_t writeBodyFunction(void *contents, size_t size, size_t nmemb, void *userp)
 {
-    cout<<"----Http Request----"<<endl;
-    cout<<"Request Line "<<endl;
-    string method="Method :GET";
-    string url="http://google.com";
-    string httpv="HTTP Version :1.1";
+    char* pchar=(char*)contents;
+	cout<<"Body"<<endl;
+	fstream body;
+	body.open("body.txt");
+	for(int i=0;i<nmemb;i++){
+		body<<*pchar;
+		pchar++;
+	}
+	cout<<(char*)contents;
+	body.close();
+    return size * nmemb;
+}
 
-    cout<<method<<endl<<"URL :"+url<<endl<<httpv<<endl<<endl;
-    cout<<"Header "<<endl;
-    string accept="Accept :text/plain";
-    string ctype="Content-Type :text/html";
-    //cout<<accept<<endl<<ctype<<endl<<endl;
-    cout<<"Body \nNot Required"<<endl<<endl;
-    string cmd="curl -i -H \""+accept+"\" -H \""+ctype+"\" "+url;
+int static writeHeaderFunction( void *contents, int size, int nmemb, void *userp)
+{ 
+	string respHead((char*)contents);
+	cout<<respHead;
+	std::ofstream out("header.txt");
+    out << respHead;
+    out.close();
 
-    string response=exec(cmd.c_str());
-    istringstream output(response);
+    return size * nmemb; 
+}
 
-    cout<<"----Http Response----"<<endl;
-    string body="";
-    string line;
-    int no=1;
-    /*while (std::getline(output, line)) {
+int main(void)
+{
+    CURL *curl;
+    CURLcode res;
+    curl = curl_easy_init();
 
-    }*/
+    if(curl) {
+    	cout<<"----Http Request----"<<endl;
+    	cout<<"Request Line "<<endl;
+    	cout<<"Method :GET"<<endl;
+    	string url="http://www.libcurl.org";
+    	cout<<"URL : "<<url<<endl;
+   		cout<<"HTTP Version :1.1"<<endl<<endl;
 
+   		cout<<"Header "<<endl;
+    	string accept="Accept :text/plain";
+    	string ctype="Content-Type :text/html";
+    	cout<<accept<<endl<<ctype<<endl<<endl;
 
+    	cout<<"Body \nNot Required"<<endl<<endl;
 
-    while (getline(output, line)) {
-        if(no==1){
-            string statusline = line;
-            std::cout<<"Status Line :"<<line<<std::endl;
-            std::cout<<"Version :"<<line.substr(0,8)<<std::endl;
-            std::cout<<"Status Code :"<<line.substr(9,11)<<std::endl;
-            std::cout<<"Phrase :"<<line.substr(13,13)<<std::endl<<std::endl;
-            std::cout<<"Header"<<std::endl;
-        }
-        else if(no==2) std::cout << line<<std::endl;
-        else if(no==3) std::cout<<line<<std::endl;
-        else if(no==5) std::cout<<line<<std::endl;
-        else if(no==6) std::cout<<line<<std::endl<<std::endl;
-        else if(no==4 || no==7) ;
-        else{
-            body=body+line+"\n";
-        }
-        no++;
+    	struct curl_slist *headers=NULL;
+ 		curl_slist_append(headers,ctype.c_str());
+ 		curl_slist_append(headers,accept.c_str());
+
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeBodyFunction);
+        curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, writeHeaderFunction);
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+       	cout<<"----Http Response----"<<endl;
+       	cout<<"Header"<<endl;
+
+        /* Perform the request, res will get the return code */
+        res = curl_easy_perform(curl);
+        /* Check for errors */
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n",
+                    curl_easy_strerror(res));
+
+        curl_easy_cleanup(curl);
     }
-    cout<<"Body"<<endl;
-    cout<<body;
     return 0;
 }
-
-string exec(const char* cmd) {
-    char buffer[128];
-    string result = "";
-    FILE* pipe = popen(cmd, "r");
-    if (!pipe) throw runtime_error("popen() failed!");
-    try {
-        while (!feof(pipe)) {
-            if (fgets(buffer, 128, pipe) != NULL)
-                result += buffer;
-        }
-    } catch (...) {
-        pclose(pipe);
-        throw;
-    }
-    pclose(pipe);
-    return result;
-}
-
