@@ -1,0 +1,103 @@
+╭─aditya@DellPC [10:56:10]  ~/TE SEM-II/PL-4/Sliding Window  
+╰─$ g++ Server.cpp -o Server     
+╭─aditya@DellPC [10:56:32]  ~/TE SEM-II/PL-4/Sliding Window  
+╰─$ ./Server                
+Connected to client@127.0.0.1
+1. Go Back N	2.Selective Repeat	Your Choice   :1
+Message to send  :baca059d0bc9acd0sa35dc
+Packet Sent : Seq - 1 |  Data - b
+Packet Sent : Seq - 2 |  Data - a
+Packet Sent : Seq - 3 |  Data - c
+Packet Sent : Seq - 4 |  Data - a
+ACK - 01
+Packet Sent : Seq - 5 |  Data - 0
+ACK - 02
+Packet Sent : Seq - 6 |  Data - 5
+ACK - 03
+Packet Sent : Seq - 7 |  Data - 9
+ACK - 04
+Packet Sent : Seq - 8 |  Data - d
+ACK - 04
+Packet Sent : Seq - 5 |  Data - 0
+Packet Sent : Seq - 6 |  Data - 5
+Packet Sent : Seq - 7 |  Data - 9
+Packet Sent : Seq - 8 |  Data - d
+ACK - 05
+Packet Sent : Seq - 9 |  Data - 0
+ACK - 06
+Packet Sent : Seq - 10 |  Data - b
+ACK - 07
+Packet Sent : Seq - 11 |  Data - c
+ACK - 08
+Packet Sent : Seq - 12 |  Data - 9
+ACK - 08
+Packet Sent : Seq - 9 |  Data - 0
+Packet Sent : Seq - 10 |  Data - b
+Packet Sent : Seq - 11 |  Data - c
+Packet Sent : Seq - 12 |  Data - 9
+ACK - 09
+Packet Sent : Seq - 13 |  Data - a
+ACK - 10
+Packet Sent : Seq - 14 |  Data - c
+ACK - 11
+Packet Sent : Seq - 15 |  Data - d
+ACK - 12
+Packet Sent : Seq - 16 |  Data - 0
+ACK - 13
+Packet Sent : Seq - 17 |  Data - s
+ACK - 14
+Packet Sent : Seq - 18 |  Data - a
+ACK - 15
+Packet Sent : Seq - 19 |  Data - 3
+ACK - 15
+Packet Sent : Seq - 16 |  Data - 0
+Packet Sent : Seq - 17 |  Data - s
+Packet Sent : Seq - 18 |  Data - a
+ACK - 16
+Packet Sent : Seq - 19 |  Data - 3
+ACK - 17
+Packet Sent : Seq - 20 |  Data - 5
+ACK - 18
+Packet Sent : Seq - 21 |  Data - d
+ACK - 19
+Packet Sent : Seq - 22 |  Data - c
+ACK - 20
+ACK - 21
+ACK - 22
+No of Packets Transmitted :34
+No of packets retransmitted due to errors :12
+╭─aditya@DellPC [10:57:08]  ~/TE SEM-II/PL-4/Sliding Window  
+╰─$ 
+
+
+╭─aditya@DellPC [10:56:30]  ~/TE SEM-II/PL-4/Sliding Window  
+╰─$ g++ Client.cpp -o Client     
+╭─aditya@DellPC [10:56:48]  ~/TE SEM-II/PL-4/Sliding Window  
+╰─$ ./Client                
+1. Go Back N	2.Selective Repeat	Your Choice  :1
+Packet Recieved : Seq  1 | Data : b
+Packet Recieved : Seq  2 | Data : a
+Packet Recieved : Seq  3 | Data : c
+Packet Recieved : Seq  4 | Data : a
+Packet Lost
+Packet Recieved : Seq  5 | Data : 0
+Packet Recieved : Seq  6 | Data : 5
+Packet Recieved : Seq  7 | Data : 9
+Packet Recieved : Seq  8 | Data : d
+Packet Lost
+Packet Recieved : Seq  9 | Data : 0
+Packet Recieved : Seq  10 | Data : b
+Packet Recieved : Seq  11 | Data : c
+Packet Recieved : Seq  12 | Data : 9
+Packet Recieved : Seq  13 | Data : a
+Packet Recieved : Seq  14 | Data : c
+Packet Recieved : Seq  15 | Data : d
+Packet Lost
+Packet Recieved : Seq  16 | Data : 0
+Packet Recieved : Seq  17 | Data : s
+Packet Recieved : Seq  18 | Data : a
+Packet Recieved : Seq  19 | Data : 3
+Packet Recieved : Seq  20 | Data : 5
+Packet Recieved : Seq  21 | Data : d
+Packet Recieved : Seq  22 | Data : c
+Data Recieved is:baca059d0bc9acd0sa35dc%                                                                                                       

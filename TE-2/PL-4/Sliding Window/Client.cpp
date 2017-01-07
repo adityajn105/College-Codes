@@ -6,9 +6,8 @@
 using namespace std;
 int main() {
     int clientSocket;
-    char data[2],ack[1],ldata;
+    char data[2],ack[3],ldata;
     char buffer[1024];
-    
     struct sockaddr_in serverAddr;
     socklen_t addr_size;
     clientSocket=socket(AF_INET,SOCK_STREAM,0);     //create client socket
@@ -25,13 +24,12 @@ int main() {
         int curr = 0;
         ldata = '\0';
         int lindex = -1;
-        while (curr <= 20) {
+        while (curr <= 21) {
             recv(clientSocket, data, 1, 0);
             if (data[0] == '0' && ldata != '0' && lindex == -1) {
             	ack[0] = '0'+curr%10;
-            	send(clientSocket, ack, 1, 0);
-            	ack[0] = '0'+curr/10;
-            	send(clientSocket, ack, 1, 0);
+            	ack[1] = '0'+curr/10;
+            	send(clientSocket, ack, 2, 0);
                 cout << "Packet Lost" << endl;
                 ldata = '0';
                 lindex = curr;
@@ -39,9 +37,8 @@ int main() {
             else if (ldata == '0' && data[0] == '0' && lindex != -1) {
                 curr = lindex;
                 ack[0] = '0'+(curr+1)%10;
-            	send(clientSocket, ack, 1, 0);
-            	ack[0] = '0'+(curr+1)/10;
-            	send(clientSocket, ack, 1, 0);
+            	ack[1] = '0'+(curr+1)/10;
+            	send(clientSocket, ack, 2, 0);
                 buffer[curr] = '0';
                 cout << "Packet Recieved : Seq  " << curr + 1 << " | Data : 0" << endl;
                 lindex = -1;
@@ -50,9 +47,8 @@ int main() {
             }
             else if (lindex == -1) {
                 ack[0] = '0'+(curr+1)%10;
-            	send(clientSocket, ack, 1, 0);
-            	ack[0] = '0'+(curr+1)/10;
-            	send(clientSocket, ack, 1, 0);
+            	ack[1] = '0'+(curr+1)/10;
+            	send(clientSocket, ack, 2, 0);
                 buffer[curr] = data[0];
                 cout << "Packet Recieved : Seq  " << curr + 1 << " | Data : " << data[0] << endl;
                 curr++;
@@ -63,32 +59,35 @@ int main() {
     else{
         int curr = 0;
         int lindex=-1;
-        while (curr < 8) {
-            recv(clientSocket, data, 1, 0);
+        while (curr < 22) {
+            recv(clientSocket, data, 2, 0);
             if (data[0] == '0') {
-                ack[0] = '0' + curr;
-                send(clientSocket, ack, 1, 0);
+                ack[0] = '0'+curr%10;
+                ack[1] = '0'+curr/10;
+                send(clientSocket, ack, 3, 0);
                 cout <<"Packet Lost" << endl;
                 lindex=curr;
                 curr++;
             }
             else if (data[0] == 'E' && lindex!=-1) {
                 ack[0] = 'E';
-                buffer[curr] = 0;
+                buffer[lindex] = '0'+0;
                 cout <<"Packet Recieved : Seq  " << lindex + 1 << " | Data : "<<0<< endl;
-                send(clientSocket, ack, 1, 0);
-                ack[0] = '0' + (lindex+1);
-                send(clientSocket, ack, 1, 0);
+                ack[1] = '0' + (lindex+1)%10;
+                ack[2] = '0' + (lindex+1)/10;
+                send(clientSocket, ack, 3, 0);
                 lindex = -1;
             }
             else {
-                ack[0] = '0' + (curr + 1);
+                ack[0] = '0' + (curr + 1)%10;
+                ack[1] = '0' + (curr + 1)/10;
                 buffer[curr] = data[0];
                 cout <<"Packet Recieved : Seq  " << curr + 1 << " | Data : " << data[0] << endl;
-                send(clientSocket, ack, 1, 0);
+                send(clientSocket, ack, 3, 0);
                 curr++;
             }
         }
+        cout<<"Data Recieved is : "<<buffer<<endl;
     }
     return 0;
 }
