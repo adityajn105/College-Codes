@@ -16,6 +16,11 @@ Body
 Not Required
 
 ----Http Response----
+Status Line
+Version : 1.1
+Status Code : 200
+Phrase : OK
+
 Header
 HTTP/1.1 200 OK
 Server: nginx/1.10.2

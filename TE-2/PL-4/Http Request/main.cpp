@@ -7,6 +7,7 @@
 #include <fstream>
 using namespace std;
 
+static bool info=false;
 static size_t writeBodyFunction(void *contents, size_t size, size_t nmemb, void *userp)
 {
     char* pchar=(char*)contents;
@@ -25,6 +26,14 @@ static size_t writeBodyFunction(void *contents, size_t size, size_t nmemb, void 
 int static writeHeaderFunction( void *contents, int size, int nmemb, void *userp)
 { 
 	string respHead((char*)contents);
+	if(!info){
+		cout<<"Status Line"<<endl;
+		cout<<"Version : "<<respHead.substr(5,3)<<endl;
+		cout<<"Status Code : "<<respHead.substr(9,3)<<endl;
+		cout<<"Phrase : "<<respHead.substr(13,2)<<endl<<endl;
+		info=true;	
+		cout<<"Header"<<endl;
+	}
 	cout<<respHead;
 	std::ofstream out("header.txt");
     out << respHead;
@@ -65,7 +74,6 @@ int main(void)
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
        	cout<<"----Http Response----"<<endl;
-       	cout<<"Header"<<endl;
 
         /* Perform the request, res will get the return code */
         res = curl_easy_perform(curl);
