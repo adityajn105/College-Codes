@@ -6,7 +6,7 @@ def pkt_callback(pkt):
 
 def sniffer(filt,cnt):
 	sniff(prn=pkt_callback,filter=filt,count=cnt)
-	
+
 if __name__ == "__main__":
 	udp=multiprocessing.Process(target=sniffer,args=("udp",10))
 	tcp=multiprocessing.Process(target=sniffer,args=("tcp",10))
