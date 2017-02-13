@@ -1,3 +1,9 @@
+/*
+	By- Aditya Jain
+	Class - TE-1
+	Roll-no - 302029
+*/
+
 #include <iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -27,6 +33,15 @@ void ls(int clientSocketData){
     strcpy(buff,"\0");
     send(clientSocketData,buff,100,0);
     closedir(mydir);
+}
+
+void pwd(int cd){
+	char buff[100];
+	char *path=NULL;
+	size_t size;
+	path=getcwd(path,size);
+	strcpy(buff,path);
+	send(cd,buff,100,0);
 }
 
 void get(int cc,int cd){
@@ -113,7 +128,9 @@ int main() {
     	if(strcmp(cmd,"ls")==0){
     		ls(clientSocketdata);
     	}else if(strcmp(cmd,"get")==0){
-            get(clientSocketcontrol,clientSocketdata);
+        	get(clientSocketcontrol,clientSocketdata);
+        }else if(strcmp(cmd,"pwd")==0){
+        	pwd(clientSocketdata);
         }
     }
 

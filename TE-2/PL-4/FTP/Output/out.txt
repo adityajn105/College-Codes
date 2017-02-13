@@ -1,0 +1,67 @@
+//server
+ ✘ aditya@DellPC [12:13:02]  ~/TE SEM-II/PL-4/Ftp   master 
+>> g++ server.cpp -o server
+ aditya@DellPC [12:13:13]  ~/TE SEM-II/PL-4/Ftp   master 
+>> ./server
+Control info port with client@127.0.0.1
+Data port with client@127.0.0.1
+ ✘ aditya@DellPC [12:14:01]  ~/TE SEM-II/PL-4/Ftp   master 
+>> 
+
+
+//client
+ aditya@DellPC [12:13:01]  ~/TE SEM-II/PL-4/Ftp   master 
+>> g++ client.cpp -o client
+ aditya@DellPC [12:13:18]  ~/TE SEM-II/PL-4/Ftp   master 
+>> ./client
+Please Login
+Username : admin
+Password :admin
+Login Successful
+ftp>>help
+Usage:
+1. get arg1 arg2 - Get file (arg1 - file to be copied  arg2- file to be created)
+2. pwd - Current path
+3. help - Show help
+4. exit - Exit FTP
+5. ls - list files
+
+ftp>>pwd
+/home/aditya/TE SEM-II/PL-4/Ftp
+ftp>>ls
+.
+Makefile
+server.cpp
+server
+..
+.git
+.cproject
+client.cpp
+client
+.project
+ftp>>get Makefile Makefile_copy
+ftp>>exit
+ aditya@DellPC [12:14:01]  ~/TE SEM-II/PL-4/Ftp   master 
+>> ls     
+client  client.cpp  Makefile  Makefile_copy  server  server.cpp
+ aditya@DellPC [12:15:53]  ~/TE SEM-II/PL-4/Ftp   master 
+>> cat Makefile_copy
+all : client server
+
+
+client : client.cpp
+	g++ client.cpp -o client
+
+server : server.cpp
+	g++ server.cpp -o server
+
+
+clean :
+	rm -f client server
+
+ aditya@DellPC [12:22:20]  ~/TE SEM-II/PL-4/Ftp   master 
+>> 
+
+
+
+

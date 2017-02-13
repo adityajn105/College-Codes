@@ -1,3 +1,9 @@
+/*
+        By- Aditya Jain
+        Class - TE-1
+        Roll-no - 302029
+*/
+
 #include <iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -8,10 +14,11 @@ using namespace std;
 
 void help(){
 	cout<<"Usage:\n"
-			"1. get arg1 arg2 -Get file (arg1 - file to be copied  arg2- file to be created)\n"
-			"2. pwd -Current path\n"
-			"3. help -Show help\n"
-            "4. ls -list files\n"<<endl;
+			"1. get arg1 arg2 - Get file (arg1 - file to be copied  arg2- file to be created)\n"
+			"2. pwd - Current path\n"
+			"3. help - Show help\n"
+			"4. exit - Exit FTP\n"
+            "5. ls - list files\n"<<endl;
 }
 void ls(char cmd[],int cc,int cd){
 	send(cc, cmd, 10, 0);
@@ -43,6 +50,12 @@ void get(char cmd[],int cc,int cd){
     outfile.close();
 }
 
+void pwd(char cmd[],int cc, int cd){
+	send(cc,cmd,10,0);
+	char buff[100];
+	recv(cd,buff,100,0);
+	cout<<buff<<endl;
+}
 
 int main() {
     int clientSocketcontrol,clientSocketdata;
@@ -88,9 +101,14 @@ int main() {
     	}else if(strcmp(cmd,"ls")==0){
     		ls(cmd,clientSocketcontrol,clientSocketdata);
     	}else if(strcmp(cmd,"get")==0){
-            get(cmd,clientSocketcontrol,clientSocketdata);
+            	get(cmd,clientSocketcontrol,clientSocketdata);
+        }else if(strcmp(cmd,"pwd")==0){
+        	pwd(cmd,clientSocketcontrol,clientSocketdata);
+        }else if(strcmp(cmd,"exit")==0){
+        	break;
+        }else{
+        	cout<<cmd<<" :Command not found(ftp)";
         }
-
     }
 
     return 0;
