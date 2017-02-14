@@ -1,7 +1,7 @@
-/*
-        By- Aditya Jain
-        Class - TE-1
-        Roll-no - 302029
+/* 
+	By -Aditya Jain
+	Class - TE-1
+	Roll no- 302029
 */
 
 #include<iostream>
@@ -27,22 +27,21 @@ int main(){
 	Mat image,imgH,new_image;
 	int choice;
 
-	image=imread("/home/student/workspace/OpenCV/image12.jpeg",CV_LOAD_IMAGE_GRAYSCALE);
+	image=imread("/home/aditya/workspace/openCV/image12.jpeg",CV_LOAD_IMAGE_COLOR);
 	if(!image.data)
 	{
 		cout<<"No image data\n";
 		return -1;
 	}
-	cvNamedWindow("org",CV_WINDOW_AUTOSIZE);
-	cvMoveWindow("bright", 0, 0);
-	imshow("org",image);
-	cout<<"Menu\n 1.Brightness 2.Contrast Stretching 3.Rotation 4.Blur 5.Histogram 6.Sharpness\nYour Choice : ";
+	cout<<"Menu\n 1.Brightness 2.Contrast Stretching 3.Rotation 4.Blur 5.Sharpness\nYour Choice : ";
 	cin>>choice;
 	switch(choice){
 		case 1:
 			imgH = image + Scalar(50,50,50);	//255 - white //increase every pixel value by 50
 			cvNamedWindow("bright",CV_WINDOW_AUTOSIZE);
 			imshow("bright",imgH);
+			cvNamedWindow("orignal",CV_WINDOW_AUTOSIZE);
+			imshow("orignal",image);
 			break;
 		case 2:
 				int r1, s1, r2, s2;
@@ -63,6 +62,8 @@ int main(){
 				cvNamedWindow("New Image", CV_WINDOW_AUTOSIZE);
 				cvMoveWindow("New Image",300,50);
 				imshow("New Image", new_image);
+				cvNamedWindow("orignal",CV_WINDOW_AUTOSIZE);
+				imshow("orignal",image);
 				break;
 		case 3:{
 			Mat rot_img= Mat::zeros(image.size(),image.type());
@@ -85,28 +86,31 @@ int main(){
 				}
 			}
 			cvNamedWindow("Rotated Image", CV_WINDOW_AUTOSIZE);
-			cvMoveWindow("Rotated Image",300,50);
 			imshow("Rotated Image", rot_img);
+			cvNamedWindow("orignal",CV_WINDOW_AUTOSIZE);
+			imshow("orignal",image);
 			break;
 		}
 		case 4:{
+				Mat greyImg;
+				cvtColor(image, greyImg, CV_BGR2GRAY);
 				float sum;
 				float Kernel[3][3] = {
 								{1/9.0, 1/9.0, 1/9.0},
 								{1/9.0, 1/9.0, 1/9.0},
 								{1/9.0, 1/9.0, 1/9.0}
 							};
-				Mat blur_img = image.clone();
-				for(int y = 0; y < image.rows; y++)
-					for(int x = 0; x < image.cols; x++)
+				Mat blur_img = greyImg.clone();
+				for(int y = 0; y < greyImg.rows; y++)
+					for(int x = 0; x < greyImg.cols; x++)
 						blur_img.at<uchar>(y,x) = 0.0;
 				//convolution operation
-				for(int y = 1; y < image.rows - 1; y++){
-					for(int x = 1; x < image.cols - 1; x++){
+				for(int y = 1; y < greyImg.rows - 1; y++){
+					for(int x = 1; x < greyImg.cols - 1; x++){
 						sum = 0.0;
 						for(int k = -1; k <= 1;k++){
 							for(int j = -1; j <=1; j++){
-								sum = sum + Kernel[j+1][k+1]*image.at<uchar>(y - j, x - k);
+								sum = sum + Kernel[j+1][k+1]*greyImg.at<uchar>(y - j, x - k);
 							}
 						}
 						blur_img.at<uchar>(y,x) = sum;
@@ -115,6 +119,8 @@ int main(){
 				cvNamedWindow("Blurred Image", CV_WINDOW_AUTOSIZE);
 				cvMoveWindow("Blurred Image",300,50);
 				imshow("Blurred Image", blur_img);
+				cvNamedWindow("orignal",CV_WINDOW_AUTOSIZE);
+				imshow("orignal",greyImg);
 				break;
 		}
 		case 5:{
@@ -148,10 +154,12 @@ int main(){
 				}
 				cvNamedWindow("Histogram",CV_WINDOW_AUTOSIZE);
 				imshow("Histogram",histImage);
+				cvNamedWindow("orignal",CV_WINDOW_AUTOSIZE);
+				imshow("orignal",image);
 				break;
 		}
 		case 6:{
-				
+
 			break;
 		}
 

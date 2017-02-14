@@ -1,28 +1,28 @@
 ###[ Ethernet ]###
-  dst       = 54:a2:74:1d:ca:7f
-  src       = 24:be:05:0f:ac:64
+  dst       = 00:00:00:00:00:00
+  src       = 00:00:00:00:00:00
   type      = 0x800
 ###[ IP ]###
      version   = 4L
      ihl       = 5L
      tos       = 0x0
-     len       = 62
-     id        = 0
+     len       = 71
+     id        = 58381
      flags     = DF
      frag      = 0L
      ttl       = 64
      proto     = udp
-     chksum    = 0x5c0d
-     src       = 172.16.133.74
-     dst       = 172.20.1.51
+     chksum    = 0x5796
+     src       = 127.0.0.1
+     dst       = 127.0.1.1
      \options   \
 ###[ UDP ]###
-        sport     = 19900
+        sport     = 38076
         dport     = domain
-        len       = 42
-        chksum    = 0xdedd
+        len       = 51
+        chksum    = 0xff46
 ###[ DNS ]###
-           id        = 879
+           id        = 40150
            qr        = 0L
            opcode    = QUERY
            aa        = 0L
@@ -37,7 +37,7 @@
            arcount   = 0
            \qd        \
             |###[ DNS Question Record ]###
-            |  qname     = 'daisy.ubuntu.com.'
+            |  qname     = 'downloads.sourceforge.net.'
             |  qtype     = A
             |  qclass    = IN
            an        = None

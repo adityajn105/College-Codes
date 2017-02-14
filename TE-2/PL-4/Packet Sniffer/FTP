@@ -1,0 +1,30 @@
+###[ Ethernet ]###
+  dst       = 30:b5:c2:55:08:7e
+  src       = 9c:d2:1e:c5:13:a1
+  type      = 0x800
+###[ IP ]###
+     version   = 4L
+     ihl       = 5L
+     tos       = 0x0
+     len       = 60
+     id        = 23272
+     flags     = DF
+     frag      = 0L
+     ttl       = 64
+     proto     = tcp
+     chksum    = 0x58f5
+     src       = 192.168.1.109
+     dst       = 31.170.165.31
+     \options   \
+###[ TCP ]###
+        sport     = 36146
+        dport     = ftp
+        seq       = 2023416196
+        ack       = 0
+        dataofs   = 10L
+        reserved  = 0L
+        flags     = S
+        window    = 29200
+        chksum    = 0xac25
+        urgptr    = 0
+        options   = [('MSS', 1460), ('SAckOK', ''), ('Timestamp', (1620844, 0)), ('NOP', None), ('WScale', 7)]
