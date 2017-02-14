@@ -10,6 +10,12 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <fstream>
+#include <dirent.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 using namespace std;
 
 void help(){
@@ -18,7 +24,9 @@ void help(){
 			"2. pwd - Current path\n"
 			"3. help - Show help\n"
 			"4. exit - Exit FTP\n"
-            "5. ls - list files\n"<<endl;
+			"5. put arg1 arg2 - Put a file on server (arg1 - file to be copied arg2- file to be created)\n"
+			"6. cat - display contents of a text file\n"
+            "7. ls - list files\n"<<endl;
 }
 void ls(char cmd[],int cc,int cd){
 	send(cc, cmd, 10, 0);
@@ -29,6 +37,44 @@ void ls(char cmd[],int cc,int cd){
         recv(cd,buff,100,0);
     }
 }
+
+void put(char cmd[],int cc,int cd){
+	send(cc,cmd,10,0);
+    char file[20];cin>>file;
+    char filel[20];cin>>filel;
+    send(cc,filel,20,0);
+
+    DIR *mydir;
+    struct dirent *myfile;
+    struct stat mystat;
+    char buff[20];
+    mydir = opendir(".");
+    bool done=false;
+    char buffer[1024];
+    while((myfile = readdir(mydir)) != NULL){
+        stat(myfile->d_name, &mystat);
+        strcpy(buff,myfile->d_name);
+        if(strcmp(buff,file)==0){
+            done=true;
+            ifstream fileBuffer(buff, ios::in);
+            cout<<"Getting file";
+            if (fileBuffer.is_open())
+            {
+                int i=0;
+                while(!fileBuffer.eof()){
+                    fileBuffer.getline(buffer, 1024);
+                    send(cd,buffer,1024,0);
+                    cout<<"\rPutting File...";
+                }
+                cout<<"\nDONE\n";
+            }
+            break;
+        }
+    }
+    strcpy(buffer,"eof");
+    send(cd,buffer,1024,0);
+}
+
 void get(char cmd[],int cc,int cd){
     send(cc,cmd,10,0);
     char file[20];cin>>file;
@@ -39,9 +85,31 @@ void get(char cmd[],int cc,int cd){
     char buffer[1024];
     bool dat=false;
     recv(cd,buffer,1024,0);
+    cout<<"Getting File...";
     while(strcmp(buffer,"eof")!=0){
     	dat=true;
     	outfile << buffer<<"\n";
+    	recv(cd,buffer,1024,0);
+    	cout<<"\rGetting File...";
+    }
+    cout<<"\nDONE\n";
+    if(!dat){
+    	cout<<"Error : File not found!!"<<endl;
+    }
+    outfile.close();
+}
+
+void cat(char cmd[],int cc,int cd){
+	send(cc,cmd,10,0);
+    char file[20];cin>>file;
+    send(cc,file,20,0);
+    ofstream outfile;
+    char buffer[1024];
+    bool dat=false;
+    recv(cd,buffer,1024,0);
+    while(strcmp(buffer,"eof")!=0){
+    	dat=true;
+    	cout<<buffer<<"\n";
     	recv(cd,buffer,1024,0);
     }
     if(!dat){
@@ -67,7 +135,7 @@ int main() {
 
     clientSocketcontrol=socket(AF_INET,SOCK_STREAM,0);
     serverAddrctl.sin_family=AF_INET;
-    serverAddrctl.sin_port=htons(7968);
+    serverAddrctl.sin_port=htons(7967);
     serverAddrctl.sin_addr.s_addr=inet_addr("127.0.1.1");
     addr_size=sizeof serverAddrctl;
     connect(clientSocketcontrol,(struct sockaddr *)&serverAddrctl,addr_size);
@@ -84,7 +152,7 @@ int main() {
       	islogin=true;
         clientSocketdata=socket(AF_INET,SOCK_STREAM,0);
         serverAddrdata.sin_family=AF_INET;
-        serverAddrdata.sin_port=htons(8892);
+        serverAddrdata.sin_port=htons(8891);
         serverAddrdata.sin_addr.s_addr=inet_addr("127.0.1.1");
         addr_size=sizeof serverAddrdata;
         connect(clientSocketdata,(struct sockaddr *)&serverAddrdata,addr_size);
@@ -101,10 +169,15 @@ int main() {
     	}else if(strcmp(cmd,"ls")==0){
     		ls(cmd,clientSocketcontrol,clientSocketdata);
     	}else if(strcmp(cmd,"get")==0){
-            	get(cmd,clientSocketcontrol,clientSocketdata);
+            get(cmd,clientSocketcontrol,clientSocketdata);
         }else if(strcmp(cmd,"pwd")==0){
         	pwd(cmd,clientSocketcontrol,clientSocketdata);
-        }else if(strcmp(cmd,"exit")==0){
+        }else if(strcmp(cmd,"cat")==0){
+        	cat(cmd,clientSocketcontrol,clientSocketdata);
+        }else if(strcmp(cmd,"put")==0){
+        	put(cmd,clientSocketcontrol,clientSocketdata);
+        }
+        else if(strcmp(cmd,"exit")==0){
         	break;
         }else{
         	cout<<cmd<<" :Command not found(ftp)";

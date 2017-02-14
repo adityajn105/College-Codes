@@ -1,18 +1,6 @@
-//server
- ✘ aditya@DellPC [12:13:02]  ~/TE SEM-II/PL-4/Ftp   master 
->> g++ server.cpp -o server
- aditya@DellPC [12:13:13]  ~/TE SEM-II/PL-4/Ftp   master 
->> ./server
-Control info port with client@127.0.0.1
-Data port with client@127.0.0.1
- ✘ aditya@DellPC [12:14:01]  ~/TE SEM-II/PL-4/Ftp   master 
->> 
-
-
-//client
- aditya@DellPC [12:13:01]  ~/TE SEM-II/PL-4/Ftp   master 
+ aditya@DellPC [06:45:46]  ~/FTP 
 >> g++ client.cpp -o client
- aditya@DellPC [12:13:18]  ~/TE SEM-II/PL-4/Ftp   master 
+ aditya@DellPC [06:45:50]  ~/FTP 
 >> ./client
 Please Login
 Username : admin
@@ -24,28 +12,26 @@ Usage:
 2. pwd - Current path
 3. help - Show help
 4. exit - Exit FTP
-5. ls - list files
+5. put arg1 arg2 - Put a file on server (arg1 - file to be copied arg2- file to be created)
+6. cat - display contents of a text file
+7. ls - list files
 
-ftp>>pwd
-/home/aditya/TE SEM-II/PL-4/Ftp
 ftp>>ls
+Output
 .
 Makefile
 server.cpp
 server
+.gitignore
 ..
-.git
-.cproject
 client.cpp
 client
-.project
-ftp>>get Makefile Makefile_copy
-ftp>>exit
- aditya@DellPC [12:14:01]  ~/TE SEM-II/PL-4/Ftp   master 
->> ls     
-client  client.cpp  Makefile  Makefile_copy  server  server.cpp
- aditya@DellPC [12:15:53]  ~/TE SEM-II/PL-4/Ftp   master 
->> cat Makefile_copy
+ftp>>pwd
+/home/aditya/FTP
+ftp>>get Makefile new_make
+Getting File...
+DONE
+ftp>>cat new_make
 all : client server
 
 
@@ -59,9 +45,37 @@ server : server.cpp
 clean :
 	rm -f client server
 
- aditya@DellPC [12:22:20]  ~/TE SEM-II/PL-4/Ftp   master 
+
+ftp>>put Makefile mk_server
+Putting File...
+DONE
+ftp>>cat mk_server
+all : client server
+
+
+client : client.cpp
+	g++ client.cpp -o client
+
+server : server.cpp
+	g++ server.cpp -o server
+
+
+clean :
+	rm -f client server
+
+
+ftp>>exit
+ aditya@DellPC [06:52:38]  ~/FTP 
 >> 
 
 
 
+ ✘ aditya@DellPC [06:45:32]  ~/FTP 
+>> g++ server.cpp -o server
+ aditya@DellPC [06:45:40]  ~/FTP 
+>> ./server
+Control info port with client@127.0.0.1
+Data port with client@127.0.0.1
+ ✘ aditya@DellPC [06:52:38]  ~/FTP 
+>> 
 
