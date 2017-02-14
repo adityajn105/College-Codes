@@ -27,8 +27,7 @@ int main(){
 	Mat image,imgH,new_image;
 	int choice;
 
-	image=imread("/home/aditya/workspace/openCV/image12.jpeg",CV_LOAD_IMAGE_GRAYSCALE);
-	cout<<image.rows<<" "<<image.cols<<endl;;
+	image=imread("/home/student/workspace/OpenCV/image12.jpeg",CV_LOAD_IMAGE_GRAYSCALE);
 	if(!image.data)
 	{
 		cout<<"No image data\n";
@@ -37,7 +36,7 @@ int main(){
 	cvNamedWindow("org",CV_WINDOW_AUTOSIZE);
 	cvMoveWindow("bright", 0, 0);
 	imshow("org",image);
-	cout<<"Menu\n 1.Brightness 2.Contrast Stretching 3.Rotation 4.Blur 5.Sharpness\nYour Choice : ";
+	cout<<"Menu\n 1.Brightness 2.Contrast Stretching 3.Rotation 4.Blur 5.Histogram 6.Sharpness\nYour Choice : ";
 	cin>>choice;
 	switch(choice){
 		case 1:
@@ -117,6 +116,43 @@ int main(){
 				cvMoveWindow("Blurred Image",300,50);
 				imshow("Blurred Image", blur_img);
 				break;
+		}
+		case 5:{
+				int hist[256];
+				for(int i=0;i<256;i++){
+					hist[i]=0;
+				}
+				for(int i=0;i<image.rows;i++){
+					for(int j=0;j<image.cols;j++){
+						hist[(int)image.at<uchar>(i,j)]++;
+					}
+				}
+
+				int max=hist[0];
+				for(int i=1;i<256;i++){
+					if(hist[i]>max) max=hist[i];
+				}
+
+				for(int i=0;i<256;i++){
+					hist[i]=((double)hist[i]/max)*image.rows;
+				}
+
+				int hist_w=512; int hist_h=400;
+				int bin_w=cvRound((double)hist_w/256);
+
+				Mat histImage(hist_h,hist_w,CV_8UC1,Scalar(255,255,255));
+				for(int i=0;i<255;i++){
+					line(histImage,Point(bin_w*(i),hist_h),
+							Point(bin_w*(i),hist_h -hist[i]),
+							Scalar(0,0,0),1,8,0);
+				}
+				cvNamedWindow("Histogram",CV_WINDOW_AUTOSIZE);
+				imshow("Histogram",histImage);
+				break;
+		}
+		case 6:{
+				
+			break;
 		}
 
 

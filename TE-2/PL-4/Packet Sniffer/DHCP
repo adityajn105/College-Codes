@@ -1,41 +1,42 @@
 ###[ Ethernet ]###
   dst       = ff:ff:ff:ff:ff:ff
-  src       = cc:07:e4:e1:dd:52
+  src       = 24:be:05:13:4c:ee
   type      = 0x800
 ###[ IP ]###
      version   = 4L
      ihl       = 5L
-     tos       = 0x0
-     len       = 338
-     id        = 20308
+     tos       = 0x10
+     len       = 328
+     id        = 0
      flags     = 
      frag      = 0L
-     ttl       = 64
+     ttl       = 128
      proto     = udp
-     chksum    = 0x2a48
+     chksum    = 0x3996
      src       = 0.0.0.0
      dst       = 255.255.255.255
      \options   \
 ###[ UDP ]###
         sport     = bootpc
         dport     = bootps
-        len       = 318
-        chksum    = 0x7532
+        len       = 308
+        chksum    = 0xc4bd
 ###[ BOOTP ]###
            op        = BOOTREQUEST
            htype     = 1
            hlen      = 6
            hops      = 0
-           xid       = 1474483121
-           secs      = 941
+           xid       = 3935523390
+           secs      = 4
            flags     = 
            ciaddr    = 0.0.0.0
            yiaddr    = 0.0.0.0
            siaddr    = 0.0.0.0
            giaddr    = 0.0.0.0
-           chaddr    = '\xcc\x07\xe4\xe1\xddR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+           chaddr    = '$\xbe\x05\x13L\xee\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
            sname     = '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
            file      = '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
            options   = 'c\x82Sc'
 ###[ DHCP options ]###
-              options   = [message-type=request requested_addr=192.168.1.105 server_id=192.168.1.1 max_dhcp_size=1500 vendor_class_id='dhcpcd-5.5.6' hostname='android-9d7de8045a78e15' param_req_list='\x01!\x03\x06\x0f\x1c3:;' end]
+              options   = [message-type=request requested_addr=172.16.132.135 hostname='B4L0106' param_req_list='\x01\x1c\x02\x03\x0f\x06w\x0c,/\x1ay*y\xf9\xfc*' end pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad]
+DHCP

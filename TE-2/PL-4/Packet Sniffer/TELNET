@@ -1,0 +1,36 @@
+###[ Ethernet ]###
+  dst       = ff:ff:ff:ff:ff:ff
+  src       = 24:be:05:13:4c:e9
+  type      = 0x800
+###[ IP ]###
+     version   = 4L
+     ihl       = 5L
+     tos       = 0x0
+     len       = 78
+     id        = 24830
+     flags     = 
+     frag      = 0L
+     ttl       = 128
+     proto     = udp
+     chksum    = 0x75ea
+     src       = 172.16.133.150
+     dst       = 172.16.133.255
+     \options   \
+###[ UDP ]###
+        sport     = netbios_ns
+        dport     = netbios_ns
+        len       = 58
+        chksum    = 0x9f3e
+###[ NBNS query request ]###
+           NAME_TRN_ID= 47620
+           FLAGS     = 272
+           QDCOUNT   = 1
+           ANCOUNT   = 0
+           NSCOUNT   = 0
+           ARCOUNT   = 0
+           QUESTION_NAME= 'WPAD           '
+           SUFFIX    = workstation
+           NULL      = 0
+           QUESTION_TYPE= NB
+           QUESTION_CLASS= INTERNET
+DNS
