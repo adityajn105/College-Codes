@@ -27,8 +27,6 @@ class Graph{
             cout<<nodes[i]<<"  : "<<i<<endl;
         }
 
-        cout<<"Index of nodes separated by comma which have path"<<endl;
-
         graph= new int*[ncount];
         for(int i=0;i<ncount;i++){
             graph[i]=new int[ncount];
@@ -40,17 +38,31 @@ class Graph{
             }
         }
 
+        cout << "Enter node's indexes and distance between them separted by space" << endl;
+        while(true) {
+            cout<<"Enter :";
+            int i,j,w;cin>>i>>j>>w;char ans='Y';
+            graph[i][j]=graph[j][i]=w;
+            bool f;cout<<"Enter new path (Y/n) :";cin>>ans;
+            f = ans=='y' || ans =='Y' ? true:false;
+            if(!f) break;
+        }
+
         std::setfill("0");
-        cout<<setw(5)<<"INDEX";
-        for(int i=0;i<ncount;i++) cout<<setw(5)<<"\t\t"<<i;
+        cout<<setw(5)<<right<<"INDEX";
+        for(int i=0;i<ncount;i++) cout<<right<<setw(5)<<"\t\t"<<i;
         cout<<endl;
         for(int i=0;i<ncount;i++){
-            cout<<setw(5)<<i;
+            cout<<right<<setw(5)<<i;
             for(int j=0;j<ncount;j++){
-                cout<<setw(5)<<"\t"<<graph[i][j];
+                cout<<right<<setw(5)<<"\t"<<graph[i][j];
             }
             cout<<endl;
         }
+    }
+
+    int prims(){
+                
     }
 
 };
