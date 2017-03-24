@@ -10,6 +10,7 @@ class Graph{
     private:
     int ncount;
     int** graph;
+    int** mingraph;
     vector<string> nodes;
 
     public:
@@ -34,7 +35,8 @@ class Graph{
 
         for(int i=0;i<ncount;i++){
             for(int j=0;j<ncount;j++){
-                graph[i][j]=graph[j][i]=INF;
+            	if(i==j) graph[i][j]=0;
+            	else graph[i][j]=graph[j][i]=INF;
             }
         }
 
@@ -48,27 +50,69 @@ class Graph{
             if(!f) break;
         }
 
-        std::setfill("0");
+        displayGraph(graph);
+    }
+
+    void displayGraph(int** g){
+    	std::setfill("0");
         cout<<setw(5)<<right<<"INDEX";
         for(int i=0;i<ncount;i++) cout<<right<<setw(5)<<"\t\t"<<i;
         cout<<endl;
         for(int i=0;i<ncount;i++){
             cout<<right<<setw(5)<<i;
             for(int j=0;j<ncount;j++){
-                cout<<right<<setw(5)<<"\t"<<graph[i][j];
+                cout<<right<<setw(5)<<"\t"<<g[i][j];
             }
             cout<<endl;
         }
     }
 
     int prims(){
-                
-    }
+    	mingraph= new int*[ncount];
+        for(int i=0;i<ncount;i++){
+            mingraph[i]=new int[ncount];
+        }
 
+        for(int i=0;i<ncount;i++){
+            for(int j=0;j<ncount;j++){
+            	if(i==j) mingraph[i][j]=0;
+            	else mingraph[i][j]=mingraph[j][i]=INF;
+            }
+        }
+        bool incnode[ncount];
+        for(int i=0;i<ncount;i++) incnode[i]=false;
+        incnode[0]=true;
+        bool loop=true;
+        while(loop){
+			int low=INF;int from=0;int to=0;
+			for(int j=0;j<ncount;j++){
+				if(incnode[j]){
+					for(int i=0;i<ncount;i++){
+						if(graph[j][i]<low && i!=j){ 
+							low=graph[j][i];
+							from = i;
+							to=j;  		
+						}
+					}
+				}
+				else continue;
+			}
+			incnode[from]=true;
+			mingraph[from][to]=mingraph[to][from]=graph[from][to];
+
+			loop= false;;
+			for(int i=0;i<ncount;i++){
+				if(!incnode[i]) {loop=true;break;}
+			}
+			if(!loop) break;
+ 		}          
+    }
 };
+
 int main() {
-    Graph *graph=new Graph(4);
+    Graph* graph=new Graph(4);
     graph->createGraph();
+    graph->prims();
 
     return 0;
 }
