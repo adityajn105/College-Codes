@@ -1,118 +1,116 @@
 #include <iostream>
-#include<vector>
-#include<string.h>
-#include <iomanip>
+#include <stdlib.h>
+#include <omp.h>
+#define INF 9999
+#define NODES 5
 
-#define INF 9999;
 using namespace std;
-
 class Graph{
-    private:
-    int ncount;
-    int** graph;
-    int** mingraph;
-    vector<string> nodes;
-
-    public:
-    Graph(int ncount){
-        this->ncount=ncount;
-        cout<<"Enter Nodes Names ("<<ncount<<") :";
-        for(int i=0;i<ncount;i++){
-            string name;cin>>name;
-            nodes.push_back(name);
-        }
-    }
-    int createGraph(){
-        cout<<"Nodes indexes are :"<<endl;
-        for(int i=0;i<ncount;i++){
-            cout<<nodes[i]<<"  : "<<i<<endl;
-        }
-
-        graph= new int*[ncount];
-        for(int i=0;i<ncount;i++){
-            graph[i]=new int[ncount];
-        }
-
-        for(int i=0;i<ncount;i++){
-            for(int j=0;j<ncount;j++){
-            	if(i==j) graph[i][j]=0;
-            	else graph[i][j]=graph[j][i]=INF;
-            }
-        }
-
-        cout << "Enter node's indexes and distance between them separted by space" << endl;
-        while(true) {
-            cout<<"Enter :";
-            int i,j,w;cin>>i>>j>>w;char ans='Y';
-            graph[i][j]=graph[j][i]=w;
-            bool f;cout<<"Enter new path (Y/n) :";cin>>ans;
-            f = ans=='y' || ans =='Y' ? true:false;
-            if(!f) break;
-        }
-
-        displayGraph(graph);
-    }
-
-    void displayGraph(int** g){
-    	std::setfill("0");
-        cout<<setw(5)<<right<<"INDEX";
-        for(int i=0;i<ncount;i++) cout<<right<<setw(5)<<"\t\t"<<i;
-        cout<<endl;
-        for(int i=0;i<ncount;i++){
-            cout<<right<<setw(5)<<i;
-            for(int j=0;j<ncount;j++){
-                cout<<right<<setw(5)<<"\t"<<g[i][j];
-            }
-            cout<<endl;
-        }
-    }
-
-    int prims(){
-    	mingraph= new int*[ncount];
-        for(int i=0;i<ncount;i++){
-            mingraph[i]=new int[ncount];
-        }
-
-        for(int i=0;i<ncount;i++){
-            for(int j=0;j<ncount;j++){
-            	if(i==j) mingraph[i][j]=0;
-            	else mingraph[i][j]=mingraph[j][i]=INF;
-            }
-        }
-        bool incnode[ncount];
-        for(int i=0;i<ncount;i++) incnode[i]=false;
-        incnode[0]=true;
-        bool loop=true;
-        while(loop){
-			int low=INF;int from=0;int to=0;
-			for(int j=0;j<ncount;j++){
-				if(incnode[j]){
-					for(int i=0;i<ncount;i++){
-						if(graph[j][i]<low && i!=j){ 
-							low=graph[j][i];
-							from = i;
-							to=j;  		
-						}
-					}
-				}
-				else continue;
-			}
-			incnode[from]=true;
-			mingraph[from][to]=mingraph[to][from]=graph[from][to];
-
-			loop= false;;
-			for(int i=0;i<ncount;i++){
-				if(!incnode[i]) {loop=true;break;}
-			}
-			if(!loop) break;
- 		}          
-    }
+	private:
+		int graph[NODES][NODES];
+		int spanTree[NODES][NODES];
+	public:
+		Graph();
+		void displayGraph();
+		void prims();
+		void displaySpanningTree();
 };
 
-int main() {
-    Graph* graph=new Graph(4);
-    graph->createGraph();
-    graph->prims();
+Graph::Graph(){
+	for (int i = 0; i < NODES; ++i){
+		for (int j = 0; j < NODES; ++j){
+			graph[i][j]=INF;
+			spanTree[i][j]=INF;
+		}
+	}
+	/*int a,b,d;
+	while(true){
+		cout<<"Enter nodes and distance between the respectively : ";cin>>a>>b>>d;
+		graph[a][b]=graph[b][a]=d;
+		char ans;
+		cout<<"Do you want to enter more path(s) (y/n) : ";cin>>ans;
+		if(ans=='n') break;
+	}*/
+	graph[0][1]=graph[1][0]=2;
+	graph[0][2]=graph[2][0]=2;
+	graph[0][3]=graph[3][0]=2;
+	graph[1][3]=graph[3][1]=1;
+	graph[1][4]=graph[4][1]=4;
+	graph[2][4]=graph[4][2]=3;
 
-    return 0;
+}
+
+void Graph::displaySpanningTree(){
+	cout<<"N/N\t";
+	for(int i=0;i<NODES;i++){
+		cout<<i<<"\t";
+	}
+	cout<<endl<<endl;
+	for(int i=0;i<NODES;i++){
+		cout<<i<<"\t";
+		for (int j = 0; j < NODES; ++j){
+			if(spanTree[j][i]==INF) cout<<"-"<<"\t";
+			else cout<<spanTree[j][i]<<"\t";
+		}
+		cout<<endl;
+	}
+}
+
+void Graph::displayGraph(){
+	cout<<"N/N\t";
+	for(int i=0;i<NODES;i++){
+		cout<<i<<"\t";
+	}
+	cout<<endl<<endl;
+	for(int i=0;i<NODES;i++){
+		cout<<i<<"\t";
+		for (int j = 0; j < NODES; ++j){
+			if(graph[j][i]==INF) cout<<"-"<<"\t";
+			else cout<<graph[j][i]<<"\t";
+		}
+		cout<<endl;
+	}
+}
+
+void Graph::prims(){
+	bool vertexinc[NODES],cont;
+	for(int i=0;i<NODES;i++) vertexinc[i]=false;
+	vertexinc[0]=true;
+	double sstime=omp_get_wtime();
+	int cost=0,mincost=0;
+	int s,d;
+	do{
+		int curr=INF;
+		#pragma omp parallel for shared(cost,mincost)
+		for(int i=0; i<NODES;i++){
+			if(vertexinc[i]){
+				for(int j=0;j<NODES;j++){
+					#pragma omp critical
+					{
+						if(!vertexinc[j] && graph[i][j]<curr){
+							s=i;d=j;
+							curr=graph[i][j];	
+						}
+					}
+				}	
+			}
+		}
+		spanTree[s][d]=spanTree[d][s]=graph[d][s];
+		mincost+=graph[d][s];
+		vertexinc[d]=true;
+		cont=false;
+		for(int i=0;i<NODES;i++) if(!vertexinc[i]) {cont=true;continue;}
+	}while(cont);
+	cout<<endl<<"Spanning Tree Completed."<<endl;
+	cout<<"Execution Time :"<<omp_get_wtime()-sstime<<endl;
+	cout<<"Minimium cost :"<<mincost<<endl;
+}
+
+
+
+int main(){
+	Graph *graph=new Graph();
+	graph->displayGraph();
+	graph->prims();
+	graph->displaySpanningTree();
 }

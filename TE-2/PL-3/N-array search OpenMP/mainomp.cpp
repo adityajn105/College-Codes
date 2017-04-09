@@ -6,7 +6,7 @@ using namespace std;
 
 int search(vector<int>,int,int,int);
 int main() {
-    vector<int> array={2,4,6,7,8,9,11,15,17,21,23,29,34,36,39,42,47,48,51,57,61,64,66,68,69,72,75,76,78,79};
+   vector<int> array={2,4,6,7,8,9,11,15,17,21,23,29,34,36,39,42,47,48,51,57,61,64,66,68,69,72,75,76,78,79};
     int query;
     double stime;
    /*

@@ -43,7 +43,8 @@ if __name__ == '__main__':
 	plt.ylim(-3,3)
 	ax.add_artist(circle)
 	ax.grid(True, which='both')
-
+	plt.xlabel("Time")
+	plt.ylabel("Amplitude")
 	num= Poles(A1,A2,A3,1,plt)
 	den= Poles(B1,B2,B3,2,plt)
 	num.start()
