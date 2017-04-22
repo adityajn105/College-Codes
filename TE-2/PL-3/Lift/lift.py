@@ -1,86 +1,69 @@
-import time as t
 import Adafruit_BBIO.GPIO as g
-press = 0
-prev = 0
-l=['P9_23','P9_24','P9_11','P9_12','P9_13','P9_14','P9_15','P9_16']
+import time as t
+
+led=['P8_11','P8_12','P8_13','P8_14','P8_15','P8_16','P8_17']
+button=['P8_7','P8_8','P8_9','P8_10']
 zero=['P8_11','P8_12','P8_13','P8_14','P8_15','P8_16']
 one=['P8_12','P8_13']
 two=['P8_11','P8_12','P8_17','P8_15','P8_14']
-three=['P8_11','P8_12','P8_17','P8_13','P8_14']
-all1=['P8_11','P8_12','P8_13','P8_14','P8_15','P8_16','P8_17']
-buttons=['P8_7','P8_8','P8_9','P8_10']
-segdisp=[zero,one,two,three]
-YLED = ['P9_24','P9_11','P9_13','P9_15']
-GLED = ['P9_23','P9_12','P9_14','P9_16']
+three=['P8_11','P8_12','P8_13','P8_14','P8_17']
+curr=0
+next=0
+floor=[zero,one,two,three]
 
-def displist(n):
-        clear()
-        for i in n:
+for i in led:
+        g.setup(i,g.OUT)
+        g.output(i,g.HIGH)
+def setup():
+        for i in button:
+                g.setup(i,g.IN)
+
+def glow(arr):
+        for i in arr:
                 g.output(i,g.LOW)
 
-def animate(press):
-        if(press==prev):
-                displist(segdisp[press])
-	if(press<prev):
-                for i in GLED:
-                        g.output(i,g.HIGH)
-                for i in range(prev,press-1,-1):
-                        displist(segdisp[i])
-                        t.sleep(0.5)
-                for i in GLED:
-                        g.output(i,g.LOW)
-
-
-        if(press>prev):
-                for i in YLED:
-                        g.output(i,g.HIGH)
-                for i in range(prev,press+1):
-                        displist(segdisp[i])
-                        t.sleep(0.5)
-                for i in YLED:
-                        g.output(i,g.LOW)
-
 def clear():
-        for i in range(0,len(all1)):
-                g.output(all1[i],g.HIGH)
+        for i in led:
+                g.output(i,g.HIGH)
 
-for i in range(0,len(l)):
-        g.setup(l[i],g.OUT)
-        g.output(l[i],g.LOW)
-for i in range(0,len(all1)):
-        g.setup(all1[i],g.OUT)
-        g.output(all1[i],g.HIGH)
-for i in range(0,len(buttons)):
-        g.setup(buttons[i],g.IN)
 
-while(True):
-        if(g.input('P8_7')==0):
-                print "3 was pressed"
-                press1=3;
-                clear()
-                t.sleep(0.2)
-                animate(press1)
-                prev=3
-        if(g.input('P8_8')==0):
-                print "1 was pressed"
-                press1=1;
-                clear()
-                t.sleep(0.2)
-                animate(press1)
-                prev=1
-        if(g.input('P8_9')==0):
-                print "2 was pressed"
-                press1=2;
-                clear()
-                t.sleep(0.2)
-                animate(press1)
-                prev=2
-        if(g.input('P8_10')==0):
-                print "0 was pressed"
-                press1=0
-                clear()
-                t.sleep(0.2)
-                animate(press1)
-                prev=0
 
+glow(zero)
+
+def animate(curr,next):
+        if(curr<next):
+                for i in range(curr,next):
+                        clear()
+                        t.sleep(0.1)
+                        glow(floor[i+1])
+                        t.sleep(0.5)
+        else:
+                for i in range(curr,next,-1):
+                        clear()
+                        t.sleep(0.1)
+                        glow(floor[i-1])
+                        t.sleep(0.5)
+
+while True:
+        setup()
+        if(g.input('P8_7')==0 and curr!=3):
+                print "3 is pressed"
+                next=3
+                animate(curr,next)
+                curr=next
+        elif(g.input('P8_9')==0 and curr!=2):
+                print "2 is pressed"
+                next=2
+                animate(curr,next)
+                curr=next
+        elif(g.input('P8_8')==0 and curr!=1):
+                print "1 is pressed"
+                next=1
+                animate(curr,next)
+                curr=next
+        elif(g.input('P8_10')==0 and curr!=0):
+                print "0 is pressed"
+                next=0
+                animate(curr,next)
+                curr=next
 

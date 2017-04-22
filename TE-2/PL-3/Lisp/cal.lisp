@@ -11,12 +11,14 @@
 	(setf a(read))
 	(setf b(read))
 
-	(sb-thread:make-thread(lambda()(progn(sleep 0)
+	(sb-thread:make-thread(lambda()
+				(progn(sleep 0)
 				(setf c(+ a b))
 				(print "ADDITION in binary: ")
 				(format t " ~b" c )
 				(print "ADDITION in decimal: ")
-				(print c))))
+				(print c)
+				)))
 
 	(sb-thread:make-thread(lambda()(progn(sleep 0)
 				(setf c(- a b))

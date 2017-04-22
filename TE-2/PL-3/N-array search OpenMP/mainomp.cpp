@@ -1,3 +1,7 @@
+/*
+*  Created by : Aditya
+*  Date : 20/02/2017
+*/
 #include <iostream>
 #include <vector>
 #include <omp.h>
