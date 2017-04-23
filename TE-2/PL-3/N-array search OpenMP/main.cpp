@@ -34,8 +34,8 @@ int main() {
 
 int search(vector<int> array,int low,int high,int query){
     int res = -1;
-    if(high-low<=threads) {
-        int partsize = (high - low / threads) + 1;
+    if(high-low>threads) {
+        int partsize = ((high - low) / threads) + 1;
         for (int i = 0; i < threads; i++) {
             int nhigh = ((i + 1) * partsize) - 1 > high ? high : ((i + 1) * partsize) - 1;
             if (query >= array[i * partsize] && query <= array[nhigh]) {
