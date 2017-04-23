@@ -1,58 +1,61 @@
 #include <stdio.h>
-#include <iostream>
 #include <stdlib.h>
-#define SIZE 20
-using namespace std;
+#include <time.h>
+#define BLOCKS 3
+#define THREADS 10
+#define SIZE 30
+
 
 __global__ void compute(int* a,int* b, int* c){
-
-	__shared__ int  temp[SIZE];
-	int index=blockIdx.x*SIZE+threadIdx.x;	
-	temp[index]=a[index]*b[index];
-
+	__shared__ int temp[SIZE];
+	int x = blockIdx.x*blockDim.x + threadIdx.x;
+	temp[x] = a[x] * b[x];
+	c[threadIdx.x]=0;
 	__syncthreads();
-
-	for(int i =0;i<SIZE/2;i++){
-		c[i]=temp[i]+temp[i+SIZE/2];
-	}
-
+	atomicAdd(&c[threadIdx.x],temp[x]);
 }
 
-
 int main(){
-	//declare variables
-	int *A,*B,*C;
-	int n= SIZE * sizeof(int);
-	int *A_d,*B_d,*C_d;
+	
+	int i;
+	//declare local variables
+	int *a,*b,*c;
+	//declare device variables
+	int *a_d,*b_d,*c_d;
+	clock_t stime,ftime;
 
 	//initialize local variables
-	A=(int*)malloc(n);
-	B=(int*)malloc(n);
-	C=(int*)malloc(n/2);
-	for(int i=0;i<2*SIZE;i++){
-		A[i]=rand()%10;
-		B[i]=rand()%10;
+	a = (int*) malloc(SIZE*sizeof(int));
+	b = (int*) malloc(SIZE*sizeof(int));
+	c = (int*) malloc(THREADS*sizeof(int));
+	for(i=0;i<SIZE;i++){
+		a[i]=rand()%10;
+		b[i]=rand()%10;
 	}
-	for(int i=0;i<10;i++){
-		cout<<A[i]<<"  "<<A[10+i]<<"      "<<B[i]<<"  "<<B[i+10]<<endl;
+	//print inputs arrays
+	printf("\tA\t\t\tB\t\n");
+	for(i=0;i<THREADS;i++){
+		printf("%di + %dj + %dk \t\t\t%di + %dj +%dk\n",a[i],a[i+10],a[i+20],b[i],b[i+10],b[i+20]);
 	}
 
-	//initialize GPU memory
-	cudaMalloc(&A_d,n);				//cudaMalloc(**ptr,SIZE);
-	cudaMalloc(&B_d,n);
-	cudaMalloc(&C_d,n/2);
-	cudaMemcpy(A_d,A,SIZE*sizeof(int),cudaMemcpyHostToDevice);					//cudaMemcpy( *dst,*source, size, type);
-	cudaMemcpy(B_d,B,SIZE*sizeof(int),cudaMemcpyHostToDevice);
+	//initialize device variables
+	cudaMalloc(&a_d,SIZE*sizeof(int));
+	cudaMalloc(&b_d,SIZE*sizeof(int));
+	cudaMalloc(&c_d,THREADS*sizeof(int));
+	cudaMemcpy(a_d,a,SIZE*sizeof(int),cudaMemcpyHostToDevice);
+	cudaMemcpy(b_d,b,SIZE*sizeof(int),cudaMemcpyHostToDevice);
+	
+	//start kernel
+	stime=clock();
+	compute<<<BLOCKS,THREADS>>>(a_d,b_d,c_d);
+	ftime=clock();
+	//get results
+	cudaMemcpy(c,c_d,THREADS*sizeof(int),cudaMemcpyDeviceToHost);
 
-	compute<<<1,20>>>(A_d,B_d,C_d);
-
-	cudaMemcpy(C,C_d,SIZE*sizeof(int)/2,cudaMemcpyDeviceToHost);
-
-	for(int i=0;i<10;i++){
-			cout<<"     "<<C[i]<<sendl;
-	}	
-
-	free(A);free(B);free(C);
-//	cudaFree(A_d);cudaFree(B_d);cudaFree(C_d);
+	printf("\t\tC\n");
+	for(i=0;i<THREADS;i++){
+		printf("\t\t%d\n",c[i]);
+	}
+	printf("Execution Time %e :",((double)ftime-stime));
 	return 0;
 }

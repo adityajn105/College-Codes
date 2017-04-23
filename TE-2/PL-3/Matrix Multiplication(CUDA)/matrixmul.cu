@@ -67,7 +67,7 @@ int main(){
 	}
 
 
-//	free(a);free(b);free(c);
-//	cudaFree(a_d);cudaFree(b_d);cudaFree(c_d);
+	free(a);free(b);free(c);
+	cudaFree(a_d);cudaFree(b_d);cudaFree(c_d);
 	return 0;
 }

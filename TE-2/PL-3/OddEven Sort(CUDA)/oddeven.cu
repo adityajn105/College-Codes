@@ -66,4 +66,10 @@ int main(){
 		printf("%d   ",B[i]);
 	}
 
+	free(A);
+	free(B;
+	cudaFree(A_d);
+	return 0;
+
+
 }
