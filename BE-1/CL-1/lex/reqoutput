@@ -1,0 +1,7 @@
+nameofsymbol     type
+a				var
+b				var
+c				var
+d				var
+x				array
+add				userdeffunc
