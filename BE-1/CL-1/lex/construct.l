@@ -1,6 +1,6 @@
 %{
 	#include<stdio.h>
-	#include<string.h>	
+	#include<string.h>
 	struct data{
 		char key[10];
 		char value[30];
@@ -10,17 +10,22 @@
 
 	void insert(char* key,char* value){
 		struct data* curr = head;
-		while(curr!=NULL){curr=curr->next;}
+		while(curr!=NULL){
+			curr=curr->next;
+		}
 		curr = (struct data *)malloc(sizeof(struct data));
-		/*
-			strcpy(curr->key,key);
-			strcpy(curr->value,value);
-			curr->next = NULL;
-		*/
-		char c[10];
+		strcpy(curr->value,value);
 		strcpy(curr->key,key);
-		strcpy(c,value);
-		printf("key %s\n",curr->key);
+		printf("%s %s\n",curr->key,curr->value);
+		curr->next=NULL;
+	}
+	void showTable(){
+		struct data* curr = head;
+		printf("Symbol\t\ttype\n");
+		while(curr!=NULL){
+			printf("%s\t%s\n",curr->value,curr->key);
+			curr=curr->next;
+		}
 	}
 %}
 header "stdio.h"|"conio.h"
@@ -31,11 +36,12 @@ dt "int"|"float"
 op "+"|"-"|"*"|"/"|""
 id [a-zA-Z][a-zA-Z0-9]*
 %%
-"#include"{a}{header}{b} {char temp[10]="header";insert(&temp,&yytext); }
-{KW}\(.*\)	{char temp[10]="BuiltinFun";insert(&temp,&yytext);}
-{id}\(.*\)	{char temp[10]="UserDefFun";insert(&temp,&yytext);}	
-{id}	{char temp[10]="Variable";insert(&temp,&yytext);}
-{op}	{char temp[10]="Operator";insert(&temp,&yytext);}
+"#include"{a}{header}{b} {char temp[10]="Header";insert(&temp,yytext); }
+{KW}\(.*\)	{char temp[10]="BuiltinFun";insert(&temp,yytext);}
+{id}\(.*\)	{char temp[10]="UserDefFun";insert(&temp,yytext);}	
+{id}	{char temp[10]="var";insert(&temp,yytext);}
+{op}	{char temp[10]="Operator";insert(&temp,yytext);}
+"}"		{showTable();}
 %%
 int yywrap()
 {
