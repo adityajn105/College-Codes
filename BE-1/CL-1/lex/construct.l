@@ -1,31 +1,35 @@
 %{
 	#include<stdio.h>
-	#include<string.h>
 	struct data{
 		char key[10];
 		char value[30];
-		struct data* next;
+		struct data *next;
 	};
-	struct data* head=NULL;
+	typedef struct data Node;
 
-	void insert(char* key,char* value){
-		struct data* curr = head;
-		while(curr!=NULL){
+	Node* head=0;
+
+	void insert(char key[],char value[]){
+		Node* curr = head;
+		while(curr->next!=0){
 			curr=curr->next;
 		}
-		curr = (struct data *)malloc(sizeof(struct data));
+		curr->next = (Node*)malloc(sizeof(Node));
+		curr=curr->next;
 		strcpy(curr->value,value);
 		strcpy(curr->key,key);
-		printf("%s %s\n",curr->key,curr->value);
-		curr->next=NULL;
+		curr->next=0;
 	}
+
 	void showTable(){
-		struct data* curr = head;
-		printf("Symbol\t\ttype\n");
+		Node* curr = head;
+		curr=curr->next;
+		printf("Symbol\t\t\ttype\n");
+		printf("------\t\t\t----\n");
 		while(curr!=NULL){
-			printf("%s\t%s\n",curr->value,curr->key);
-			curr=curr->next;
-		}
+		printf("%s\t\t\t%s\n",curr->value,curr->key);
+		curr=curr->next;
+	}
 	}
 %}
 header "stdio.h"|"conio.h"
@@ -35,13 +39,16 @@ KW "main"|"getch"|"printf"|"scanf"
 dt "int"|"float"
 op "+"|"-"|"*"|"/"|""
 id [a-zA-Z][a-zA-Z0-9]*
+ignore ";"|"="|","|"{"|"}"
 %%
-"#include"{a}{header}{b} {char temp[10]="Header";insert(&temp,yytext); }
-{KW}\(.*\)	{char temp[10]="BuiltinFun";insert(&temp,yytext);}
-{id}\(.*\)	{char temp[10]="UserDefFun";insert(&temp,yytext);}	
-{id}	{char temp[10]="var";insert(&temp,yytext);}
-{op}	{char temp[10]="Operator";insert(&temp,yytext);}
-"}"		{showTable();}
+"#include"{a}{header}{b} {insert("Header",yytext); }
+{KW}\(.*\)	{insert("BuiltinFun",yytext);}
+{id}\(.*\)	{insert("UserDefFun",yytext);}	
+{dt} {insert("DataType",yytext);}
+{id}["["]\(.*\)	{insert("Array",yytext);}
+{id}	{insert("Variable",yytext);}
+{op}	{insert("Operator",yytext);}
+{ignore}		{}
 %%
 int yywrap()
 {
@@ -49,7 +56,9 @@ int yywrap()
 }
 int main()
 {
+	head=(Node*)malloc(sizeof(Node));
+	head->next=NULL;
 	yyin=fopen("code.c","r");
 	yylex();
+	showTable();
 }
-
