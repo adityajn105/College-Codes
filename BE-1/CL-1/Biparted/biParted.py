@@ -5,7 +5,7 @@ class Graph:
 		self.colors=[-1]*self.l
 
 	def can(self,i):
-		near=[ j for j in range(l) if j!=i and array[i][j] ]
+		near=[ j for j in range(l) if j!=i and self.array[i][j] ]
 		possible=True
 		for color in range(2):
 			for j in near:
