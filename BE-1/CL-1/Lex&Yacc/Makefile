@@ -1,6 +1,5 @@
 calc: lex.yy.c y.tab.c y.tab.h
-	g++ -g lex.yy.c y.tab.c -o calc -ll
-	
+	gcc -g lex.yy.c y.tab.c -o calc -ll
 lex.yy.c: calc.l
 	flex calc.l
 

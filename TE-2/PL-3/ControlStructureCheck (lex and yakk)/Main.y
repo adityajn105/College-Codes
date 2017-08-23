@@ -41,7 +41,6 @@ stmt : IF expr THEN stmt ENDIF
 int main() {
 	yyparse();
 }
-
 extern int yyerror(char *e) {
 	printf("Syntax Error.\n");
 }

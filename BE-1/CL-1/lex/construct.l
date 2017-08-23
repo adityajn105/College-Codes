@@ -1,8 +1,8 @@
 %{
 	#include<stdio.h>
 	struct data{
-		char key[10];
-		char value[30];
+		char key[20];
+		char value[20];
 		struct data *next;
 	};
 	typedef struct data Node;
@@ -24,10 +24,10 @@
 	void showTable(){
 		Node* curr = head;
 		curr=curr->next;
-		printf("Symbol\t\t\ttype\n");
-		printf("------\t\t\t----\n");
+		printf("\tSymbol\t\t\t\ttype\n");
+		printf("\t------\t\t\t\t-----\n");
 		while(curr!=NULL){
-		printf("%s\t\t\t%s\n",curr->value,curr->key);
+		printf("%20s\t%20s\n",curr->value,curr->key);
 		curr=curr->next;
 	}
 	}
@@ -39,16 +39,16 @@ KW "main"|"getch"|"printf"|"scanf"
 dt "int"|"float"
 op "+"|"-"|"*"|"/"|""
 id [a-zA-Z][a-zA-Z0-9]*
-ignore ";"|"="|","|"{"|"}"
+int [0-9]+
 %%
-"#include"{a}{header}{b} {insert("Header",yytext); }
-{KW}\(.*\)	{insert("BuiltinFun",yytext);}
-{id}\(.*\)	{insert("UserDefFun",yytext);}	
-{dt} {insert("DataType",yytext);}
-{id}["["]\(.*\)	{insert("Array",yytext);}
-{id}	{insert("Variable",yytext);}
-{op}	{insert("Operator",yytext);}
-{ignore}		{}
+"#include"{a}{header}{b} 	insert("Header",yytext);
+{KW}"(".*")"				insert("BuiltinFun",yytext);
+{id}"(".*")"				insert("UserDefFun",yytext);	
+{dt} 						insert("DataType",yytext);
+{id}"["{int}"]"				insert("Array",yytext);
+{id}						insert("Variable",yytext);
+{op}						insert("Operator",yytext);
+.							;
 %%
 int yywrap()
 {
