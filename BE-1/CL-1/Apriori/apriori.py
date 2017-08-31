@@ -56,10 +56,7 @@ class Apriori():
  
     def init_table(self):
         for i in range(1,len(self.converter)+1):
-            count=0
-            for v in self.data.keys():
-                if i in self.data[v]:
-                    count+=1
+            count=self.getSupport({i})
             if count>=self.support:    
                 self.table[(i,)]=count
  
