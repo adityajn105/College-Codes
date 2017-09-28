@@ -1,4 +1,5 @@
 #include<iostream>
+#include <omp.h>
 using namespace std;
 
 class QuickSorter{
