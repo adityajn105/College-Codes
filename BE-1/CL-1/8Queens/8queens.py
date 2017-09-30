@@ -1,25 +1,62 @@
-def solve(xs,k,cnt):
-	for i in range(0,8):
-		cnt+=1
-		if isOk(xs,k,i):
-			xs[k]=i
-			if k==7:
-				print(xs)
-			else:
-				solve(xs,k+1,cnt)
+import json
+class E8Queens():
+	def __init__(self,config):
+		self.sols=[]
+		self.config=config
 
-def isOk(xs,row,cpos):
-	for i in range(row):
-		if xs[i]==cpos or abs(xs[i]-cpos)==abs(i-row):
-			return False
-		else:
-			continue
-	return True
+	def findSols(self):
+		for i in range(8):
+			if self.config[i] == -1:
+				self.solve(i)
+				break
+
+	def solve(self,k):
+		for i in range(0,8):
+			if self.isOk(k,i):
+				self.config[k]=i
+				if k==7:
+					self.addSolution(self.config)
+				else:
+					self.solve(k+1)
+
+	def isOk(self,row,cpos):
+		for i in range(row):
+			if self.config[i]!=-1 and (self.config[i]==cpos or abs(self.config[i]-cpos)==abs(i-row)):
+				return False
+			else:
+				continue
+		return True
+
+	def addSolution(self,xs):
+		self.sols.append([i for i in xs])
+
+	def getSolution(self):
+		return self.sols
+
+	def printBoard(self,board):
+		for i in range(8):
+			print("\t",end=" ")
+			for j in range(8):
+				if board[i]==j:
+					print('X' ,end=" ")
+				else:
+					print('-',end=" ")
+			print('')
+
 
 if __name__ == "__main__":
-	pos=input("Enter First Position :")
-	xs=[-1]*8
-	xs[0]=int(pos)
+	data = open("input.json","r")
+	data = json.load(data)
+	initial = data["pos"]
+	problem = E8Queens(initial)
+	print("Given 8 Queen Problem-")
+	problem.printBoard(initial)
+	problem.findSols()
+	sol= problem.getSolution()
 	cnt=0
-	solve(xs,1,cnt)
-	print(cnt)
+	for i in sol:
+		print("Solution "+str(cnt)+" :")
+		problem.printBoard(i)
+		cnt+=1
+	if len(sol)==0:
+		print("No solution to given problem.")
