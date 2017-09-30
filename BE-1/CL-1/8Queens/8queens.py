@@ -15,7 +15,7 @@ class E8Queens():
 			if self.isOk(k,i):
 				self.config[k]=i
 				if k==7:
-					self.addSolution(self.config)
+					self.addSolution()
 				else:
 					self.solve(k+1)
 
@@ -27,8 +27,8 @@ class E8Queens():
 				continue
 		return True
 
-	def addSolution(self,xs):
-		self.sols.append([i for i in xs])
+	def addSolution(self):
+		self.sols.append([i for i in self.config])
 
 	def getSolution(self):
 		return self.sols

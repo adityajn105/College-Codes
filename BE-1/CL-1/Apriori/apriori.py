@@ -27,6 +27,8 @@ class Apriori():
         ls=list()
         for i in range(1,len(tup)):
             ls=ls+list(comb(tup,i))
+        for i in tup:
+            print("{} : {}".format(i,self.converter[i]))
         print("+-----------------------+---------+------------+")
         print("|   Association Rules   | Support | Confidence |")
         print("+-----------------------+---------+------------+")
@@ -37,7 +39,6 @@ class Apriori():
             conf = sup/sup2
             print("|\t{}  ->  {}\t|    {}    | {}/{} = {}  |".format(i,j,sup,sup,sup2,conf))
             print("+-----------------------+---------+------------+")
-
 
     def getSupport(self,tup):
         count=0
