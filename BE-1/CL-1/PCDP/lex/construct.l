@@ -24,12 +24,12 @@
 	void showTable(){
 		Node* curr = head;
 		curr=curr->next;
-		printf("\tSymbol\t\t\t\ttype\n");
-		printf("\t------\t\t\t\t-----\n");
+		printf("Symbol\t\t\ttype\n");
+		printf("------\t\t\t-----\n");
 		while(curr!=NULL){
-		printf("%20s\t%20s\n",curr->value,curr->key);
-		curr=curr->next;
-	}
+			printf("%-20s\t%-20s\n",curr->value,curr->key);
+			curr=curr->next;
+		}
 	}
 %}
 header "stdio.h"|"conio.h"
@@ -53,7 +53,7 @@ int [0-9]+
 int yywrap()
 {
 	return 1;
-}
+} 
 int main()
 {
 	head=(Node*)malloc(sizeof(Node));
