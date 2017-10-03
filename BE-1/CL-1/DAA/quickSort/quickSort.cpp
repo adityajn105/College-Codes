@@ -21,8 +21,13 @@ class QuickSorter{
 	private: void quickSort(int low,int high){
 		if(low<high){
 			int partn=partition(low,high);
-			quickSort(low,partn-1);
-			quickSort(partn+1,high);
+			#pragma omp parallel sections
+			{
+				#pragma omp section
+				{quickSort(low,partn-1);}
+				#pragma omp section
+				{quickSort(partn+1,high);}
+			}
 		}
 	}
 	
@@ -60,7 +65,10 @@ int main(){
 	cout<<"Enter elements sperated by space :";
 	for(int i=0;i<N;i++) cin>>arr[i];
 	QuickSorter* quick=new QuickSorter(arr,N);
+	double start = omp_get_wtime(); 
 	quick->sort();
+	double end = omp_get_wtime();
+	cout<<"Time taken for execution :"<<end-start<<endl;
 	double* ptr = quick->getArray();
 	cout<<"Sorted Array is : ";
 	for(int i=0;i<N;i++) 

@@ -1,15 +1,15 @@
-Outlook Temperature Humidity Windy Class
-sunny hot high false no
-sunny hot high true no
-overcast hot high false yes
-rain mild high false yes
-rain cool normal false yes
-rain cool normal true no
-overcast cool normal true yes
-sunny mild high false no
-sunny cool normal false yes
-rain mild normal false yes
-sunny mild normal true yes
-overcast mild high true yes
-overcast hot normal false yes
-rain mild high true no
+Credit_history Debt Income Risk
+Bad Low 0-15 high
+Bad High 15-35 high
+Bad Low 0-15 high
+Unknown High 15-35 high
+Unknown High 0-15 high
+Good High 0-15 high
+Bad Low over35 moderate
+Unknown Low 15-35 moderate
+Good High 15-35 moderate
+Unknown Low over35 low
+Unknown Low over35 low
+Good Low over35 low
+Good High over35 low
+Good High over35 low

@@ -57,8 +57,21 @@ if __name__ == '__main__':
 	while line:
 		data.append(line.split())
 		line = fp.readline()
+
+	print("Given Data Set:")
+	for i in headings:
+		print("{:15}".format(i),end="")	
+	print()
+	for i in data:
+		for j in i:
+			print("{:15}".format(j),end="")
+		print()
+
 	nb = NaiveBayes(data,headings)
 	nb.trainClassifier()
-	sample = input("Enter Sample to predict class : ").split()
-	ans = nb.predictClass(sample)
-	print("Predicted Class is {}".format(ans))
+	while True:
+		sample = input("Enter Sample to predict class : ").split()
+		ans = nb.predictClass(sample)
+		print("Predicted Class is {}".format(ans))
+		if input('Try another sample?(y/n)')=='n':
+			break

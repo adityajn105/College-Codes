@@ -88,4 +88,3 @@ if __name__=='__main__':
 	for i in range(count):
 		print("In cluster {} :".format(i+1))
 		print(clusters[i])
-

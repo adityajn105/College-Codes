@@ -1,3 +1,3 @@
 a.out : quickSort.cpp
-	g++ quickSort.cpp
+	g++ -fopenmp -g quickSort.cpp
 clean:

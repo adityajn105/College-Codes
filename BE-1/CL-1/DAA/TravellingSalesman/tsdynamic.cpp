@@ -2,6 +2,7 @@
 #include <vector>
 #include <set>
 #include <iterator>
+#include <omp.h>
 using namespace std;
 
 class Cost{
@@ -49,6 +50,7 @@ class TSDynamic{
 				int minc = 9999;
 				Cost* minCost;
 				set<int>::iterator it;
+				
 				for(it=via.begin();it!=via.end();++it){
 					Cost* ctemp = cost(*it,giveSet(via,*it),end);
 					int ccost = graph[start][*it] + ctemp->cost;
@@ -83,13 +85,15 @@ class TSDynamic{
 
 		Cost* isCostThere(int start,set<int> via,int end){
 			int len = costs.size();
+			Cost* ans = NULL;
+			#pragma omp parallel for
 			for(int i=0;i<len;i++){
 				Cost* c = costs[i];
 				if(c->compare(start,via,end)){
-					return c;
+					ans=c;
 				}
 			}
-			return NULL;
+			return ans;
 		}
 };
 
@@ -108,8 +112,10 @@ int main(){
 	}
 
 	TSDynamic* problem =  new TSDynamic(graph,nodes);
+	double start = omp_get_wtime(); 
 	Cost* sol = problem->findPath(0);
-
+	double end = omp_get_wtime();
+	cout<<"Time taken for execution :"<<end-start<<endl;
 	cout<<"Minimum Cost :"<<sol->cost<<endl;
 	cout<<"Optimal Path :";cout<<sol->path[0]+1;
 	for(int i=1;i<sol->path.size();i++){
