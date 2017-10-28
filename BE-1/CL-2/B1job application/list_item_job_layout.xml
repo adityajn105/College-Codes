@@ -1,0 +1,54 @@
+/*
+Assignment No: 2(Group B)
+Assignment name: Write a program to build smart mobile app for user pro?ling. Objective of this assignment is to develop smart mobile app which can create user pro?les based on their preferences so that smart recommendations cab be provided at run time.
+Class: BE		Div: B
+Roll No.: 56		Batch: B3
+*/
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textViewCagegory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/textViewSkill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/textViewJobType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+</LinearLayout>

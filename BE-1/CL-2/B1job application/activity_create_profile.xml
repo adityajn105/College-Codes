@@ -1,0 +1,229 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_color" >
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="fill_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:id="@+id/mainbg"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/title_barcolor"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
+                android:text="@string/heading"
+                android:textColor="@color/text_fieldcolor"
+                android:textSize="@dimen/login_txt_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_jobtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/job_catagory"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/rbJobType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radiofresher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/radio_fresher" />
+
+                <RadioButton
+                    android:id="@+id/radioexp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_experience" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/lay_ful_part_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/lay_jobtype"
+            android:layout_weight="0.32"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/job_type"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/rbJobcatagory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radiofull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/radio_full" />
+
+                <RadioButton
+                    android:id="@+id/radiopart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_part" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/lay_ful_part_time"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/job_skill"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/rbSkill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radioJava"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/radio_java" />
+
+                <RadioButton
+                    android:id="@+id/radioNet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_net" />
+
+                <RadioButton
+                    android:id="@+id/radioandroid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_android" />
+
+                <RadioButton
+                    android:id="@+id/radiophp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_php" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/lay_loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout1"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/job_location"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/rbJobloc"
+                android:layout_width="371dp"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radiopune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/radio_pune" />
+
+                <RadioButton
+                    android:id="@+id/radiomumabai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_Mumbai" />
+
+                <RadioButton
+                    android:id="@+id/radiobang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_banglore" />
+
+                <RadioButton
+                    android:id="@+id/radiohyd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_hyd" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/lay_loc"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:background="@color/title_barcolor"
+            android:text="@string/btn_search"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</ScrollView>
