@@ -43,15 +43,15 @@ class Apriori():
     def getSupport(self,tup):
         count=0
         for v in self.data.keys():
-                    has = True
-                    for i in tup:
-                        if i in self.data[v]:
-                            continue
-                        else:
-                            has= False
-                            break
-                    if has:
-                        count+=1
+            has = True
+            for i in tup:
+                if i in self.data[v]:
+                    continue
+                else:
+                    has= False
+                    break
+            if has:
+                count+=1
         return count
         
  
