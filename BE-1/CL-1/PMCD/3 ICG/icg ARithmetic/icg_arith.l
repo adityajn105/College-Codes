@@ -4,7 +4,6 @@
 %}
 LETTER [a-zA-Z]+
 %%
-(([0-9]+)|([0-9]*\.[0-9]+)) {yylval.a=(char)yytext[0]; return NUM;}
 {LETTER} {yylval.a=(char)yytext[0];return ID;}
 [ \t];
 \n return 0;

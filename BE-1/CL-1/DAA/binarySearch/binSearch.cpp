@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 int recursiveBinarySearch(double*,int,double);
@@ -9,7 +10,10 @@ int main(){
 	double query;
 	cout<<"Enter no of elements :";cin>>N;
 	cout<<"Enter sorted elements seperated by space - "<<endl;
-	for(int i =0;i<N;i++) cin>>array[i];
+	for(int i =0;i<N;i++) array[i]=rand()%100;
+	sort(array,array+N);
+	for(int i =0;i<N;i++) cout<<array[i]<<" ";
+	cout<<endl;
 	while(true){
 		cout<<"Enter element you wishes to Search : ";cin>>query;
 		int res=iterativeBinarySearch(array,N,query);

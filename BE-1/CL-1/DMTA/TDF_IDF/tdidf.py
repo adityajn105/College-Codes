@@ -32,7 +32,7 @@ class TfIdf():
 		print(self.tfidf,end="\n")
 
 	def computeTf(self):
-		for i in range(len(self.uniqdocs)):
+		for i in range(self.nodocs):
 			item = dict()
 			for j in self.uniqdocs[i]:
 				times = 0

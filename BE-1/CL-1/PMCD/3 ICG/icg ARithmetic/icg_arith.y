@@ -22,21 +22,20 @@ char res;
 %}
 
 %union{ char a;}
-%token<a> NUM
 %type<a> exp
+%token END
 %token<a> ID
 %left '+','-'
 %left '*','/'
 
 %%
 
-s : ID'='exp {addquad('=',(char)$3,'_',(char)$1);}
+s : exp '=' exp END {addquad('=',(char)$3,'_',(char)$1);displayquad();}
   ;
 exp : exp '+' exp {$$=addquad('+',(char)$1,(char)$3,temp);}
     |exp '*' exp {$$=addquad('*',(char)$1,(char)$3,temp);}
     |exp '-' exp {$$=addquad('-',(char)$1,(char)$3,temp);}
     |exp '/' exp {$$=addquad('/',(char)$1,(char)$3,temp);}
-    |NUM { $$=(char)$1;}
     |ID { $$=(char)$1;}
     |'('exp')' {$$=(char)$2;}
      ;
@@ -72,8 +71,6 @@ j++;
 int main()
 {
 yyparse();
-if(flag==0)
-displayquad();
 return 0;
 }
 

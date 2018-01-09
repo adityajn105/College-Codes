@@ -64,14 +64,14 @@ int main(){
 	double* arr=new double[N];
 	cout<<"Enter elements sperated by space :";
 	for(int i=0;i<N;i++) cin>>arr[i];
-	QuickSorter* quick=new QuickSorter(arr,N);
-	double start = omp_get_wtime(); 
-	quick->sort();
+	QuickSorter quick(arr,N);
+	double start = omp_get_wtime();
+	quick.sort();
 	double end = omp_get_wtime();
 	cout<<"Time taken for execution :"<<end-start<<endl;
-	double* ptr = quick->getArray();
+	double* ptr = quick.getArray();
 	cout<<"Sorted Array is : ";
-	for(int i=0;i<N;i++) 
-		cout<<ptr[i]<<" "; 
+	for(int i=0;i<N;i++)
+		cout<<ptr[i]<<" ";
 	cout<<endl;
 }

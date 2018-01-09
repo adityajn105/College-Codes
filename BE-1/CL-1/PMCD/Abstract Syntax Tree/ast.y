@@ -24,7 +24,7 @@
 %type <nd> exp
 %left '*' '/'
 %left '+' '-'
-%left '='
+%right '='
 %%
 stmt 	: exp END	{printf("Preorder Display :"); preorderDisplay($1);printf("\n"); }
 		;
