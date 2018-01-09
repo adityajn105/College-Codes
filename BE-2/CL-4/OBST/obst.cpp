@@ -8,52 +8,94 @@
 #define INF 999999;
 
 using namespace std;
-class Node{
-	private: float value;
-	private: int frequency;
-	public : Node(float v,int f){
-		this->value=v;
-		this->frequency=f;
-	}
-	friend class OBST;
-};
 
 class OBST{
-	private: vector<Node*> nodes;
-	private: float** optCost;
-	public: OBST(float* v,int* f,int n){
-		optCost = new float*[n];
-		for(int i=0;i<n;i++){
-			nodes.push_back(new Node(v[i],f[i]));
-			optCost[i] = new float[n];
-		}
+	private: float* p;
+	private: float* q;
+	private: float** e;
+	private: float** w; 
+	private: int** r;
+	private: int n;
+
+	public: OBST(float* p,float* q,int n){
+		w = new float*[n+1];
+		e = new float*[n+1];
+		this->p=new float[n];
+		this->q=new float[n];
+		r = new int*[n];
+		this->n = n;
 
 		for(int i=0;i<n;i++){
-			for(int j=0;j<n;j++){
-				optCost[i] = INF;
+			this->p[i]=p[i];
+			this->q[i]=q[i];
+		}
+
+		for(int i=0;i<n+1;i++){
+			e[i] = new float[n];
+			w[i] = new float[n];
+		}
+		for(int i=0;i<n;i++){
+			r[i] = new int[i];
+		}
+
+		for(int i=0;i<n+1;i++){
+			for(int j=0;j<n+1;j++){
+				this->e[i][j] = NULL;
+				this->w[i][j] = NULL;
 			}
 		}
 	}
 
-	private: getCost(int i, int r){
-		if(optCost[i][r]==INF){
-			return NULL;
+	private: float _w(int i, int j){
+		if( w[i][j]!=NULL ) return w[i][j];
+
+		float sum = 0;
+		int k=i;
+		while(k<=j){
+			sum += p[k];
+			k++;
+		}
+		k=i-1;
+		while(k<=j){
+			sum += q[k];
+			k++;
+		}
+		w[i][j] = sum;
+		return w[i][j];
+	}
+
+	private: float _e(int i,int j){
+		if( e[i][j]!=NULL ) return e[i][j];
+		
+		if(j==i-1){
+			e[i][j] = q[i-1];
 		}
 		else{
-			return optCost[i][r];
+			float min = INF;
+			int r=i;
+			while(r<=j){
+				float c = _e(i,r-1)+_e(r+1,j);
+				if(min<=c) min=c;
+			}
+			e[i][j] = min+_w(i,j);
 		}
+		return e[i][j];
 	}
 
-	public: solve(){
-		for(int i=0;i<nodes;i++){
-			for(int j=0;j<nodes;j++){
-				
+	public: void solve(){
+		for(int i=1;i<=n;i++){
+			for(int j=0;j<n;j++){
+				_e(i,j);	
 			}
 		}
-	}
 
-	public: int totalNodes(){
-		return nodes.size();
+		for(int i=1;i<=n;i++){
+			for(int j=0;j<n;j++){
+				cout<<_e(i,j)<<endl;	
+			}
+			cout<<endl;
+		}
+
 	}
 };
 
@@ -61,14 +103,14 @@ class OBST{
 int main(){
 	int nodes;
 	cout<<"Enter no of Nodes";cin>>nodes;
-	float* v= new float[nodes];
-	int* f= new int[nodes];
+	float* p= new float[nodes+1];
+	float* q= new float[nodes+1];
 	cout<<"S/N 	value 	freq"<<endl;
-	for(int i=0;i<nodes;i++){
+	for(int i=0;i<nodes+1;i++){
 		cout<<i<<'\t';
-		cin>>v[i]>>f[i];
+		cin>>p[i]>>q[i];
 	}
-	OBST obst(v,f,nodes);
-	cout<<obst.totalNodes();
+	OBST obst(p,q,nodes+1);
+	obst.solve();
 	return 0;
 }
