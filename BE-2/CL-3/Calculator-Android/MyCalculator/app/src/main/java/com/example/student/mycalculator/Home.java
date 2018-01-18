@@ -10,6 +10,8 @@ public class Home extends AppCompatActivity {
 
     EditText screen;
     String currOp="=";
+    int opdone = 0;
+    boolean screenCleared = true;
     double prevValue=0.0;
 
     @Override
@@ -41,73 +43,75 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String num = screen.getText().toString();
-                screen.setText(num.substring(0,num.length()-1));
+                if(num.length()>0) {
+                    screen.setText(num.substring(0, num.length() - 1));
+                }
             }
         });
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(1);
+                numClicked("1");
             }
         });
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(2);
+                numClicked("2");
             }
         });
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(3);
+                numClicked("3");
             }
         });
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(4);
+                numClicked("4");
             }
         });
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(5);
+                numClicked("5");
             }
         });
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(6);
+                numClicked("6");
             }
         });
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(7);
+                numClicked("7");
             }
         });
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(8);
+                numClicked("8");
             }
         });
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(9);
+                numClicked("9");
             }
         });
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(0);
+                numClicked("0");
             }
         });
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numClicked(0.0);
+                numClicked(".");
             }
         });
         add.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +129,7 @@ public class Home extends AppCompatActivity {
         mul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performOp("*");
+                performOp("x");
             }
         });
         div.setOnClickListener(new View.OnClickListener() {
@@ -142,31 +146,78 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    String getEquation() {
+        String eq = "";
 
-    void equal(){
-        screen.setText(prevValue+"");
-        currOp="=";
+        if ((prevValue == Math.floor(prevValue)) && !Double.isInfinite(prevValue))
+        { eq = eq + (int)prevValue; } else { eq = eq + prevValue; }
+
+        eq = eq  + currOp ;
+
+        double val= getScreenValue();
+        if ((val == Math.floor(val)) && !Double.isInfinite(val)) { eq = eq +(int)val;}
+        else { eq = eq +  val;}
+
+        return eq;
     }
 
-    void performOp(String op){
-        switch (op) {
+    void equal(){
+        if(currOp.equals("=")){
+            return;
+        }
+        String equation=getEquation();
+        switch (currOp) {
             case "+":
                 prevValue = prevValue + getScreenValue();
                 break;
             case "-":
                 prevValue = prevValue - getScreenValue();
                 break;
-            case "*":
+            case "x":
                 prevValue = prevValue * getScreenValue();
                 break;
             case "/":
                 prevValue = prevValue / getScreenValue();
                 break;
+            default:
+                break;
         }
+
+        if ((prevValue == Math.floor(prevValue)) && !Double.isInfinite(prevValue)) {
+            screen.setText(equation+"\n"+(int)prevValue);
+
+        }
+        else{
+            screen.setText(equation+"\n"+prevValue + "");
+        }
+        opdone++;
+        currOp="=";
+        screenCleared=false;
     }
 
-
-
+    void performOp(String op){
+        switch (currOp) {
+            case "+":
+                prevValue = prevValue + getScreenValue();
+                break;
+            case "-":
+                prevValue = prevValue - getScreenValue();
+                break;
+            case "x":
+                prevValue = prevValue * getScreenValue();
+                break;
+            case "/":
+                prevValue = prevValue / getScreenValue();
+                break;
+            default:
+                if(opdone==0) {
+                    prevValue = getScreenValue();
+                }
+                break;
+        }
+        currOp=op;
+        screenCleared = false;
+    }
 
     public double getScreenValue(){
         if(screen.getText().toString().equals("")){
@@ -175,15 +226,19 @@ public class Home extends AppCompatActivity {
         return Double.parseDouble(screen.getText().toString());
     }
 
-    public void numClicked(double digit){
+    public void numClicked(String digit){
         if(currOp.equals("=")){
             prevValue=0.0;
+            opdone=0;
         }
-        else{
+
+        if(!screenCleared) {
             screen.setText("");
+            screenCleared=true;
         }
-        if(digit !=0.0){
-            screen.setText(screen.getText().toString()+(int)digit);
+
+        if(!digit.equals(".")){
+            screen.setText(screen.getText().toString()+digit);
         }
         else{
             if(!screen.getText().toString().contains(".")){
@@ -191,7 +246,4 @@ public class Home extends AppCompatActivity {
             }
         }
     }
-
-
-
 }

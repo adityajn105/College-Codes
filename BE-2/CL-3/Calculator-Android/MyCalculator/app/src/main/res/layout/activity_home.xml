@@ -177,5 +177,8 @@
                 android:textSize="30dp"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </LinearLayout>
