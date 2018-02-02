@@ -1,0 +1,25 @@
+<html lang="en">
+	<head>
+		<title>Booths Multiplier</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		 <div class="col-md-5">
+		 <h1>Booths Multiplication</h1>
+			 <form action="/multiply" method="POST">
+				  <div class="form-group">
+					    <label for="no1">First Number (binary):</label>
+					    <input type="text" name="no1" class="form-control" id="no1" value="0110">
+				  </div>
+				  <div class="form-group">
+					    <label for="no2">Second Number (binary):</label>
+					    <input type="text" name="no2" class="form-control" id="no2" value="0010">
+				  </div>
+				  <button type="submit" class="btn btn-default">Calculate</button>
+			</form>
+			{% if data.status %}
+				  	<h3>Multiplication is : {{data.ans}}</h3>
+			{% endif %}
+		</div> 
+	</body>
+</html>

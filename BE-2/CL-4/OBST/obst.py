@@ -2,7 +2,7 @@
 # Date : 19 Jan 2018
 from itertools import permutations
 from multiprocessing import Pool
-import timeit
+import time
 
 class OBST():
     def __init__(self, elem, p, q, no):
@@ -10,7 +10,7 @@ class OBST():
         self.p = p
         self.q = q
         self.no = no
-        self.arr = list(self.__findAllPermutations())
+        self.arr = []
         self.map = dict()
 
     # Helper function returns all possible tree elements tuples
@@ -21,21 +21,22 @@ class OBST():
     # Perfrom Serial Execution
     # returns a tuple which has minimum cost, and its tree tuple
     def serialFindBestTree(self):
-        for tup in self.arr:
+    	self.arr = list(self.__findAllPermutations())
+    	for tup in self.arr:
             tree = Tree(tup)    #initialize tree
             tree.constructTree() # construct tree
             cost = self.__costOfTree(tree, tree.root, 1)
             self.map[cost] = tree.tup;  # insert cost, tree tuple in map
-
-        #print(self.map)
-        minCost = min(self.map.keys())      # get minimum possible cost
-        return minCost,self.map[minCost]    #get tree tuple corresponding to minimum cost
+            
+	minCost = min(self.map.keys())      # get minimum possible cost
+	return minCost,self.map[minCost]    #get tree tuple corresponding to minimum cost
 
 
     # Parrallize the bottleneck fucntion
     # returns a tuple which has minimum cost, and its tree tuple
     def parallelFindBestTree(self):
-        pool = Pool(len(self.arr))
+    	self.arr = list(self.__findAllPermutations())
+        pool = Pool(processes=8)
         costs = pool.map(self.costFinderWorker,self.arr)
         i =0
         for cost in costs:
@@ -133,26 +134,19 @@ class Tree():
 
 if __name__ == "__main__":
     no = int(input("Enter No of Nodes : "))
-    #no=3
-    print("Enter Elements")
-    elem = [input("{} : ".format(i)) for i in range(1, no + 1)]
-    #elem = ["do","if","while"]
-    print("Enter Success(p) : ")
-    #p = [.5,.1,.05]
-    p = [float(input("{} : ".format(i))) for i in range(1, no + 1)]
-    print("Enter Failure(q) : ")
-    #q = [.15,.1,.05,.05]
-    q = [float(input("{} : ".format(i))) for i in range(0, no + 1)]
+    elem = input("Enter Elements : ").split()
+    p = list(map(float,input("Enter Success(p) : ").split()))
+    q = list(map(float,input("Enter Failure(q) : ").split()))
     obst = OBST(elem,p,q,no)
 
     print("Firstly Performing Serial Execution : ")
-    start_time = timeit.default_timer()
+    start_time = time.time()
     cost, tree = obst.serialFindBestTree(); # Perform Serial Execution
-    elapsed = timeit.default_timer()
+    elapsed = time.time()
     print("{} is Optimal Binary Search Tree with Cost {} in {}".format(tree, cost, elapsed - start_time))
 
     print("Now Performing Concurrent Execution : ")
-    start_time = timeit.default_timer()
+    start_time = time.time()
     cost, tree = obst.parallelFindBestTree(); # Perform Parallel Execution
-    elapsed = timeit.default_timer()
+    elapsed = time.time()
     print("{} is Optimal Binary Search Tree with Cost {} in {}".format(tree, cost, elapsed - start_time))
