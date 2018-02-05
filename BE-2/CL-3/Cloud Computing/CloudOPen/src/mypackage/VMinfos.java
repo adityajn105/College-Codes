@@ -48,12 +48,12 @@ public class VMinfos {
             Element eElement = (Element) nNode;
             jp[temp] = new JPanel();
             jp[temp].setLayout(new GridLayout(4,1));
-            jp[temp].add(new JLabel("ID :"+eElement.getAttribute("ID")));
-            jp[temp].add(new JLabel("UNAME :"+eElement.getAttribute("UNAME")));
-            jp[temp].add(new JLabel("NAME :"+eElement.getAttribute("NAME")));
-            jp[temp].add(new JLabel("STATE :"+eElement.getAttribute("STATE")));
+            jp[temp].add(new JLabel("ID :"+eElement.getElementsByTagName("ID").item(0).getTextContent()));
+            jp[temp].add(new JLabel("UNAME :"+eElement.getElementsByTagName("UNAME").item(0).getTextContent()));
+            jp[temp].add(new JLabel("NAME :"+eElement.getElementsByTagName("NAME").item(0).getTextContent()));
+            jp[temp].add(new JLabel("STATE :"+eElement.getElementsByTagName("STATE").item(0).getTextContent()));
             
-            tabbedPane.addTab(eElement.getAttribute("ID"), jp[temp]);
+            tabbedPane.addTab("VM ID : "+eElement.getElementsByTagName("ID").item(0).getTextContent(), jp[temp]);
             frame.getContentPane().add(tabbedPane);
         }
 	}
