@@ -1,3 +1,6 @@
+# By - Aditya Jain
+# Roll No - 402059
+
 from bitstring import BitArray
 from flask import Flask,render_template,request,redirect
 app = Flask(__name__)
@@ -40,15 +43,15 @@ def arith_shift_right(x, amt):
 	x = BitArray(int = (x.int >> amt), length = l)
 	return x
 
-
 @app.route('/multiply', methods = ['POST'])
 def calculate():
 	if request.method == 'POST':
 		data = request.form # a multidict containing POST data
-		no1 = data['no1'];
-		no2 = data['no2'];
-		print("Given numbers are {} and {}".format(no1,no2))
-		ans = booth(int(no1,2),int(no2,2),len(no1),len(no2))
+		one = int(data['no1'])
+		two = int(data['no2'])
+		bone = bin(one)[2:];btwo = bin(two)[2:] 
+		print("Given numbers are {} and {}".format(one,two))
+		ans = booth(one,two,len(bone)+1,len(btwo)+1)
 		return render_template("Booths-Multiplier.html", data = { 'status':True, 'ans' : ans } )
 
 if __name__ == '__main__':
