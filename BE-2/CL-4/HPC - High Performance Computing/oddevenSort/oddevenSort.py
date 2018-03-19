@@ -20,7 +20,7 @@ class OddEvenSorter():
 		indexes = list(range(0,self.no-1,2))
 		pool = Pool(processes=8)
 		ls = pool.map(self.swapper,indexes)
-		print(indexes[-1])
+		print(indexes[-1],self.arr[0:indexes[-1]+1],reduce(lambda x,y: x+y,ls))
 		self.arr[0:indexes[-1]+1] = reduce(lambda x,y: x+y,ls)
 
 	def __sortEvenP(self):
