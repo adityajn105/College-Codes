@@ -1,0 +1,331 @@
+ibm@IBM:~$ mpirun -np 4 -host node1,node2 ./a.out
+EPP6
+EPP613
+1
+12
+10
+8
+10
+1
+12
+9
+1
+2
+7
+5
+4
+8
+1
+0
+6
+7
+1
+11
+8
+12
+9
+Number is 0 : 13
+
+Number is 1 : 1
+
+Number is 2 : 12
+
+Number is 3 : 10
+
+Number is 4 : 8
+
+Number is 5 : 10
+
+Number is 6 : 1
+
+Number is 7 : 12
+
+Number is 8 : 9
+
+Number is 9 : 1
+
+Number is 10 : 2
+
+Number is 11 : 7
+
+Number is 12 : 5
+
+Number is 13 : 4
+
+Number is 14 : 8
+
+Number is 15 : 1
+
+Number is 16 : 0
+
+Number is 17 : 6
+
+Number is 18 : 7
+
+Number is 19 : 1
+
+Number is 20 : 11
+
+Number is 21 : 8
+
+Number is 22 : 12
+
+Number is 23 : 9
+
+
+EPP6
+EPP6
+
+Binary Equivalents are: 
+A = 00001
+B = 01100
+B'+ 1 = 10100
+
+
+-->
+SUB B: 10100
+
+Binary Equivalents are: 
+A = 0110
+
+Binary Equivalents are: 
+A = 00111
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+SUB B: 11111:00111
+AR-SHIFT: 11111:1
+
+Binary Equivalents are: 
+A = 00101
+B = 00100
+B'+ 1 = 1110:00001
+AR-SHIFT: 11010:00000
+-->
+ADD B: 01
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+SUB B: 111110011
+-->
+AR-SHIFT: 11111:10
+
+
+-->
+SUB B: 11100110:00000:01101
+AR-SHIFT: 1001
+-->
+AR-SHIFT: 11111:0:0010
+AR-SHIFT: 00011:000011111:1011100
+-->
+ADD B: 0001
+AR-SHIFT: 11110:0
+-->
+AR-SHIFT: 00001:110
+-->
+ADD B: 00000:1000:11100
+AR-SHIFT: 00000:01100010
+-->
+ADD B: 0001010000
+-->
+AR-SHIFT: 00000:11000
+-->
+AR-SHIFT: 0110
+AR-SHIFT: 000010
+-->
+AR-SHIFT: 00000:001:00010
+AR-SHIFT: 00000:011000:01011
+-->11
+Product is = 000000001:00
+Product is = 000000
+SUB B: 11111:000111
+
+Binary Equivalents are: 001
+-->
+SUB B: 1111100
+
+Binary Equivalents are: 
+A = 01011
+AR-SHIFT: 111
+A = 01011
+B = 010001:000011001
+B = 000011:10100
+B'+ 1 = 11000
+
+
+-->
+SUB B: 
+AR-SHIFT: 11110:11
+B'+ 1 = 11111
+
+
+-->1
+-->
+AR-SHIFT: 1111111000:01010000
+-->
+ADD B: 00
+SUB B: 11111:01:11010
+-->
+ADD B: 1
+AR-SHIFT: 11100:0010:100001
+AR-SHIFT: 111100000:110101
+-->
+AR-SHIFT: 111100
+AR-SHIFT: 000011:10100
+-->
+ADD B: 0010
+AR-SHIFT: 0000:00010
+-->
+ADD B: 0:01000
+-->
+AR-SHIFT: 0000:1010000:011010110:0001000000:10
+AR-SHIFT: 00000:01
+Product is = 0000001101
+AR-SHIFT: 00011:0000100
+Product is = 0000010010
+-->
+AR-SHIFT: 00000
+
+Binary Equivalents are: 
+A = 0111
+-->
+SUB B: 11011:0100
+
+Binary Equivalents are: :00101
+-->
+SUB B: 1100
+B = 010100001
+AR-SHIFT: 11101
+A = 01000
+B = 0111:00101
+AR-SHIFT: 
+B'+ 1 = 10110
+
+:10000
+-->
+ADD B: 000001
+B'+ 1 = 11111111:1001
+-->
+AR-SHIFT: 00000101:10000
+AR-SHIFT: 011
+
+
+-->
+AR-SHIFT: 000
+-->
+ADD B: 00000::00110
+-->
+AR-SHIFT: 0010:1100000:10010
+AR-SHIFT: 00000000:00011
+-->0
+Product is = 00010100100
+-->
+AR-SHIFT: 0000:01001
+Product is = 0
+SUB B: 10110:01000
+
+Binary Equivalents are: 
+A = 011000:0001000001000011
+AR-SHIFT: 11000
+B = 01001
+B'+ 1 = 10
+-->
+AR-SHIFT: 000001
+
+Binary Equivalents are: 
+A = 00010
+B = 11:000010111
+
+
+-->
+AR-SHIFT: 00:00001
+-->
+SUB B: 00111
+B'+ 1 = 110
+-->
+AR-SHIFT: 11101:000:00110
+-->
+AR-SHIFT: 11111:001
+
+
+-->
+AR-SHIFT: 000010000
+-->
+ADD B: 00000:0000001
+AR-SHIFT: 1110:00001
+-->
+SUB B: 00111:1011
+-->
+SUB B: 10111:11:1000011001:0000000
+AR-SHIFT: 000100011
+AR-SHIFT: 110
+-->
+ADD B: 00000:1
+AR-SHIFT: 11100:11:11000
+Product is = 11:10001
+-->
+AR-SHIFT: 10000
+AR-SHIFT: 00000
+-->
+ADD B: 000100011111101:11000000:01001:10000
+AR-SHIFT: 001000
+
+Binary Equivalents are: 
+A = 0
+-->
+ADD B: 00110:10
+Product is = 00000001:1100001000
+B = 011000
+AR-SHIFT: 0001101000
+-->
+AR-SHIFT: 00000:11100
+-->010
+B'+ 1 = 1011:01100
+Product is = 000110
+
+Binary Equivalents are: 
+A = 00000
+B = 
+AR-SHIFT: 00000:010
+
+
+-->
+AR-SHIFT: 000110000110
+B'+ 1 = 1110
+Product is = 0000000:0010001111010
+
+
+-->
+AR-SHIFT: 
+
+Time Spent= 0.001284
+-->
+AR-SHIFT: 00000:00010
+
+Time Spent= 0.00130000000:00000
+-->0
+-->
+AR-SHIFT: 00000
+AR-SHIFT: 00000:0:00001
+-->
+SUB B: 0000
+-->
+AR-SHIFT: 00010110:0000:0000001
+AR-SHIFT: 11010
+-->
+AR-SHIFT: 000001:00000
+-->:00000
+-->
+AR-SHIFT: 
+ADD B: 00101:000000:000000
+AR-SHIFT: 00000
+Product is = 00010:10000
+Product is = 00000000001010000
+
+Time Spent= 0.0009170
+
+Time Spent= 0.001380

@@ -1,0 +1,332 @@
+ibm@node1:~$ mpirun -np 4 ./a.out
+13
+1
+12
+10
+8
+10
+1
+12
+9
+1
+2
+7
+5
+4
+8
+1
+0
+6
+7
+1
+11
+8
+12
+9
+Number is 0 : 13
+
+Number is 1 : 1
+
+Number is 2 : 12
+
+Number is 3 : 10
+
+Number is 4 : 8
+
+Number is 5 : 10
+
+Number is 6 : 1
+
+Number is 7 : 12
+
+Number is 8 : 9
+
+Number is 9 : 1
+
+Number is 10 : 2
+
+Number is 11 : 7
+
+Number is 12 : 5
+
+Number is 13 : 4
+
+Number is 14 : 8
+
+Number is 15 : 1
+
+Number is 16 : 0
+
+Number is 17 : 6
+
+Number is 18 : 7
+
+Number is 19 : 1
+
+Number is 20 : 11
+
+Number is 21 : 8
+
+Number is 22 : 12
+
+Number is 23 : 9
+
+
+EPP6
+
+Binary Equivalents are: 
+A = 01101
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+SUB B: 11111:01101
+AR-SHIFT: 11111:10110
+-->
+ADD B: 00000:10110
+AR-SHIFT: 00000:01011
+-->
+SUB B: 11111:01011
+AR-SHIFT: 11111:10101
+-->
+AR-SHIFT: 11111:11010
+-->
+ADD B: 00000:11010
+AR-SHIFT: 00000:01101
+Product is = 0000001101
+
+Binary Equivalents are: 
+A = 01100
+B = 01010
+B'+ 1 = 10110
+
+
+-->
+AR-SHIFT: 00000:00110
+-->
+AR-SHIFT: 00000:00011
+-->
+SUB B: 10110:00011
+AR-SHIFT: 11011:00001
+-->
+AR-SHIFT: 11101:10000
+-->
+ADD B: 00111:10000
+AR-SHIFT: 00011:11000
+Product is = 0001111000
+
+Binary Equivalents are: 
+A = 01000
+B = 01010
+B'+ 1 = 10110
+
+
+-->
+AR-SHIFT: 00000:00100
+-->
+AR-SHIFT: 00000:00010
+-->
+AR-SHIFT: 00000:00001
+-->
+SUB B: 10110:00001
+AR-SHIFT: 11011:00000
+-->
+ADD B: 00101:00000
+AR-SHIFT: 00010:10000
+Product is = 0001010000
+
+Time Spent= 0.000802
+EPP6
+
+Binary Equivalents are: 
+A = 00001
+B = 01100
+B'+ 1 = 10100
+
+
+-->
+SUB B: 10100:00001
+AR-SHIFT: 11010:00000
+-->
+ADD B: 00110:00000
+AR-SHIFT: 00011:00000
+-->
+AR-SHIFT: 00001:10000
+-->
+AR-SHIFT: 00000:11000
+-->
+AR-SHIFT: 00000:01100
+Product is = 0000001100
+
+Binary Equivalents are: 
+A = 01001
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+SUB B: 11111:01001
+AR-SHIFT: 11111:10100
+-->
+ADD B: 00000:10100
+AR-SHIFT: 00000:01010
+-->
+AR-SHIFT: 00000:00101
+-->
+SUB B: 11111:00101
+AR-SHIFT: 11111:10010
+-->
+ADD B: 00000:10010
+AR-SHIFT: 00000:01001
+Product is = 0000001001
+
+Binary Equivalents are: 
+A = 00010
+B = 00111
+B'+ 1 = 11001
+
+
+-->
+AR-SHIFT: 00000:00001
+-->
+SUB B: 11001:00001
+AR-SHIFT: 11100:10000
+-->
+ADD B: 00011:10000
+AR-SHIFT: 00001:11000
+-->
+AR-SHIFT: 00000:11100
+-->
+AR-SHIFT: 00000:01110
+Product is = 0000001110
+
+Time Spent= 0.001306
+EPP6
+
+Binary Equivalents are: 
+A = 00101
+B = 00100
+B'+ 1 = 11100
+
+
+-->
+SUB B: 11100:00101
+AR-SHIFT: 11110:00010
+-->
+ADD B: 00010:00010
+AR-SHIFT: 00001:00001
+-->
+SUB B: 11101:00001
+AR-SHIFT: 11110:10000
+-->
+ADD B: 00010:10000
+AR-SHIFT: 00001:01000
+-->
+AR-SHIFT: 00000:10100
+Product is = 0000010100
+
+Binary Equivalents are: 
+A = 01000
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+AR-SHIFT: 00000:00100
+-->
+AR-SHIFT: 00000:00010
+-->
+AR-SHIFT: 00000:00001
+-->
+SUB B: 11111:00001
+AR-SHIFT: 11111:10000
+-->
+ADD B: 00000:10000
+AR-SHIFT: 00000:01000
+Product is = 0000001000
+
+Binary Equivalents are: 
+A = 00000
+B = 00110
+B'+ 1 = 11010
+
+
+-->
+AR-SHIFT: 00000:00000
+-->
+AR-SHIFT: 00000:00000
+-->
+AR-SHIFT: 00000:00000
+-->
+AR-SHIFT: 00000:00000
+-->
+AR-SHIFT: 00000:00000
+Product is = 0000000000
+
+Time Spent= 0.001282
+EPP6
+
+Binary Equivalents are: 
+A = 00111
+B = 00001
+B'+ 1 = 11111
+
+
+-->
+SUB B: 11111:00111
+AR-SHIFT: 11111:10011
+-->
+AR-SHIFT: 11111:11001
+-->
+AR-SHIFT: 11111:11100
+-->
+ADD B: 00000:11100
+AR-SHIFT: 00000:01110
+-->
+AR-SHIFT: 00000:00111
+Product is = 0000000111
+
+Binary Equivalents are: 
+A = 01011
+B = 01000
+B'+ 1 = 11000
+
+
+-->
+SUB B: 11000:01011
+AR-SHIFT: 11100:00101
+-->
+AR-SHIFT: 11110:00010
+-->
+ADD B: 00110:00010
+AR-SHIFT: 00011:00001
+-->
+SUB B: 11011:00001
+AR-SHIFT: 11101:10000
+-->
+ADD B: 00101:10000
+AR-SHIFT: 00010:11000
+Product is = 0001011000
+
+Binary Equivalents are: 
+A = 01100
+B = 01001
+B'+ 1 = 10111
+
+
+-->
+AR-SHIFT: 00000:00110
+-->
+AR-SHIFT: 00000:00011
+-->
+SUB B: 10111:00011
+AR-SHIFT: 11011:10001
+-->
+AR-SHIFT: 11101:11000
+-->
+ADD B: 00110:11000
+AR-SHIFT: 00011:01100
+Product is = 0001101100
+
+Time Spent= 0.001594ibm@node1:~$ 
