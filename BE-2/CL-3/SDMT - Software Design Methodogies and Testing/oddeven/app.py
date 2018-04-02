@@ -16,7 +16,7 @@ def sort_array(b):
 			b: List to sort
 		Returns:
 			Sorted list
-"""
+	"""
 	a = b[:]
 	sorted = False
 	pool = ThreadPool(processes=4)

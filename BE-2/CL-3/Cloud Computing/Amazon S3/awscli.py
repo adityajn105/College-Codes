@@ -101,7 +101,7 @@ def list_content(bucket_name):
 				tk.Label(lists,text=fields[1]).grid(row=i+1,column=1,padx=20)
 				tk.Label(lists,text=fields[2]).grid(row=i+1,column=2,padx=20)
 				tk.Label(lists,text=fields[3]).grid(row=i+1,column=3,padx=20)
-			lists.mainloop()		
+			lists.mainloop()
 
 def delete_bucket(bucket_name):
 	if bucket_name == "":
@@ -124,5 +124,4 @@ if __name__ == "__main__":
 	pwd = tk.Entry(loginWindow,show='*')
 	pwd.grid(row=1,column=1,padx=10, pady=10)
 	tk.Button(loginWindow,text="Login",bg="green",width=25,command=login).grid(row=2,columnspan=2,padx=10, pady=10)
-
 	loginWindow.mainloop()

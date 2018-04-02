@@ -10,18 +10,18 @@ public class DiningPhilosophers {
         }
  
         for (int i = 0; i < philosophers.length; i++) {
-            Object leftFork = forks[i];
-            Object rightFork = forks[(i + 1) % forks.length];
- 			Random rand = new Random();
+            	Object leftFork = forks[i];
+            	Object rightFork = forks[(i + 1) % forks.length];
+ 		Random rand = new Random();
 
 	        if(i == rand.nextInt(1)%5)
-                // The last philosopher picks up the right fork first
-                philosophers[i] = new Philosopher(leftFork, rightFork);
-			else
-                philosophers[i] = new Philosopher(rightFork, leftFork); 
+                	// The last philosopher picks up the right fork first
+                	philosophers[i] = new Philosopher(leftFork, rightFork);
+		else
+                	philosophers[i] = new Philosopher(rightFork, leftFork); 
 
-            Thread t = new Thread(philosophers[i], "Philosopher " + (i + 1));
-            t.start();
+            	Thread t = new Thread(philosophers[i], "Philosopher " + (i + 1));
+            	t.start();
         }
     }
 }
